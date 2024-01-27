@@ -17,4 +17,18 @@ redirect_from:
   ![prize](https://sci-m-wang.github.io/images/2nd_prize.jpg)
 
 # Education
-- 
+- ![](https://sci-m-wang.github.io/images/neu_logo.png)
+  ### Northeastern University (Shenyang, China)
+  Sep. 2022 - Present
+  Ph.D. Candidate in Computer Science and Technology
+  Supervisor: Prof. Daling Wang
+- ![](https://sci-m-wang.github.io/images/neu_logo.png)
+  ### Northeastern University (Shenyang, China)
+  Sep. 2020 - June 2022
+  M.S. in Computer Science and Technology
+  Supervisor: Prof. Daling Wang
+- ![](https://sci-m-wang.github.io/images/hrbeu.jpg)
+  ### Harbin Engineering University (Harbin, China)
+  Sep. 2016 - June 2020
+  B.S. in Computer Science and Technology
+  Supervisor: Associate Prof. Yue Yang
