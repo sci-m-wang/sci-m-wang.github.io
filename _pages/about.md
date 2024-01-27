@@ -15,3 +15,6 @@ redirect_from:
 # Recent News
 - Nov 11, 2023. We won the second prize in the Large Language Model Evaluation track of the Language and Intelligence Competition organized by CCF and Baidu.
   ![prize](https://sci-m-wang.github.io/images/2nd_prize.jpg)
+
+# Education
+- 
