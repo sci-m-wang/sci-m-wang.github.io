@@ -17,7 +17,7 @@ redirect_from:
   ![prize](https://sci-m-wang.github.io/images/2nd_prize.jpg)
 
 # Education
-- ![](https://sci-m-wang.github.io/images/neu_logo.png)
+- <img src="https://sci-m-wang.github.io/images/neu_logo.png" width="400">
   ### Northeastern University (Shenyang, China)
   
   Sep. 2022 - Present
