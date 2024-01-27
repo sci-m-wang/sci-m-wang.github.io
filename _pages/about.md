@@ -17,7 +17,7 @@ redirect_from:
   ![prize](https://sci-m-wang.github.io/images/2nd_prize.jpg)
 
 # Education
-- <img src="https://sci-m-wang.github.io/images/neu_logo.png" width="5%">
+- <img src="https://sci-m-wang.github.io/images/neu_logo.png" width="10%">
 
   ### Northeastern University (Shenyang, China)
   
@@ -26,7 +26,7 @@ redirect_from:
   Ph.D. Candidate in Computer Science and Technology
   
   Supervisor: Prof. Daling Wang
-- <img src="https://sci-m-wang.github.io/images/neu_logo.png" width="5%">
+- <img src="https://sci-m-wang.github.io/images/neu_logo.png" width="10%">
 
   ### Northeastern University (Shenyang, China)
   
@@ -35,7 +35,7 @@ redirect_from:
   M.S. in Computer Science and Technology
   
   Supervisor: Prof. Daling Wang
-- <img src="https://sci-m-wang.github.io/images/hrbeu.jpg" width="5%">
+- <img src="https://sci-m-wang.github.io/images/hrbeu.jpg" width="10%">
 
   ### Harbin Engineering University (Harbin, China)
   
