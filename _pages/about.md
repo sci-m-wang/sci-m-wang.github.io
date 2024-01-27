@@ -26,7 +26,8 @@ redirect_from:
   Ph.D. Candidate in Computer Science and Technology
   
   Supervisor: Prof. Daling Wang
-- ![](https://sci-m-wang.github.io/images/neu_logo.png)
+- <img src="https://sci-m-wang.github.io/images/neu_logo.png" width="5%">
+
   ### Northeastern University (Shenyang, China)
   
   Sep. 2020 - June 2022
@@ -34,7 +35,8 @@ redirect_from:
   M.S. in Computer Science and Technology
   
   Supervisor: Prof. Daling Wang
-- ![](https://sci-m-wang.github.io/images/hrbeu.jpg)
+- <img src="https://sci-m-wang.github.io/images/hrbeu.jpg" width="5%">
+
   ### Harbin Engineering University (Harbin, China)
   
   Sep. 2016 - June 2020
