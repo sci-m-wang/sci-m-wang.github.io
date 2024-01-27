@@ -35,13 +35,13 @@ Xiaocui Yang, Wenfang Wu, Shi Feng, <b>Ming Wang</b>, Daling Wang, Yang Li, Qi S
 <ul>
 <li><p>生成链接树：一种高数据真实性的反事实解释生成方法 <br />
 <b>王明</b>, 武文芳, 王大玲, 冯时, 张一飞 <br />
-  <i>计算机科学, 2022. <a href="https://www.ccf.org.cn/ccftjgjxskwml/2022-02-20/755179.shtml">[CCF T2]</a><a href="files/glt.pdf">[PDF]</a></i></p>
+  <i>计算机科学, 2022. <a href="https://www.ccf.org.cn/ccftjgjxskwml/2022-02-20/755179.shtml">[CCF T2]</a><a href="https://sci-m-wang.github.io/files/glt.pdf">[PDF]</a></i></p>
 </li>
 </ul>
 
 <ul>
 <li><p>中美贸易战中的重商主义 <br />
 夏馨, 李楚璠, <b>王明</b> <br />
-<i>商业故事, 2018. <a href="files/中美贸易战中的重商主义.pdf">[PDF]</a></i></p>
+<i>商业故事, 2018. <a href="https://sci-m-wang.github.io/files/中美贸易战中的重商主义.pdf">[PDF]</a></i></p>
 </li>
 </ul>
