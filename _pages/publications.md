@@ -7,7 +7,7 @@ author_profile: true
 
 You can also find my articles on <u><a href="https://scholar.google.com/citations?user=dcqk_mMAAAAJ">my Google Scholar profile</a>.</u>
 
-## Working Papers
+### Working Papers
 
 <ul>
 <li><p>MM-BigBench: Evaluating Multimodal Models on Multimodal Content Comprehension Tasks</a> <br />
@@ -30,7 +30,7 @@ Xiaocui Yang, Wenfang Wu, Shi Feng, <b>Ming Wang</b>, Daling Wang, Yang Li, Qi S
 </li>
 </ul>
 
-## Published papers
+### Published papers
 
 <ul>
 <li><p>生成链接树：一种高数据真实性的反事实解释生成方法</a> <br />
