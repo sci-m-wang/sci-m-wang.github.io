@@ -35,7 +35,7 @@ redirect_from:
   M.S. in Computer Science and Technology
   
   Supervisor: Prof. Daling Wang
-- <img src="https://sci-m-wang.github.io/images/hrbeu.png" width="8%">
+- <img src="https://sci-m-wang.github.io/images/hrbeu.png" width="10%">
 
   ### Harbin Engineering University (Harbin, China)
   
