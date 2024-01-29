@@ -11,3 +11,5 @@ author_profile: true
 [![Bookmark Style Card](https://svg.bookmark.style/api?url=https://mp.weixin.qq.com/s/sXtrn2B4hOltMY9GI0w0uA)](https://mp.weixin.qq.com/s/sXtrn2B4hOltMY9GI0w0uA)
 
 [![Bookmark Style Card](https://svg.bookmark.style/api?url=https://mp.weixin.qq.com/s/JfVhtcyr9ffJzkTmNTO4TA)](https://mp.weixin.qq.com/s/JfVhtcyr9ffJzkTmNTO4TA)
+
+[![Bookmark Style Card](https://svg.bookmark.style/api?url=http://qihang.hrbeu.edu.cn/2018/1018/c958a203768/page.htm)](http://qihang.hrbeu.edu.cn/2018/1018/c958a203768/page.htm)
