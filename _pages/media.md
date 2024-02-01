@@ -5,9 +5,9 @@ permalink: /media/
 author_profile: true
 ---
 
-<delimiter>
+<kbd>
     <a href="https://v.qq.com/x/page/e0835c607hk.html"><image src="https://svg.bookmark.style/api?url=https://v.qq.com/x/page/e0835c607hk.html" /></a>
-</delimiter>
+</kbd>
 
 [![Bookmark Style Card](https://svg.bookmark.style/api?url=https://v.qq.com/x/page/e0835c607hk.html)](https://v.qq.com/x/page/e0835c607hk.html)
 
