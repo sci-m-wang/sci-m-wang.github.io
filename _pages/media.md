@@ -7,7 +7,7 @@ author_profile: true
 
 <delimiter>
     <a href="https://v.qq.com/x/page/e0835c607hk.html"><image src="https://svg.bookmark.style/api?url=https://v.qq.com/x/page/e0835c607hk.html" /></a>
-<delimiter>
+</delimiter>
 
 [![Bookmark Style Card](https://svg.bookmark.style/api?url=https://v.qq.com/x/page/e0835c607hk.html)](https://v.qq.com/x/page/e0835c607hk.html)
 
