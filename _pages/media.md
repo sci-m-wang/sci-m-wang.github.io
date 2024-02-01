@@ -4,6 +4,11 @@ title: "Media"
 permalink: /media/
 author_profile: true
 ---
+
+<delimiter>
+    <a href="https://v.qq.com/x/page/e0835c607hk.html"><image src="https://svg.bookmark.style/api?url=https://v.qq.com/x/page/e0835c607hk.html" /></a>
+<delimiter>
+
 [![Bookmark Style Card](https://svg.bookmark.style/api?url=https://v.qq.com/x/page/e0835c607hk.html)](https://v.qq.com/x/page/e0835c607hk.html)
 
 [![Bookmark Style Card](https://svg.bookmark.style/api?url=https://mp.weixin.qq.com/s/6NYK19ats-xnCusehNGofg)](https://mp.weixin.qq.com/s/6NYK19ats-xnCusehNGofg)
