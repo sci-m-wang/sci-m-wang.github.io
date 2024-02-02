@@ -1,10 +1,9 @@
 ---
 layout: archive
-title: "Projects"
+title: "Specific Works"
 permalink: /projects/
 author_profile: true
 ---
-## Specific Works
 
 ### T-COL
 T-COL is a counterfactual explanation generation method. It utilizes a link tree structure to select several local feature subsets through a partitioning strategy, which are eventually stitched together into a counterfactual interpretation.
@@ -29,7 +28,7 @@ Although traditional language models play a good role in giving help, there is a
 - Paper: [RoCar: A Relationship Network-based Evaluation Method to Large Language Models](https://arxiv.org/abs/2307.15997)
 - Obligation: Person in Charge
 
-## Research Projects
+# Research Projects
 
 <ul>
 <li><p>A Study of Interpretable Dialogue Generation Techniques for Emotion Awareness (No.62172086) <br />

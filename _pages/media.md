@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Media"
+title: "The media I run."
 permalink: /media/
 author_profile: true
 ---
@@ -17,8 +17,6 @@ author_profile: true
     }
 </style>
 
-## The media I run.
-
 - Data Fisher
   <image src="https://sci-m-wang.github.io/images/data_fisher.jpg" width="10%" />
 
@@ -26,7 +24,7 @@ author_profile: true
 
   Where to Find: <image src="https://sci-m-wang.github.io/images/qrcode_data_fisher.jpg" class="image" />
 
-## The media I've been featured in.
+# The media I've been featured in.
 
 [![Bookmark Style Card](https://svg.bookmark.style/api?url=https://v.qq.com/x/page/e0835c607hk.html)](https://v.qq.com/x/page/e0835c607hk.html)
 
