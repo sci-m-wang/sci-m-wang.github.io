@@ -17,16 +17,16 @@ author_profile: true
     }
 </style>
 
-### The media I run.
+## The media I run.
 
 - Data Fisher
-  > The name suggests catching fish in the sea of data, i.e. finding interesting things. A WeChat Subscription Account and a Zhihu Column. The main content is to summarise and share quality work in the field of Artificial Intelligence, especially Natural Language Processing.
-
   <image src="https://sci-m-wang.github.io/images/data_fisher.jpg" width="10%" />
+
+  > The name suggests catching fish in the sea of data, i.e. finding interesting things. A WeChat Subscription Account and a Zhihu Column. The main content is to summarise and share quality work in the field of Artificial Intelligence, especially Natural Language Processing.
 
   Where to Find: <image src="https://sci-m-wang.github.io/images/qrcode_data_fisher.jpg" class="image" />
 
-### The media I've been featured in.
+## The media I've been featured in.
 
 [![Bookmark Style Card](https://svg.bookmark.style/api?url=https://v.qq.com/x/page/e0835c607hk.html)](https://v.qq.com/x/page/e0835c607hk.html)
 

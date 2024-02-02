@@ -30,3 +30,40 @@ Although traditional language models play a good role in giving help, there is a
 - Obligation: Person in Charge
 
 ## Research Projects
+
+<ul>
+<li><p>A Study of Interpretable Dialogue Generation Techniques for Emotion Awareness (No.62172086) <br />
+Student Participant;  Funding: ￥600,000 <br />
+National Natural Science Foundation of China (NSFC) <br /></p>
+</li>
+</ul>
+<ul>
+<li><p>Internet of Things Teaching Experiment Box (No.201810217141) <br />
+<b>Person in Charge</b>;  Funding: ￥10,000 <br />
+National Student Innovation Training Projects <br /></p>
+</li>
+</ul>
+<ul>
+<li><p>Smart Home System Based on Internet of Things (No.201810217140) <br />
+Key Participants;  Funding: ￥15,000 <br />
+National Student Innovation Training Projects <br /></p>
+</li>
+</ul>
+<ul>
+<li><p>Adsorption Type Underwater Hull Surface Inspection Robot (No.201810217024) <br />
+Key Participants;  Funding: ￥12,000 <br />
+National Student Innovation Training Projects <br /></p>
+</li>
+</ul>
+<ul>
+<li><p>Ant Travel (No.201810217256) <br />
+Key Participants;  Funding: ￥27,000 <br />
+National Student Entrepreneurship Training Projects <br /></p>
+</li>
+</ul>
+<ul>
+<li><p>Indoor Space Optimisation and Beautification System Based on Deep Learning (No.Z-2018-039) <br />
+<b>Person in Charge</b>;  Funding: ￥5,000 <br />
+Harbin Engineering University Student Innovation Training Projects (Significant type) <br /></p>
+</li>
+</ul>
