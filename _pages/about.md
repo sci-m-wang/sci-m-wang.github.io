@@ -17,19 +17,19 @@ redirect_from:
   ![prize](https://sci-m-wang.github.io/images/2nd_prize.jpg)
 
 # Education
-- <img src="https://sci-m-wang.github.io/images/neu_logo.png" width="10%"></br>
+- <img src="https://sci-m-wang.github.io/images/neu_logo.png" width="10%"><br />
   **Northeastern University (Shenyang, China)**  
   Sep. 2022 - Present  
   Ph.D. Candidate in Computer Science and Technology  
   Supervisor: Prof. Daling Wang
 
-- <img src="https://sci-m-wang.github.io/images/neu_logo.png" width="10%"></br>
+- <img src="https://sci-m-wang.github.io/images/neu_logo.png" width="10%"><br />
   **Northeastern University (Shenyang, China)**  
   Sep. 2020 - June 2022  
   M.S. in Computer Science and Technology  
   Supervisor: Prof. Daling Wang
 
-- <img src="https://sci-m-wang.github.io/images/hrbeu.png" width="10%"></br>
+- <img src="https://sci-m-wang.github.io/images/hrbeu.png" width="10%"><br />
   **Harbin Engineering University (Harbin, China)**  
   Sep. 2016 - June 2020  
   B.S. in Computer Science and Technology  
