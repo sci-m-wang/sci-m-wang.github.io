@@ -13,7 +13,7 @@ author_profile: true
     }
     
     .image:hover {
-        transform: scale(1.5); /* 鼠标悬浮时将图片放大到原来的1.5倍 */
+        transform: scale(10); /* 鼠标悬浮时将图片放大到原来的1.5倍 */
     }
 </style>
 
