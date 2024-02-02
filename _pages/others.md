@@ -1,5 +1,5 @@
 ---
-permalink: /others
+permalink: /others/
 title: "Extracurricular Activities"
 layout: archive
 author_profile: true
