@@ -12,7 +12,7 @@ You can also find my articles on <u><a href="https://scholar.google.com/citation
 <ul>
 <li><p>LangGPT: Rethinking Structured Reusable Prompt Design Framework for LLMs from the Programming Language <br />
 <b>Ming Wang</b>, Yuanzhong Liu, Xiaoming Zhang, Songlian Li, Yijie Huang, Chi Zhang, Daling Wang, Shi Feng, Jigang Li <br />
-  <i>arXiv, 2023. <a href="https://arxiv.org/abs/2402.16929">[e-print]</a><a href="https://arxiv.org/pdf/2402.16929.pdf">[PDF]</a><a href="https://github.com/EmbraceAGI/LangGPT">[GitHub]</a></i></p>
+  <i>arXiv, 2024. <a href="https://arxiv.org/abs/2402.16929">[e-print]</a><a href="https://arxiv.org/pdf/2402.16929.pdf">[PDF]</a><a href="https://github.com/EmbraceAGI/LangGPT">[GitHub]</a></i></p>
 </li>
 </ul>
 
