@@ -9,47 +9,29 @@ You can also find my articles on <u><a href="https://scholar.google.com/citation
 
 ### Working Papers
 
-<ul>
-<li><p>LangGPT: Rethinking Structured Reusable Prompt Design Framework for LLMs from the Programming Language <br />
-<b>Ming Wang</b>, Yuanzhong Liu, Xiaoming Zhang, Songlian Li, Yijie Huang, Chi Zhang, Daling Wang, Shi Feng, Jigang Li <br />
-  <i>arXiv, 2024. <a href="https://arxiv.org/abs/2402.16929">[e-print]</a><a href="https://arxiv.org/pdf/2402.16929.pdf">[PDF]</a><a href="https://github.com/EmbraceAGI/LangGPT">[GitHub]</a></i></p> <br />
-  <b>Language</b>:English
-  </li>
-</ul>
-
-<ul>
-<li><p>T-COL: Generating Counterfactual Explanations on Variable Machine Learning Systems for Different Deep User Preferences <br />
-<b>Ming Wang</b>, Wenfang Wu, Daling Wang, Shi Feng, Yifei Zhang <br />
-  <i>arXiv, 2023. <a href="https://arxiv.org/abs/2309.16146">[e-print]</a><a href="https://arxiv.org/pdf/2309.16146.pdf">[PDF]</a><a href="https://github.com/NEU-DataMining/T-COL">[GitHub]</a></i></p> <br />
-  <b>Language</b>:English, <b>Citations</b>:1
-  </li>
-</ul>
-
-<ul>
-<li><p>MM-BigBench: Evaluating Multimodal Models on Multimodal Content Comprehension Tasks <br />
-Xiaocui Yang, Wenfang Wu, Shi Feng, <b>Ming Wang</b>, Daling Wang, Yang Li, Qi Sun, Yifei Zhang, Xiaoming Fu, Soujanya Poria <br />
-  <i>arXiv, 2023. <a href="https://arxiv.org/abs/2310.09036">[e-print]</a><a href="https://arxiv.org/pdf/2310.09036.pdf">[PDF]</a><a href="https://github.com/declare-lab/MM-BigBench">[GitHub]</a></i></p> <br />
-  <b>Language</b>:English, <b>Citations</b>:1
-  </li>
-</ul>
-
-<ul>
-<li><p>RoCar: A Relationship Network-based Evaluation Method to Large Language Models <br />
-<b>Ming Wang</b>, Wenfang Wu, Chongyun Gao, Daling Wang, Shi Feng, Yifei Zhang <br />
-  <i>arXiv, 2023. <a href="https://arxiv.org/abs/2307.15997">[e-print]</a><a href="https://arxiv.org/pdf/2307.15997">[PDF]</a><a href="https://github.com/NEU-DataMining/RoCar">[GitHub]</a></i></p> <br />
-  <b>Language</b>:English
-  </li>
-</ul>
+- LangGPT: Rethinking Structured Reusable Prompt Design Framework for LLMs from the Programming Language
+  **Ming Wang**, Yuanzhong Liu, Xiaoming Zhang, Songlian Li, Yijie Huang, Chi Zhang, Daling Wang, Shi Feng, Jigang Li
+  *arXiv, 2024. [[e-print]](https://arxiv.org/abs/2402.16929) [[PDF]](https://arxiv.org/pdf/2402.16929.pdf) [[GitHub]](https://github.com/EmbraceAGI/LangGPT)*
+  **Language**: English
+- MM-BigBench: Evaluating Multimodal Models on Multimodal Content Comprehension Tasks
+  Xiaocui Yang, Wenfang Wu, Shi Feng, **Ming Wang**, Daling Wang, Yang Li, Qi Sun, Yifei Zhang, Xiaoming Fu, Soujanya Poria
+  *arXiv, 2023. [[e-print]](https://arxiv.org/abs/2310.09036) [[PDF]](https://arxiv.org/pdf/2310.09036.pdf) [[GitHub]](https://github.com/declare-lab/MM-BigBench)*
+  **Language**: English, **Citations**: 1
+- T-COL: Generating Counterfactual Explanations for General User Preferences on Variable Machine Learning Systems
+  **Ming Wang**, Wenfang Wu, Daling Wang, Shi Feng, Yifei Zhang
+  *arXiv, 2023. [[e-print]](https://arxiv.org/abs/2309.16146) [[PDF]](https://arxiv.org/pdf/2309.16146.pdf) [[GitHub]](https://github.com/NEU-DataMining/T-COL)*
+  **Language**: English, **Citations**: 1
+- RoCar: A Relationship Network-based Evaluation Method to Large Language Models
+  **Ming Wang**, Wenfang Wu, Chongyun Gao, Daling Wang, Shi Feng, Yifei Zhang
+  *arXiv, 2023. [[e-print]](https://arxiv.org/abs/2307.15997) [[PDF]](https://arxiv.org/pdf/2307.15997.pdf) [[GitHub]](https://github.com/NEU-DataMining/RoCar)*
+  **Language**: English
 
 ### Published papers
 
-<ul>
-<li><p>Generative Link Tree: A Counterfactual Explanation Generation Approach with High Data Fidelity <br />
-<b>Ming Wang</b>, Wenfang Wu, Daling Wang, Shi Feng, Yifei Zhang <br />
-  <i>Computer Science, 2022. <a href="https://www.ccf.org.cn/ccftjgjxskwml/2022-02-20/755179.shtml">[CCF T2]</a><a href="https://sci-m-wang.github.io/files/glt.pdf">[PDF]</a></i></p> <br />
-  <b>Language</b>:Chinese, <b>Citations</b>:2
-  </li>
-</ul>
+- Generative Link Tree: A Counterfactual Explanation Generation Approach with High Data Fidelity
+  **Ming Wang**, Wenfang Wu, Daling Wang, Shi Feng, Yifei Zhang
+  Computer Science, 2022. [[CCF T2]](https://www.ccf.org.cn/ccftjgjxskwml/2022-02-20/755179.shtml) [[PDF]](https://sci-m-wang.github.io/files/glt.pdf)
+  **Language**: Chinese, **Citations**: 2
 
 <!-- <ul>
 <li><p>中美贸易战中的重商主义 <br />
