@@ -26,6 +26,8 @@ author_profile: true
 
 # The media I've been featured in.
 
+[![Bookmark Style Card](https://svg.bookmark.style/api?url=https://mp.weixin.qq.com/s/L_F524gkqsND2SqJu4sbhA)](https://mp.weixin.qq.com/s/L_F524gkqsND2SqJu4sbhA)
+
 [![Bookmark Style Card](https://svg.bookmark.style/api?url=https://v.qq.com/x/page/e0835c607hk.html)](https://v.qq.com/x/page/e0835c607hk.html)
 
 [![Bookmark Style Card](https://svg.bookmark.style/api?url=https://mp.weixin.qq.com/s/6NYK19ats-xnCusehNGofg)](https://mp.weixin.qq.com/s/6NYK19ats-xnCusehNGofg)
