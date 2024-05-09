@@ -15,12 +15,6 @@ You can also find my articles on <u><a href="https://scholar.google.com/citation
 
   *arXiv, 2024. [[e-print]](https://arxiv.org/abs/2403.11144) [[PDF]](https://arxiv.org/pdf/2403.11144) [[GitHub]](https://github.com/wzhwzhwzh0921/S-D-Mamba)*
 
-- [FEEL: A Framework for Evaluating Emotional Support Capability with Large Language Models](https://arxiv.org/abs/2403.15699)
-
-  Huaiwen Zhang, Yu Chen, **Ming Wang**, Shi Feng
-
-  *arXiv, 2024. [[e-print]](https://arxiv.org/abs/2403.15699) [[PDF]](https://arxiv.org/pdf/2403.15699) [[GitHub]](https://github.com/Ansisy/FEEL)*
-
 - [LangGPT: Rethinking Structured Reusable Prompt Design Framework for LLMs from the Programming Language](https://arxiv.org/abs/2402.16929)
 
   **Ming Wang**, Yuanzhong Liu, Xiaoming Zhang, Songlian Li, Yijie Huang, Chi Zhang, Daling Wang, Shi Feng, Jigang Li
@@ -45,8 +39,13 @@ You can also find my articles on <u><a href="https://scholar.google.com/citation
 
   *arXiv, 2023. [[e-print]](https://arxiv.org/abs/2307.15997) [[PDF]](https://arxiv.org/pdf/2307.15997.pdf) [[GitHub]](https://github.com/NEU-DataMining/RoCar)*
 
-
 ### Published papers
+
+- [FEEL: A Framework for Evaluating Emotional Support Capability with Large Language Models](https://arxiv.org/abs/2403.15699)
+
+  Huaiwen Zhang, Yu Chen, **Ming Wang**, Shi Feng
+
+  *International Conference on Intelligent Computing, 2024. [[CCF C]](https://arxiv.org/abs/2403.15699) [[PDF]](https://arxiv.org/pdf/2403.15699) [[GitHub]](https://github.com/Ansisy/FEEL)*
 
 - [Generative Link Tree: A Counterfactual Explanation Generation Approach with High Data Fidelity](https://oversea.cnki.net/KCMS/detail/detail.aspx?dbcode=CJFD&dbname=CJFDLAST2022&filename=JSJA202209003&uniplatform=OVERSEA&v=x2k_d6-t3_0HrOGb7vwqFvg-BoQRqXLTwb7BMTVDu_rKrOVoStb8QKiDbr8viDsB)
 
