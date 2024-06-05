@@ -14,9 +14,8 @@ redirect_from:
 
 # Recent News
 - May 9, 2024. Our paper titled "FEEL: A Framework for Evaluating Emotional Support Capability with Large Language Models" has been oral accepted by the *International Conference on Intelligent Computing* 2024 (CCF C).
-
 - Nov 11, 2023. We won the second prize in the Large Language Model Evaluation track of the Language and Intelligence Competition organized by CCF and Baidu.
-  ![prize](https://sci-m-wang.github.io/images/2nd_prize.jpg)
+<!--  ![prize](https://sci-m-wang.github.io/images/2nd_prize.jpg) -->
 
 # Education
 - <img src="https://sci-m-wang.github.io/images/neu_logo.png" width="10%"><br />
