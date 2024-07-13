@@ -1,9 +1,11 @@
 ---
 layout: archive
-title: "The media I run."
+title: ""
 permalink: /media/
 author_profile: true
 ---
+
+# The media I host.
 
 <style>
     .image {
@@ -24,7 +26,7 @@ author_profile: true
 
   Where to Find: <image src="https://sci-m-wang.github.io/images/qrcode_data_fisher.jpg" class="image" />
 
-# The media I've been featured in.
+# The media I've been interviewed.
 
 [![Bookmark Style Card](https://svg.bookmark.style/api?url=https://mp.weixin.qq.com/s/L_F524gkqsND2SqJu4sbhA)](https://mp.weixin.qq.com/s/L_F524gkqsND2SqJu4sbhA)
 
