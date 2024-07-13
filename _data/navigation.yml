@@ -6,6 +6,9 @@ main:
   - title: "Projects"
     url: /projects/
 
+  - title: "Collaborations"
+    url: /collaborations/
+
   - title: "Media"
     url: /media/
 
