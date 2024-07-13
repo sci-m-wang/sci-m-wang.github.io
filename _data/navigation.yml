@@ -33,5 +33,8 @@ main:
   # - title: "Guide"
   #   url: /markdown/
 
-  - title: "Other Activities"
-    url: /others/
+  # - title: "Other Activities"
+  #   url: /others/
+
+  - title: "Volunteering"
+    url: /volunteering/
