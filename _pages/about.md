@@ -13,6 +13,7 @@ redirect_from:
 - My main research interests are trusted applications, safety, and interpretability of AI. I am now working on LLM-based agents, LLM security, and prompt engineering.
 
 # Recent News
+- July 3, 2024. Our paper titled "LLM-Based Empathetic Response through Psychologist-Agent Debate" has been accepted by the *8th APWeb-WAIM International Joint Conference on Web and Big Data* (CCF C).
 - May 9, 2024. Our paper titled "FEEL: A Framework for Evaluating Emotional Support Capability with Large Language Models" has been oral accepted by the *International Conference on Intelligent Computing* 2024 (CCF C).
 - Nov 11, 2023. We won the second prize in the Large Language Model Evaluation track of the Language and Intelligence Competition organized by CCF and Baidu.
 <!--  ![prize](https://sci-m-wang.github.io/images/2nd_prize.jpg) -->
