@@ -5,9 +5,15 @@ permalink: /publications/
 author_profile: true
 ---
 
-My papers can also be found on <u><a href="https://www.semanticscholar.org/author/Ming-Wang/2249764692">my Semantic Scholar profile</a></u> and <u><a href="https://scholar.google.com/citations?user=dcqk_mMAAAAJ">Google Scholar profile</a></u>.
+My papers can also be found on my <u><a href="https://scholar.google.com/citations?user=dcqk_mMAAAAJ">Google Scholar profile</a></u>.
 
 ### Published papers
+
+- [LLM-Based Empathetic Response Through Psychologist-Agent Debate](https://link.springer.com/chapter/10.1007/978-981-97-7232-2_14)
+
+  Yijie Wu, Shi Feng, **Ming Wang**, Daling Wang, Yifei Zhang
+
+  *Asia-Pacific Web (APWeb) and Web-Age Information Management (WAIM) Joint International Conference on Web and Big Data, 2024.[[CCF C]](https://link.springer.com/chapter/10.1007/978-981-97-7232-2_14)*
 
 - [FEEL: A Framework for Evaluating Emotional Support Capability with Large Language Models](https://arxiv.org/abs/2403.15699)
 
@@ -30,6 +36,18 @@ My papers can also be found on <u><a href="https://www.semanticscholar.org/autho
 </ul> -->
 
 ### Working Papers
+
+- [Minstrel: Structural Prompt Generation with Multi-Agents Coordination for Non-AI Experts](https://arxiv.org/abs/2409.13449)
+
+  **Ming Wang**, Yuanzhong Liu, Xiaoyu Liang, Yijie Huang, Daling Wang, Xiaocui Yang, Sijia Shen, Shi Feng, Xiaoming Zhang, Chaofeng Guan, Yifei Zhang
+
+  *arXiv, 2024. [[e-print]](https://arxiv.org/abs/2409.13449) [[PDF]](https://arxiv.org/pdf/2409.13449) [[GitHub]](https://github.com/sci-m-wang/Minstrel)*
+
+- [MM-InstructEval: Zero-Shot Evaluation of (Multimodal) Large Language Models on Multimodal Reasoning Tasks](https://arxiv.org/abs/2405.07229)
+
+  Xiaocui Yang, Wenfang Wu, Shi Feng, **Ming Wang**, Daling Wang, Yang Li, Qi Sun, Yifei Zhang, Xiaoming Fu, Soujanya Poria
+
+  *arXiv, 2024. [[e-print]](https://arxiv.org/abs/2405.07229) [[PDF]](https://arxiv.org/pdf/2405.07229) [[GitHub]](https://github.com/declare-lab/MM-InstructEval)*
 
 - [Is Mamba Effective for Time Series Forecasting?](https://arxiv.org/abs/2403.11144)
 
