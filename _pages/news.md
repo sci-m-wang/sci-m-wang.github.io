@@ -1,13 +1,13 @@
 ---
 layout: archive
 title: ""
-permalink: /media/
+permalink: /news/
 author_profile: true
 ---
 
-# The media I host.
+<!-- # The media I host. -->
 
-<style>
+<!-- <style>
     .image {
         width: 5%; /* 设置初始图片尺寸 */
         height: auto;
@@ -24,9 +24,9 @@ author_profile: true
 
   > The name suggests catching fish in the sea of data, i.e. finding interesting things. A WeChat Subscription Account and a Zhihu Column. The main content is to summarise and share quality work in the field of Artificial Intelligence, especially Natural Language Processing.
 
-  Where to Find: <image src="https://sci-m-wang.github.io/images/qrcode_data_fisher.jpg" class="image" />
+  Where to Find: <image src="https://sci-m-wang.github.io/images/qrcode_data_fisher.jpg" class="image" /> -->
 
-# The media I've been interviewed.
+<!-- # The media I've been interviewed. -->
 
 [![Bookmark Style Card](https://svg.bookmark.style/api?url=https://mp.weixin.qq.com/s/L_F524gkqsND2SqJu4sbhA)](https://mp.weixin.qq.com/s/L_F524gkqsND2SqJu4sbhA)
 

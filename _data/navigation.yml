@@ -9,8 +9,8 @@ main:
   - title: "Internships"
     url: /internships/
 
-  - title: "Media"
-    url: /media/
+  - title: "News"
+    url: /news/
 
   # - title: "Talks"
   #   url: /talks/    
@@ -36,5 +36,5 @@ main:
   # - title: "Other Activities"
   #   url: /others/
 
-  - title: "Volunteering"
-    url: /volunteering/
+  # - title: "Volunteering"
+  #   url: /volunteering/

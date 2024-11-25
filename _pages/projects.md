@@ -1,34 +1,46 @@
 ---
 layout: archive
-title: "Specific Works"
+title: ""
 permalink: /projects/
 author_profile: true
 ---
+
+### LangGPT
+LangGPT is a personified structural prompt framework. It presents a structured, flexible and extensible framework for prompt creation with reference to the design ideas of object-oriented programming languages. It gives identity to large language models, greatly improving their performance on specific tasks.
+- URL: [https://github.com/langgptai/LangGPT](https://github.com/langgptai/LangGPT)
+- Paper: [LangGPT: Rethinking Structured Reusable Prompt Design Framework for LLMs from the Programming Language](https://arxiv.org/abs/2402.16929)
+- Contribution: **Core Contributor & Co-builder**, responsible for theoretical system refinement and paper writing.
+
+### Minstrel
+Minstrel is an automatic prompt optimization (or generation) tool. It decomposes the prompt generation task and automates the generation of structural LangGPT prompts through collaboration between generative agents belonging to three working groups.
+- URL: [https://github.com/langgptai/Minstrel](https://github.com/langgptai/Minstrel)
+- Paper: [Minstrel: Structural Prompt Generation with Multi-Agents Coordination for Non-AI Experts](https://arxiv.org/abs/2409.13449)
+- Contribution: **Person in Charge**, hosting the design, development, and testing of Minstrel.
 
 ### T-COL
 T-COL is a counterfactual explanation generation method. It utilizes a link tree structure to select several local feature subsets through a partitioning strategy, which are eventually stitched together into a counterfactual interpretation.
 - URL: [https://github.com/sci-m-wang/T-COL](https://github.com/sci-m-wang/T-COL)
 - Paper: [T-COL: Generating Counterfactual Explanations for General User Preferences on Variable Machine Learning Systems](https://arxiv.org/abs/2309.16146)
-- Obligation: Person in Charge
+- Contribution: **Person in Charge**, hosting the design, development, and testing of T-COL.
 
 ### MM-Bigbench
 MM-BigBench, with a range of diverse metrics to thoroughly evaluate different models and instructions, including the Best Performance metric, the Mean Relative Gain metric, the Stability metric, and the Adaptability metric.
 - URL: [https://github.com/declare-lab/MM-BigBench](https://github.com/declare-lab/MM-BigBench)
 - Paper: [MM-BigBench: Evaluating Multimodal Models on Multimodal Content Comprehension Tasks](https://arxiv.org/abs/2310.09036)
-- Obligation: Key Participant
+- Contribution: **Key Participant**, evaluating multimodal large language models such as VPGTrans, LlaMa-Adapter, LlaVa, etc.
 
 ### PICA
 Although traditional language models play a good role in giving help, there is a problem of emotional participation deficiency, since long suggestive replies are against the goal of empathy. To solve the problem, we put forward the multi-turn dialogue model PICA, a chatbot that can empathize and rely on the emotion required.
 - URL: [https://github.com/NEU-DataMining/PICA](https://github.com/NEU-DataMining/PICA)
-- Obligation: Key Participant
+- Contribution: **Key Participant**, participating in data construction and supervised fine-tuning.
 
-### Rocar
+<!-- ### Rocar
 **Ro**cking **Car** is a method for evaluating LLM's multilevel reasoning ability on graphs using interpersonal relationships. It is named after a Chinese children's toy.
 - URL: [https://github.com/NEU-DataMining/RoCar](https://github.com/NEU-DataMining/RoCar)
 - Paper: [RoCar: A Relationship Network-based Evaluation Method to Large Language Models](https://arxiv.org/abs/2307.15997)
-- Obligation: Person in Charge
+- Contribution: Person in Charge -->
 
-# Research Projects
+# Funds
 
 <ul>
 <li><p>A Study of Interpretable Dialogue Generation Techniques for Emotion Awareness (No.62172086) <br />

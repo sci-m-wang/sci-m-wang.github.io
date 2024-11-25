@@ -26,7 +26,7 @@ author_profile: true
 
 > Participated in the evaluation of applications based on large language models, mainly responsible for retrieval-related evaluation task construction.
 
-<img src="https://sci-m-wang.github.io/images/alphaxiv.ico" width="3%"><br>
+<!-- <img src="https://sci-m-wang.github.io/images/alphaxiv.ico" width="3%"><br>
 **Paper Commentator**
 
-> Participation in the comments of papers.
+> Participation in the comments of papers. -->
