@@ -19,7 +19,7 @@ author_profile: true
 <img src="https://sci-m-wang.github.io/images/spark.png" width="10%"><br>
 **Member of the first Spark Camp**
 
-> Organisation of the Large Language Model Judicial Aptitude Test. Development of a civil pleading generation tool based on the Spark Model.
+> Organize the Large Language Model Judicial Aptitude Test. Develop a civil pleading generation tool based on the Spark Model.
 
 <img src="https://sci-m-wang.github.io/images/lyihub.ico" width="3%"><br>
 **Intern**
