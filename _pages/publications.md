@@ -5,9 +5,20 @@ permalink: /publications/
 author_profile: true
 ---
 
-My papers can also be found on my <u><a href="https://scholar.google.com/citations?user=dcqk_mMAAAAJ">Google Scholar profile</a></u>.
+Papers can also be found on my <u><a href="https://scholar.google.com/citations?user=dcqk_mMAAAAJ">Google Scholar profile</a></u>.
 
 ### Published papers
+- [Sentiment Triplet Extraction with Multi-view Contrastive Learning](https://ieeexplore.ieee.org/abstract/document/10812814)
+
+  Wenfang Wu, Daling Wang, **Ming Wang**, Shi Feng, Yifei Zhang
+
+  *IEEE Transactions on Affective Computing, 2024. [[JCR Q1]](https://ieeexplore.ieee.org/abstract/document/10812814) [[PDF]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10812814)*
+
+- [Is Mamba Effective for Time Series Forecasting?](https://www.sciencedirect.com/science/article/pii/S0925231224019490)
+
+  Zihan Wang, Fanheng Kong, Shi Feng, **Ming Wang**, Han Zhao, Daling Wang, Yifei Zhang
+
+  *Neurocomputing, 2024. [[JCR Q1]](https://www.sciencedirect.com/science/article/pii/S0925231224019490) [[PDF]](https://arxiv.org/pdf/2403.11144) [[GitHub]](https://github.com/wzhwzhwzh0921/S-D-Mamba)*
 
 - [LLM-Based Empathetic Response Through Psychologist-Agent Debate](https://link.springer.com/chapter/10.1007/978-981-97-7232-2_14)
 
@@ -48,12 +59,6 @@ My papers can also be found on my <u><a href="https://scholar.google.com/citatio
   Xiaocui Yang, Wenfang Wu, Shi Feng, **Ming Wang**, Daling Wang, Yang Li, Qi Sun, Yifei Zhang, Xiaoming Fu, Soujanya Poria
 
   *arXiv, 2024. [[e-print]](https://arxiv.org/abs/2405.07229) [[PDF]](https://arxiv.org/pdf/2405.07229) [[GitHub]](https://github.com/declare-lab/MM-InstructEval)*
-
-- [Is Mamba Effective for Time Series Forecasting?](https://arxiv.org/abs/2403.11144)
-
-  Zihan Wang, Fanheng Kong, Shi Feng, **Ming Wang**, Han Zhao, Daling Wang, Yifei Zhang
-
-  *arXiv, 2024. [[e-print]](https://arxiv.org/abs/2403.11144) [[PDF]](https://arxiv.org/pdf/2403.11144) [[GitHub]](https://github.com/wzhwzhwzh0921/S-D-Mamba)*
 
 - [LangGPT: Rethinking Structured Reusable Prompt Design Framework for LLMs from the Programming Language](https://arxiv.org/abs/2402.16929)
 
