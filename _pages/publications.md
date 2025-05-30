@@ -7,6 +7,12 @@ author_profile: true
 
 Papers can also be found on my <u><a href="https://scholar.google.com/citations?user=dcqk_mMAAAAJ">Google Scholar profile</a></u>.
 
+- [T-COL: Generating Counterfactual Explanations for General User Preferences on Variable Machine Learning Systems](https://arxiv.org/abs/2309.16146)
+
+  **Ming Wang**, Wenfang Wu, Daling Wang, Shi Feng, Yifei Zhang
+
+  *Journal of Artificial Intelligence Research, 2025. [[JCR Q2]](https://arxiv.org/abs/2309.16146) [[PDF]](https://arxiv.org/pdf/2309.16146.pdf) [[GitHub]](https://github.com/NEU-DataMining/T-COL)*
+
 ### Published papers
 - [Sentiment Triplet Extraction with Multi-view Contrastive Learning](https://ieeexplore.ieee.org/abstract/document/10812814)
 
@@ -71,12 +77,6 @@ Papers can also be found on my <u><a href="https://scholar.google.com/citations?
   Xiaocui Yang, Wenfang Wu, Shi Feng, **Ming Wang**, Daling Wang, Yang Li, Qi Sun, Yifei Zhang, Xiaoming Fu, Soujanya Poria
 
   *arXiv, 2023. [[e-print]](https://arxiv.org/abs/2310.09036) [[PDF]](https://arxiv.org/pdf/2310.09036.pdf) [[GitHub]](https://github.com/declare-lab/MM-BigBench)*
-
-- [T-COL: Generating Counterfactual Explanations for General User Preferences on Variable Machine Learning Systems](https://arxiv.org/abs/2309.16146)
-
-  **Ming Wang**, Wenfang Wu, Daling Wang, Shi Feng, Yifei Zhang
-
-  *arXiv, 2023. [[e-print]](https://arxiv.org/abs/2309.16146) [[PDF]](https://arxiv.org/pdf/2309.16146.pdf) [[GitHub]](https://github.com/NEU-DataMining/T-COL)*
 
 - [RoCar: A Relationship Network-based Evaluation Method to Large Language Models](https://arxiv.org/abs/2307.15997)
 
