@@ -89,3 +89,46 @@
   background-color: #e9ecef;
   border-color: #aaa;
 }
+
+/* --- Custom Styles for Education Section --- */
+.education-entry {
+  display: flex; /* Enables flexbox layout */
+  align-items: flex-start; /* Aligns items to the top */
+  margin-bottom: 2em; /* Space between education entries */
+}
+
+.education-logo {
+  flex-shrink: 0; /* Prevents the logo from shrinking */
+  width: 70px; /* Fixed width for the logo container */
+  margin-right: 20px; /* Space between logo and text */
+}
+
+.education-logo img {
+  width: 100%; /* Makes the image fill the container */
+  border-radius: 4px; /* Optional: adds slightly rounded corners to the logo */
+}
+
+.education-details {
+  flex-grow: 1; /* Allows the details section to take up remaining space */
+}
+
+.education-details h4,
+.education-details p {
+  margin: 0 0 0.3em 0; /* Adjusts spacing for text lines */
+}
+
+.education-details h4 {
+  font-size: 1.1em; /* Slightly larger font for the degree */
+  font-weight: bold;
+}
+
+.education-details .university-info {
+  font-weight: bold;
+  font-size: 1.05em;
+  color: #333;
+}
+
+.education-details .supervisor-info {
+  font-size: 0.9em;
+  color: #555;
+}

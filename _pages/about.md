@@ -22,20 +22,38 @@ redirect_from:
 <!--  ![prize](https://sci-m-wang.github.io/images/2nd_prize.jpg) -->
 
 # Education
-- <img src="https://sci-m-wang.github.io/images/neu_logo.png" width="10%"><br />
-  **Northeastern University (Shenyang, China)**  
-  Sep. 2022 - Present  
-  Ph.D. Candidate in Computer Science and Technology  
-  Supervisor: Prof. Daling Wang
+<div class="education-entry">
+  <div class="education-logo">
+    <img src="https://sci-m-wang.github.io/images/neu_logo.png" alt="Northeastern University Logo">
+  </div>
+  <div class="education-details">
+    <h4>Ph.D. in Computer Science and Technology</h4>
+    <p class="university-info">Northeastern University (Shenyang, China)</p>
+    <p>Sep. 2022 - Present</p>
+    <p class="supervisor-info">Supervisor: Prof. Daling Wang</p>
+  </div>
+</div>
 
-- <img src="https://sci-m-wang.github.io/images/neu_logo.png" width="10%"><br />
-  **Northeastern University (Shenyang, China)**  
-  Sep. 2020 - June 2022  
-  M.S. in Computer Science and Technology  
-  Supervisor: Prof. Daling Wang
+<div class="education-entry">
+  <div class="education-logo">
+    <img src="https://sci-m-wang.github.io/images/neu_logo.png" alt="Northeastern University Logo">
+  </div>
+  <div class="education-details">
+    <h4>M.S. in Computer Science and Technology</h4>
+    <p class="university-info">Northeastern University (Shenyang, China)</p>
+    <p>Sep. 2020 - June 2022</p>
+    <p class="supervisor-info">Supervisor: Prof. Daling Wang</p>
+  </div>
+</div>
 
-- <img src="https://sci-m-wang.github.io/images/hrbeu.png" width="10%"><br />
-  **Harbin Engineering University (Harbin, China)**  
-  Sep. 2016 - June 2020  
-  B.S. in Computer Science and Technology  
-  Supervisor: Associate Prof. Yue Yang
+<div class="education-entry">
+  <div class="education-logo">
+    <img src="https://sci-m-wang.github.io/images/hrbeu.png" alt="Harbin Engineering University Logo">
+  </div>
+  <div class="education-details">
+    <h4>B.S. in Computer Science and Technology</h4>
+    <p class="university-info">Harbin Engineering University (Harbin, China)</p>
+    <p>Sep. 2016 - June 2020</p>
+    <p class="supervisor-info">Supervisor: Associate Prof. Yue Yang</p>
+  </div>
+</div>
