@@ -7,7 +7,7 @@ author_profile: true
 
 Papers can also be found on my <u><a href="https://scholar.google.com/citations?user=dcqk_mMAAAAJ">Google Scholar profile</a></u>.
 
-### Published papers
+### \[Published papers\]
 
 <div class="publication-entry">
   <p><a href="https://www.arxiv.org/abs/2506.00551">AnnaAgent: Dynamic Evolution Agent System with Multi-Session Memory for Realistic Seeker Simulation</a></p>
@@ -94,7 +94,7 @@ Papers can also be found on my <u><a href="https://scholar.google.com/citations?
 </div>
 
 
-### Working Papers
+### \[Working Papers\]
 
 <div class="publication-entry">
   <p><a href="https://arxiv.org/abs/2409.13449">Minstrel: Structural Prompt Generation with Multi-Agents Coordination for Non-AI Experts</a></p>
