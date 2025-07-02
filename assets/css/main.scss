@@ -39,3 +39,53 @@
 @import "vendor/font-awesome/brands";
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
+
+/* --- Custom Styles for Publications --- */
+.publication-entry {
+  margin-bottom: 2em; /* 每个条目之间的垂直间距 */
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #e0e0e0; /* 条目之间的分割线 */
+}
+
+/* 最后一个条目不需要分割线 */
+.publication-entry:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.publication-entry p {
+  margin: 0.3em 0; /* 缩短条目内部各行的间距 */
+}
+
+/* 作者列表的样式 */
+.publication-entry .authors {
+  color: #555; /* 灰色，弱化显示 */
+  font-size: 0.9em;
+}
+
+/* 会议/期刊信息的样式 */
+.publication-entry .venue {
+  color: #333;
+  font-size: 0.95em;
+  font-style: italic; /* 斜体显示 */
+}
+
+/* 资源链接（PDF/GitHub等）的按钮样式 */
+.resource-link {
+  display: inline-block;
+  margin: 2px 4px 2px 0;
+  padding: 3px 8px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  color: #333 !important; /* !important 覆盖默认链接颜色 */
+  font-size: 0.8em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.resource-link:hover {
+  background-color: #e9ecef;
+  border-color: #aaa;
+}
