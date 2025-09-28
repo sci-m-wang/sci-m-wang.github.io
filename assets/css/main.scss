@@ -42,16 +42,16 @@
 
 /* --- Custom Styles for About Page --- */
 .about-hero {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 2.5rem;
   align-items: flex-start;
   margin-bottom: 2.75rem;
 }
 
-@media (min-width: 768px) {
-  .about-hero {
-    grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
-  }
+.about-hero__intro {
+  flex: 1 1 360px;
+  min-width: 0;
 }
 
 .about-hero__intro p {
@@ -88,6 +88,9 @@
 .about-hero__meta {
   display: grid;
   gap: 1rem;
+  flex: 0 0 260px;
+  max-width: 320px;
+  margin-left: auto;
 }
 
 .about-card {
@@ -230,9 +233,15 @@
   color: $gray;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .about-hero {
     gap: 2rem;
+  }
+
+  .about-hero__meta {
+    flex: 1 1 100%;
+    max-width: none;
+    margin-left: 0;
   }
 
   .education-entry {
