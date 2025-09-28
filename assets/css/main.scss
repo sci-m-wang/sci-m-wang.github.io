@@ -41,17 +41,29 @@
 @import "print";
 
 /* --- Custom Styles for About Page --- */
-.about-hero {
-  display: flex;
-  flex-wrap: wrap;
+.about-layout {
+  display: grid;
   gap: 2.5rem;
   align-items: flex-start;
-  margin-bottom: 2.75rem;
+  margin-bottom: 3.25rem;
+}
+
+@media (min-width: 880px) {
+  .about-layout {
+    grid-template-columns: minmax(0, 1fr) 280px;
+  }
+}
+
+.about-main h2 {
+  margin-top: 0;
+}
+
+.about-hero {
+  margin-bottom: 2.5rem;
 }
 
 .about-hero__intro {
-  flex: 1 1 360px;
-  min-width: 0;
+  max-width: 720px;
 }
 
 .about-hero__intro p {
@@ -85,12 +97,9 @@
   box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
 }
 
-.about-hero__meta {
+.about-sidebar {
   display: grid;
   gap: 1rem;
-  flex: 0 0 260px;
-  max-width: 320px;
-  margin-left: auto;
 }
 
 .about-card {
@@ -233,15 +242,13 @@
   color: $gray;
 }
 
-@media (max-width: 767px) {
-  .about-hero {
+@media (max-width: 879px) {
+  .about-layout {
     gap: 2rem;
   }
 
-  .about-hero__meta {
-    flex: 1 1 100%;
-    max-width: none;
-    margin-left: 0;
+  .about-sidebar {
+    order: 2;
   }
 
   .education-entry {

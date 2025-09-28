@@ -8,21 +8,41 @@ redirect_from:
   - /about.html
 ---
 
-## Overview
+<div class="about-layout">
+  <div class="about-main">
+    <h2>Overview</h2>
+    <div class="about-hero">
+      <div class="about-hero__intro">
+        <p class="about-hero__lead">I am a Ph.D. candidate in the <a href="https://neu-datamining.github.io/">Data Mining</a> group at <a href="http://www.neu.edu.cn/">Northeastern University</a>, currently supported by the CSC Joint Training Ph.D. Program as a visiting student at Singapore Management University.</p>
+        <p>I work closely with <a href="https://neu-datamining.github.io/wangdl.htm">Prof. Daling Wang</a>, <a href="https://faculty.smu.edu.sg/profile/lim-ee-peng-616">Prof. Ee-Peng Lim</a>, <a href="https://faculty.smu.edu.sg/profile/nah-fiona-fui-hoon-7861">Prof. Fiona Fui-Hoon Nah</a>, <a href="https://neu-datamining.github.io/cse/fengshi/">Associate Prof. Shi Feng</a>, and <a href="http://faculty.neu.edu.cn/zhangyifei/english.html">Lecturer Yifei Zhang</a>.</p>
+        <div class="about-hero__tags" role="list" aria-label="Research interests">
+          <span class="about-pill" role="listitem">Trusted AI</span>
+          <span class="about-pill" role="listitem">LLM-based Agents</span>
+          <span class="about-pill" role="listitem">LLM Security</span>
+          <span class="about-pill" role="listitem">Prompt Engineering</span>
+          <span class="about-pill" role="listitem">Interpretability</span>
+        </div>
+      </div>
+    </div>
 
-<div class="about-hero">
-  <div class="about-hero__intro">
-    <p class="about-hero__lead">I am a Ph.D. candidate in the <a href="https://neu-datamining.github.io/">Data Mining</a> group at <a href="http://www.neu.edu.cn/">Northeastern University</a>, currently supported by the CSC Joint Training Ph.D. Program as a visiting student at Singapore Management University.</p>
-    <p>I work closely with <a href="https://neu-datamining.github.io/wangdl.htm">Prof. Daling Wang</a>, <a href="https://faculty.smu.edu.sg/profile/lim-ee-peng-616">Prof. Ee-Peng Lim</a>, <a href="https://faculty.smu.edu.sg/profile/nah-fiona-fui-hoon-7861">Prof. Fiona Fui-Hoon Nah</a>, <a href="https://neu-datamining.github.io/cse/fengshi/">Associate Prof. Shi Feng</a>, and <a href="http://faculty.neu.edu.cn/zhangyifei/english.html">Lecturer Yifei Zhang</a>.</p>
-    <div class="about-hero__tags" role="list" aria-label="Research interests">
-      <span class="about-pill" role="listitem">Trusted AI</span>
-      <span class="about-pill" role="listitem">LLM-based Agents</span>
-      <span class="about-pill" role="listitem">LLM Security</span>
-      <span class="about-pill" role="listitem">Prompt Engineering</span>
-      <span class="about-pill" role="listitem">Interpretability</span>
+    <h2>Recent Highlights</h2>
+    <div class="timeline">
+      <div class="timeline__item">
+        <span class="timeline__date">Jan 2025</span>
+        <p>Won the second prize in the China AI and Law Challenge 2024 organized by CIPS, Tsinghua University, Tongyi Lab, and partners.</p>
+      </div>
+      <div class="timeline__item">
+        <span class="timeline__date">2025</span>
+        <p>Serving as a PC Member for the International Conference on Intelligent Computing (ICIC) 2025.</p>
+      </div>
+      <div class="timeline__item">
+        <span class="timeline__date">2025</span>
+        <p>The poster for <a href="https://arxiv.org/abs/2506.00551">AnnaAgent</a> (ACL 2025) was accepted by CCAC 2025.</p>
+      </div>
     </div>
   </div>
-  <div class="about-hero__meta">
+
+  <aside class="about-sidebar">
     <div class="about-card">
       <h3>Currently</h3>
       <ul>
@@ -40,24 +60,7 @@ redirect_from:
         <li>Lecturer Yifei Zhang</li>
       </ul>
     </div>
-  </div>
-</div>
-
-## Recent Highlights
-
-<div class="timeline">
-  <div class="timeline__item">
-    <span class="timeline__date">Jan 2025</span>
-    <p>Won the second prize in the China AI and Law Challenge 2024 organized by CIPS, Tsinghua University, Tongyi Lab, and partners.</p>
-  </div>
-  <div class="timeline__item">
-    <span class="timeline__date">2025</span>
-    <p>Serving as a PC Member for the International Conference on Intelligent Computing (ICIC) 2025.</p>
-  </div>
-  <div class="timeline__item">
-    <span class="timeline__date">2025</span>
-    <p>The poster for <a href="https://arxiv.org/abs/2506.00551">AnnaAgent</a> (ACL 2025) was accepted by CCAC 2025.</p>
-  </div>
+  </aside>
 </div>
 <!-- <div class="timeline__item">
   <span class="timeline__date">July 2024</span>
