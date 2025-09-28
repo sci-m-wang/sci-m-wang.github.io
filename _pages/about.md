@@ -77,7 +77,7 @@ redirect_from:
 <div class="education-list">
   <div class="education-entry">
     <div class="education-logo">
-      <img src="https://upload.wikimedia.org/wikipedia/en/3/3b/Singapore_Management_University_coat_of_arms.svg" alt="Singapore Management University Logo">
+      <img src="https://sci-m-wang.github.io/images/logo-smu-d.png" alt="Singapore Management University Logo">
     </div>
     <div class="education-details">
       <h4>Visiting Research Student (Ph.D.)</h4>
