@@ -1,94 +1,162 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const repository = "https://github.com/sci-m-wang/sci-m-wang.github.io";
-const options = [
-  {
-    index: "01",
-    title: "Add a publication",
-    titleZh: "新增论文",
-    description: "Add a published paper or working paper, with authors, venue, links, and citation metadata.",
-    descriptionZh: "新增已发表论文或工作论文，包括作者、会议/期刊、链接与引用信息。",
-    href: `${repository}/actions/workflows/add-publication.yml`,
-  },
-  {
-    index: "02",
-    title: "Add funding",
-    titleZh: "新增 Funding",
-    description: "Record a grant or research project, including role, funder, amount, and period.",
-    descriptionZh: "录入基金或研究项目，包括角色、资助方、金额与周期。",
-    href: `${repository}/actions/workflows/add-funding.yml`,
-  },
-  {
-    index: "03",
-    title: "Add news or coverage",
-    titleZh: "新增动态或报道",
-    description: "Publish a paper update, award, talk, media story, or other research milestone.",
-    descriptionZh: "发布论文进展、获奖、报告、媒体报道或其他研究节点。",
-    href: `${repository}/actions/workflows/add-news.yml`,
-  },
-  {
-    index: "04",
-    title: "Correct an entry",
-    titleZh: "修改现有条目",
-    description: "Patch an existing publication, funding item, news item, metric, or profile field by its stable ID.",
-    descriptionZh: "通过稳定 ID 修改论文、Funding、动态、指标或个人信息字段。",
-    href: `${repository}/actions/workflows/edit-content.yml`,
-  },
-];
+const tokenUrl = "https://github.com/settings/personal-access-tokens/new?name=Academic%20Homepage%20Editor&description=Edit%20sci-m-wang.github.io%20content&target_name=sci-m-wang&expires_in=90&contents=write";
 ---
 
 <BaseLayout
-  title="Update information · Ming Wang"
-  description="Authenticated content update portal for Ming Wang's academic homepage."
+  title="Edit homepage · Ming Wang"
+  description="Private, browser-based content editor for Ming Wang's academic homepage."
   noindex={true}
+  secureEditor={true}
 >
-  <main class="update-page" id="main">
-    <nav class="update-page__nav" aria-label="Update portal navigation">
+  <main class="update-page portal-page" id="main">
+    <nav class="update-page__nav" aria-label="Homepage editor navigation">
       <a href="/">← Ming Wang / 王明</a>
-      <span>OWNER PORTAL · GITHUB AUTH</span>
+      <span>OWNER EDITOR · DIRECT PUBLISH</span>
     </nav>
 
-    <section class="update-page__hero">
-      <p class="section-heading__index">Protected update entrance / 受保护的更新入口</p>
+    <section class="update-page__hero portal-hero">
+      <p class="section-heading__index">Private content desk / 私人内容工作台</p>
       <div>
-        <h1>Keep the archive alive.</h1>
-        <p>Choose an update type below. GitHub will ask you to sign in, then open a structured form in the repository’s Actions page.</p>
-        <p>请选择更新类型。页面会跳转至 GitHub 登录，并在仓库 Actions 中打开结构化表单。</p>
+        <h1>Edit here.<br />Publish once.</h1>
+        <p>Review existing records, add new work, and publish directly from this page. No GitHub Actions forms are required.</p>
+        <p>在本页直接查看、添加与修改内容，确认后即可发布，不再需要操作 GitHub Actions 表单。</p>
 
         <aside class="security-note" aria-label="Security model">
           <span class="security-note__mark">✓</span>
           <div>
-            <h2>Only the repository owner can publish changes.</h2>
-            <p>GitHub verifies the account and repository permission first; each workflow also checks that the actor is the repository owner before editing any data. The public website stores no password, token, or private key.</p>
-            <p>只有仓库所有者可以发布更新。GitHub 会先验证账号与权限，工作流还会再次核验执行者身份；公开网页不保存密码、Token 或私钥。</p>
+            <h2>GitHub remains the authorization authority.</h2>
+            <p>The editor accepts only the repository owner's fine-grained token with write access to this repository. The token stays in page memory, is sent only to GitHub's API, and disappears when the page is refreshed or closed.</p>
+            <p>编辑器只接受仓库所有者、且仅对本仓库有写权限的细粒度 Token。Token 仅保存在当前页面内存中，只发送给 GitHub API，刷新或关闭页面即清除。</p>
           </div>
         </aside>
       </div>
     </section>
 
-    <section class="update-options" aria-label="Content update options">
-      {options.map((option) => (
-        <a class="update-option" href={option.href} target="_blank" rel="noreferrer">
-          <div class="update-option__topline">
-            <span>{option.index}</span>
-            <span>GitHub Actions ↗</span>
-          </div>
-          <h2>{option.title}<br /><span>{option.titleZh}</span></h2>
-          <p>{option.description}</p>
-          <p>{option.descriptionZh}</p>
-        </a>
-      ))}
+    <div class="portal-alert" id="portal-alert" role="status" aria-live="polite" hidden></div>
+
+    <section class="portal-auth" id="auth-panel" aria-labelledby="auth-title">
+      <div class="portal-auth__intro">
+        <p class="section-heading__index">01 · Verify ownership / 验证身份</p>
+        <h2 id="auth-title">Connect your GitHub account.</h2>
+        <p>Use a fine-grained token restricted to <strong>sci-m-wang/sci-m-wang.github.io</strong> with only <strong>Contents: Read and write</strong>.</p>
+        <p>使用仅限该仓库、且只有 <strong>Contents: Read and write</strong> 权限的细粒度 Token。</p>
+      </div>
+
+      <form class="portal-auth__form" id="auth-form" autocomplete="off">
+        <label class="portal-field portal-field--wide" for="github-token">
+          <span>Fine-grained token <small>不会被保存</small></span>
+          <input
+            id="github-token"
+            name="github-token"
+            type="password"
+            placeholder="github_pat_…"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            required
+          />
+        </label>
+        <div class="portal-auth__actions">
+          <button class="portal-action portal-action--primary" id="connect-button" type="submit">连接并打开编辑器</button>
+          <a class="portal-action portal-action--line" href={tokenUrl} target="_blank" rel="noreferrer">创建专用 Token ↗</a>
+        </div>
+        <details class="portal-token-guide">
+          <summary>第一次使用？查看 4 步设置</summary>
+          <ol>
+            <li>打开“创建专用 Token”，Resource owner 选择 <strong>sci-m-wang</strong>。</li>
+            <li>Repository access 选择 <strong>Only select repositories</strong>，仅勾选 <strong>sci-m-wang.github.io</strong>。</li>
+            <li>Repository permissions 中仅将 <strong>Contents</strong> 设为 <strong>Read and write</strong>。</li>
+            <li>生成后复制 Token，回到本页粘贴。建议设置 90 天有效期，到期后重新生成。</li>
+          </ol>
+        </details>
+      </form>
     </section>
 
-    <section class="update-help">
-      <p class="section-heading__index">How it works / 使用方式</p>
-      <ol>
-        <li>Sign in to the GitHub account that owns <strong>sci-m-wang/sci-m-wang.github.io</strong>. / 登录该仓库所有者的 GitHub 账号。</li>
-        <li>Open the relevant workflow, choose <strong>Run workflow</strong>, and complete the fields. / 打开对应工作流，点击 Run workflow 并填写字段。</li>
-        <li>The workflow validates the input, updates the structured data, and records a Git commit. / 工作流会校验输入、更新结构化数据并记录 Git 提交。</li>
-        <li>GitHub Pages rebuilds the site automatically. Citation counts continue to refresh on their own schedule. / GitHub Pages 自动重建；引用量仍按计划自动更新。</li>
-      </ol>
+    <section class="portal-editor" id="editor-panel" aria-labelledby="editor-title" hidden>
+      <header class="portal-account-bar">
+        <div class="portal-account" id="portal-account">
+          <span class="portal-account__avatar" aria-hidden="true">MW</span>
+          <span><strong id="account-name">sci-m-wang</strong><small>Verified repository owner</small></span>
+        </div>
+        <div class="portal-account-bar__actions">
+          <a href="https://github.com/sci-m-wang/sci-m-wang.github.io/commits/master" target="_blank" rel="noreferrer">提交记录 ↗</a>
+          <button id="logout-button" type="button">退出编辑</button>
+        </div>
+      </header>
+
+      <div class="portal-editor__heading">
+        <div>
+          <p class="section-heading__index">02 · Edit & publish / 编辑并发布</p>
+          <h2 id="editor-title">Content archive</h2>
+        </div>
+        <p>Every save creates one traceable Git commit and automatically rebuilds the homepage.<br />每次保存都会生成一条可追踪的 Git 提交，并自动更新主页。</p>
+      </div>
+
+      <nav class="portal-tabs" aria-label="Content type">
+        <button class="portal-tab is-active" type="button" data-section="publications"><span>01</span>论文 Publications</button>
+        <button class="portal-tab" type="button" data-section="funding"><span>02</span>Funding</button>
+        <button class="portal-tab" type="button" data-section="news"><span>03</span>动态 News</button>
+        <button class="portal-tab" type="button" data-section="profile"><span>04</span>主页信息 Profile</button>
+      </nav>
+
+      <div class="portal-workspace">
+        <aside class="portal-library" aria-label="Existing entries">
+          <div class="portal-library__toolbar">
+            <label for="entry-search">搜索条目</label>
+            <input id="entry-search" type="search" placeholder="输入标题或年份" />
+          </div>
+          <button class="portal-new-button" id="new-entry-button" type="button">＋ 新增论文</button>
+          <div class="portal-entry-list" id="entry-list" role="list"></div>
+        </aside>
+
+        <section class="portal-form-surface" aria-label="Entry editor">
+          <div class="portal-empty-state" id="empty-state">
+            <span>←</span>
+            <h3>Choose an entry to edit.</h3>
+            <p>从左侧选择已有条目，或点击“新增”开始录入。</p>
+          </div>
+
+          <form class="portal-content-form" id="content-form" novalidate hidden>
+            <header class="portal-content-form__header">
+              <div>
+                <p class="section-heading__index" id="form-mode">Editing existing entry</p>
+                <h3 id="form-title">Publication</h3>
+              </div>
+              <button class="portal-text-button" id="cancel-edit-button" type="button">取消</button>
+            </header>
+
+            <div class="portal-fields" id="form-fields"></div>
+
+            <label class="portal-field portal-field--wide" for="commit-message">
+              <span>提交说明 <small>Commit message</small></span>
+              <input id="commit-message" type="text" maxlength="120" required />
+            </label>
+
+            <aside class="portal-save-note">
+              <strong>Save path / 保存路径</strong>
+              <span id="save-path">src/data/publications.json → master</span>
+              <p>保存前会再次检查远端版本；如有更新冲突，本页不会覆盖新数据。</p>
+            </aside>
+
+            <footer class="portal-content-form__footer">
+              <p id="form-feedback" aria-live="polite">检查必填项后即可发布。</p>
+              <button class="portal-action portal-action--primary" id="save-button" type="submit">保存并发布</button>
+            </footer>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <section class="portal-footnote">
+      <p class="section-heading__index">Security notes / 安全说明</p>
+      <div>
+        <p>Public visitors can see this page but cannot read private credentials or publish changes. GitHub verifies the token, owner identity, repository permission, file version, and commit on every save.</p>
+        <p>普通访客可以看到入口页面，但无法取得凭据或发布修改。每次保存均由 GitHub 核验 Token、所有者身份、仓库权限、文件版本与提交记录。</p>
+      </div>
     </section>
   </main>
+
+  <script src="../scripts/update-portal.js"></script>
 </BaseLayout>

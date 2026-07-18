@@ -5,12 +5,14 @@ export interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  secureEditor?: boolean;
 }
 
 const {
   title = "Ming Wang · Machine Psychology & Human–AI Alignment",
   description = "Academic homepage of Ming Wang, a Ph.D. candidate studying machine psychology, LLM psychometrics, persona simulation, and human–AI alignment.",
   noindex = false,
+  secureEditor = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -51,6 +53,12 @@ const personSchema = {
     <meta name="theme-color" content="#f2efe8" />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {secureEditor && (
+      <meta
+        http-equiv="Content-Security-Policy"
+        content="default-src 'self'; connect-src https://api.github.com; img-src 'self' data: https://avatars.githubusercontent.com; style-src 'self'; script-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';"
+      />
+    )}
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/jpeg" href="/profile.jpg" />
     <meta property="og:type" content="profile" />
@@ -63,7 +71,7 @@ const personSchema = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://sci-m-wang.github.io/og.png" />
     <title>{title}</title>
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+    {!noindex && <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>}
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>

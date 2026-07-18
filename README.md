@@ -11,7 +11,7 @@ A from-scratch academic homepage for [sci-m-wang.github.io](https://sci-m-wang.g
 - Filterable publication archive with per-paper citation counts
 - Weekly citation refresh through GitHub Actions
 - GitHub Pages deployment workflow
-- Authenticated owner-only update workflows for publications, funding, news, and corrections
+- Browser-based owner editor for publications, funding, news, and profile information
 - SEO metadata, sitemap, JSON-LD person profile, and a custom Open Graph card
 
 ## Local development
@@ -40,21 +40,22 @@ The site intentionally keeps content separate from layout code:
 
 Stable `id` fields are used by the protected edit workflow. Do not rename an existing ID unless all references are updated.
 
-## Protected update entrance
+## Protected browser editor
 
-The public `/update/` page links to four structured GitHub Actions forms:
+The public `/update/` route contains a direct, browser-based editor for:
 
-1. Add a publication
-2. Add funding
-3. Add news or media coverage
-4. Correct an existing entry
+1. Adding and editing publications
+2. Adding and editing funding records
+3. Adding and editing news or media coverage
+4. Editing core profile copy and selected metrics
 
-Security is handled entirely by GitHub:
+The editor uses a GitHub fine-grained personal access token restricted to this repository with only **Contents: Read and write** permission.
 
-- GitHub authentication and repository permissions are required to run a workflow.
-- Every content workflow additionally checks `github.actor == github.repository_owner`.
-- No password, token, API key, or editable admin state is stored in the public website.
-- Successful updates modify the JSON data, create a Git commit, and trigger a fresh Pages deployment.
+- GitHub verifies the token, repository owner, and write permission before the editor opens.
+- The token is held only in JavaScript memory. It is never written to the repository, local storage, session storage, cookies, logs, or analytics, and is cleared on refresh, navigation, or logout.
+- Each save performs a remote SHA check to prevent overwriting a newer version, then creates one traceable commit on `master`.
+- Content Security Policy restricts editor network requests to `api.github.com`.
+- The owner-only GitHub Actions forms remain available in the repository as a fallback maintenance path.
 
 ## Citation updates
 
