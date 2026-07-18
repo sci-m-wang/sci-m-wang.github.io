@@ -1,0 +1,94 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const repository = "https://github.com/sci-m-wang/sci-m-wang.github.io";
+const options = [
+  {
+    index: "01",
+    title: "Add a publication",
+    titleZh: "新增论文",
+    description: "Add a published paper or working paper, with authors, venue, links, and citation metadata.",
+    descriptionZh: "新增已发表论文或工作论文，包括作者、会议/期刊、链接与引用信息。",
+    href: `${repository}/actions/workflows/add-publication.yml`,
+  },
+  {
+    index: "02",
+    title: "Add funding",
+    titleZh: "新增 Funding",
+    description: "Record a grant or research project, including role, funder, amount, and period.",
+    descriptionZh: "录入基金或研究项目，包括角色、资助方、金额与周期。",
+    href: `${repository}/actions/workflows/add-funding.yml`,
+  },
+  {
+    index: "03",
+    title: "Add news or coverage",
+    titleZh: "新增动态或报道",
+    description: "Publish a paper update, award, talk, media story, or other research milestone.",
+    descriptionZh: "发布论文进展、获奖、报告、媒体报道或其他研究节点。",
+    href: `${repository}/actions/workflows/add-news.yml`,
+  },
+  {
+    index: "04",
+    title: "Correct an entry",
+    titleZh: "修改现有条目",
+    description: "Patch an existing publication, funding item, news item, metric, or profile field by its stable ID.",
+    descriptionZh: "通过稳定 ID 修改论文、Funding、动态、指标或个人信息字段。",
+    href: `${repository}/actions/workflows/edit-content.yml`,
+  },
+];
+---
+
+<BaseLayout
+  title="Update information · Ming Wang"
+  description="Authenticated content update portal for Ming Wang's academic homepage."
+  noindex={true}
+>
+  <main class="update-page" id="main">
+    <nav class="update-page__nav" aria-label="Update portal navigation">
+      <a href="/">← Ming Wang / 王明</a>
+      <span>OWNER PORTAL · GITHUB AUTH</span>
+    </nav>
+
+    <section class="update-page__hero">
+      <p class="section-heading__index">Protected update entrance / 受保护的更新入口</p>
+      <div>
+        <h1>Keep the archive alive.</h1>
+        <p>Choose an update type below. GitHub will ask you to sign in, then open a structured form in the repository’s Actions page.</p>
+        <p>请选择更新类型。页面会跳转至 GitHub 登录，并在仓库 Actions 中打开结构化表单。</p>
+
+        <aside class="security-note" aria-label="Security model">
+          <span class="security-note__mark">✓</span>
+          <div>
+            <h2>Only the repository owner can publish changes.</h2>
+            <p>GitHub verifies the account and repository permission first; each workflow also checks that the actor is the repository owner before editing any data. The public website stores no password, token, or private key.</p>
+            <p>只有仓库所有者可以发布更新。GitHub 会先验证账号与权限，工作流还会再次核验执行者身份；公开网页不保存密码、Token 或私钥。</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="update-options" aria-label="Content update options">
+      {options.map((option) => (
+        <a class="update-option" href={option.href} target="_blank" rel="noreferrer">
+          <div class="update-option__topline">
+            <span>{option.index}</span>
+            <span>GitHub Actions ↗</span>
+          </div>
+          <h2>{option.title}<br /><span>{option.titleZh}</span></h2>
+          <p>{option.description}</p>
+          <p>{option.descriptionZh}</p>
+        </a>
+      ))}
+    </section>
+
+    <section class="update-help">
+      <p class="section-heading__index">How it works / 使用方式</p>
+      <ol>
+        <li>Sign in to the GitHub account that owns <strong>sci-m-wang/sci-m-wang.github.io</strong>. / 登录该仓库所有者的 GitHub 账号。</li>
+        <li>Open the relevant workflow, choose <strong>Run workflow</strong>, and complete the fields. / 打开对应工作流，点击 Run workflow 并填写字段。</li>
+        <li>The workflow validates the input, updates the structured data, and records a Git commit. / 工作流会校验输入、更新结构化数据并记录 Git 提交。</li>
+        <li>GitHub Pages rebuilds the site automatically. Citation counts continue to refresh on their own schedule. / GitHub Pages 自动重建；引用量仍按计划自动更新。</li>
+      </ol>
+    </section>
+  </main>
+</BaseLayout>

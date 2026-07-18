@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sci-m-wang.github.io/sitemap-index.xml

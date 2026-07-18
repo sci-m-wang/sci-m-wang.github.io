@@ -1,0 +1,68 @@
+name: Admin · Add funding
+
+on:
+  workflow_dispatch:
+    inputs:
+      role_en:
+        description: "Role in English"
+        required: true
+        type: string
+      role_zh:
+        description: "角色（中文）"
+        required: true
+        type: string
+      title_en:
+        description: "Project title in English"
+        required: true
+        type: string
+      title_zh:
+        description: "项目名称（中文）"
+        required: true
+        type: string
+      funder:
+        description: "Funder / grant program"
+        required: true
+        type: string
+      amount:
+        description: "Amount, e.g. S$70,000 (optional)"
+        required: false
+        type: string
+      period:
+        description: "Period, e.g. 2026 — Present"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    if: github.actor == github.repository_owner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out master
+        uses: actions/checkout@v4
+        with:
+          ref: master
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Add funding item
+        run: node scripts/content-admin.mjs
+        env:
+          CONTENT_OPERATION: add-funding
+          ROLE_EN: ${{ inputs.role_en }}
+          ROLE_ZH: ${{ inputs.role_zh }}
+          TITLE_EN: ${{ inputs.title_en }}
+          TITLE_ZH: ${{ inputs.title_zh }}
+          FUNDER: ${{ inputs.funder }}
+          AMOUNT: ${{ inputs.amount }}
+          PERIOD: ${{ inputs.period }}
+      - name: Commit and publish data change
+        run: |
+          git config user.name "homepage-admin"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/profile.json
+          git commit -m "content: add funding item"
+          git push origin HEAD:master

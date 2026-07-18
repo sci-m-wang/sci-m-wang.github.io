@@ -1,0 +1,79 @@
+---
+interface Publication {
+  id: string;
+  title: string;
+  authors: string;
+  venue: string;
+  venueShort: string;
+  year: number;
+  category: string;
+  status: string;
+  selected: boolean;
+  badges: string[];
+  links: {
+    paper: string;
+    pdf: string;
+    code: string;
+  };
+  citations: {
+    count: number;
+    source: string;
+    updatedAt: string;
+  };
+}
+
+export interface Props {
+  publication: Publication;
+  index: number;
+}
+
+const { publication: pub, index } = Astro.props as Props;
+const authorParts = pub.authors.split("Ming Wang");
+---
+
+<article
+  class="publication-card"
+  data-publication
+  data-category={pub.category}
+  data-status={pub.status}
+  data-selected={pub.selected ? "true" : "false"}
+>
+  <div class="publication-card__index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
+  <div class="publication-card__body">
+    <div class="publication-card__meta">
+      <span>{pub.venueShort}</span>
+      <span class="publication-card__divider" aria-hidden="true"></span>
+      <span>{pub.year}</span>
+      {pub.badges[0] && <span class="publication-card__badge">{pub.badges[0]}</span>}
+    </div>
+    <h3 class="publication-card__title">
+      <a href={pub.links.paper || undefined} target="_blank" rel="noreferrer">{pub.title}</a>
+    </h3>
+    <p class="publication-card__authors">
+      {authorParts.map((part, partIndex) => (
+        <>
+          {part}
+          {partIndex < authorParts.length - 1 && <strong>Ming Wang</strong>}
+        </>
+      ))}
+    </p>
+    <p class="publication-card__venue">{pub.venue}</p>
+    <div class="publication-card__footer">
+      <div class="publication-card__links" aria-label={`Links for ${pub.title}`}>
+        {pub.links.paper && <a href={pub.links.paper} target="_blank" rel="noreferrer">Paper ↗</a>}
+        {pub.links.pdf && <a href={pub.links.pdf} target="_blank" rel="noreferrer">PDF ↓</a>}
+        {pub.links.code && <a href={pub.links.code} target="_blank" rel="noreferrer">Code ↗</a>}
+      </div>
+      <a
+        class="citation-chip"
+        href="https://scholar.google.com/citations?user=dcqk_mMAAAAJ"
+        target="_blank"
+        rel="noreferrer"
+        title={`${pub.citations.source}, updated ${pub.citations.updatedAt}`}
+      >
+        <span class="citation-chip__count">{pub.citations.count}</span>
+        <span class="citation-chip__label">citations</span>
+      </a>
+    </div>
+  </div>
+</article>

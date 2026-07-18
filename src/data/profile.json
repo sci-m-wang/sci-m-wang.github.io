@@ -1,0 +1,275 @@
+{
+  "name": "Ming Wang",
+  "nameZh": "王明",
+  "pronunciation": "Mingle",
+  "role": {
+    "en": "Ph.D. Candidate in Computer Science",
+    "zh": "计算机科学博士研究生"
+  },
+  "headline": {
+    "en": "I study the minds we build.",
+    "zh": "理解我们正在创造的心智。"
+  },
+  "kicker": {
+    "en": "Machine Psychology · Human–AI Alignment",
+    "zh": "机器心理学 · 人机心智对齐"
+  },
+  "bio": {
+    "en": "I am a joint-training Ph.D. candidate at Northeastern University and Singapore Management University. My research turns theories of mind, personality, and cognition into computational methods for measuring, simulating, and aligning intelligent systems.",
+    "zh": "我是东北大学与新加坡管理大学联合培养博士生。我的研究将心智、人格与认知理论转化为可计算的方法，用于测量、模拟与对齐智能系统。"
+  },
+  "email": "sci.m.wang@gmail.com",
+  "location": {
+    "en": "Singapore · Shenyang",
+    "zh": "新加坡 · 沈阳"
+  },
+  "links": {
+    "scholar": "https://scholar.google.com/citations?user=dcqk_mMAAAAJ",
+    "github": "https://github.com/sci-m-wang",
+    "orcid": "https://orcid.org/0000-0001-8406-5677",
+    "cv": "/cv/Ming_Wang_CV_zh.pdf"
+  },
+  "metrics": [
+    {
+      "id": "citations",
+      "value": "651",
+      "label": { "en": "Google Scholar citations", "zh": "Google Scholar 引用" },
+      "note": { "en": "h-index 8 · updated Jul 2026", "zh": "h-index 8 · 更新于 2026.07" }
+    },
+    {
+      "id": "stars",
+      "value": "811",
+      "label": { "en": "personal-project stars", "zh": "个人项目 Stars" },
+      "note": { "en": "15k+ as a core contributor", "zh": "核心参与项目 15k+" }
+    },
+    {
+      "id": "funding",
+      "value": "≈¥600k",
+      "label": { "en": "research funding involved", "zh": "累计参与科研经费" },
+      "note": { "en": "lead or core member", "zh": "主持或核心参与" }
+    }
+  ],
+  "affiliations": [
+    {
+      "name": "Singapore Management University",
+      "nameZh": "新加坡管理大学",
+      "role": { "en": "Visiting / Joint-training Ph.D. Student", "zh": "联合培养 / 访问博士生" },
+      "period": "2025.09 — Present",
+      "url": "https://www.smu.edu.sg/"
+    },
+    {
+      "name": "Northeastern University",
+      "nameZh": "东北大学",
+      "role": { "en": "Ph.D. Candidate, Computer Science", "zh": "计算机科学博士研究生" },
+      "period": "2022.09 — Present",
+      "url": "https://www.neu.edu.cn/"
+    }
+  ],
+  "advisors": [
+    { "name": "Prof. Daling Wang", "url": "https://neu-datamining.github.io/wangdl.htm" },
+    { "name": "Prof. Ee-Peng Lim", "url": "https://faculty.smu.edu.sg/profile/lim-ee-peng-616" },
+    { "name": "Prof. Fiona Fui-Hoon Nah", "url": "https://faculty.smu.edu.sg/profile/nah-fiona-fui-hoon-7861" }
+  ],
+  "researchAreas": [
+    {
+      "index": "01",
+      "title": { "en": "Machine psychology & psychometrics", "zh": "机器心理学与心理测量" },
+      "description": {
+        "en": "Measure latent traits, preferences, and psychological reliability in language models beyond self-report.",
+        "zh": "超越模型自陈，测量大语言模型的潜在特质、偏好与心理可靠性。"
+      },
+      "keywords": ["LLM psychometrics", "personality", "projective testing"]
+    },
+    {
+      "index": "02",
+      "title": { "en": "Persona & longitudinal simulation", "zh": "人格与长期用户模拟" },
+      "description": {
+        "en": "Build believable agents whose memory, state, and personality evolve coherently across long interactions.",
+        "zh": "构建在长期互动中保持记忆、状态与人格连续演化的可信智能体。"
+      },
+      "keywords": ["user simulation", "long-term memory", "persona consistency"]
+    },
+    {
+      "index": "03",
+      "title": { "en": "Alignment, evaluation & agent systems", "zh": "对齐、评测与智能体系统" },
+      "description": {
+        "en": "Design evaluations and multi-agent systems that keep capability, safety, and human goals in view together.",
+        "zh": "设计兼顾能力、安全与人类目标的评测方法和多智能体系统。"
+      },
+      "keywords": ["human–AI alignment", "evaluation", "multi-agent systems"]
+    }
+  ],
+  "selectedResearch": [
+    {
+      "id": "genpt",
+      "eyebrow": "ACL 2026 · First author",
+      "title": "GenPT",
+      "subtitle": {
+        "en": "Beyond self-report for reliable LLM psychometrics",
+        "zh": "超越自陈的可靠大模型心理测量"
+      },
+      "description": {
+        "en": "A generative projective-testing paradigm that reveals latent psychological tendencies through model-produced material instead of asking models to describe themselves.",
+        "zh": "通过模型生成的投射材料揭示潜在心理倾向，摆脱对模型自我描述的依赖。"
+      },
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&citation_for_view=dcqk_mMAAAAJ:ZeXyd9-uunAC",
+      "tone": "cobalt"
+    },
+    {
+      "id": "annaagent",
+      "eyebrow": "Findings of ACL 2025 · First author",
+      "title": "AnnaAgent",
+      "subtitle": {
+        "en": "Dynamic seeker simulation with multi-session memory",
+        "zh": "具备多会话记忆的动态来访者模拟"
+      },
+      "description": {
+        "en": "A longitudinal agent architecture that improves realism, behavioral continuity, and personality consistency in simulated counseling seekers.",
+        "zh": "面向心理咨询来访者模拟的纵向智能体架构，提升真实性、行为连续性与人格一致性。"
+      },
+      "url": "https://arxiv.org/abs/2506.00551",
+      "code": "https://github.com/sci-m-wang/AnnaAgent",
+      "tone": "vermillion"
+    },
+    {
+      "id": "persona-steering",
+      "eyebrow": "CogSci 2026 · Co-first author",
+      "title": "Persona Steering",
+      "subtitle": {
+        "en": "How personality instructions reshape LLM capability",
+        "zh": "人格引导如何重塑大模型能力"
+      },
+      "description": {
+        "en": "A systematic analysis of when persona steering changes model behavior, where capability is preserved, and where role design creates hidden trade-offs.",
+        "zh": "系统分析人格引导改变模型行为的条件、能力保持边界及角色设计中的隐性权衡。"
+      },
+      "url": "https://arxiv.org/abs/2604.11048",
+      "tone": "saffron"
+    }
+  ],
+  "education": [
+    {
+      "degree": { "en": "Visiting / Joint-training Ph.D. Student", "zh": "联合培养 / 访问博士生" },
+      "school": "Singapore Management University",
+      "schoolZh": "新加坡管理大学",
+      "period": "2025.09 — Present",
+      "detail": { "en": "Computer Science · Advisors: Ee-Peng Lim and Fiona Fui-Hoon Nah", "zh": "计算机科学 · 合作导师：Ee-Peng Lim、Fiona Fui-Hoon Nah" }
+    },
+    {
+      "degree": { "en": "Ph.D. Candidate", "zh": "博士研究生" },
+      "school": "Northeastern University",
+      "schoolZh": "东北大学",
+      "period": "2022.09 — Present",
+      "detail": { "en": "Computer Science · Advisor: Daling Wang · Outstanding Graduate Student (2024)", "zh": "计算机科学 · 导师：王大玲 · 优秀研究生（2024）" }
+    },
+    {
+      "degree": { "en": "M.S. in Computer Science", "zh": "计算机科学硕士" },
+      "school": "Northeastern University",
+      "schoolZh": "东北大学",
+      "period": "2020.09 — 2022.06",
+      "detail": { "en": "Natural language processing, explainable AI, and affective computing", "zh": "自然语言处理、可解释人工智能与情感计算" }
+    },
+    {
+      "degree": { "en": "B.S. in Computer Science", "zh": "计算机科学学士" },
+      "school": "Harbin Engineering University",
+      "schoolZh": "哈尔滨工程大学",
+      "period": "2016.09 — 2020.06",
+      "detail": { "en": "Computer science and engineering", "zh": "计算机科学与工程" }
+    }
+  ],
+  "funding": [
+    {
+      "id": "rwi-reflection",
+      "role": { "en": "Technical Lead", "zh": "技术负责人" },
+      "title": { "en": "Building Reflection Competencies for Human–AI Collaboration: A Multi-Agent Training System", "zh": "面向人机协作反思能力的多智能体训练系统" },
+      "funder": "Resilient Workforces Institute Grant",
+      "amount": "S$70,000",
+      "period": "2025 — Present"
+    },
+    {
+      "id": "fire-investigation",
+      "role": { "en": "Project Lead (Contracted)", "zh": "项目负责人（合同制）" },
+      "title": { "en": "LLM-based Digital Case-file Management for Fire Investigation", "zh": "基于大型语言模型的火灾调查数字化智能案卷管理系统" },
+      "funder": "中央公益性研究所基本科研业务费项目",
+      "amount": "",
+      "period": "2025"
+    },
+    {
+      "id": "digital-persona",
+      "role": { "en": "Project Lead (Contracted)", "zh": "项目负责人（合同制）" },
+      "title": { "en": "Digital Character Simulation with a Multi-layer Role-playing Framework", "zh": "数字角色模拟框架（多层角色扮演框架）" },
+      "funder": "深圳橙果视界科技有限公司研究项目",
+      "amount": "",
+      "period": "2025"
+    }
+  ],
+  "awards": [
+    { "id": "trae-solo-2026", "year": "2026", "title": { "en": "1st Place, Productivity Enhancement Track", "zh": "Productivity Enhancement Track 第一名" }, "event": "Unbound Creativity with TRAE SOLO @ Singapore", "featured": true },
+    { "id": "ccac-spotlight-2026", "year": "2026", "title": { "en": "Spotlight Poster Prize", "zh": "Spotlight Poster Prize" }, "event": "第六届中国情感计算大会", "featured": true },
+    { "id": "trae-friends-2025", "year": "2025", "title": { "en": "1st Place", "zh": "第一名" }, "event": "TRAE Friends Hackathon @ Singapore", "featured": true },
+    { "id": "ccac-popular-2025", "year": "2025", "title": { "en": "Most Popular Poster Award", "zh": "最受欢迎海报奖" }, "event": "第五届中国情感计算大会", "featured": true },
+    { "id": "outstanding-neu-2024", "year": "2024", "title": { "en": "Outstanding Graduate Student", "zh": "优秀研究生" }, "event": "东北大学", "featured": true },
+    { "id": "cail-2024", "year": "2024", "title": { "en": "Second Prize", "zh": "二等奖" }, "event": "中国法律智能技术评测 CAIL 2024", "featured": false },
+    { "id": "lit-2023", "year": "2023", "title": { "en": "Second Prize", "zh": "二等奖" }, "event": "语言与智能技术竞赛", "featured": false },
+    { "id": "neu-scholarship-2025", "year": "2025", "title": { "en": "First-class Social Named Scholarship", "zh": "社会命名奖学金一等奖" }, "event": "东北大学", "featured": false },
+    { "id": "miit-2018", "year": "2018", "title": { "en": "Second Prize, Entrepreneurship Scholarship", "zh": "工信部创业奖学金二等奖" }, "event": "Ministry of Industry and Information Technology", "featured": false }
+  ],
+  "engagements": [
+    {
+      "id": "internlm-camp",
+      "type": "teaching",
+      "period": "2024.06 — 2025.08",
+      "title": { "en": "Instructor, InternLM Practical Camp", "zh": "书生大模型实战营 · 讲师" },
+      "description": { "en": "Taught prompt engineering and SFT; organized prompt/SFT evaluation tracks for paper classification and formula recognition.", "zh": "讲授提示工程、SFT 等课程，并组织论文分类、公式识别等 Prompt / SFT 赛道评测。" }
+    },
+    {
+      "id": "iflytek-camp",
+      "type": "experience",
+      "period": "2023.08",
+      "title": { "en": "Team Lead, iFLYTEK Spark Camp", "zh": "科大讯飞首届星火营 · 组长" },
+      "description": { "en": "Evaluated LLM legal capabilities and built a civil-complaint generation prototype with SparkDesk.", "zh": "开展大语言模型司法能力评测，并开发基于星火认知大模型的民事诉讼状生成方案。" }
+    },
+    {
+      "id": "nice-annaagent",
+      "type": "talk",
+      "period": "2025.06",
+      "title": { "en": "AnnaAgent: Toward More Realistic Counseling Seeker Simulation", "zh": "AnnaAgent：更真实的心理咨询来访者模拟" },
+      "description": { "en": "Invited academic talk at NICE Academic.", "zh": "NICE 学术邀请报告。" }
+    },
+    {
+      "id": "ploutos-annaagent",
+      "type": "talk",
+      "period": "2026.02",
+      "title": { "en": "AnnaAgent: Toward More Realistic Counseling Seeker Simulation", "zh": "AnnaAgent：更真实的心理咨询来访者模拟" },
+      "description": { "en": "Invited academic talk at Ploutos.", "zh": "Ploutos 邀请报告。" }
+    },
+    {
+      "id": "pujiang-machine-psychology",
+      "type": "talk",
+      "period": "2024.12",
+      "title": { "en": "Machine Psychology", "zh": "机器心理学" },
+      "description": { "en": "Academic talk at the Pujiang AI Annual Meeting, Shanghai.", "zh": "浦江 AI 年会学术报告，上海。" }
+    },
+    {
+      "id": "datawhale-ai-psychology",
+      "type": "talk",
+      "period": "2025.04",
+      "title": { "en": "How LLMs Work, and AI × Psychology", "zh": "AI 大模型原理、应用与 AI+心理学" },
+      "description": { "en": "Public talk for Datawhale Un-AI City Tour, Shenyang.", "zh": "Datawhale Un-AI 城市行科普报告，沈阳。" }
+    }
+  ],
+  "service": [
+    { "en": "Reviewer / PC member for ICML, ACL-family conferences, JAIR, and related venues", "zh": "ICML、ACL 系列会议、JAIR 等审稿人或程序委员" },
+    { "en": "Member of APA, CIPS, CCF, and CAAI", "zh": "美国心理学会、中国中文信息学会、中国计算机学会、中国人工智能学会会员" },
+    { "en": "TRAE Fellow", "zh": "TRAE Fellow" },
+    { "en": "Peer counselor, Yunqi Peer Counseling Studio, Northeastern University", "zh": "东北大学云起工作室朋辈心理咨询师" },
+    { "en": "Outstanding Ph.D. science counselor, 2024 National Youth Science Camp", "zh": "2024 全国青少年高校科学营东北大学分营优秀博士生科技辅导员" }
+  ],
+  "news": [
+    { "id": "genpt-acl-2026", "date": "2026", "kind": "Publication", "title": { "en": "GenPT accepted to ACL 2026", "zh": "GenPT 被 ACL 2026 接收" }, "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&citation_for_view=dcqk_mMAAAAJ:ZeXyd9-uunAC" },
+    { "id": "persona-cogsci-2026", "date": "2026", "kind": "Publication", "title": { "en": "Persona Steering study accepted to CogSci 2026", "zh": "Persona Steering 研究被 CogSci 2026 接收" }, "url": "https://arxiv.org/abs/2604.11048" },
+    { "id": "ccac-spotlight", "date": "2026", "kind": "Award", "title": { "en": "Received the CCAC Spotlight Poster Prize", "zh": "获第六届中国情感计算大会 Spotlight Poster Prize" }, "url": "" },
+    { "id": "trae-solo", "date": "2026", "kind": "Award", "title": { "en": "Won the Productivity Enhancement Track at TRAE SOLO Singapore", "zh": "获 TRAE SOLO Singapore Productivity Enhancement Track 第一名" }, "url": "" },
+    { "id": "annaagent-acl", "date": "2025", "kind": "Publication", "title": { "en": "AnnaAgent published at Findings of ACL 2025", "zh": "AnnaAgent 发表于 Findings of ACL 2025" }, "url": "https://arxiv.org/abs/2506.00551" }
+  ]
+}

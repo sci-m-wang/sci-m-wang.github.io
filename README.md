@@ -1,31 +1,78 @@
-A Github Pages template for academic websites. This was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License. See LICENSE.md.
+# Ming Wang · Academic Homepage
 
-I think I've got things running smoothly and fixed some major bugs, but feel free to file issues or make pull requests if you want to improve the generic template / theme.
+A from-scratch academic homepage for [sci-m-wang.github.io](https://sci-m-wang.github.io), designed as a living research archive rather than a theme-based CV.
 
-### Note: if you are using this repo and now get a notification about a security vulnerability, delete the Gemfile.lock file. 
+这是为 [sci-m-wang.github.io](https://sci-m-wang.github.io) 从零构建的学术主页。它采用结构化数据驱动，便于维护论文、Funding、动态、报告与荣誉信息。
 
-# Instructions
+## What is included
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Fork [this repository](https://github.com/academicpages/academicpages.github.io) by clicking the "fork" button in the top right. 
-1. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and create content & metadata (see below -- also see [this set of diffs](http://archive.is/3TPas) showing what files were changed to set up [an example site](https://getorg-testacct.github.io) for a user with the username "getorg-testacct")
-1. Upload any files (like PDFs, .zip files, etc.) to the files/ directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.  
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+- Responsive bilingual interface (English / 中文)
+- Editorial academic visual system with accessible, reduced-motion-aware interaction
+- Filterable publication archive with per-paper citation counts
+- Weekly citation refresh through GitHub Actions
+- GitHub Pages deployment workflow
+- Authenticated owner-only update workflows for publications, funding, news, and corrections
+- SEO metadata, sitemap, JSON-LD person profile, and a custom Open Graph card
 
-See more info at https://academicpages.github.io/
+## Local development
 
-## To run locally (not on GitHub Pages, to serve on your own computer)
+Requirements: Node.js 22.12 or newer.
 
-1. Clone the repository and made updates as detailed above
-1. Make sure you have ruby-dev, bundler, and nodejs installed: `sudo apt install ruby-dev ruby-bundler nodejs`
-1. Run `bundle clean` to clean up the directory (no need to run `--force`)
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-1. Run `bundle exec jekyll liveserve` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
+```bash
+npm install
+npm run dev
+```
 
-# Changelog -- bugfixes and enhancements
+Create a production build:
 
-There is one logistical issue with a ready-to-fork template theme like academic pages that makes it a little tricky to get bug fixes and updates to the core theme. If you fork this repository, customize it, then pull again, you'll probably get merge conflicts. If you want to save your various .yml configuration files and markdown files, you can delete the repository and fork it again. Or you can manually patch. 
+```bash
+npm run build
+```
 
-To support this, all changes to the underlying code appear as a closed issue with the tag 'code change' -- get the list [here](https://github.com/academicpages/academicpages.github.io/issues?q=is%3Aclosed%20is%3Aissue%20label%3A%22code%20change%22%20). Each issue thread includes a comment linking to the single commit or a diff across multiple commits, so those with forked repositories can easily identify what they need to patch.
+## Content structure
+
+The site intentionally keeps content separate from layout code:
+
+- `src/data/profile.json` — biography, metrics, research areas, education, funding, awards, talks, service, and news
+- `src/data/publications.json` — publication metadata, links, categories, and citation counts
+- `public/cv/` — downloadable CV files
+- `public/profile.jpg` — profile portrait
+
+Stable `id` fields are used by the protected edit workflow. Do not rename an existing ID unless all references are updated.
+
+## Protected update entrance
+
+The public `/update/` page links to four structured GitHub Actions forms:
+
+1. Add a publication
+2. Add funding
+3. Add news or media coverage
+4. Correct an existing entry
+
+Security is handled entirely by GitHub:
+
+- GitHub authentication and repository permissions are required to run a workflow.
+- Every content workflow additionally checks `github.actor == github.repository_owner`.
+- No password, token, API key, or editable admin state is stored in the public website.
+- Successful updates modify the JSON data, create a Git commit, and trigger a fresh Pages deployment.
+
+## Citation updates
+
+`.github/workflows/citations.yml` runs every Monday and can also be triggered manually.
+
+- The workflow reads the public Google Scholar profile directly, so no API key or repository secret is required.
+- Requests are limited to once a week, with conservative retries and a normal browser user agent.
+- If Google Scholar returns a CAPTCHA, rate limit, incomplete page, or too few title matches, the script stops before saving; the last verified counts remain intact.
+- Google Scholar may occasionally block requests from GitHub-hosted runners. In that case, rerun the workflow later or update counts manually.
+
+## GitHub Pages
+
+The deploy workflow builds the static Astro site and publishes `dist/` with GitHub's official Pages actions. In repository settings, set **Pages → Source** to **GitHub Actions**.
+
+## Design references
+
+The information architecture was informed by common strengths of [al-folio](https://github.com/alshedivat/al-folio), [Academic Pages](https://github.com/academicpages/academicpages.github.io), and [Hugo Academic CV](https://github.com/HugoBlox/hugo-theme-academic-cv), while the code and visual system were rebuilt independently for this site.
+
+## License
+
+MIT © Ming Wang

@@ -1,0 +1,72 @@
+---
+import "../styles/global.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = "Ming Wang · Machine Psychology & Human–AI Alignment",
+  description = "Academic homepage of Ming Wang, a Ph.D. candidate studying machine psychology, LLM psychometrics, persona simulation, and human–AI alignment.",
+  noindex = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ming Wang",
+  alternateName: "王明",
+  url: "https://sci-m-wang.github.io",
+  image: "https://sci-m-wang.github.io/profile.jpg",
+  email: "mailto:sci.m.wang@gmail.com",
+  jobTitle: "Ph.D. Candidate in Computer Science",
+  affiliation: [
+    { "@type": "CollegeOrUniversity", name: "Northeastern University" },
+    { "@type": "CollegeOrUniversity", name: "Singapore Management University" },
+  ],
+  sameAs: [
+    "https://scholar.google.com/citations?user=dcqk_mMAAAAJ",
+    "https://github.com/sci-m-wang",
+    "https://orcid.org/0000-0001-8406-5677",
+  ],
+  knowsAbout: [
+    "Machine Psychology",
+    "LLM Psychometrics",
+    "Persona Modeling",
+    "Human-AI Alignment",
+    "Long-Term Memory",
+    "Multi-Agent Systems",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en" data-language="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f2efe8" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/jpeg" href="/profile.jpg" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content="https://sci-m-wang.github.io/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://sci-m-wang.github.io/og.png" />
+    <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+  </body>
+</html>

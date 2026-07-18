@@ -1,0 +1,363 @@
+[
+  {
+    "id": "genpt-2026",
+    "title": "GenPT: Beyond Self-Report for Reliable LLM Psychometrics via Generative Projective Testing",
+    "authors": "Ming Wang, S. Wu, B. Wang, L. Lin, Y. Chen, X. Yang, D. Wang, S. Feng, et al.",
+    "venue": "Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics",
+    "venueShort": "ACL 2026",
+    "year": 2026,
+    "category": "first",
+    "status": "published",
+    "selected": true,
+    "badges": ["First author", "Machine psychology"],
+    "arxivId": "",
+    "links": {
+      "paper": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&citation_for_view=dcqk_mMAAAAJ:ZeXyd9-uunAC",
+      "pdf": "",
+      "code": ""
+    },
+    "citations": { "count": 0, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "persona-steering-2026",
+    "title": "A Systematic Analysis of the Impact of Persona Steering on LLM Capabilities",
+    "authors": "J. Chen*, Ming Wang*, T. Xie, S. Feng, Y. Liu",
+    "venue": "Annual Meeting of the Cognitive Science Society",
+    "venueShort": "CogSci 2026",
+    "year": 2026,
+    "category": "cofirst",
+    "status": "published",
+    "selected": true,
+    "badges": ["Co-first author", "Persona steering"],
+    "arxivId": "2604.11048",
+    "links": {
+      "paper": "https://arxiv.org/abs/2604.11048",
+      "pdf": "https://arxiv.org/pdf/2604.11048",
+      "code": ""
+    },
+    "citations": { "count": 0, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "t-col-2026",
+    "title": "T-COL: Generating Counterfactual Explanations for General User Preferences on Variable Machine Learning Systems",
+    "authors": "Ming Wang, Daling Wang, Wenfang Wu, Shi Feng, Yifei Zhang",
+    "venue": "Journal of Artificial Intelligence Research, Vol. 85",
+    "venueShort": "JAIR 2026",
+    "year": 2026,
+    "category": "first",
+    "status": "published",
+    "selected": false,
+    "badges": ["First author", "Counterfactual explanation"],
+    "arxivId": "2309.16146",
+    "links": {
+      "paper": "https://arxiv.org/abs/2309.16146",
+      "pdf": "https://arxiv.org/pdf/2309.16146",
+      "code": "https://github.com/NEU-DataMining/T-COL"
+    },
+    "citations": { "count": 2, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "annaagent-2025",
+    "title": "AnnaAgent: Dynamic Evolution Agent System with Multi-Session Memory for Realistic Seeker Simulation",
+    "authors": "Ming Wang, Peidong Wang, Lin Wu, Xiaocui Yang, Daling Wang, Shi Feng, Yuxin Chen, Bixuan Wang, Yifei Zhang",
+    "venue": "Findings of the Association for Computational Linguistics: ACL, pp. 23221–23235",
+    "venueShort": "Findings of ACL 2025",
+    "year": 2025,
+    "category": "first",
+    "status": "published",
+    "selected": true,
+    "badges": ["First author", "Long-term memory"],
+    "arxivId": "2506.00551",
+    "links": {
+      "paper": "https://arxiv.org/abs/2506.00551",
+      "pdf": "https://arxiv.org/pdf/2506.00551",
+      "code": "https://github.com/sci-m-wang/AnnaAgent"
+    },
+    "citations": { "count": 21, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "generative-link-tree-2022",
+    "title": "Generative Link Tree: A Counterfactual Explanation Generation Approach with High Data Fidelity",
+    "authors": "Ming Wang, Wenfang Wu, Daling Wang, Shi Feng, Yifei Zhang",
+    "venue": "Computer Science, 49(9), 33–40",
+    "venueShort": "Computer Science 2022",
+    "year": 2022,
+    "category": "first",
+    "status": "published",
+    "selected": false,
+    "badges": ["First author", "Explainable AI"],
+    "arxivId": "",
+    "links": {
+      "paper": "https://www.jsjkx.com/CN/1002-137X/home.shtml",
+      "pdf": "",
+      "code": ""
+    },
+    "citations": { "count": 2, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "mamba-forecasting-2025",
+    "title": "Is Mamba Effective for Time Series Forecasting?",
+    "authors": "Zihan Wang, Fanheng Kong, Shi Feng, Ming Wang, Xiaocui Yang, Han Zhao, Daling Wang, Yifei Zhang",
+    "venue": "Neurocomputing, Vol. 619, 129178",
+    "venueShort": "Neurocomputing 2025",
+    "year": 2025,
+    "category": "coauthor",
+    "status": "published",
+    "selected": true,
+    "badges": ["Highly cited", "Time series"],
+    "arxivId": "2403.11144",
+    "links": {
+      "paper": "https://www.sciencedirect.com/science/article/pii/S0925231224019490",
+      "pdf": "https://arxiv.org/pdf/2403.11144",
+      "code": "https://github.com/wzhwzhwzh0921/S-D-Mamba"
+    },
+    "citations": { "count": 447, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "mm-instructeval-2025",
+    "title": "MM-InstructEval: Zero-Shot Evaluation of (Multimodal) Large Language Models on Multimodal Reasoning Tasks",
+    "authors": "Xiaocui Yang*, Wenfang Wu*, Shi Feng, Ming Wang, Daling Wang, Yang Li, Qi Sun, Yifei Zhang, Xiaoming Fu, Soujanya Poria",
+    "venue": "Information Fusion, Vol. 122, 103204",
+    "venueShort": "Information Fusion 2025",
+    "year": 2025,
+    "category": "coauthor",
+    "status": "published",
+    "selected": true,
+    "badges": ["Multimodal evaluation"],
+    "arxivId": "2405.07229",
+    "links": {
+      "paper": "https://arxiv.org/abs/2405.07229",
+      "pdf": "https://arxiv.org/pdf/2405.07229",
+      "code": "https://github.com/declare-lab/MM-InstructEval"
+    },
+    "citations": { "count": 64, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "feel-2024",
+    "title": "FEEL: A Framework for Evaluating Emotional Support Capability with Large Language Models",
+    "authors": "Huaiwen Zhang*, Yu Chen*, Ming Wang, Shi Feng",
+    "venue": "International Conference on Intelligent Computing, pp. 96–107",
+    "venueShort": "ICIC 2024",
+    "year": 2024,
+    "category": "coauthor",
+    "status": "published",
+    "selected": false,
+    "badges": ["Emotional support", "Evaluation"],
+    "arxivId": "2403.15699",
+    "links": {
+      "paper": "https://arxiv.org/abs/2403.15699",
+      "pdf": "https://arxiv.org/pdf/2403.15699",
+      "code": "https://github.com/Ansisy/FEEL"
+    },
+    "citations": { "count": 11, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "sentiment-triplet-2024",
+    "title": "Sentiment Triplet Extraction with Multi-view Contrastive Learning",
+    "authors": "Wenfang Wu, Daling Wang, Ming Wang, Shi Feng, Yifei Zhang",
+    "venue": "IEEE Transactions on Affective Computing, 16(3), 1526–1542",
+    "venueShort": "IEEE TAC 2024",
+    "year": 2024,
+    "category": "coauthor",
+    "status": "published",
+    "selected": false,
+    "badges": ["Affective computing"],
+    "arxivId": "",
+    "links": {
+      "paper": "https://ieeexplore.ieee.org/abstract/document/10812814",
+      "pdf": "",
+      "code": ""
+    },
+    "citations": { "count": 10, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "empathetic-debate-2024",
+    "title": "LLM-Based Empathetic Response Through Psychologist-Agent Debate",
+    "authors": "Yijie Wu, Shi Feng, Ming Wang, Daling Wang, Yifei Zhang",
+    "venue": "APWeb-WAIM Joint International Conference on Web and Big Data",
+    "venueShort": "APWeb-WAIM 2024",
+    "year": 2024,
+    "category": "coauthor",
+    "status": "published",
+    "selected": false,
+    "badges": ["Empathetic response", "Multi-agent"],
+    "arxivId": "",
+    "links": {
+      "paper": "https://link.springer.com/chapter/10.1007/978-981-97-7232-2_14",
+      "pdf": "",
+      "code": ""
+    },
+    "citations": { "count": 7, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "self-evolving-data-engineers-2025",
+    "title": "Language Models as Continuous Self-Evolving Data Engineers",
+    "authors": "Peidong Wang, Ming Wang, Zhiming Ma, Xiaocui Yang, Shi Feng, Daling Wang, Yifei Zhang, Kaisong Song",
+    "venue": "Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing",
+    "venueShort": "EMNLP 2025",
+    "year": 2025,
+    "category": "coauthor",
+    "status": "published",
+    "selected": false,
+    "badges": ["Self-evolving systems"],
+    "arxivId": "2412.15151",
+    "links": {
+      "paper": "https://arxiv.org/abs/2412.15151",
+      "pdf": "https://arxiv.org/pdf/2412.15151",
+      "code": ""
+    },
+    "citations": { "count": 6, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "langgpt-2024",
+    "title": "LangGPT: Rethinking Structured Reusable Prompt Design Framework for LLMs from the Programming Language",
+    "authors": "Ming Wang, Yuanzhong Liu, Xiaoyu Liang, Songlian Li, Yijie Huang, Xiaoming Zhang, Sijia Shen, Chaofeng Guan, et al.",
+    "venue": "arXiv preprint arXiv:2402.16929",
+    "venueShort": "Working paper",
+    "year": 2024,
+    "category": "working",
+    "status": "preprint",
+    "selected": true,
+    "badges": ["Prompt design", "Open source"],
+    "arxivId": "2402.16929",
+    "links": {
+      "paper": "https://arxiv.org/abs/2402.16929",
+      "pdf": "https://arxiv.org/pdf/2402.16929",
+      "code": "https://github.com/EmbraceAGI/LangGPT"
+    },
+    "citations": { "count": 44, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "hirag-2024",
+    "title": "Hierarchical Retrieval-Augmented Generation Model with Rethink for Multi-hop Question Answering",
+    "authors": "Xiaoming Zhang*, Ming Wang*, Xiaocui Yang*, Daling Wang, Shi Feng, Yifei Zhang",
+    "venue": "arXiv preprint arXiv:2408.11875",
+    "venueShort": "Working paper",
+    "year": 2024,
+    "category": "working",
+    "status": "preprint",
+    "selected": false,
+    "badges": ["Co-first author", "RAG"],
+    "arxivId": "2408.11875",
+    "links": {
+      "paper": "https://arxiv.org/abs/2408.11875",
+      "pdf": "https://arxiv.org/pdf/2408.11875",
+      "code": ""
+    },
+    "citations": { "count": 23, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "minstrel-2024",
+    "title": "Minstrel: Structural Prompt Generation with Multi-Agents Coordination for Non-AI Experts",
+    "authors": "Ming Wang, Yuanzhong Liu, Xiaoyu Liang, Yijie Huang, Daling Wang, Xiaocui Yang, Sijia Shen, Shi Feng, et al.",
+    "venue": "arXiv preprint arXiv:2409.13449",
+    "venueShort": "Working paper",
+    "year": 2024,
+    "category": "working",
+    "status": "preprint",
+    "selected": false,
+    "badges": ["Multi-agent", "Prompt generation"],
+    "arxivId": "2409.13449",
+    "links": {
+      "paper": "https://arxiv.org/abs/2409.13449",
+      "pdf": "https://arxiv.org/pdf/2409.13449",
+      "code": "https://github.com/sci-m-wang/Minstrel"
+    },
+    "citations": { "count": 9, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "repair-2025",
+    "title": "REPAIR: Robust Editing via Progressive Adaptive Intervention and Reintegration",
+    "authors": "Y. Wang, Ming Wang, H. Song, W. Huang, C. Wang, Y. Xie, X. Ran",
+    "venue": "arXiv preprint arXiv:2510.01879",
+    "venueShort": "Working paper",
+    "year": 2025,
+    "category": "working",
+    "status": "preprint",
+    "selected": false,
+    "badges": ["Model editing"],
+    "arxivId": "2510.01879",
+    "links": {
+      "paper": "https://arxiv.org/abs/2510.01879",
+      "pdf": "https://arxiv.org/pdf/2510.01879",
+      "code": ""
+    },
+    "citations": { "count": 2, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "mental-patient-simulators-2026",
+    "title": "Synthetic or Authentic? Building Mental Patient Simulators from Longitudinal Evidence",
+    "authors": "B. Li, B. Jin, K. Lan, Ming Wang, M. Wu",
+    "venue": "arXiv preprint arXiv:2603.22704",
+    "venueShort": "Working paper",
+    "year": 2026,
+    "category": "working",
+    "status": "preprint",
+    "selected": false,
+    "badges": ["Mental health", "User simulation"],
+    "arxivId": "2603.22704",
+    "links": {
+      "paper": "https://arxiv.org/abs/2603.22704",
+      "pdf": "https://arxiv.org/pdf/2603.22704",
+      "code": ""
+    },
+    "citations": { "count": 1, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "jailbreak-probing-2026",
+    "title": "Defending Large Language Models Against Jailbreak Attacks via In-Decoding Safety-Awareness Probing",
+    "authors": "Y. Zhao, Ming Wang, Shi Feng, Xiaocui Yang, Daling Wang, Yifei Zhang",
+    "venue": "arXiv preprint arXiv:2601.10543",
+    "venueShort": "Working paper",
+    "year": 2026,
+    "category": "working",
+    "status": "preprint",
+    "selected": false,
+    "badges": ["LLM safety", "Jailbreak defense"],
+    "arxivId": "2601.10543",
+    "links": {
+      "paper": "https://arxiv.org/abs/2601.10543",
+      "pdf": "https://arxiv.org/pdf/2601.10543",
+      "code": ""
+    },
+    "citations": { "count": 2, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "model-merging-survey-2025",
+    "title": "Scaling Intelligence Through Model Merging: A Comprehensive Survey",
+    "authors": "Z. Wang, Y. Liu, Y. Luo, Ming Wang, Z. Song, S. Feng, X. Yang, D. Lin, D. Wang, et al.",
+    "venue": "Authorea Preprints",
+    "venueShort": "Working paper",
+    "year": 2025,
+    "category": "working",
+    "status": "preprint",
+    "selected": false,
+    "badges": ["Model merging", "Survey"],
+    "arxivId": "",
+    "links": {
+      "paper": "https://scholar.google.com/citations?user=dcqk_mMAAAAJ",
+      "pdf": "",
+      "code": ""
+    },
+    "citations": { "count": 0, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  },
+  {
+    "id": "rocar-2023",
+    "title": "RoCar: A Relationship Network-based Evaluation Method for Large Language Models",
+    "authors": "Ming Wang, Wenfang Wu, Chongyun Gao, Daling Wang, Shi Feng, Yifei Zhang",
+    "venue": "arXiv preprint arXiv:2307.15997",
+    "venueShort": "Working paper",
+    "year": 2023,
+    "category": "working",
+    "status": "preprint",
+    "selected": false,
+    "badges": ["LLM evaluation"],
+    "arxivId": "2307.15997",
+    "links": {
+      "paper": "https://arxiv.org/abs/2307.15997",
+      "pdf": "https://arxiv.org/pdf/2307.15997",
+      "code": "https://github.com/NEU-DataMining/RoCar"
+    },
+    "citations": { "count": 0, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+  }
+]

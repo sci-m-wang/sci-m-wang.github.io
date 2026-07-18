@@ -1,0 +1,18 @@
+---
+export interface Props {
+  en: string;
+  zh: string;
+  as?: "span" | "p" | "h1" | "h2" | "h3" | "h4";
+  class?: string;
+  id?: string;
+}
+
+const { en, zh, as = "span", class: className = "", id } = Astro.props as Props;
+---
+
+{as === "h1" && <h1 class:list={["local-text", className]} id={id}><span class="lang lang--en">{en}</span><span class="lang lang--zh">{zh}</span></h1>}
+{as === "h2" && <h2 class:list={["local-text", className]} id={id}><span class="lang lang--en">{en}</span><span class="lang lang--zh">{zh}</span></h2>}
+{as === "h3" && <h3 class:list={["local-text", className]} id={id}><span class="lang lang--en">{en}</span><span class="lang lang--zh">{zh}</span></h3>}
+{as === "h4" && <h4 class:list={["local-text", className]} id={id}><span class="lang lang--en">{en}</span><span class="lang lang--zh">{zh}</span></h4>}
+{as === "p" && <p class:list={["local-text", className]} id={id}><span class="lang lang--en">{en}</span><span class="lang lang--zh">{zh}</span></p>}
+{as === "span" && <span class:list={["local-text", className]} id={id}><span class="lang lang--en">{en}</span><span class="lang lang--zh">{zh}</span></span>}

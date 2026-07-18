@@ -1,0 +1,463 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LocalText from "../components/LocalText.astro";
+import PublicationCard from "../components/PublicationCard.astro";
+import profile from "../data/profile.json";
+import publications from "../data/publications.json";
+
+const sortedPublications = [...publications].sort((a, b) => {
+  if (b.year !== a.year) return b.year - a.year;
+  return Number(b.selected) - Number(a.selected);
+});
+const featuredAwards = profile.awards.filter((award) => award.featured);
+const talks = profile.engagements.filter((item) => item.type === "talk");
+const practice = profile.engagements.filter((item) => item.type !== "talk");
+const citationSources = [...new Set(publications.map((publication) => publication.citations.source))].join(" / ");
+const citationUpdatedAt = publications
+  .map((publication) => publication.citations.updatedAt)
+  .sort()
+  .at(-1);
+---
+
+<BaseLayout>
+  <div class="site-shell">
+    <header class="site-nav" data-site-nav>
+      <a class="site-brand" href="#top" aria-label="Ming Wang, home">
+        <span class="site-brand__mark">MW</span>
+        <span class="site-brand__name">Ming Wang <span>王明</span></span>
+      </a>
+
+      <nav class="site-nav__links" aria-label="Primary navigation">
+        <a href="#research"><span class="lang lang--en">Research</span><span class="lang lang--zh">研究</span></a>
+        <a href="#publications"><span class="lang lang--en">Publications</span><span class="lang lang--zh">论文</span></a>
+        <a href="#experience"><span class="lang lang--en">Experience</span><span class="lang lang--zh">经历</span></a>
+        <a href="#news"><span class="lang lang--en">News</span><span class="lang lang--zh">动态</span></a>
+      </nav>
+
+      <div class="site-nav__actions">
+        <button class="language-toggle" type="button" data-language-toggle aria-label="切换为中文" aria-pressed="false">
+          <span class="language-toggle__en">中</span>
+          <span class="language-toggle__zh">EN</span>
+        </button>
+        <a class="nav-update" href="/update/">
+          <span class="lang lang--en">Update</span><span class="lang lang--zh">更新资料</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero__grid" aria-hidden="true"></div>
+        <div class="hero__aside reveal">
+          <p class="eyebrow">{profile.kicker.en}</p>
+          <div class="hero__coordinate">
+            <span>01°18′N</span>
+            <span>103°51′E</span>
+          </div>
+          <p class="hero__location">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <LocalText en="Based in Singapore" zh="现居新加坡" />
+          </p>
+        </div>
+
+        <div class="hero__main reveal">
+          <p class="hero__role">
+            <LocalText en={profile.role.en} zh={profile.role.zh} />
+          </p>
+          <h1 id="hero-title">
+            <LocalText en={profile.headline.en} zh={profile.headline.zh} />
+          </h1>
+          <p class="hero__bio">
+            <LocalText en={profile.bio.en} zh={profile.bio.zh} />
+          </p>
+          <div class="hero__links" aria-label="Profile links">
+            <a class="button button--dark" href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar ↗</a>
+            <a class="button button--line" href={profile.links.cv} target="_blank">
+              <span class="lang lang--en">Curriculum Vitae ↓</span><span class="lang lang--zh">学术简历 ↓</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__portrait-wrap reveal">
+          <div class="portrait-orbit portrait-orbit--one" aria-hidden="true"></div>
+          <div class="portrait-orbit portrait-orbit--two" aria-hidden="true"></div>
+          <figure class="hero__portrait">
+            <img src="/profile.jpg" alt="Portrait of Ming Wang" width="1024" height="1024" fetchpriority="high" />
+            <figcaption>
+              <span class="hero__portrait-name">Ming Wang / 王明</span>
+              <span>SMU × NEU</span>
+            </figcaption>
+          </figure>
+          <span class="hero__portrait-note" aria-hidden="true">mind / model / alignment</span>
+        </div>
+
+        <div class="hero__metrics reveal" aria-label="Academic metrics">
+          {profile.metrics.map((metric) => (
+            <div class="metric">
+              <strong>{metric.value}</strong>
+              <LocalText en={metric.label.en} zh={metric.label.zh} as="p" />
+              <LocalText en={metric.note.en} zh={metric.note.zh} as="span" class="metric__note" />
+            </div>
+          ))}
+        </div>
+
+        <a class="hero__scroll" href="#research">
+          <span class="lang lang--en">Explore the research</span><span class="lang lang--zh">探索研究方向</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+      </section>
+
+      <section class="section section--research" id="research" aria-labelledby="research-title">
+        <div class="section-heading reveal">
+          <p class="section-heading__index">01 / Research atlas</p>
+          <div>
+            <LocalText en="Where minds become measurable." zh="让心智变得可测量。" as="h2" id="research-title" />
+            <LocalText
+              en="My work moves between psychological theory and AI systems: not borrowing metaphors from psychology, but building testable computational constructs."
+              zh="我的研究往返于心理理论与人工智能系统之间：不是借用心理学隐喻，而是构建可检验的计算结构。"
+              as="p"
+              class="section-heading__intro"
+            />
+          </div>
+        </div>
+
+        <div class="research-areas">
+          {profile.researchAreas.map((area) => (
+            <article class="research-area reveal">
+              <span class="research-area__index">{area.index}</span>
+              <LocalText en={area.title.en} zh={area.title.zh} as="h3" />
+              <LocalText en={area.description.en} zh={area.description.zh} as="p" />
+              <ul aria-label="Research keywords">
+                {area.keywords.map((keyword) => <li>{keyword}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div class="selected-work__header reveal">
+          <p class="eyebrow"><span class="lang lang--en">Selected research systems</span><span class="lang lang--zh">精选研究系统</span></p>
+          <p>2025—2026</p>
+        </div>
+        <div class="selected-work">
+          {profile.selectedResearch.map((work, index) => (
+            <article class:list={["work-card", `work-card--${work.tone}`, "reveal"]}>
+              <div class="work-card__topline">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <span>{work.eyebrow}</span>
+              </div>
+              <h3>{work.title}</h3>
+              <LocalText en={work.subtitle.en} zh={work.subtitle.zh} as="h4" />
+              <LocalText en={work.description.en} zh={work.description.zh} as="p" />
+              <div class="work-card__links">
+                <a href={work.url} target="_blank" rel="noreferrer">Read paper ↗</a>
+                {"code" in work && work.code && <a href={work.code} target="_blank" rel="noreferrer">Code ↗</a>}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section section--publications" id="publications" aria-labelledby="publications-title">
+        <div class="section-heading reveal">
+          <p class="section-heading__index">02 / Publications</p>
+          <div>
+            <LocalText en="Ideas, evaluated in public." zh="在公开检验中生长的想法。" as="h2" id="publications-title" />
+            <p class="section-heading__intro publication-source">
+              <span class="lang lang--en">Citation counts refresh automatically. Current display: {citationSources}, updated {citationUpdatedAt}.</span>
+              <span class="lang lang--zh">引用量支持自动刷新。当前显示：{citationSources}，更新于 {citationUpdatedAt}。</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="publication-toolbar reveal" role="toolbar" aria-label="Filter publications">
+          <button class="filter-button is-active" type="button" data-publication-filter="all" aria-pressed="true">
+            <span class="lang lang--en">All work</span><span class="lang lang--zh">全部</span>
+            <span>{publications.length}</span>
+          </button>
+          <button class="filter-button" type="button" data-publication-filter="author" aria-pressed="false">
+            <span class="lang lang--en">First / co-first</span><span class="lang lang--zh">第一 / 共同一作</span>
+          </button>
+          <button class="filter-button" type="button" data-publication-filter="published" aria-pressed="false">
+            <span class="lang lang--en">Published</span><span class="lang lang--zh">已发表</span>
+          </button>
+          <button class="filter-button" type="button" data-publication-filter="working" aria-pressed="false">
+            <span class="lang lang--en">Working papers</span><span class="lang lang--zh">工作论文</span>
+          </button>
+        </div>
+
+        <div class="publication-list" aria-live="polite">
+          {sortedPublications.map((publication, index) => (
+            <PublicationCard publication={publication} index={index} />
+          ))}
+        </div>
+
+        <div class="publication-footer reveal">
+          <a href={profile.links.scholar} target="_blank" rel="noreferrer">
+            <span class="lang lang--en">View the complete record on Google Scholar</span>
+            <span class="lang lang--zh">在 Google Scholar 查看完整记录</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+          <p><span data-publication-count>{publications.length}</span> <span class="lang lang--en">items shown</span><span class="lang lang--zh">条记录</span></p>
+        </div>
+      </section>
+
+      <section class="section section--experience" id="experience" aria-labelledby="experience-title">
+        <div class="section-heading reveal">
+          <p class="section-heading__index">03 / Trajectory</p>
+          <div>
+            <LocalText en="Research is a collective practice." zh="研究是一种集体实践。" as="h2" id="experience-title" />
+            <LocalText
+              en="Training across computer science, psychology-facing AI, and human–AI collaboration."
+              zh="横跨计算机科学、面向心理的人工智能与人机协作研究。"
+              as="p"
+              class="section-heading__intro"
+            />
+          </div>
+        </div>
+
+        <div class="trajectory-grid">
+          <div class="trajectory-column reveal">
+            <div class="trajectory-column__heading">
+              <h3><span class="lang lang--en">Education</span><span class="lang lang--zh">教育背景</span></h3>
+              <span>2016—Present</span>
+            </div>
+            <div class="timeline-list">
+              {profile.education.map((item) => (
+                <article class="timeline-item">
+                  <p class="timeline-item__period">{item.period}</p>
+                  <LocalText en={item.degree.en} zh={item.degree.zh} as="h4" />
+                  <p class="timeline-item__institution">
+                    <span class="lang lang--en">{item.school}</span><span class="lang lang--zh">{item.schoolZh}</span>
+                  </p>
+                  <LocalText en={item.detail.en} zh={item.detail.zh} as="p" class="timeline-item__detail" />
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div class="trajectory-column reveal">
+            <div class="trajectory-column__heading">
+              <h3><span class="lang lang--en">Grants & projects</span><span class="lang lang--zh">经费与项目</span></h3>
+              <span>Lead / Core</span>
+            </div>
+            <div class="funding-list">
+              {profile.funding.map((item) => (
+                <article class="funding-item">
+                  <div class="funding-item__topline">
+                    <LocalText en={item.role.en} zh={item.role.zh} />
+                    <span>{item.period}</span>
+                  </div>
+                  <LocalText en={item.title.en} zh={item.title.zh} as="h4" />
+                  <div class="funding-item__footer">
+                    <p>{item.funder}</p>
+                    {item.amount && <strong>{item.amount}</strong>}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="affiliations reveal">
+          <p class="eyebrow"><span class="lang lang--en">Current affiliations & advisors</span><span class="lang lang--zh">当前机构与导师</span></p>
+          <div class="affiliations__grid">
+            {profile.affiliations.map((item) => (
+              <a href={item.url} target="_blank" rel="noreferrer">
+                <span>{item.period}</span>
+                <strong><span class="lang lang--en">{item.name}</span><span class="lang lang--zh">{item.nameZh}</span></strong>
+                <LocalText en={item.role.en} zh={item.role.zh} as="p" />
+              </a>
+            ))}
+            <div class="advisor-list">
+              <span><span class="lang lang--en">Advisors</span><span class="lang lang--zh">导师</span></span>
+              {profile.advisors.map((advisor) => <a href={advisor.url} target="_blank" rel="noreferrer">{advisor.name} ↗</a>)}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--recognition" aria-labelledby="recognition-title">
+        <div class="recognition-heading reveal">
+          <p class="section-heading__index">04 / Recognition & exchange</p>
+          <LocalText en="Beyond the paper." zh="论文之外。" as="h2" id="recognition-title" />
+        </div>
+
+        <div class="recognition-grid">
+          <div class="awards-panel reveal">
+            <h3><span class="lang lang--en">Selected awards</span><span class="lang lang--zh">精选荣誉</span></h3>
+            <div class="award-list">
+              {featuredAwards.map((award) => (
+                <article class="award-item">
+                  <span>{award.year}</span>
+                  <div>
+                    <LocalText en={award.title.en} zh={award.title.zh} as="h4" />
+                    <p>{award.event}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div class="exchange-panel reveal">
+            <h3><span class="lang lang--en">Teaching & practice</span><span class="lang lang--zh">教学与实践</span></h3>
+            {practice.map((item) => (
+              <article class="exchange-item">
+                <span>{item.period}</span>
+                <LocalText en={item.title.en} zh={item.title.zh} as="h4" />
+                <LocalText en={item.description.en} zh={item.description.zh} as="p" />
+              </article>
+            ))}
+          </div>
+
+          <div class="talks-panel reveal">
+            <h3><span class="lang lang--en">Invited & public talks</span><span class="lang lang--zh">学术与科普报告</span></h3>
+            <div class="talk-list">
+              {talks.map((item) => (
+                <article class="talk-item">
+                  <span>{item.period}</span>
+                  <div>
+                    <LocalText en={item.title.en} zh={item.title.zh} as="h4" />
+                    <LocalText en={item.description.en} zh={item.description.zh} as="p" />
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div class="service-panel reveal">
+            <h3><span class="lang lang--en">Academic & community service</span><span class="lang lang--zh">学术与社会服务</span></h3>
+            <ul>
+              {profile.service.map((item) => <li><LocalText en={item.en} zh={item.zh} /></li>)}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--news" id="news" aria-labelledby="news-title">
+        <div class="news-intro reveal">
+          <p class="section-heading__index">05 / Latest signals</p>
+          <LocalText en="Notes from the lab." zh="研究现场的新消息。" as="h2" id="news-title" />
+          <LocalText
+            en="Selected publications, awards, and research milestones."
+            zh="精选论文、获奖与研究节点。"
+            as="p"
+          />
+        </div>
+        <div class="news-list reveal">
+          {profile.news.map((item) => (
+            <article class="news-item">
+              <span class="news-item__date">{item.date}</span>
+              <span class="news-item__kind">{item.kind}</span>
+              <LocalText en={item.title.en} zh={item.title.zh} as="h3" />
+              {item.url ? <a href={item.url} target="_blank" rel="noreferrer" aria-label={`Read ${item.title.en}`}>↗</a> : <span aria-hidden="true">•</span>}
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__lead">
+        <p class="eyebrow"><span class="lang lang--en">Let’s compare notes</span><span class="lang lang--zh">欢迎交流</span></p>
+        <LocalText en="Interested in minds—human or machine?" zh="也对人类或机器的心智感兴趣？" as="h2" />
+        <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
+      </div>
+      <div class="site-footer__links">
+        <a href={profile.links.scholar} target="_blank" rel="noreferrer">Scholar ↗</a>
+        <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href={profile.links.orcid} target="_blank" rel="noreferrer">ORCID ↗</a>
+        <a href={profile.links.cv} target="_blank">CV ↓</a>
+        <a href="/update/"><span class="lang lang--en">Update information</span><span class="lang lang--zh">更新资料</span> ↗</a>
+      </div>
+      <div class="site-footer__base">
+        <p>© {new Date().getFullYear()} Ming Wang / 王明</p>
+        <p><span class="lang lang--en">Built as a living research archive.</span><span class="lang lang--zh">一份持续生长的研究档案。</span></p>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const languageToggle = document.querySelector<HTMLButtonElement>("[data-language-toggle]");
+
+    function setLanguage(language: "en" | "zh") {
+      root.dataset.language = language;
+      root.lang = language === "zh" ? "zh-CN" : "en";
+      if (languageToggle) {
+        languageToggle.setAttribute("aria-pressed", String(language === "zh"));
+        languageToggle.setAttribute("aria-label", language === "zh" ? "Switch to English" : "切换为中文");
+      }
+      try {
+        localStorage.setItem("ming-wang-site-language", language);
+      } catch {
+        // The preference is optional when storage is unavailable.
+      }
+    }
+
+    let storedLanguage: "en" | "zh" = "en";
+    try {
+      storedLanguage = localStorage.getItem("ming-wang-site-language") === "zh" ? "zh" : "en";
+    } catch {
+      storedLanguage = "en";
+    }
+    setLanguage(storedLanguage);
+    languageToggle?.addEventListener("click", () => {
+      setLanguage(root.dataset.language === "zh" ? "en" : "zh");
+    });
+
+    const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-publication-filter]"));
+    const publicationCards = Array.from(document.querySelectorAll<HTMLElement>("[data-publication]"));
+    const publicationCount = document.querySelector<HTMLElement>("[data-publication-count]");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.publicationFilter ?? "all";
+        let shown = 0;
+        filterButtons.forEach((candidate) => {
+          const active = candidate === button;
+          candidate.classList.toggle("is-active", active);
+          candidate.setAttribute("aria-pressed", String(active));
+        });
+
+        publicationCards.forEach((card) => {
+          const category = card.dataset.category;
+          const status = card.dataset.status;
+          const visible =
+            filter === "all" ||
+            (filter === "author" && (category === "first" || category === "cofirst")) ||
+            (filter === "published" && status === "published") ||
+            (filter === "working" && category === "working");
+          card.hidden = !visible;
+          if (visible) shown += 1;
+        });
+        if (publicationCount) publicationCount.textContent = String(shown);
+      });
+    });
+
+    const nav = document.querySelector<HTMLElement>("[data-site-nav]");
+    const updateNav = () => nav?.classList.toggle("is-scrolled", window.scrollY > 24);
+    updateNav();
+    window.addEventListener("scroll", updateNav, { passive: true });
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reveals = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      reveals.forEach((element) => element.classList.add("is-visible"));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: "0px 0px -8%", threshold: 0.08 },
+      );
+      reveals.forEach((element) => observer.observe(element));
+    }
+  </script>
+</BaseLayout>
