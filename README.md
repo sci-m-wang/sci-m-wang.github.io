@@ -7,7 +7,7 @@ A from-scratch academic homepage for [sci-m-wang.github.io](https://sci-m-wang.g
 ## What is included
 
 - Responsive bilingual interface (English / 中文)
-- Editorial academic visual system with accessible, reduced-motion-aware interaction
+- Restrained academic visual system with accessible, reduced-motion-aware interaction
 - Filterable publication archive with per-paper citation counts
 - Weekly citation refresh through GitHub Actions
 - GitHub Pages deployment workflow
@@ -40,6 +40,8 @@ The site intentionally keeps content separate from layout code:
 
 Stable `id` fields are used by the protected edit workflow. Do not rename an existing ID unless all references are updated.
 
+The language switch controls interface and narrative copy. Formal records keep their official wording: publication titles are stored as one `title`, and funding records use one `displayTitle`, so these names do not change with the site language.
+
 ## Protected browser editor
 
 The public `/update/` route contains a direct, browser-based editor for:
@@ -49,13 +51,17 @@ The public `/update/` route contains a direct, browser-based editor for:
 3. Adding and editing news or media coverage
 4. Editing core profile copy and selected metrics
 
-The editor uses a GitHub fine-grained personal access token restricted to this repository with only **Contents: Read and write** permission.
+The editor uses a small client-side encrypted vault. During one-time setup, a GitHub fine-grained personal access token restricted to this repository with only **Contents: Read and write** permission is encrypted with the chosen homepage password.
 
-- GitHub verifies the token, repository owner, and write permission before the editor opens.
-- The token is held only in JavaScript memory. It is never written to the repository, local storage, session storage, cookies, logs, or analytics, and is cleared on refresh, navigation, or logout.
+- The repository stores only PBKDF2 parameters and AES-256-GCM ciphertext in `public/admin-vault.json`; the password is not stored.
+- On later visits, the password decrypts the token locally. The plaintext token is held only in page memory and is cleared on refresh, navigation, lock, or logout.
+- GitHub verifies the decrypted token, repository owner, and write permission before the editor opens.
+- The unlocked editor includes a change-password action that re-encrypts the same token and commits a new vault ciphertext.
 - Each save performs a remote SHA check to prevent overwriting a newer version, then creates one traceable commit on `master`.
-- Content Security Policy restricts editor network requests to `api.github.com`.
+- Content Security Policy restricts editor network requests to the site itself and `api.github.com`.
 - The owner-only GitHub Actions forms remain available in the repository as a fallback maintenance path.
+
+Because the encrypted vault is stored in a public repository, the password should not be reused for other accounts. Revoke the fine-grained token from GitHub settings if the password may have leaked.
 
 ## Citation updates
 

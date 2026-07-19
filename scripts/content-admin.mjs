@@ -71,14 +71,16 @@ if (operation === "add-publication") {
   await writeJson(publicationsPath, publications);
 } else if (operation === "add-funding") {
   const profile = await readJson(profilePath);
-  const titleEn = required("TITLE_EN");
-  const id = optional("ID") || slugify(titleEn);
+  const displayTitle = required("DISPLAY_TITLE");
+  const id = required("ID");
+  if (!/^[a-z0-9][a-z0-9-]*$/.test(id)) throw new Error("ID must contain only lowercase letters, numbers, and hyphens.");
   assertUniqueId(profile.funding, id);
 
   profile.funding.unshift({
     id,
     role: { en: required("ROLE_EN"), zh: required("ROLE_ZH") },
-    title: { en: titleEn, zh: required("TITLE_ZH") },
+    displayTitle,
+    title: { en: displayTitle, zh: displayTitle },
     funder: required("FUNDER"),
     amount: optional("AMOUNT"),
     period: required("PERIOD"),

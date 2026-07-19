@@ -2,6 +2,9 @@ const OWNER = "sci-m-wang";
 const REPOSITORY = "sci-m-wang.github.io";
 const BRANCH = "master";
 const API_ROOT = "https://api.github.com";
+const VAULT_PATH = "public/admin-vault.json";
+const VAULT_AAD = "ming-wang-homepage-admin:v1";
+const KDF_ITERATIONS = 650000;
 const FILES = {
   publications: "src/data/publications.json",
   profile: "src/data/profile.json",
@@ -17,13 +20,27 @@ const state = {
   currentIndex: null,
   creating: false,
   search: "",
+  vault: null,
+  vaultSha: "",
+  dirty: false,
+  formBaseline: "",
 };
 
 const byId = (id) => document.getElementById(id);
 const authPanel = byId("auth-panel");
-const authForm = byId("auth-form");
-const tokenInput = byId("github-token");
-const connectButton = byId("connect-button");
+const loginForm = byId("login-form");
+const setupForm = byId("setup-form");
+const passwordInput = byId("vault-password");
+const unlockButton = byId("unlock-button");
+const setupTokenInput = byId("setup-token");
+const setupPasswordInput = byId("setup-password");
+const setupPasswordConfirmInput = byId("setup-password-confirm");
+const setupButton = byId("setup-button");
+const authKicker = byId("auth-kicker");
+const authTitle = byId("auth-title");
+const authCopyEn = byId("auth-copy-en");
+const authCopyZh = byId("auth-copy-zh");
+const vaultStatus = byId("vault-status");
 const editorPanel = byId("editor-panel");
 const alertBox = byId("portal-alert");
 const accountName = byId("account-name");
@@ -41,6 +58,23 @@ const savePath = byId("save-path");
 const formFeedback = byId("form-feedback");
 const saveButton = byId("save-button");
 const cancelEditButton = byId("cancel-edit-button");
+const dirtyStatus = byId("dirty-status");
+const publishProgress = byId("publish-progress");
+const publishTitle = byId("publish-title");
+const publishCopy = byId("publish-copy");
+const publishLink = byId("publish-link");
+const saveDialog = byId("save-dialog");
+const saveDialogSummary = byId("save-dialog-summary");
+const saveDialogChanges = byId("save-dialog-changes");
+const changePasswordButton = byId("change-password-button");
+const passwordDialog = byId("password-dialog");
+const passwordForm = byId("password-form");
+const currentPasswordInput = byId("current-password");
+const newPasswordInput = byId("new-password");
+const newPasswordConfirmInput = byId("new-password-confirm");
+const passwordFeedback = byId("password-feedback");
+const passwordSaveButton = byId("password-save-button");
+const passwordCancelButton = byId("password-cancel-button");
 
 const sectionConfigs = {
   publications: {
@@ -119,18 +153,17 @@ const sectionConfigs = {
     fields: [
       { key: "id", label: "稳定 ID", hint: "小写英文、数字与连字符", required: true },
       { key: "period", label: "项目周期", hint: "例如 2026 — Present", required: true },
-      { key: "title.en", label: "英文项目名称", required: true, wide: true },
-      { key: "title.zh", label: "中文项目名称", required: true, wide: true },
+      { key: "displayTitle", label: "正式项目名称", hint: "按项目正式使用的语言填写，不随页面语言切换", required: true, wide: true },
       { key: "role.en", label: "英文角色", required: true },
       { key: "role.zh", label: "中文角色", required: true },
       { key: "funder", label: "资助方", required: true, wide: true },
       { key: "amount", label: "金额", hint: "可留空，例如 S$70,000", wide: true },
     ],
     create() {
-      return { id: "", role: { en: "", zh: "" }, title: { en: "", zh: "" }, funder: "", amount: "", period: "" };
+      return { id: "", role: { en: "", zh: "" }, displayTitle: "", title: { en: "", zh: "" }, funder: "", amount: "", period: "" };
     },
     display(item) {
-      return { title: item.title?.zh || item.title?.en || "Untitled funding", meta: `${item.role?.zh || item.role?.en || "Funding"} · ${item.period || "—"}` };
+      return { title: item.displayTitle || item.title?.zh || item.title?.en || "Untitled funding", meta: `${item.role?.zh || item.role?.en || "Funding"} · ${item.period || "—"}` };
     },
   },
   news: {
@@ -228,6 +261,102 @@ function hideAlert() {
   alertBox.replaceChildren();
 }
 
+function base64UrlEncode(bytes) {
+  let binary = "";
+  const chunkSize = 0x8000;
+  for (let index = 0; index < bytes.length; index += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(index, index + chunkSize));
+  }
+  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
+}
+
+function base64UrlDecode(value) {
+  const normalized = value.replace(/-/g, "+").replace(/_/g, "/");
+  const padded = normalized.padEnd(Math.ceil(normalized.length / 4) * 4, "=");
+  return Uint8Array.from(atob(padded), (character) => character.charCodeAt(0));
+}
+
+async function deriveVaultKey(password, salt, iterations) {
+  const material = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(password),
+    "PBKDF2",
+    false,
+    ["deriveKey"],
+  );
+  return crypto.subtle.deriveKey(
+    { name: "PBKDF2", hash: "SHA-256", salt, iterations },
+    material,
+    { name: "AES-GCM", length: 256 },
+    false,
+    ["encrypt", "decrypt"],
+  );
+}
+
+function validateVaultShape(vault) {
+  return Boolean(
+    vault
+      && vault.version === 1
+      && vault.cipher === "AES-256-GCM"
+      && vault.kdf?.name === "PBKDF2"
+      && vault.kdf?.hash === "SHA-256"
+      && Number.isInteger(vault.kdf?.iterations)
+      && vault.kdf.iterations >= 100000
+      && typeof vault.kdf?.salt === "string"
+      && typeof vault.iv === "string"
+      && typeof vault.ciphertext === "string",
+  );
+}
+
+async function encryptToken(token, password) {
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const key = await deriveVaultKey(password, salt, KDF_ITERATIONS);
+  const payload = new TextEncoder().encode(JSON.stringify({
+    kind: "github-token",
+    owner: OWNER,
+    repository: REPOSITORY,
+    token,
+    encryptedAt: new Date().toISOString(),
+  }));
+  const ciphertext = await crypto.subtle.encrypt(
+    { name: "AES-GCM", iv, additionalData: new TextEncoder().encode(VAULT_AAD) },
+    key,
+    payload,
+  );
+  return {
+    version: 1,
+    cipher: "AES-256-GCM",
+    kdf: { name: "PBKDF2", hash: "SHA-256", iterations: KDF_ITERATIONS, salt: base64UrlEncode(salt) },
+    iv: base64UrlEncode(iv),
+    ciphertext: base64UrlEncode(new Uint8Array(ciphertext)),
+    updatedAt: new Date().toISOString(),
+  };
+}
+
+async function decryptToken(vault, password) {
+  if (!validateVaultShape(vault)) throw new Error("加密保险箱格式无效。请查看提交记录或重新初始化。");
+  try {
+    const key = await deriveVaultKey(password, base64UrlDecode(vault.kdf.salt), vault.kdf.iterations);
+    const plaintext = await crypto.subtle.decrypt(
+      {
+        name: "AES-GCM",
+        iv: base64UrlDecode(vault.iv),
+        additionalData: new TextEncoder().encode(VAULT_AAD),
+      },
+      key,
+      base64UrlDecode(vault.ciphertext),
+    );
+    const payload = JSON.parse(new TextDecoder().decode(plaintext));
+    if (payload.kind !== "github-token" || payload.owner !== OWNER || payload.repository !== REPOSITORY || typeof payload.token !== "string") {
+      throw new Error("Invalid vault payload.");
+    }
+    return payload.token;
+  } catch {
+    throw new Error("密码不正确，或保险箱内容已损坏。");
+  }
+}
+
 async function githubApi(path, options = {}) {
   if (!state.token) throw new Error("请先连接 GitHub。/ Connect GitHub first.");
   const response = await fetch(`${API_ROOT}${path}`, {
@@ -252,7 +381,9 @@ async function githubApi(path, options = {}) {
     if (response.status === 401) throw new Error(`Token 无效或已过期。${detail}`);
     if (response.status === 403) throw new Error(`Token 没有写入权限或触发了 GitHub 限制。${detail}`);
     if (response.status === 409) throw new Error("远端文件刚刚发生变化，请重新载入后再保存。");
-    throw new Error(`GitHub 请求失败（${response.status}）。${detail}`);
+    const error = new Error(`GitHub 请求失败（${response.status}）。${detail}`);
+    error.status = response.status;
+    throw error;
   }
 
   return payload;
@@ -272,6 +403,56 @@ function encodeBase64Utf8(value) {
     binary += String.fromCharCode(...bytes.subarray(index, index + chunkSize));
   }
   return btoa(binary);
+}
+
+async function loadVault() {
+  const response = await fetch(`${API_ROOT}/repos/${OWNER}/${REPOSITORY}/contents/${VAULT_PATH}?ref=${BRANCH}`, {
+    headers: {
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+    cache: "no-store",
+  });
+  if (response.status === 404) return null;
+  if (!response.ok) throw new Error("暂时无法检查加密保险箱，请稍后刷新页面。");
+  const payload = await response.json();
+  if (Array.isArray(payload) || !payload?.content || !payload?.sha) throw new Error("GitHub 返回了无法识别的保险箱文件。");
+  const vault = JSON.parse(decodeBase64Utf8(payload.content));
+  if (!validateVaultShape(vault)) throw new Error("加密保险箱格式无效。请从提交记录恢复，或删除后重新初始化。");
+  state.vault = vault;
+  state.vaultSha = payload.sha;
+  return vault;
+}
+
+async function saveVault(vault, message, existingSha = "") {
+  const body = {
+    message,
+    content: encodeBase64Utf8(`${JSON.stringify(vault, null, 2)}\n`),
+    branch: BRANCH,
+    ...(existingSha ? { sha: existingSha } : {}),
+  };
+  const payload = await githubApi(`/repos/${OWNER}/${REPOSITORY}/contents/${VAULT_PATH}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  state.vault = vault;
+  state.vaultSha = payload.content.sha;
+  return { commitUrl: payload.commit.html_url, commitSha: payload.commit.sha };
+}
+
+async function validateRepositoryAccess() {
+  const [user, repository] = await Promise.all([
+    githubApi("/user"),
+    githubApi(`/repos/${OWNER}/${REPOSITORY}`),
+  ]);
+  if (user.login.toLowerCase() !== OWNER.toLowerCase()) {
+    throw new Error(`当前凭证属于 ${user.login}，只有 ${OWNER} 可以进入编辑器。`);
+  }
+  if (!repository.permissions?.push && !repository.permissions?.admin) {
+    throw new Error("该凭证没有此仓库的 Contents 写入权限。");
+  }
+  return user;
 }
 
 async function loadDocument(documentKey) {
@@ -313,7 +494,7 @@ async function saveDocument(documentKey, nextDocument, message) {
 
   state.documents[documentKey] = nextDocument;
   state.shas[documentKey] = payload.content.sha;
-  return payload.commit.html_url;
+  return { commitUrl: payload.commit.html_url, commitSha: payload.commit.sha };
 }
 
 function getPath(object, path) {
@@ -398,15 +579,29 @@ function renderFields(item) {
   for (const field of currentConfig().fields) formFields.append(createField(field, item));
 }
 
-function closeForm() {
+function setDirty(dirty) {
+  state.dirty = dirty;
+  dirtyStatus.dataset.dirty = String(dirty);
+  dirtyStatus.textContent = dirty ? "有未保存修改" : "所有修改已保存";
+}
+
+function confirmDiscard() {
+  return !state.dirty || window.confirm("当前有尚未保存的修改，确定要放弃吗？");
+}
+
+function closeForm(force = false) {
+  if (!force && !confirmDiscard()) return false;
   state.currentIndex = null;
   state.creating = false;
   contentForm.hidden = true;
   emptyState.hidden = false;
+  setDirty(false);
   renderList();
+  return true;
 }
 
 function openItem(index) {
+  if (!confirmDiscard()) return;
   const item = structuredClone(getItems()[index]);
   state.currentIndex = index;
   state.creating = false;
@@ -418,11 +613,13 @@ function openItem(index) {
   savePath.textContent = `${FILES[currentConfig().document]} → ${BRANCH}`;
   formFeedback.textContent = "检查必填项后即可发布。";
   renderFields(item);
+  setDirty(false);
   renderList();
   contentForm.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
 function createItem() {
+  if (!confirmDiscard()) return;
   const config = currentConfig();
   if (!config.addLabel || !config.create) return;
   const item = config.create();
@@ -436,6 +633,7 @@ function createItem() {
   savePath.textContent = `${FILES[config.document]} → ${BRANCH}`;
   formFeedback.textContent = "新增条目会追加到当前列表，并触发主页重新部署。";
   renderFields(item);
+  setDirty(false);
   renderList();
   contentForm.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
@@ -478,6 +676,7 @@ function renderList() {
 }
 
 function switchSection(section) {
+  if (section !== state.section && !confirmDiscard()) return;
   state.section = section;
   state.search = "";
   searchInput.value = "";
@@ -491,7 +690,7 @@ function switchSection(section) {
   newEntryButton.textContent = config.addLabel ? `＋ ${config.addLabel}` : "";
   searchInput.disabled = !config.searchable;
   searchInput.placeholder = config.searchable ? "输入标题、角色或年份" : "主页信息无需搜索";
-  closeForm();
+  closeForm(true);
   if (section === "profile") openItem(0);
 }
 
@@ -558,83 +757,281 @@ function createNextDocument(item) {
   return nextDocument;
 }
 
-async function connect(event) {
+function formatChangeValue(value) {
+  if (Array.isArray(value)) return value.join(", ") || "—";
+  if (typeof value === "boolean") return value ? "是" : "否";
+  return String(value ?? "—");
+}
+
+function collectChanges(item) {
+  if (state.creating) return [{ label: "操作", before: "—", after: `新增 ${currentConfig().label}` }];
+  const previous = getItems()[state.currentIndex];
+  return currentConfig().fields
+    .map((field) => ({
+      label: field.label,
+      before: formatChangeValue(getPath(previous, field.key)),
+      after: formatChangeValue(getPath(item, field.key)),
+    }))
+    .filter((change) => change.before !== change.after);
+}
+
+function confirmPublish(item, message) {
+  const changes = collectChanges(item);
+  saveDialogSummary.textContent = changes.length
+    ? `${state.creating ? "新增" : "修改"} ${currentConfig().label} · ${message}`
+    : `条目内容没有变化，将只提交说明：${message}`;
+  saveDialogChanges.replaceChildren();
+  for (const change of changes.slice(0, 8)) {
+    const term = document.createElement("dt");
+    term.textContent = change.label;
+    const description = document.createElement("dd");
+    description.textContent = change.before === "—" ? change.after : `${change.before} → ${change.after}`;
+    saveDialogChanges.append(term, description);
+  }
+  if (changes.length > 8) {
+    const more = document.createElement("dd");
+    more.textContent = `另有 ${changes.length - 8} 项修改`;
+    saveDialogChanges.append(more);
+  }
+  saveDialog.returnValue = "cancel";
+  saveDialog.showModal();
+  return new Promise((resolve) => {
+    saveDialog.addEventListener("close", () => resolve(saveDialog.returnValue === "confirm"), { once: true });
+  });
+}
+
+function setPublishSteps(activeStep, failed = false) {
+  const order = ["commit", "build", "live"];
+  const activeIndex = order.indexOf(activeStep);
+  for (const element of publishProgress.querySelectorAll("[data-publish-step]")) {
+    const index = order.indexOf(element.dataset.publishStep);
+    element.classList.toggle("is-complete", index < activeIndex || (!failed && index === activeIndex && activeStep === "live"));
+    element.classList.toggle("is-active", index === activeIndex && !failed);
+    element.classList.toggle("is-error", index === activeIndex && failed);
+  }
+}
+
+function beginPublishProgress(commitUrl) {
+  publishProgress.hidden = false;
+  publishTitle.textContent = "修改已保存";
+  publishCopy.textContent = "GitHub 正在构建新版主页，通常约需 1 分钟。";
+  publishLink.href = commitUrl;
+  publishLink.hidden = false;
+  setPublishSteps("build");
+}
+
+async function trackDeployment(commitSha, commitUrl) {
+  beginPublishProgress(commitUrl);
+  for (let attempt = 0; attempt < 18; attempt += 1) {
+    await new Promise((resolve) => window.setTimeout(resolve, attempt === 0 ? 4000 : 7000));
+    try {
+      const response = await fetch(
+        `${API_ROOT}/repos/${OWNER}/${REPOSITORY}/actions/runs?head_sha=${commitSha}&per_page=10`,
+        { headers: { Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" }, cache: "no-store" },
+      );
+      if (!response.ok) continue;
+      const payload = await response.json();
+      const run = payload.workflow_runs?.find((candidate) => candidate.name === "Deploy academic homepage") || payload.workflow_runs?.[0];
+      if (!run) continue;
+      publishLink.href = run.html_url || commitUrl;
+      if (run.status !== "completed") {
+        publishTitle.textContent = "正在部署主页";
+        publishCopy.textContent = "内容已提交，GitHub 正在运行构建。";
+        setPublishSteps("build");
+        continue;
+      }
+      if (run.conclusion === "success") {
+        publishTitle.textContent = "主页已更新";
+        publishCopy.textContent = "新版内容已经上线，可以打开主页检查。";
+        publishLink.href = "/";
+        publishLink.textContent = "查看主页 ↗";
+        setPublishSteps("live");
+      } else {
+        publishTitle.textContent = "部署没有完成";
+        publishCopy.textContent = "内容已经保存，但构建需要检查。";
+        setPublishSteps("build", true);
+      }
+      return;
+    } catch {
+      // Keep polling; a temporary status failure should not affect the saved commit.
+    }
+  }
+  publishTitle.textContent = "内容已保存";
+  publishCopy.textContent = "部署仍在后台进行，可稍后刷新主页查看。";
+}
+
+function setAuthMode(mode) {
+  const isSetup = mode === "setup";
+  loginForm.hidden = isSetup;
+  setupForm.hidden = !isSetup;
+  vaultStatus.textContent = isSetup ? "尚未初始化" : "保险箱已加密";
+  vaultStatus.dataset.ready = String(!isSetup);
+  authKicker.textContent = isSetup ? "01 · First-time setup / 首次设置" : "01 · Unlock / 解锁";
+  authTitle.textContent = isSetup ? "Create your private key." : "Welcome back.";
+  authCopyEn.textContent = isSetup
+    ? "One short setup now; password-only access from the next visit."
+    : "Enter your homepage password. Decryption happens locally in this browser.";
+  authCopyZh.textContent = isSetup
+    ? "只需完成一次初始化，以后进入本页只输入固定密码。"
+    : "输入主页管理密码即可进入。解密只发生在当前浏览器中。";
+  window.setTimeout(() => (isSetup ? setupTokenInput : passwordInput).focus(), 0);
+}
+
+function renderAccount(user) {
+  accountName.textContent = user.login;
+  const avatar = document.querySelector(".portal-account__avatar");
+  if (avatar && user.avatar_url) {
+    const image = document.createElement("img");
+    image.src = user.avatar_url;
+    image.alt = "";
+    image.referrerPolicy = "no-referrer";
+    avatar.replaceChildren(image);
+  }
+}
+
+async function enterEditor(user, message) {
+  await loadAllDocuments();
+  state.user = user;
+  renderAccount(user);
+  authPanel.hidden = true;
+  editorPanel.hidden = false;
+  setDirty(false);
+  showAlert(message, "success");
+  switchSection("publications");
+}
+
+async function initializeAuth() {
+  vaultStatus.textContent = "正在检查保险箱…";
+  try {
+    const vault = await loadVault();
+    setAuthMode(vault ? "login" : "setup");
+  } catch (error) {
+    vaultStatus.textContent = "暂时不可用";
+    showAlert(error.message || "无法检查保险箱。", "error");
+  }
+}
+
+async function unlock(event) {
   event.preventDefault();
   hideAlert();
-  const candidateToken = tokenInput.value.trim();
-  if (!candidateToken) return;
-
-  state.token = candidateToken;
-  connectButton.disabled = true;
-  connectButton.textContent = "正在验证…";
-
+  const password = passwordInput.value;
+  if (!password || !state.vault) return;
+  unlockButton.disabled = true;
+  unlockButton.textContent = "正在本地解密…";
   try {
-    const [user, repository] = await Promise.all([
-      githubApi("/user"),
-      githubApi(`/repos/${OWNER}/${REPOSITORY}`),
-    ]);
-    if (user.login.toLowerCase() !== OWNER.toLowerCase()) {
-      throw new Error(`当前 Token 属于 ${user.login}，只有 ${OWNER} 可以进入编辑器。`);
-    }
-    if (!repository.permissions?.push && !repository.permissions?.admin) {
-      throw new Error("该 Token 没有此仓库的 Contents 写入权限。");
-    }
-
-    await loadAllDocuments();
-    state.user = user;
-    tokenInput.value = "";
-    accountName.textContent = user.login;
-    const avatar = document.querySelector(".portal-account__avatar");
-    if (avatar && user.avatar_url) {
-      const image = document.createElement("img");
-      image.src = user.avatar_url;
-      image.alt = "";
-      image.referrerPolicy = "no-referrer";
-      avatar.replaceChildren(image);
-    }
-    authPanel.hidden = true;
-    editorPanel.hidden = false;
-    showAlert("身份与仓库权限验证成功。现在可以直接编辑并发布。", "success");
-    switchSection("publications");
+    state.token = await decryptToken(state.vault, password);
+    const user = await validateRepositoryAccess();
+    passwordInput.value = "";
+    await enterEditor(user, "保险箱已解锁。现在可以直接编辑并发布。");
   } catch (error) {
     state.token = "";
-    showAlert(error.message || "无法连接 GitHub。", "error");
+    showAlert(error.message || "无法解锁编辑器。", "error");
+    passwordInput.select();
   } finally {
-    connectButton.disabled = false;
-    connectButton.textContent = "连接并打开编辑器";
+    unlockButton.disabled = false;
+    unlockButton.textContent = "解锁编辑器";
+  }
+}
+
+async function setupVault(event) {
+  event.preventDefault();
+  hideAlert();
+  const token = setupTokenInput.value.trim();
+  const password = setupPasswordInput.value;
+  const confirmation = setupPasswordConfirmInput.value;
+  if (password.length < 8) return showAlert("管理密码至少需要 8 个字符。", "error");
+  if (password !== confirmation) return showAlert("两次输入的密码不一致。", "error");
+  setupButton.disabled = true;
+  setupButton.textContent = "正在验证并加密…";
+  state.token = token;
+  try {
+    const user = await validateRepositoryAccess();
+    try {
+      await githubApi(`/repos/${OWNER}/${REPOSITORY}/contents/${VAULT_PATH}?ref=${BRANCH}`);
+      throw new Error("保险箱已经初始化，请刷新页面后直接输入密码。");
+    } catch (error) {
+      if (error.status !== 404) throw error;
+    }
+    const vault = await encryptToken(token, password);
+    const commit = await saveVault(vault, "security: initialize encrypted homepage editor");
+    setupTokenInput.value = "";
+    setupPasswordInput.value = "";
+    setupPasswordConfirmInput.value = "";
+    await enterEditor(user, "初始化完成。以后进入本页只需要输入管理密码。");
+    void trackDeployment(commit.commitSha, commit.commitUrl);
+  } catch (error) {
+    state.token = "";
+    showAlert(error.message || "无法完成初始化。", "error");
+  } finally {
+    setupButton.disabled = false;
+    setupButton.textContent = "加密并启用编辑器";
   }
 }
 
 function logout() {
+  if (!confirmDiscard()) return;
   state.token = "";
   state.user = null;
   state.documents = { publications: null, profile: null };
   state.shas = { publications: "", profile: "" };
-  tokenInput.value = "";
+  state.currentIndex = null;
+  state.creating = false;
+  setDirty(false);
+  passwordInput.value = "";
   contentForm.reset();
+  contentForm.hidden = true;
+  emptyState.hidden = false;
   editorPanel.hidden = true;
   authPanel.hidden = false;
-  closeForm();
-  showAlert("已退出编辑，Token 已从页面内存清除。", "info");
-  tokenInput.focus();
+  setAuthMode("login");
+  showAlert("编辑器已锁定，解密后的凭证已从页面内存清除。", "info");
+}
+
+async function changePassword(event) {
+  event.preventDefault();
+  passwordFeedback.textContent = "";
+  const currentPassword = currentPasswordInput.value;
+  const newPassword = newPasswordInput.value;
+  if (newPassword.length < 8) return (passwordFeedback.textContent = "新密码至少需要 8 个字符。");
+  if (newPassword !== newPasswordConfirmInput.value) return (passwordFeedback.textContent = "两次输入的新密码不一致。");
+  passwordSaveButton.disabled = true;
+  passwordSaveButton.textContent = "正在重新加密…";
+  try {
+    await loadVault();
+    const decrypted = await decryptToken(state.vault, currentPassword);
+    if (decrypted !== state.token) throw new Error("当前密码不正确。");
+    const nextVault = await encryptToken(state.token, newPassword);
+    const commit = await saveVault(nextVault, "security: change homepage editor password", state.vaultSha);
+    passwordForm.reset();
+    passwordDialog.close();
+    showAlert("管理密码已修改。下次请使用新密码解锁。", "success", commit.commitUrl);
+    void trackDeployment(commit.commitSha, commit.commitUrl);
+  } catch (error) {
+    passwordFeedback.textContent = error.message || "密码修改失败，请稍后重试。";
+  } finally {
+    passwordSaveButton.disabled = false;
+    passwordSaveButton.textContent = "重新加密并保存";
+  }
 }
 
 async function submitContent(event) {
   event.preventDefault();
-  hideAlert();
-  saveButton.disabled = true;
-  saveButton.textContent = "正在保存…";
-  formFeedback.textContent = "正在检查远端版本并创建提交…";
-
   try {
     const item = readFormItem();
     validateItem(item);
     const message = commitMessage.value.trim();
     if (!message) throw new Error("请填写提交说明。");
+    if (!(await confirmPublish(item, message))) return;
+    hideAlert();
+    saveButton.disabled = true;
+    saveButton.textContent = "正在保存…";
+    formFeedback.textContent = "正在检查远端版本并创建提交…";
     const nextDocument = createNextDocument(item);
-    const commitUrl = await saveDocument(currentConfig().document, nextDocument, message);
-    showAlert("保存成功。GitHub 正在重新部署主页，通常约需 1 分钟。", "success", commitUrl);
+    const commit = await saveDocument(currentConfig().document, nextDocument, message);
+    setDirty(false);
+    showAlert("保存成功。GitHub 正在重新部署主页。", "success", commit.commitUrl);
     formFeedback.textContent = "已创建提交并触发主页更新。";
+    void trackDeployment(commit.commitSha, commit.commitUrl);
     renderList();
     if (state.creating) {
       const savedItems = getItems();
@@ -658,15 +1055,17 @@ async function submitContent(event) {
     }
   } finally {
     saveButton.disabled = false;
-    saveButton.textContent = "保存并发布";
+    saveButton.textContent = "检查并发布";
   }
 }
 
-authForm.addEventListener("submit", connect);
+loginForm.addEventListener("submit", unlock);
+setupForm.addEventListener("submit", setupVault);
 logoutButton.addEventListener("click", logout);
 newEntryButton.addEventListener("click", createItem);
-cancelEditButton.addEventListener("click", closeForm);
+cancelEditButton.addEventListener("click", () => closeForm());
 contentForm.addEventListener("submit", submitContent);
+contentForm.addEventListener("input", () => setDirty(true));
 searchInput.addEventListener("input", () => {
   state.search = searchInput.value.trim();
   renderList();
@@ -675,10 +1074,47 @@ document.querySelectorAll(".portal-tab").forEach((tab) => {
   tab.addEventListener("click", () => switchSection(tab.dataset.section));
 });
 
+for (const button of document.querySelectorAll("[data-password-toggle]")) {
+  button.addEventListener("click", () => {
+    const input = byId(button.dataset.passwordToggle);
+    const reveal = input.type === "password";
+    input.type = reveal ? "text" : "password";
+    button.textContent = reveal ? "隐藏" : "显示";
+    button.setAttribute("aria-label", reveal ? "隐藏内容" : "显示内容");
+  });
+}
+
+for (const input of document.querySelectorAll('input[type="password"]')) {
+  input.addEventListener("keyup", (event) => {
+    const hint = input.closest(".portal-field")?.querySelector("[data-caps-hint]");
+    if (hint) hint.hidden = !event.getModifierState("CapsLock");
+  });
+}
+
+changePasswordButton.addEventListener("click", () => {
+  passwordForm.reset();
+  passwordFeedback.textContent = "";
+  passwordDialog.showModal();
+  currentPasswordInput.focus();
+});
+passwordCancelButton.addEventListener("click", () => passwordDialog.close());
+passwordForm.addEventListener("submit", changePassword);
+
+window.addEventListener("beforeunload", (event) => {
+  if (!state.dirty) return;
+  event.preventDefault();
+  event.returnValue = "";
+});
+
 window.addEventListener("pagehide", () => {
   state.token = "";
 });
 
 window.addEventListener("pageshow", (event) => {
-  if (event.persisted && !editorPanel.hidden) logout();
+  if (event.persisted && !editorPanel.hidden) {
+    setDirty(false);
+    logout();
+  }
 });
+
+void initializeAuth();

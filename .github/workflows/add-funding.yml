@@ -3,6 +3,10 @@ name: Admin · Add funding
 on:
   workflow_dispatch:
     inputs:
+      id:
+        description: "Stable ID, lowercase letters/numbers/hyphens"
+        required: true
+        type: string
       role_en:
         description: "Role in English"
         required: true
@@ -11,12 +15,8 @@ on:
         description: "角色（中文）"
         required: true
         type: string
-      title_en:
-        description: "Project title in English"
-        required: true
-        type: string
-      title_zh:
-        description: "项目名称（中文）"
+      display_title:
+        description: "Official project title (keeps this language on both site modes)"
         required: true
         type: string
       funder:
@@ -52,10 +52,10 @@ jobs:
         run: node scripts/content-admin.mjs
         env:
           CONTENT_OPERATION: add-funding
+          ID: ${{ inputs.id }}
           ROLE_EN: ${{ inputs.role_en }}
           ROLE_ZH: ${{ inputs.role_zh }}
-          TITLE_EN: ${{ inputs.title_en }}
-          TITLE_ZH: ${{ inputs.title_zh }}
+          DISPLAY_TITLE: ${{ inputs.display_title }}
           FUNDER: ${{ inputs.funder }}
           AMOUNT: ${{ inputs.amount }}
           PERIOD: ${{ inputs.period }}

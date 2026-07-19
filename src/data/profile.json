@@ -181,6 +181,7 @@
     {
       "id": "rwi-reflection",
       "role": { "en": "Technical Lead", "zh": "技术负责人" },
+      "displayTitle": "Building Reflection Competencies for Human–AI Collaboration: A Multi-Agent Training System",
       "title": { "en": "Building Reflection Competencies for Human–AI Collaboration: A Multi-Agent Training System", "zh": "面向人机协作反思能力的多智能体训练系统" },
       "funder": "Resilient Workforces Institute Grant",
       "amount": "S$70,000",
@@ -189,6 +190,7 @@
     {
       "id": "fire-investigation",
       "role": { "en": "Project Lead (Contracted)", "zh": "项目负责人（合同制）" },
+      "displayTitle": "基于大型语言模型的火灾调查数字化智能案卷管理系统",
       "title": { "en": "LLM-based Digital Case-file Management for Fire Investigation", "zh": "基于大型语言模型的火灾调查数字化智能案卷管理系统" },
       "funder": "中央公益性研究所基本科研业务费项目",
       "amount": "",
@@ -197,6 +199,7 @@
     {
       "id": "digital-persona",
       "role": { "en": "Project Lead (Contracted)", "zh": "项目负责人（合同制）" },
+      "displayTitle": "数字角色模拟框架（多层角色扮演框架）",
       "title": { "en": "Digital Character Simulation with a Multi-layer Role-playing Framework", "zh": "数字角色模拟框架（多层角色扮演框架）" },
       "funder": "深圳橙果视界科技有限公司研究项目",
       "amount": "",

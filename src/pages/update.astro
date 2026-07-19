@@ -1,34 +1,34 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const tokenUrl = "https://github.com/settings/personal-access-tokens/new?name=Academic%20Homepage%20Editor&description=Edit%20sci-m-wang.github.io%20content&target_name=sci-m-wang&expires_in=90&contents=write";
+const tokenUrl = "https://github.com/settings/personal-access-tokens/new?name=Academic%20Homepage%20Editor&description=Encrypted%20credential%20for%20sci-m-wang.github.io&target_name=sci-m-wang&expires_in=365&contents=write";
 ---
 
 <BaseLayout
   title="Edit homepage · Ming Wang"
-  description="Private, browser-based content editor for Ming Wang's academic homepage."
+  description="Private, password-unlocked content editor for Ming Wang's academic homepage."
   noindex={true}
   secureEditor={true}
 >
   <main class="update-page portal-page" id="main">
     <nav class="update-page__nav" aria-label="Homepage editor navigation">
       <a href="/">← Ming Wang / 王明</a>
-      <span>OWNER EDITOR · DIRECT PUBLISH</span>
+      <span>OWNER EDITOR · ENCRYPTED VAULT</span>
     </nav>
 
     <section class="update-page__hero portal-hero">
       <p class="section-heading__index">Private content desk / 私人内容工作台</p>
       <div>
-        <h1>Edit here.<br />Publish once.</h1>
-        <p>Review existing records, add new work, and publish directly from this page. No GitHub Actions forms are required.</p>
-        <p>在本页直接查看、添加与修改内容，确认后即可发布，不再需要操作 GitHub Actions 表单。</p>
+        <h1>One password.<br />Your whole archive.</h1>
+        <p>Unlock, edit, review, and publish without leaving this page.</p>
+        <p>输入固定密码即可解锁、编辑、确认并发布，不需要每次寻找 GitHub Token。</p>
 
         <aside class="security-note" aria-label="Security model">
-          <span class="security-note__mark">✓</span>
+          <span class="security-note__mark">⌁</span>
           <div>
-            <h2>GitHub remains the authorization authority.</h2>
-            <p>The editor accepts only the repository owner's fine-grained token with write access to this repository. The token stays in page memory, is sent only to GitHub's API, and disappears when the page is refreshed or closed.</p>
-            <p>编辑器只接受仓库所有者、且仅对本仓库有写权限的细粒度 Token。Token 仅保存在当前页面内存中，只发送给 GitHub API，刷新或关闭页面即清除。</p>
+            <h2>Your password never leaves this browser.</h2>
+            <p>A repository-only GitHub credential is encrypted with AES-256-GCM. Your password derives the decryption key locally; the plaintext credential lives only in this tab and is cleared when you leave.</p>
+            <p>仅限本仓库的 GitHub 凭证会以 AES-256-GCM 加密保存。密码只在本机派生解密密钥，明文凭证仅存在于当前标签页，离开即清除。</p>
           </div>
         </aside>
       </div>
@@ -36,39 +36,86 @@ const tokenUrl = "https://github.com/settings/personal-access-tokens/new?name=Ac
 
     <div class="portal-alert" id="portal-alert" role="status" aria-live="polite" hidden></div>
 
-    <section class="portal-auth" id="auth-panel" aria-labelledby="auth-title">
+    <section class="portal-auth portal-auth--unlock" id="auth-panel" aria-labelledby="auth-title">
       <div class="portal-auth__intro">
-        <p class="section-heading__index">01 · Verify ownership / 验证身份</p>
-        <h2 id="auth-title">Connect your GitHub account.</h2>
-        <p>Use a fine-grained token restricted to <strong>sci-m-wang/sci-m-wang.github.io</strong> with only <strong>Contents: Read and write</strong>.</p>
-        <p>使用仅限该仓库、且只有 <strong>Contents: Read and write</strong> 权限的细粒度 Token。</p>
+        <div class="portal-auth__eyebrow">
+          <p class="section-heading__index" id="auth-kicker">01 · Unlock / 解锁</p>
+          <span class="portal-vault-status" id="vault-status">正在检查保险箱…</span>
+        </div>
+        <h2 id="auth-title">Welcome back.</h2>
+        <p id="auth-copy-en">Enter your homepage password. Decryption happens locally in this browser.</p>
+        <p id="auth-copy-zh">输入主页管理密码即可进入。解密只发生在当前浏览器中。</p>
       </div>
 
-      <form class="portal-auth__form" id="auth-form" autocomplete="off">
-        <label class="portal-field portal-field--wide" for="github-token">
-          <span>Fine-grained token <small>不会被保存</small></span>
-          <input
-            id="github-token"
-            name="github-token"
-            type="password"
-            placeholder="github_pat_…"
-            autocomplete="off"
-            autocapitalize="none"
-            spellcheck="false"
-            required
-          />
+      <form class="portal-auth__form portal-unlock-form" id="login-form" autocomplete="off" hidden>
+        <label class="portal-field portal-field--wide" for="vault-password">
+          <span>管理密码 <small>Homepage password</small></span>
+          <span class="portal-password-control">
+            <input
+              id="vault-password"
+              name="vault-password"
+              type="password"
+              placeholder="输入固定密码"
+              autocomplete="current-password"
+              autocapitalize="none"
+              spellcheck="false"
+              required
+            />
+            <button type="button" class="portal-password-toggle" data-password-toggle="vault-password" aria-label="显示密码">显示</button>
+          </span>
+          <small class="portal-caps-hint" data-caps-hint hidden>Caps Lock 已开启</small>
         </label>
         <div class="portal-auth__actions">
-          <button class="portal-action portal-action--primary" id="connect-button" type="submit">连接并打开编辑器</button>
+          <button class="portal-action portal-action--primary" id="unlock-button" type="submit">解锁编辑器</button>
+        </div>
+        <p class="portal-privacy-line">密码与解密后的凭证均不会保存到浏览器存储。关闭页面即退出。</p>
+      </form>
+
+      <form class="portal-auth__form portal-setup-form" id="setup-form" autocomplete="off" hidden>
+        <div class="portal-setup-steps" aria-label="Initial setup steps">
+          <span><b>1</b> 创建专用 Token</span><span><b>2</b> 设置固定密码</span><span><b>3</b> 加密并保存</span>
+        </div>
+
+        <label class="portal-field portal-field--wide" for="setup-token">
+          <span>一次性 GitHub Token <small>初始化后不再需要粘贴</small></span>
+          <span class="portal-password-control">
+            <input id="setup-token" type="password" placeholder="github_pat_…" autocomplete="off" autocapitalize="none" spellcheck="false" required />
+            <button type="button" class="portal-password-toggle" data-password-toggle="setup-token" aria-label="显示 Token">显示</button>
+          </span>
+        </label>
+
+        <div class="portal-setup-passwords">
+          <label class="portal-field" for="setup-password">
+            <span>设置管理密码 <small>至少 8 个字符</small></span>
+            <span class="portal-password-control">
+              <input id="setup-password" type="password" minlength="8" maxlength="128" autocomplete="new-password" required />
+              <button type="button" class="portal-password-toggle" data-password-toggle="setup-password" aria-label="显示密码">显示</button>
+            </span>
+            <small class="portal-caps-hint" data-caps-hint hidden>Caps Lock 已开启</small>
+          </label>
+          <label class="portal-field" for="setup-password-confirm">
+            <span>再次输入 <small>Confirm password</small></span>
+            <span class="portal-password-control">
+              <input id="setup-password-confirm" type="password" minlength="8" maxlength="128" autocomplete="new-password" required />
+              <button type="button" class="portal-password-toggle" data-password-toggle="setup-password-confirm" aria-label="显示密码">显示</button>
+            </span>
+          </label>
+        </div>
+
+        <p class="portal-password-advice">至少 8 个字符；建议使用一条不与其他账号共用的密码。</p>
+
+        <div class="portal-auth__actions">
+          <button class="portal-action portal-action--primary" id="setup-button" type="submit">加密并启用编辑器</button>
           <a class="portal-action portal-action--line" href={tokenUrl} target="_blank" rel="noreferrer">创建专用 Token ↗</a>
         </div>
+
         <details class="portal-token-guide">
-          <summary>第一次使用？查看 4 步设置</summary>
+          <summary>Token 权限怎么选？</summary>
           <ol>
-            <li>打开“创建专用 Token”，Resource owner 选择 <strong>sci-m-wang</strong>。</li>
+            <li>Resource owner 选择 <strong>sci-m-wang</strong>。</li>
             <li>Repository access 选择 <strong>Only select repositories</strong>，仅勾选 <strong>sci-m-wang.github.io</strong>。</li>
-            <li>Repository permissions 中仅将 <strong>Contents</strong> 设为 <strong>Read and write</strong>。</li>
-            <li>生成后复制 Token，回到本页粘贴。建议设置 90 天有效期，到期后重新生成。</li>
+            <li>Repository permissions 中只将 <strong>Contents</strong> 设为 <strong>Read and write</strong>。</li>
+            <li>生成后只需在这里使用一次。初始化完成后，仓库中只留下加密密文。</li>
           </ol>
         </details>
       </form>
@@ -78,13 +125,25 @@ const tokenUrl = "https://github.com/settings/personal-access-tokens/new?name=Ac
       <header class="portal-account-bar">
         <div class="portal-account" id="portal-account">
           <span class="portal-account__avatar" aria-hidden="true">MW</span>
-          <span><strong id="account-name">sci-m-wang</strong><small>Verified repository owner</small></span>
+          <span><strong id="account-name">sci-m-wang</strong><small>Encrypted vault unlocked · Session only</small></span>
         </div>
         <div class="portal-account-bar__actions">
+          <span class="portal-dirty-status" id="dirty-status" data-dirty="false">所有修改已保存</span>
           <a href="https://github.com/sci-m-wang/sci-m-wang.github.io/commits/master" target="_blank" rel="noreferrer">提交记录 ↗</a>
-          <button id="logout-button" type="button">退出编辑</button>
+          <button id="change-password-button" type="button">修改密码</button>
+          <button id="logout-button" type="button">锁定编辑器</button>
         </div>
       </header>
+
+      <div class="portal-publish-progress" id="publish-progress" aria-live="polite" hidden>
+        <div><strong id="publish-title">正在发布</strong><span id="publish-copy">GitHub 已收到修改。</span></div>
+        <ol>
+          <li data-publish-step="commit"><span>1</span>已保存</li>
+          <li data-publish-step="build"><span>2</span>正在构建</li>
+          <li data-publish-step="live"><span>3</span>主页上线</li>
+        </ol>
+        <a id="publish-link" href="#" target="_blank" rel="noreferrer" hidden>查看 GitHub ↗</a>
+      </div>
 
       <div class="portal-editor__heading">
         <div>
@@ -142,18 +201,56 @@ const tokenUrl = "https://github.com/settings/personal-access-tokens/new?name=Ac
 
             <footer class="portal-content-form__footer">
               <p id="form-feedback" aria-live="polite">检查必填项后即可发布。</p>
-              <button class="portal-action portal-action--primary" id="save-button" type="submit">保存并发布</button>
+              <button class="portal-action portal-action--primary" id="save-button" type="submit">检查并发布</button>
             </footer>
           </form>
         </section>
       </div>
     </section>
 
+    <dialog class="portal-confirm-dialog" id="save-dialog" aria-labelledby="save-dialog-title">
+      <form method="dialog">
+        <p class="section-heading__index">Final check / 发布确认</p>
+        <h2 id="save-dialog-title">Publish these changes?</h2>
+        <p id="save-dialog-summary">请确认本次修改。</p>
+        <dl id="save-dialog-changes"></dl>
+        <div class="portal-confirm-dialog__actions">
+          <button class="portal-action portal-action--line" value="cancel">返回检查</button>
+          <button class="portal-action portal-action--primary" value="confirm">确认保存并发布</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="portal-confirm-dialog portal-password-dialog" id="password-dialog" aria-labelledby="password-dialog-title">
+      <form id="password-form">
+        <p class="section-heading__index">Vault settings / 保险箱设置</p>
+        <h2 id="password-dialog-title">Change homepage password</h2>
+        <p>新密码会重新加密现有凭证，并生成一条可追踪的 Git 提交。</p>
+        <label class="portal-field portal-field--wide" for="current-password">
+          <span>当前密码</span>
+          <input id="current-password" type="password" autocomplete="current-password" required />
+        </label>
+        <label class="portal-field portal-field--wide" for="new-password">
+          <span>新密码 <small>至少 8 个字符</small></span>
+          <input id="new-password" type="password" minlength="8" maxlength="128" autocomplete="new-password" required />
+        </label>
+        <label class="portal-field portal-field--wide" for="new-password-confirm">
+          <span>再次输入新密码</span>
+          <input id="new-password-confirm" type="password" minlength="8" maxlength="128" autocomplete="new-password" required />
+        </label>
+        <p class="portal-dialog-feedback" id="password-feedback" aria-live="polite"></p>
+        <div class="portal-confirm-dialog__actions">
+          <button class="portal-action portal-action--line" id="password-cancel-button" type="button">取消</button>
+          <button class="portal-action portal-action--primary" id="password-save-button" type="submit">重新加密并保存</button>
+        </div>
+      </form>
+    </dialog>
+
     <section class="portal-footnote">
-      <p class="section-heading__index">Security notes / 安全说明</p>
+      <p class="section-heading__index">Practical notes / 使用说明</p>
       <div>
-        <p>Public visitors can see this page but cannot read private credentials or publish changes. GitHub verifies the token, owner identity, repository permission, file version, and commit on every save.</p>
-        <p>普通访客可以看到入口页面，但无法取得凭据或发布修改。每次保存均由 GitHub 核验 Token、所有者身份、仓库权限、文件版本与提交记录。</p>
+        <p>This lightweight vault is intended for personal-site maintenance. Git history remains the recovery path for accidental edits. If the password is forgotten, revoke the old token, delete <code>public/admin-vault.json</code> on GitHub, and refresh this page to initialize again.</p>
+        <p>这个轻量保险箱主要用于个人主页维护；误修改可随时通过 Git 历史恢复。如果忘记密码，撤销旧 Token、在 GitHub 删除 <code>public/admin-vault.json</code>，刷新本页即可重新初始化。</p>
       </div>
     </section>
   </main>

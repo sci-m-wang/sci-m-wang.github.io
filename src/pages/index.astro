@@ -48,48 +48,33 @@ const citationUpdatedAt = publications
 
     <main id="main">
       <section class="hero" id="top" aria-labelledby="hero-title">
-        <div class="hero__grid" aria-hidden="true"></div>
-        <div class="hero__aside reveal">
-          <p class="eyebrow">{profile.kicker.en}</p>
-          <div class="hero__coordinate">
-            <span>01°18′N</span>
-            <span>103°51′E</span>
-          </div>
-          <p class="hero__location">
-            <span class="pulse-dot" aria-hidden="true"></span>
-            <LocalText en="Based in Singapore" zh="现居新加坡" />
-          </p>
-        </div>
-
         <div class="hero__main reveal">
           <p class="hero__role">
             <LocalText en={profile.role.en} zh={profile.role.zh} />
           </p>
-          <h1 id="hero-title">
-            <LocalText en={profile.headline.en} zh={profile.headline.zh} />
-          </h1>
+          <h1 id="hero-title">{profile.name} <span>{profile.nameZh}</span></h1>
+          <p class="hero__headline"><LocalText en={profile.kicker.en} zh={profile.kicker.zh} /></p>
+          <p class="hero__statement"><LocalText en={profile.headline.en} zh={profile.headline.zh} /></p>
           <p class="hero__bio">
             <LocalText en={profile.bio.en} zh={profile.bio.zh} />
           </p>
           <div class="hero__links" aria-label="Profile links">
-            <a class="button button--dark" href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar ↗</a>
+            <a class="button button--dark" href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
             <a class="button button--line" href={profile.links.cv} target="_blank">
               <span class="lang lang--en">Curriculum Vitae ↓</span><span class="lang lang--zh">学术简历 ↓</span>
             </a>
+            <a class="button button--line" href={`mailto:${profile.email}`}>Email</a>
           </div>
         </div>
 
         <div class="hero__portrait-wrap reveal">
-          <div class="portrait-orbit portrait-orbit--one" aria-hidden="true"></div>
-          <div class="portrait-orbit portrait-orbit--two" aria-hidden="true"></div>
           <figure class="hero__portrait">
             <img src="/profile.jpg" alt="Portrait of Ming Wang" width="1024" height="1024" fetchpriority="high" />
             <figcaption>
-              <span class="hero__portrait-name">Ming Wang / 王明</span>
-              <span>SMU × NEU</span>
+              <span>Singapore Management University</span>
+              <span>Northeastern University</span>
             </figcaption>
           </figure>
-          <span class="hero__portrait-note" aria-hidden="true">mind / model / alignment</span>
         </div>
 
         <div class="hero__metrics reveal" aria-label="Academic metrics">
@@ -101,18 +86,13 @@ const citationUpdatedAt = publications
             </div>
           ))}
         </div>
-
-        <a class="hero__scroll" href="#research">
-          <span class="lang lang--en">Explore the research</span><span class="lang lang--zh">探索研究方向</span>
-          <span aria-hidden="true">↓</span>
-        </a>
       </section>
 
       <section class="section section--research" id="research" aria-labelledby="research-title">
         <div class="section-heading reveal">
-          <p class="section-heading__index">01 / Research atlas</p>
+          <p class="section-heading__index">01 / Research</p>
           <div>
-            <LocalText en="Where minds become measurable." zh="让心智变得可测量。" as="h2" id="research-title" />
+            <LocalText en="Research interests" zh="研究方向" as="h2" id="research-title" />
             <LocalText
               en="My work moves between psychological theory and AI systems: not borrowing metaphors from psychology, but building testable computational constructs."
               zh="我的研究往返于心理理论与人工智能系统之间：不是借用心理学隐喻，而是构建可检验的计算结构。"
@@ -136,8 +116,8 @@ const citationUpdatedAt = publications
         </div>
 
         <div class="selected-work__header reveal">
-          <p class="eyebrow"><span class="lang lang--en">Selected research systems</span><span class="lang lang--zh">精选研究系统</span></p>
-          <p>2025—2026</p>
+          <p class="eyebrow"><span class="lang lang--en">Selected projects</span><span class="lang lang--zh">代表性项目</span></p>
+          <p><span class="lang lang--en">Recent work</span><span class="lang lang--zh">近期工作</span></p>
         </div>
         <div class="selected-work">
           {profile.selectedResearch.map((work, index) => (
@@ -162,7 +142,7 @@ const citationUpdatedAt = publications
         <div class="section-heading reveal">
           <p class="section-heading__index">02 / Publications</p>
           <div>
-            <LocalText en="Ideas, evaluated in public." zh="在公开检验中生长的想法。" as="h2" id="publications-title" />
+            <LocalText en="Publications" zh="论文发表" as="h2" id="publications-title" />
             <p class="section-heading__intro publication-source">
               <span class="lang lang--en">Citation counts refresh automatically. Current display: {citationSources}, updated {citationUpdatedAt}.</span>
               <span class="lang lang--zh">引用量支持自动刷新。当前显示：{citationSources}，更新于 {citationUpdatedAt}。</span>
@@ -204,9 +184,9 @@ const citationUpdatedAt = publications
 
       <section class="section section--experience" id="experience" aria-labelledby="experience-title">
         <div class="section-heading reveal">
-          <p class="section-heading__index">03 / Trajectory</p>
+          <p class="section-heading__index">03 / Experience</p>
           <div>
-            <LocalText en="Research is a collective practice." zh="研究是一种集体实践。" as="h2" id="experience-title" />
+            <LocalText en="Education & projects" zh="教育与项目" as="h2" id="experience-title" />
             <LocalText
               en="Training across computer science, psychology-facing AI, and human–AI collaboration."
               zh="横跨计算机科学、面向心理的人工智能与人机协作研究。"
@@ -248,7 +228,7 @@ const citationUpdatedAt = publications
                     <LocalText en={item.role.en} zh={item.role.zh} />
                     <span>{item.period}</span>
                   </div>
-                  <LocalText en={item.title.en} zh={item.title.zh} as="h4" />
+                  <h4>{item.displayTitle}</h4>
                   <div class="funding-item__footer">
                     <p>{item.funder}</p>
                     {item.amount && <strong>{item.amount}</strong>}
@@ -280,7 +260,7 @@ const citationUpdatedAt = publications
       <section class="section section--recognition" aria-labelledby="recognition-title">
         <div class="recognition-heading reveal">
           <p class="section-heading__index">04 / Recognition & exchange</p>
-          <LocalText en="Beyond the paper." zh="论文之外。" as="h2" id="recognition-title" />
+          <LocalText en="Awards, talks & service" zh="荣誉、报告与服务" as="h2" id="recognition-title" />
         </div>
 
         <div class="recognition-grid">
@@ -336,8 +316,8 @@ const citationUpdatedAt = publications
 
       <section class="section section--news" id="news" aria-labelledby="news-title">
         <div class="news-intro reveal">
-          <p class="section-heading__index">05 / Latest signals</p>
-          <LocalText en="Notes from the lab." zh="研究现场的新消息。" as="h2" id="news-title" />
+          <p class="section-heading__index">05 / News</p>
+          <LocalText en="Recent updates" zh="近期动态" as="h2" id="news-title" />
           <LocalText
             en="Selected publications, awards, and research milestones."
             zh="精选论文、获奖与研究节点。"
@@ -359,8 +339,8 @@ const citationUpdatedAt = publications
 
     <footer class="site-footer">
       <div class="site-footer__lead">
-        <p class="eyebrow"><span class="lang lang--en">Let’s compare notes</span><span class="lang lang--zh">欢迎交流</span></p>
-        <LocalText en="Interested in minds—human or machine?" zh="也对人类或机器的心智感兴趣？" as="h2" />
+        <p class="eyebrow"><span class="lang lang--en">Contact</span><span class="lang lang--zh">联系</span></p>
+        <LocalText en="Research conversations are welcome." zh="欢迎交流研究想法。" as="h2" />
         <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
       </div>
       <div class="site-footer__links">
