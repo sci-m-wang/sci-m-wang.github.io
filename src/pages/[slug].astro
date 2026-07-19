@@ -290,11 +290,17 @@ const pageTitle = `${section.title.en} · Ming Wang`;
             <header class="page-section__heading reveal"><p class="section-heading__index">02 / Archive</p><LocalText en="Media coverage" zh="媒体报道" as="h2" id="media-coverage-title" /></header>
             <div class="media-grid">
               {mediaCoverage.map((item, index) => (
-                <a class="media-card reveal" href={item.url} target="_blank" rel="noreferrer">
-                  <div><span>{String(index + 1).padStart(2, "0")}</span><time>{item.date}</time></div>
-                  <p>{item.source}</p>
-                  <h3>{item.displayTitle}</h3>
-                  <span class="media-card__arrow" aria-hidden="true">↗</span>
+                <a class="media-card reveal" data-media-id={item.id} href={item.url} target="_blank" rel="noreferrer">
+                  <figure class="media-card__preview">
+                    <img src={item.image} alt="" loading="lazy" width="1200" height="675" />
+                    <span class="media-card__number">{String(index + 1).padStart(2, "0")}</span>
+                  </figure>
+                  <div class="media-card__body">
+                    <div class="media-card__meta"><span>{item.source}</span><time>{item.date}</time></div>
+                    <h3>{item.displayTitle}</h3>
+                    <LocalText en={item.summary.en} zh={item.summary.zh} as="p" class="media-card__summary" />
+                    <span class="media-card__arrow" aria-hidden="true">↗</span>
+                  </div>
                 </a>
               ))}
             </div>

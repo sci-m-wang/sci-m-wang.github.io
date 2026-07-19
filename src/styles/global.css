@@ -1197,60 +1197,121 @@
 
   .media-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    border-top: 1px solid var(--line-strong);
-    border-left: 1px solid var(--line-strong);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
   }
 
   .media-card {
     position: relative;
     display: grid;
-    min-height: 270px;
-    align-content: space-between;
-    padding: clamp(1.4rem, 3vw, 2.25rem);
-    border-right: 1px solid var(--line-strong);
-    border-bottom: 1px solid var(--line-strong);
-    transition: color 180ms ease, background 180ms ease;
+    grid-template-rows: auto 1fr;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    background: var(--paper-light);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
   }
 
   .media-card:hover,
   .media-card:focus-visible {
-    color: var(--paper-light);
-    background: var(--ink);
+    transform: translateY(-4px);
+    border-color: var(--ink-soft);
+    box-shadow: 0 18px 44px rgba(24, 24, 20, 0.1);
   }
 
-  .media-card > div {
+  .media-card__preview {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper-deep);
+  }
+
+  .media-card__preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 260ms ease;
+  }
+
+  .media-card:hover .media-card__preview img,
+  .media-card:focus-visible .media-card__preview img {
+    transform: scale(1.025);
+  }
+
+  .media-card[data-media-id="chuangshijie-interview"] .media-card__preview img {
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    object-fit: contain;
+    background: #fff;
+  }
+
+  .media-card__number {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.85rem;
+    display: grid;
+    width: 2.15rem;
+    height: 2.15rem;
+    place-items: center;
+    color: var(--paper-light);
+    background: rgba(20, 20, 17, 0.88);
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+
+  .media-card__body {
+    position: relative;
+    display: flex;
+    min-height: 220px;
+    flex-direction: column;
+    padding: clamp(1.25rem, 2.4vw, 1.9rem);
+  }
+
+  .media-card__meta {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
     color: var(--cobalt);
     font-family: var(--mono);
     font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
-  .media-card > p {
-    margin-top: 2.5rem;
-    color: var(--ink-soft);
-    font-size: 0.68rem;
+  .media-card__meta span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .media-card:hover > p,
-  .media-card:focus-visible > p {
-    color: rgba(250, 248, 243, 0.7);
+  .media-card__meta time {
+    flex: 0 0 auto;
   }
 
   .media-card h3 {
-    margin-top: 0.8rem;
-    padding-right: 1.5rem;
+    margin-top: 1.15rem;
+    padding-right: 2rem;
     font-family: var(--serif);
-    font-size: clamp(1.25rem, 2vw, 1.8rem);
-    line-height: 1.18;
+    font-size: clamp(1.18rem, 1.7vw, 1.55rem);
+    line-height: 1.28;
+  }
+
+  .media-card__summary {
+    margin-top: 0.8rem;
+    padding-right: 1.25rem;
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+    line-height: 1.65;
   }
 
   .media-card__arrow {
     position: absolute;
-    right: 1.35rem;
-    bottom: 1.35rem;
+    right: clamp(1.25rem, 2.4vw, 1.9rem);
+    bottom: clamp(1.25rem, 2.4vw, 1.9rem);
+    color: var(--cobalt);
+    font-size: 1rem;
   }
 
   .collection-empty {
@@ -1328,8 +1389,7 @@
     .experience-board,
     .experience-board--three,
     .award-pins__grid,
-    .service-grid,
-    .media-grid {
+    .service-grid {
       grid-template-columns: 1fr;
     }
 
@@ -1513,8 +1573,12 @@
       grid-column: 1;
     }
 
-    .media-card {
-      min-height: 230px;
+    .media-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .media-card__body {
+      min-height: 205px;
     }
 
     .award-pin {

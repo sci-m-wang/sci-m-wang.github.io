@@ -100,6 +100,8 @@ if (operation === "add-publication") {
     displayTitle: optional("DISPLAY_TITLE"),
     source: optional("SOURCE"),
     title: { en: titleEn, zh: required("TITLE_ZH") },
+    summary: { en: optional("SUMMARY_EN"), zh: optional("SUMMARY_ZH") },
+    image: optional("IMAGE"),
     url: optional("URL"),
   });
   await writeJson(profilePath, profile);

@@ -326,10 +326,13 @@ const sectionConfigs = {
       { key: "source", label: "媒体 / 来源", hint: "普通动态可留空", wide: true },
       { key: "title.en", label: "英文标题", required: true, wide: true },
       { key: "title.zh", label: "中文标题", required: true, wide: true },
+      { key: "summary.en", label: "英文卡片摘要", hint: "媒体预览卡片使用；普通动态可留空", type: "textarea", wide: true },
+      { key: "summary.zh", label: "中文卡片摘要", hint: "媒体预览卡片使用；普通动态可留空", type: "textarea", wide: true },
+      { key: "image", label: "预览图路径 / URL", hint: "例如 /media/report.jpg 或 https://...；普通动态可留空", wide: true },
       { key: "url", label: "相关链接", type: "url", wide: true },
     ],
     create() {
-      return { id: "", date: String(new Date().getFullYear()), kind: "Publication", displayTitle: "", source: "", title: { en: "", zh: "" }, url: "" };
+      return { id: "", date: String(new Date().getFullYear()), kind: "Publication", displayTitle: "", source: "", title: { en: "", zh: "" }, summary: { en: "", zh: "" }, image: "", url: "" };
     },
     display(item) {
       return { title: item.title?.zh || item.title?.en || "Untitled news", meta: `${item.kind || "News"} · ${item.date || "—"}` };

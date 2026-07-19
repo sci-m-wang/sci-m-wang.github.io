@@ -28,6 +28,18 @@ on:
         description: "Media outlet or source (optional)"
         required: false
         type: string
+      summary_en:
+        description: "Preview-card summary in English (optional)"
+        required: false
+        type: string
+      summary_zh:
+        description: "预览卡片中文摘要（可选）"
+        required: false
+        type: string
+      image:
+        description: "Preview image path or URL (optional)"
+        required: false
+        type: string
       url:
         description: "Related URL (optional)"
         required: false
@@ -59,6 +71,9 @@ jobs:
           TITLE_ZH: ${{ inputs.title_zh }}
           DISPLAY_TITLE: ${{ inputs.display_title }}
           SOURCE: ${{ inputs.source }}
+          SUMMARY_EN: ${{ inputs.summary_en }}
+          SUMMARY_ZH: ${{ inputs.summary_zh }}
+          IMAGE: ${{ inputs.image }}
           URL: ${{ inputs.url }}
       - name: Commit and publish data change
         run: |
