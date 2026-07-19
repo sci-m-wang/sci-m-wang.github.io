@@ -91,7 +91,7 @@ Because the encrypted vault is stored in a public repository, the password shoul
 
 - The homepage metric sums Stars across public, non-fork repositories owned by `sci-m-wang`.
 - Each featured project with a GitHub code link receives its own current Star count.
-- The metric note separately sums featured contribution repositories that are not owned by `sci-m-wang`, keeping the core-contributor total current without claiming those repositories as personal projects.
+- The metric note scans the public GitHub contribution graph year by year, deduplicates every external repository with commit or pull-request contributions, and reports both the repository count and combined Stars without claiming those repositories as personal projects.
 
 Publication abstracts and related metadata can be refreshed from arXiv with `npm run publications:metadata`. Existing manually entered abstracts are preserved, while missing abstracts, publication dates, DOI values, and primary arXiv categories are filled from the public arXiv record.
 
