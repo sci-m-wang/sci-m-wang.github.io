@@ -8,8 +8,8 @@ import publications from "../data/publications.json";
 import sections from "../data/sections.json";
 
 const visibleSections = [...sections].filter((section) => section.visible).sort((a, b) => a.order - b.order);
-const selectedPublications = [...publications]
-  .filter((publication) => publication.selected)
+const pinnedPublications = [...publications]
+  .filter((publication) => publication.pinned)
   .sort((a, b) => b.year - a.year)
   .slice(0, 3);
 const latestNews = profile.news.slice(0, 3);
@@ -95,8 +95,8 @@ const latestNews = profile.news.slice(0, 3);
             <a href="/publications/"><LocalText en="All publications" zh="全部论文" /> ↗</a>
           </header>
           <div class="home-highlight__list">
-            {selectedPublications.map((publication) => (
-              <a href="/publications/">
+            {pinnedPublications.map((publication) => (
+              <a href={`/publications/?publication=${publication.id}`}>
                 <span>{publication.venueShort} · {publication.year}</span>
                 <strong>{publication.title}</strong>
                 <small>{publication.citations.count} citations</small>

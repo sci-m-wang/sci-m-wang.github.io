@@ -115,7 +115,7 @@ const sectionConfigs = {
           ["accepted", "Accepted"],
         ],
       },
-      { key: "selected", label: "在精选论文中突出显示", type: "checkbox", wide: true },
+      { key: "pinned", label: "Pin / 置顶到论文页醒目区域与主页精选区", type: "checkbox", wide: true },
       { key: "badges", label: "标签", hint: "用英文逗号分隔", type: "list", wide: true },
       { key: "arxivId", label: "arXiv ID", hint: "例如 2506.00551" },
       { key: "publishedAt", label: "首次公开日期", hint: "YYYY-MM-DD" },
@@ -138,7 +138,7 @@ const sectionConfigs = {
         year: new Date().getFullYear(),
         category: "first",
         status: "published",
-        selected: false,
+        pinned: false,
         badges: [],
         arxivId: "",
         publishedAt: "",
@@ -152,6 +152,29 @@ const sectionConfigs = {
     },
     display(item) {
       return { title: item.title || "Untitled publication", meta: `${item.venueShort || item.status || "Publication"} · ${item.year || "—"}` };
+    },
+  },
+  awards: {
+    label: "奖项 / Award",
+    plural: "奖项",
+    document: "profile",
+    collection: "awards",
+    addLabel: "新增奖项",
+    searchable: true,
+    fields: [
+      { key: "id", label: "稳定 ID", hint: "小写英文、数字与连字符", required: true },
+      { key: "year", label: "年份", hint: "例如 2026", required: true },
+      { key: "title.en", label: "英文奖项名称", required: true, wide: true },
+      { key: "title.zh", label: "中文奖项名称", required: true, wide: true },
+      { key: "event", label: "活动 / 颁发机构", required: true, wide: true },
+      { key: "url", label: "相关链接", type: "url", wide: true },
+      { key: "pinned", label: "Pin / 置顶到奖项页醒目区域", type: "checkbox", wide: true },
+    ],
+    create() {
+      return { id: "", year: String(new Date().getFullYear()), title: { en: "", zh: "" }, event: "", url: "", pinned: false };
+    },
+    display(item) {
+      return { title: item.title?.zh || item.title?.en || "Untitled award", meta: `${item.event || "Award"} · ${item.year || "—"}${item.pinned ? " · PINNED" : ""}` };
     },
   },
   funding: {
@@ -274,6 +297,7 @@ const sectionConfigs = {
           ["research", "Research / 研究"],
           ["publications", "Publications / 论文"],
           ["experience", "Experience / 经历"],
+          ["awards", "Awards / 荣誉"],
           ["news", "News / 动态"],
         ],
       },
@@ -316,6 +340,7 @@ const sectionConfigs = {
       },
       { key: "id", label: "稳定 ID", hint: "小写英文、数字与连字符", required: true },
       { key: "title", label: "正式条目名称", hint: "按正式使用的语言填写，不随整页语言切换", required: true, wide: true },
+      { key: "pinned", label: "Pin / 在自定义页面中置顶", type: "checkbox", wide: true },
       { key: "eyebrow", label: "条目类型 / 短标签", hint: "例如 Visiting scholar" },
       { key: "meta", label: "列表辅助信息", hint: "例如机构或 Venue", wide: true },
       { key: "period", label: "时间", hint: "例如 2026.08 — 2026.12" },
@@ -337,6 +362,7 @@ const sectionConfigs = {
         sectionId: target.id,
         id: "",
         title: "",
+        pinned: false,
         eyebrow: "",
         meta: "",
         period: "",

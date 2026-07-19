@@ -207,15 +207,15 @@
     }
   ],
   "awards": [
-    { "id": "trae-solo-2026", "year": "2026", "title": { "en": "1st Place, Productivity Enhancement Track", "zh": "Productivity Enhancement Track 第一名" }, "event": "Unbound Creativity with TRAE SOLO @ Singapore", "featured": true },
-    { "id": "ccac-spotlight-2026", "year": "2026", "title": { "en": "Spotlight Poster Prize", "zh": "Spotlight Poster Prize" }, "event": "第六届中国情感计算大会", "featured": true },
-    { "id": "trae-friends-2025", "year": "2025", "title": { "en": "1st Place", "zh": "第一名" }, "event": "TRAE Friends Hackathon @ Singapore", "featured": true },
-    { "id": "ccac-popular-2025", "year": "2025", "title": { "en": "Most Popular Poster Award", "zh": "最受欢迎海报奖" }, "event": "第五届中国情感计算大会", "featured": true },
-    { "id": "outstanding-neu-2024", "year": "2024", "title": { "en": "Outstanding Graduate Student", "zh": "优秀研究生" }, "event": "东北大学", "featured": true },
-    { "id": "cail-2024", "year": "2024", "title": { "en": "Second Prize", "zh": "二等奖" }, "event": "中国法律智能技术评测 CAIL 2024", "featured": false },
-    { "id": "lit-2023", "year": "2023", "title": { "en": "Second Prize", "zh": "二等奖" }, "event": "语言与智能技术竞赛", "featured": false },
-    { "id": "neu-scholarship-2025", "year": "2025", "title": { "en": "First-class Social Named Scholarship", "zh": "社会命名奖学金一等奖" }, "event": "东北大学", "featured": false },
-    { "id": "miit-2018", "year": "2018", "title": { "en": "Second Prize, Entrepreneurship Scholarship", "zh": "工信部创业奖学金二等奖" }, "event": "Ministry of Industry and Information Technology", "featured": false }
+    { "id": "trae-solo-2026", "year": "2026", "title": { "en": "1st Place, Productivity Enhancement Track", "zh": "Productivity Enhancement Track 第一名" }, "event": "Unbound Creativity with TRAE SOLO @ Singapore", "url": "", "pinned": true },
+    { "id": "ccac-spotlight-2026", "year": "2026", "title": { "en": "Spotlight Poster Prize", "zh": "Spotlight Poster Prize" }, "event": "第六届中国情感计算大会", "url": "", "pinned": true },
+    { "id": "trae-friends-2025", "year": "2025", "title": { "en": "1st Place", "zh": "第一名" }, "event": "TRAE Friends Hackathon @ Singapore", "url": "", "pinned": true },
+    { "id": "ccac-popular-2025", "year": "2025", "title": { "en": "Most Popular Poster Award", "zh": "最受欢迎海报奖" }, "event": "第五届中国情感计算大会", "url": "", "pinned": true },
+    { "id": "outstanding-neu-2024", "year": "2024", "title": { "en": "Outstanding Graduate Student", "zh": "优秀研究生" }, "event": "东北大学", "url": "", "pinned": true },
+    { "id": "cail-2024", "year": "2024", "title": { "en": "Second Prize", "zh": "二等奖" }, "event": "中国法律智能技术评测 CAIL 2024", "url": "", "pinned": false },
+    { "id": "lit-2023", "year": "2023", "title": { "en": "Second Prize", "zh": "二等奖" }, "event": "语言与智能技术竞赛", "url": "", "pinned": false },
+    { "id": "neu-scholarship-2025", "year": "2025", "title": { "en": "First-class Social Named Scholarship", "zh": "社会命名奖学金一等奖" }, "event": "东北大学", "url": "", "pinned": false },
+    { "id": "miit-2018", "year": "2018", "title": { "en": "Second Prize, Entrepreneurship Scholarship", "zh": "工信部创业奖学金二等奖" }, "event": "Ministry of Industry and Information Technology", "url": "", "pinned": false }
   ],
   "engagements": [
     {

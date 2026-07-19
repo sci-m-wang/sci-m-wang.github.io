@@ -33,11 +33,25 @@
     "nav": { "en": "Experience", "zh": "经历" },
     "title": { "en": "Experience", "zh": "学术经历" },
     "intro": {
-      "en": "Education, funded projects, affiliations, awards, teaching, talks, and academic service.",
-      "zh": "教育背景、科研项目、机构经历、荣誉、教学、报告与学术服务。"
+      "en": "Education, funded projects, affiliations, teaching, talks, and academic service.",
+      "zh": "教育背景、科研项目、机构经历、教学、报告与学术服务。"
     },
     "template": "experience",
     "order": 3,
+    "visible": true,
+    "entries": []
+  },
+  {
+    "id": "awards",
+    "slug": "awards",
+    "nav": { "en": "Awards", "zh": "荣誉" },
+    "title": { "en": "Awards", "zh": "荣誉奖项" },
+    "intro": {
+      "en": "Selected research awards, competition prizes, scholarships, and academic recognition.",
+      "zh": "研究奖项、竞赛获奖、奖学金与学术荣誉。"
+    },
+    "template": "awards",
+    "order": 4,
     "visible": true,
     "entries": []
   },
@@ -51,7 +65,7 @@
       "zh": "精选论文、获奖、报告与研究节点。"
     },
     "template": "news",
-    "order": 4,
+    "order": 5,
     "visible": true,
     "entries": []
   }

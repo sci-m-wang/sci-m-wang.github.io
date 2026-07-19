@@ -10,7 +10,7 @@ interface Publication {
   year: number;
   category: string;
   status: string;
-  selected: boolean;
+  pinned?: boolean;
   badges: string[];
   arxivId?: string;
   abstract?: string | { en?: string; zh?: string };
@@ -52,7 +52,7 @@ const statusLabel = statusLabels[pub.status] || { en: pub.status, zh: pub.status
 
 <article class="publication-record" data-publication data-category={pub.category} data-status={pub.status}>
   <button
-    class="publication-trigger"
+    class:list={["publication-trigger", pub.pinned && "is-pinned"]}
     type="button"
     data-publication-open={dialogId}
     aria-haspopup="dialog"
@@ -60,7 +60,7 @@ const statusLabel = statusLabels[pub.status] || { en: pub.status, zh: pub.status
   >
     <span class="record-card__index">{String(index + 1).padStart(2, "0")}</span>
     <span class="record-card__summary">
-      <span class="record-card__eyebrow">{pub.venueShort} · {pub.year}{pub.badges[0] ? ` · ${pub.badges[0]}` : ""}</span>
+      <span class="record-card__eyebrow">{pub.pinned && <span class="record-card__pin"><LocalText en="Pinned" zh="置顶" /></span>}{pub.venueShort} · {pub.year}{pub.badges[0] ? ` · ${pub.badges[0]}` : ""}</span>
       <strong>{pub.title}</strong>
       <small>{pub.venue}</small>
     </span>

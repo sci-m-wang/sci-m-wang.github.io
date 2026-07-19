@@ -8,7 +8,7 @@
     "year": 2026,
     "category": "first",
     "status": "published",
-    "selected": true,
+    "pinned": true,
     "badges": [
       "First author",
       "Machine psychology"
@@ -34,7 +34,7 @@
     "year": 2026,
     "category": "cofirst",
     "status": "published",
-    "selected": true,
+    "pinned": true,
     "badges": [
       "Co-first author",
       "Persona steering"
@@ -68,7 +68,7 @@
     "year": 2026,
     "category": "first",
     "status": "published",
-    "selected": false,
+    "pinned": false,
     "badges": [
       "First author",
       "Counterfactual explanation"
@@ -102,7 +102,7 @@
     "year": 2025,
     "category": "first",
     "status": "published",
-    "selected": true,
+    "pinned": true,
     "badges": [
       "First author",
       "Long-term memory"
@@ -136,7 +136,7 @@
     "year": 2022,
     "category": "first",
     "status": "published",
-    "selected": false,
+    "pinned": false,
     "badges": [
       "First author",
       "Explainable AI"
@@ -162,7 +162,7 @@
     "year": 2025,
     "category": "coauthor",
     "status": "published",
-    "selected": true,
+    "pinned": true,
     "badges": [
       "Highly cited",
       "Time series"
@@ -196,7 +196,7 @@
     "year": 2025,
     "category": "coauthor",
     "status": "published",
-    "selected": true,
+    "pinned": true,
     "badges": [
       "Multimodal evaluation"
     ],
@@ -229,7 +229,7 @@
     "year": 2024,
     "category": "coauthor",
     "status": "published",
-    "selected": false,
+    "pinned": false,
     "badges": [
       "Emotional support",
       "Evaluation"
@@ -263,7 +263,7 @@
     "year": 2024,
     "category": "coauthor",
     "status": "published",
-    "selected": false,
+    "pinned": false,
     "badges": [
       "Affective computing"
     ],
@@ -288,7 +288,7 @@
     "year": 2024,
     "category": "coauthor",
     "status": "published",
-    "selected": false,
+    "pinned": false,
     "badges": [
       "Empathetic response",
       "Multi-agent"
@@ -314,7 +314,7 @@
     "year": 2025,
     "category": "coauthor",
     "status": "published",
-    "selected": false,
+    "pinned": false,
     "badges": [
       "Self-evolving systems"
     ],
@@ -347,7 +347,7 @@
     "year": 2024,
     "category": "working",
     "status": "preprint",
-    "selected": true,
+    "pinned": true,
     "badges": [
       "Prompt design",
       "Open source"
@@ -381,7 +381,7 @@
     "year": 2024,
     "category": "working",
     "status": "preprint",
-    "selected": false,
+    "pinned": false,
     "badges": [
       "Co-first author",
       "RAG"
@@ -415,7 +415,7 @@
     "year": 2024,
     "category": "working",
     "status": "preprint",
-    "selected": false,
+    "pinned": false,
     "badges": [
       "Multi-agent",
       "Prompt generation"
@@ -449,7 +449,7 @@
     "year": 2025,
     "category": "working",
     "status": "preprint",
-    "selected": false,
+    "pinned": false,
     "badges": [
       "Model editing"
     ],
@@ -482,7 +482,7 @@
     "year": 2026,
     "category": "working",
     "status": "preprint",
-    "selected": false,
+    "pinned": false,
     "badges": [
       "Mental health",
       "User simulation"
@@ -516,7 +516,7 @@
     "year": 2026,
     "category": "working",
     "status": "preprint",
-    "selected": false,
+    "pinned": false,
     "badges": [
       "LLM safety",
       "Jailbreak defense"
@@ -550,7 +550,7 @@
     "year": 2025,
     "category": "working",
     "status": "preprint",
-    "selected": false,
+    "pinned": false,
     "badges": [
       "Model merging",
       "Survey"
@@ -576,7 +576,7 @@
     "year": 2023,
     "category": "working",
     "status": "preprint",
-    "selected": false,
+    "pinned": false,
     "badges": [
       "LLM evaluation"
     ],

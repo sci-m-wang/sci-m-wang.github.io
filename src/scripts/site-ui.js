@@ -76,3 +76,8 @@ for (const dialog of document.querySelectorAll(".publication-modal")) {
     activePublicationTrigger = null;
   });
 }
+
+const requestedPublication = new URL(window.location.href).searchParams.get("publication");
+if (requestedPublication) {
+  document.querySelector(`[data-publication-open="publication-${CSS.escape(requestedPublication)}"]`)?.click();
+}

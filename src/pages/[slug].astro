@@ -12,6 +12,7 @@ import sections from "../data/sections.json";
 interface PageEntry {
   id: string;
   title: string;
+  pinned?: boolean;
   eyebrow?: string;
   meta?: string;
   period?: string;
@@ -40,9 +41,13 @@ export function getStaticPaths() {
 }
 
 const { section } = Astro.props as { section: SectionRecord };
-const sortedPublications = [...publications].sort((a, b) => b.year - a.year || Number(b.selected) - Number(a.selected));
+const byPublicationDate = (a: (typeof publications)[number], b: (typeof publications)[number]) => b.year - a.year;
+const pinnedPublications = [...publications].filter((publication) => publication.pinned).sort(byPublicationDate);
+const regularPublications = [...publications].filter((publication) => !publication.pinned).sort(byPublicationDate);
 const citationUpdatedAt = publications.map((publication) => publication.citations.updatedAt).sort().at(-1);
-const featuredAwards = profile.awards.filter((award) => award.featured);
+const sortedAwards = [...profile.awards].sort((a, b) => Number(b.year) - Number(a.year));
+const pinnedAwards = sortedAwards.filter((award) => award.pinned);
+const regularAwards = sortedAwards.filter((award) => !award.pinned);
 const talks = profile.engagements.filter((item) => item.type === "talk");
 const practice = profile.engagements.filter((item) => item.type !== "talk");
 const pageTitle = `${section.title.en} · Ming Wang`;
@@ -104,14 +109,29 @@ const pageTitle = `${section.title.en} · Ming Wang`;
               </div>
               <p class="publication-source"><LocalText en={`Google Scholar citations · updated ${citationUpdatedAt}`} zh={`Google Scholar 引用量 · 更新于 ${citationUpdatedAt}`} /></p>
             </header>
+            {pinnedPublications.length > 0 && (
+              <section class="pinned-publications reveal" data-publication-group aria-labelledby="pinned-publications-title">
+                <header class="pinned-group__heading">
+                  <div><span aria-hidden="true">⌖</span><p class="section-heading__index">Pinned / 置顶</p></div>
+                  <LocalText en="Selected work" zh="重点论文" as="h3" id="pinned-publications-title" />
+                </header>
+                <div class="record-stack">
+                  {pinnedPublications.map((publication, index) => <PublicationCard publication={publication} index={index} />)}
+                </div>
+              </section>
+            )}
+            <div class="publication-archive-heading reveal">
+              <p class="section-heading__index"><LocalText en="Complete record" zh="完整记录" /></p>
+              <strong>{publications.length}</strong>
+            </div>
             <div class="publication-toolbar reveal" role="toolbar" aria-label="Filter publications">
               <button class="filter-button is-active" type="button" data-publication-filter="all" aria-pressed="true"><LocalText en="All work" zh="全部" /><span>{publications.length}</span></button>
               <button class="filter-button" type="button" data-publication-filter="author" aria-pressed="false"><LocalText en="First / co-first" zh="第一 / 共同一作" /></button>
               <button class="filter-button" type="button" data-publication-filter="published" aria-pressed="false"><LocalText en="Published" zh="已发表" /></button>
               <button class="filter-button" type="button" data-publication-filter="working" aria-pressed="false"><LocalText en="Working papers" zh="工作论文" /></button>
             </div>
-            <div class="record-stack publication-list" aria-live="polite">
-              {sortedPublications.map((publication, index) => <PublicationCard publication={publication} index={index} />)}
+            <div class="record-stack publication-list" data-publication-group aria-live="polite">
+              {regularPublications.map((publication, index) => <PublicationCard publication={publication} index={index + pinnedPublications.length} />)}
             </div>
             <footer class="publication-page-footer reveal">
               <p><strong data-publication-count>{publications.length}</strong> <LocalText en="items shown" zh="条记录" /></p>
@@ -148,16 +168,12 @@ const pageTitle = `${section.title.en} · Ming Wang`;
           </section>
 
           <section class="page-section">
-            <header class="page-section__heading reveal"><p class="section-heading__index">03 / Community</p><LocalText en="Affiliations, recognition & exchange" zh="机构、荣誉与交流" as="h2" /></header>
-            <div class="experience-board">
+            <header class="page-section__heading reveal"><p class="section-heading__index">03 / Community</p><LocalText en="Affiliations & exchange" zh="机构与交流" as="h2" /></header>
+            <div class="experience-board experience-board--three">
               <div class="experience-panel reveal">
                 <h3><LocalText en="Affiliations & advisors" zh="机构与导师" /></h3>
                 {profile.affiliations.map((item) => <a href={item.url} target="_blank" rel="noreferrer"><span>{item.period}</span><strong>{item.name}</strong><LocalText en={item.role.en} zh={item.role.zh} as="p" /></a>)}
                 <div class="experience-panel__links">{profile.advisors.map((advisor) => <a href={advisor.url} target="_blank" rel="noreferrer">{advisor.name} ↗</a>)}</div>
-              </div>
-              <div class="experience-panel reveal">
-                <h3><LocalText en="Selected awards" zh="精选荣誉" /></h3>
-                {featuredAwards.map((award) => <article><span>{award.year}</span><div><LocalText en={award.title.en} zh={award.title.zh} as="strong" /><p>{award.event}</p></div></article>)}
               </div>
               <div class="experience-panel reveal">
                 <h3><LocalText en="Teaching & practice" zh="教学与实践" /></h3>
@@ -169,6 +185,55 @@ const pageTitle = `${section.title.en} · Ming Wang`;
                 <ul>{profile.service.map((item) => <li><LocalText en={item.en} zh={item.zh} /></li>)}</ul>
               </div>
             </div>
+          </section>
+        </div>
+      )}
+
+      {section.template === "awards" && (
+        <div class="page-content page-content--awards">
+          <section class="page-section" aria-labelledby="awards-title">
+            <header class="page-section__heading reveal">
+              <p class="section-heading__index">Recognition</p>
+              <LocalText en="Awards & honours" zh="奖项与荣誉" as="h2" id="awards-title" />
+            </header>
+
+            {pinnedAwards.length > 0 && (
+              <section class="award-pins reveal" aria-labelledby="award-pins-title">
+                <header class="pinned-group__heading pinned-group__heading--awards">
+                  <div><span aria-hidden="true">⌖</span><p class="section-heading__index">Pinned / 置顶</p></div>
+                  <LocalText en="Selected recognition" zh="重点荣誉" as="h3" id="award-pins-title" />
+                </header>
+                <div class="award-pins__grid">
+                  {pinnedAwards.map((award, index) => (
+                    <article class="award-pin">
+                      <div><span>{award.year}</span><span>{String(index + 1).padStart(2, "0")}</span></div>
+                      <LocalText en={award.title.en} zh={award.title.zh} as="h3" />
+                      <p>{award.event}</p>
+                      {award.url && <a href={award.url} target="_blank" rel="noreferrer">View ↗</a>}
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {regularAwards.length > 0 && (
+              <section class="award-archive reveal" aria-labelledby="award-archive-title">
+                <header>
+                  <LocalText en="Complete record" zh="其他荣誉" as="h3" id="award-archive-title" />
+                  <span>{profile.awards.length} <LocalText en="awards" zh="项" /></span>
+                </header>
+                <div class="award-archive__list">
+                  {regularAwards.map((award, index) => (
+                    <article>
+                      <span>{String(index + pinnedAwards.length + 1).padStart(2, "0")}</span>
+                      <strong>{award.year}</strong>
+                      <div><LocalText en={award.title.en} zh={award.title.zh} as="h3" /><p>{award.event}</p></div>
+                      {award.url ? <a href={award.url} target="_blank" rel="noreferrer">↗</a> : <span aria-hidden="true">•</span>}
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )}
           </section>
         </div>
       )}
@@ -191,8 +256,8 @@ const pageTitle = `${section.title.en} · Ming Wang`;
           <section class="page-section page-section--records">
             <header class="page-section__heading reveal"><p class="section-heading__index">Collection</p><LocalText en={section.title.en} zh={section.title.zh} as="h2" /></header>
             <div class="record-stack">
-              {section.entries.length ? section.entries.map((entry, index) => (
-                <ExpandableRecord index={index} eyebrow={entry.eyebrow || entry.period || ""} title={entry.title} meta={entry.meta || entry.venue || ""} citation={entry.citations ?? null} label="entry">
+              {section.entries.length ? [...section.entries].sort((a, b) => Number(b.pinned) - Number(a.pinned)).map((entry, index) => (
+                <ExpandableRecord index={index} eyebrow={`${entry.pinned ? "PINNED · " : ""}${entry.eyebrow || entry.period || ""}`} title={entry.title} meta={entry.meta || entry.venue || ""} citation={entry.citations ?? null} label="entry">
                   <div class="project-detail">
                     {entry.authors && <p>{entry.authors}</p>}
                     {entry.summary && <LocalText en={entry.summary.en || ""} zh={entry.summary.zh || entry.summary.en || ""} as="h3" />}
@@ -217,6 +282,7 @@ const pageTitle = `${section.title.en} · Ming Wang`;
     <script>
       const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-publication-filter]"));
       const publicationCards = Array.from(document.querySelectorAll<HTMLElement>("[data-publication]"));
+      const publicationGroups = Array.from(document.querySelectorAll<HTMLElement>("[data-publication-group]"));
       const publicationCount = document.querySelector<HTMLElement>("[data-publication-count]");
       filterButtons.forEach((button) => button.addEventListener("click", () => {
         const filter = button.dataset.publicationFilter || "all";
@@ -233,6 +299,9 @@ const pageTitle = `${section.title.en} · Ming Wang`;
             || (filter === "working" && card.dataset.category === "working");
           card.hidden = !visible;
           if (visible) shown += 1;
+        });
+        publicationGroups.forEach((group) => {
+          group.hidden = !Array.from(group.querySelectorAll<HTMLElement>("[data-publication]")).some((card) => !card.hidden);
         });
         if (publicationCount) publicationCount.textContent = String(shown);
       }));

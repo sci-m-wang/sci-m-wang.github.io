@@ -8,10 +8,11 @@ A from-scratch academic homepage for [sci-m-wang.github.io](https://sci-m-wang.g
 
 - Responsive bilingual interface (English / 中文)
 - Restrained academic visual system with accessible, reduced-motion-aware interaction
-- Filterable publication archive with per-paper citation counts
+- Filterable publication archive with per-paper citation counts, detail dialogs, and pinned work
+- Dedicated awards archive with a pinned recognition area
 - Weekly citation refresh through GitHub Actions
 - GitHub Pages deployment workflow
-- Browser-based owner editor for publications, funding, news, profile information, subpages, and custom page entries
+- Browser-based owner editor for publications, awards, funding, news, profile information, subpages, and custom page entries
 - SEO metadata, sitemap, JSON-LD person profile, and a custom Open Graph card
 
 ## Local development
@@ -48,11 +49,14 @@ The language switch controls interface and narrative copy. Formal records keep t
 The public `/update/` route contains a direct, browser-based editor for:
 
 1. Adding and editing publications
-2. Adding and editing funding records
-3. Adding and editing news or media coverage
-4. Editing core profile copy and selected metrics
-5. Adding or editing subpages without changing layout code
-6. Adding expandable entries to any custom collection page
+2. Adding and editing awards
+3. Adding and editing funding records
+4. Adding and editing news or media coverage
+5. Editing core profile copy and selected metrics
+6. Adding or editing subpages without changing layout code
+7. Adding expandable entries to any custom collection page
+
+Publications and awards can be marked as `pinned` in the editor. Pinned publications appear in the homepage highlights and at the top of the publication archive; pinned awards appear in the prominent area at the top of the Awards page. Custom collection entries support the same pinned-first ordering.
 
 New pages created with the `Custom collection` template automatically receive a route at `/<slug>/`, a homepage directory card, and a navigation item. Setting a page to hidden removes it from navigation and the homepage while keeping its URL buildable. Formal entry names are stored once and remain fixed across language modes; bilingual fields are reserved for interface copy, descriptions, and narrative details.
 
