@@ -50,8 +50,8 @@
         "zh": "个人项目 Stars"
       },
       "note": {
-        "en": "12.6k across contributed projects · updated 2026-07-19",
-        "zh": "参与项目合计 12.6k Stars · 更新于 2026-07-19"
+        "en": "263.6k across 31 contributed repositories · updated 2026-07-19",
+        "zh": "外部贡献 31 个仓库 · 合计 263.6k Stars · 更新于 2026-07-19"
       }
     },
     {
@@ -1065,5 +1065,321 @@
       "image": "/media/heu-internet-plus-2018.jpg",
       "url": "http://qihang.hrbeu.edu.cn/2018/1018/c958a203768/page.htm"
     }
-  ]
+  ],
+  "githubContributions": {
+    "source": "GitHub public contribution graph",
+    "updatedAt": "2026-07-19",
+    "repositories": [
+      {
+        "repository": "ultraworkers/claw-code",
+        "owner": "ultraworkers",
+        "stars": 194819,
+        "commitContributions": 0,
+        "pullRequestContributions": 1,
+        "years": [
+          2026
+        ]
+      },
+      {
+        "repository": "NevaMind-AI/memU",
+        "owner": "NevaMind-AI",
+        "stars": 14045,
+        "commitContributions": 0,
+        "pullRequestContributions": 1,
+        "years": [
+          2026
+        ]
+      },
+      {
+        "repository": "EleutherAI/lm-evaluation-harness",
+        "owner": "EleutherAI",
+        "stars": 13333,
+        "commitContributions": 0,
+        "pullRequestContributions": 1,
+        "years": [
+          2024
+        ]
+      },
+      {
+        "repository": "langgptai/LangGPT",
+        "owner": "langgptai",
+        "stars": 12356,
+        "commitContributions": 5,
+        "pullRequestContributions": 4,
+        "years": [
+          2024
+        ]
+      },
+      {
+        "repository": "dataabc/weiboSpider",
+        "owner": "dataabc",
+        "stars": 9651,
+        "commitContributions": 2,
+        "pullRequestContributions": 1,
+        "years": [
+          2026
+        ]
+      },
+      {
+        "repository": "ccfddl/ccf-deadlines",
+        "owner": "ccfddl",
+        "stars": 9158,
+        "commitContributions": 1,
+        "pullRequestContributions": 2,
+        "years": [
+          2023,
+          2024
+        ]
+      },
+      {
+        "repository": "apachecn/pytorch-doc-zh",
+        "owner": "apachecn",
+        "stars": 4225,
+        "commitContributions": 1,
+        "pullRequestContributions": 1,
+        "years": [
+          2023
+        ]
+      },
+      {
+        "repository": "emeryberger/CSrankings",
+        "owner": "emeryberger",
+        "stars": 3157,
+        "commitContributions": 10,
+        "pullRequestContributions": 1,
+        "years": [
+          2026
+        ]
+      },
+      {
+        "repository": "InternLM/Tutorial",
+        "owner": "InternLM",
+        "stars": 1969,
+        "commitContributions": 7,
+        "pullRequestContributions": 8,
+        "years": [
+          2024
+        ]
+      },
+      {
+        "repository": "wzhwzhwzh0921/S-D-Mamba",
+        "owner": "wzhwzhwzh0921",
+        "stars": 392,
+        "commitContributions": 5,
+        "pullRequestContributions": 3,
+        "years": [
+          2024
+        ]
+      },
+      {
+        "repository": "langgptai/Minstrel",
+        "owner": "langgptai",
+        "stars": 155,
+        "commitContributions": 12,
+        "pullRequestContributions": 0,
+        "years": [
+          2024,
+          2025
+        ]
+      },
+      {
+        "repository": "NEU-DataMining/PICA",
+        "owner": "NEU-DataMining",
+        "stars": 98,
+        "commitContributions": 2,
+        "pullRequestContributions": 1,
+        "years": [
+          2023
+        ]
+      },
+      {
+        "repository": "ecnu-sea/SEA",
+        "owner": "ecnu-sea",
+        "stars": 90,
+        "commitContributions": 1,
+        "pullRequestContributions": 1,
+        "years": [
+          2024
+        ]
+      },
+      {
+        "repository": "hanxiaomax/pyh",
+        "owner": "hanxiaomax",
+        "stars": 70,
+        "commitContributions": 0,
+        "pullRequestContributions": 1,
+        "years": [
+          2022
+        ]
+      },
+      {
+        "repository": "declare-lab/MM-InstructEval",
+        "owner": "declare-lab",
+        "commitContributions": 0,
+        "pullRequestContributions": 0,
+        "years": [],
+        "stars": 32
+      },
+      {
+        "repository": "ble55ing/LSTM-Sentiment_analysis",
+        "owner": "ble55ing",
+        "stars": 30,
+        "commitContributions": 0,
+        "pullRequestContributions": 1,
+        "years": [
+          2022
+        ]
+      },
+      {
+        "repository": "the-ccsn/china-university-thesis-index",
+        "owner": "the-ccsn",
+        "stars": 14,
+        "commitContributions": 0,
+        "pullRequestContributions": 1,
+        "years": [
+          2026
+        ]
+      },
+      {
+        "repository": "subramanya1997/Novel-T5",
+        "owner": "subramanya1997",
+        "stars": 4,
+        "commitContributions": 10,
+        "pullRequestContributions": 1,
+        "years": [
+          2023
+        ]
+      },
+      {
+        "repository": "ETWBC/ipgw",
+        "owner": "ETWBC",
+        "stars": 3,
+        "commitContributions": 3,
+        "pullRequestContributions": 0,
+        "years": [
+          2021
+        ]
+      },
+      {
+        "repository": "kinamind/Psy-Skill-Hub",
+        "owner": "kinamind",
+        "stars": 2,
+        "commitContributions": 10,
+        "pullRequestContributions": 1,
+        "years": [
+          2026
+        ]
+      },
+      {
+        "repository": "NEU-DataMining/LLM_Survey",
+        "owner": "NEU-DataMining",
+        "stars": 2,
+        "commitContributions": 19,
+        "pullRequestContributions": 5,
+        "years": [
+          2023
+        ]
+      },
+      {
+        "repository": "NEU-DataMining/RoCar",
+        "owner": "NEU-DataMining",
+        "stars": 1,
+        "commitContributions": 10,
+        "pullRequestContributions": 0,
+        "years": [
+          2023
+        ]
+      },
+      {
+        "repository": "ContiAI/ContiAI-Paper_template",
+        "owner": "ContiAI",
+        "stars": 0,
+        "commitContributions": 2,
+        "pullRequestContributions": 0,
+        "years": [
+          2025
+        ]
+      },
+      {
+        "repository": "kinamind/AgentBoard",
+        "owner": "kinamind",
+        "stars": 0,
+        "commitContributions": 7,
+        "pullRequestContributions": 0,
+        "years": [
+          2026
+        ]
+      },
+      {
+        "repository": "kinamind/annapod",
+        "owner": "kinamind",
+        "stars": 0,
+        "commitContributions": 5,
+        "pullRequestContributions": 0,
+        "years": [
+          2026
+        ]
+      },
+      {
+        "repository": "kinamind/SymPro",
+        "owner": "kinamind",
+        "stars": 0,
+        "commitContributions": 2,
+        "pullRequestContributions": 0,
+        "years": [
+          2026
+        ]
+      },
+      {
+        "repository": "momolammm/ReNarra",
+        "owner": "momolammm",
+        "stars": 0,
+        "commitContributions": 2,
+        "pullRequestContributions": 0,
+        "years": [
+          2026
+        ]
+      },
+      {
+        "repository": "NEU-DataMining/Clothing",
+        "owner": "NEU-DataMining",
+        "stars": 0,
+        "commitContributions": 6,
+        "pullRequestContributions": 0,
+        "years": [
+          2023
+        ]
+      },
+      {
+        "repository": "NEU-DataMining/GLT",
+        "owner": "NEU-DataMining",
+        "stars": 0,
+        "commitContributions": 2,
+        "pullRequestContributions": 0,
+        "years": [
+          2023
+        ]
+      },
+      {
+        "repository": "NEU-DataMining/LaTex_writting_issues",
+        "owner": "NEU-DataMining",
+        "stars": 0,
+        "commitContributions": 3,
+        "pullRequestContributions": 1,
+        "years": [
+          2024
+        ]
+      },
+      {
+        "repository": "Qiusuo-AI/qiusuo-ai.github.io",
+        "owner": "Qiusuo-AI",
+        "stars": 0,
+        "commitContributions": 10,
+        "pullRequestContributions": 0,
+        "years": [
+          2023
+        ]
+      }
+    ]
+  }
 }
