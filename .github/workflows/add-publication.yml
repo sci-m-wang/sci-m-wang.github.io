@@ -53,8 +53,8 @@ on:
         description: "Comma-separated badges"
         required: false
         type: string
-      selected:
-        description: "Feature this publication"
+      pinned:
+        description: "Pin this publication on the homepage and archive"
         required: true
         default: false
         type: boolean
@@ -91,7 +91,7 @@ jobs:
           CODE_URL: ${{ inputs.code_url }}
           ARXIV_ID: ${{ inputs.arxiv_id }}
           BADGES: ${{ inputs.badges }}
-          SELECTED: ${{ inputs.selected }}
+          SELECTED: ${{ inputs.pinned }}
       - name: Commit and publish data change
         run: |
           git config user.name "homepage-admin"

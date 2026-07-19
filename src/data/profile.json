@@ -20,8 +20,8 @@
   },
   "email": "sci.m.wang@gmail.com",
   "location": {
-    "en": "Singapore · Shenyang",
-    "zh": "新加坡 · 沈阳"
+    "en": "Singapore",
+    "zh": "新加坡"
   },
   "links": {
     "scholar": "https://scholar.google.com/citations?user=dcqk_mMAAAAJ",
@@ -177,6 +177,68 @@
       "detail": { "en": "Computer science and engineering", "zh": "计算机科学与工程" }
     }
   ],
+  "experience": [
+    {
+      "id": "smu-joint-phd",
+      "type": "education",
+      "period": { "en": "2025.09 — Present", "zh": "2025.09 — 至今" },
+      "title": { "en": "Visiting / Joint-training Ph.D. Student", "zh": "联合培养 / 访问博士生" },
+      "organization": "Singapore Management University",
+      "organizationZh": "新加坡管理大学",
+      "description": { "en": "Computer Science · Advisors: Ee-Peng Lim and Fiona Fui-Hoon Nah", "zh": "计算机科学 · 合作导师：Ee-Peng Lim、Fiona Fui-Hoon Nah" },
+      "url": "https://www.smu.edu.sg/"
+    },
+    {
+      "id": "neu-phd",
+      "type": "education",
+      "period": { "en": "2022.09 — Present", "zh": "2022.09 — 至今" },
+      "title": { "en": "Ph.D. Candidate", "zh": "博士研究生" },
+      "organization": "Northeastern University",
+      "organizationZh": "东北大学",
+      "description": { "en": "Computer Science · Advisor: Daling Wang", "zh": "计算机科学 · 导师：王大玲" },
+      "url": "https://www.neu.edu.cn/"
+    },
+    {
+      "id": "neu-master",
+      "type": "education",
+      "period": { "en": "2020.09 — 2022.06", "zh": "2020.09 — 2022.06" },
+      "title": { "en": "M.S. in Computer Science", "zh": "计算机科学硕士" },
+      "organization": "Northeastern University",
+      "organizationZh": "东北大学",
+      "description": { "en": "Natural language processing, explainable AI, and affective computing", "zh": "自然语言处理、可解释人工智能与情感计算" },
+      "url": "https://www.neu.edu.cn/"
+    },
+    {
+      "id": "heu-bachelor",
+      "type": "education",
+      "period": { "en": "2016.09 — 2020.06", "zh": "2016.09 — 2020.06" },
+      "title": { "en": "B.S. in Computer Science", "zh": "计算机科学学士" },
+      "organization": "Harbin Engineering University",
+      "organizationZh": "哈尔滨工程大学",
+      "description": { "en": "Computer science and engineering", "zh": "计算机科学与工程" },
+      "url": "https://www.hrbeu.edu.cn/"
+    },
+    {
+      "id": "iflytek-spark-camp",
+      "type": "exchange",
+      "period": { "en": "2023.08", "zh": "2023.08" },
+      "title": { "en": "Team Lead, First iFLYTEK Spark Camp", "zh": "科大讯飞首届星火营 · 组长" },
+      "organization": "iFLYTEK",
+      "organizationZh": "科大讯飞",
+      "description": { "en": "Designed an LLM legal-capability benchmark and developed a civil-complaint generation prototype with SparkDesk.", "zh": "设计大语言模型司法能力评测 Benchmark，并开发基于星火认知大模型的民事诉讼状生成系统。" },
+      "url": "https://www.iflytek.com/"
+    },
+    {
+      "id": "lyihub-internship",
+      "type": "exchange",
+      "period": { "en": "Earlier experience", "zh": "早期经历" },
+      "title": { "en": "Large Language Model Evaluation Intern", "zh": "大语言模型应用评测实习生" },
+      "organization": "LYiHub",
+      "organizationZh": "LYiHub",
+      "description": { "en": "Evaluated LLM-based applications, with a focus on constructing retrieval-related evaluation tasks.", "zh": "参与大语言模型应用评测，主要负责构建检索相关的评测任务。" },
+      "url": ""
+    }
+  ],
   "funding": [
     {
       "id": "rwi-reflection",
@@ -204,6 +266,53 @@
       "funder": "深圳橙果视界科技有限公司研究项目",
       "amount": "",
       "period": "2025"
+    }
+  ],
+  "projects": [
+    {
+      "id": "langgpt",
+      "title": "LangGPT: Rethinking Structured Reusable Prompt Design Framework for LLMs from the Programming Language",
+      "role": { "en": "Core Contributor & Co-builder", "zh": "核心贡献者 / 共建者" },
+      "period": "",
+      "description": { "en": "A personified structural prompt framework inspired by reusable, object-oriented programming design. Contributed to its theoretical system and paper writing.", "zh": "受可复用、面向对象程序设计启发的人格化结构化提示框架；参与理论体系完善与论文写作。" },
+      "links": { "paper": "https://arxiv.org/abs/2402.16929", "code": "https://github.com/langgptai/LangGPT" },
+      "pinned": true
+    },
+    {
+      "id": "minstrel",
+      "title": "Minstrel: Structural Prompt Generation with Multi-Agents Coordination for Non-AI Experts",
+      "role": { "en": "Project Lead", "zh": "项目负责人" },
+      "period": "",
+      "description": { "en": "A multi-agent system that decomposes prompt generation across coordinated working groups and automates reusable structural prompt design.", "zh": "通过多个生成式智能体工作组协作分解提示生成任务，自动生成可复用的结构化提示。" },
+      "links": { "paper": "https://arxiv.org/abs/2409.13449", "code": "https://github.com/langgptai/Minstrel" },
+      "pinned": true
+    },
+    {
+      "id": "t-col",
+      "title": "T-COL: Generating Counterfactual Explanations for General User Preferences on Variable Machine Learning Systems",
+      "role": { "en": "Project Lead", "zh": "项目负责人" },
+      "period": "",
+      "description": { "en": "A link-tree-based counterfactual explanation method that selects and recombines local feature subsets to reflect general user preferences.", "zh": "基于链接树选择并组合局部特征子集，面向通用用户偏好生成反事实解释。" },
+      "links": { "paper": "https://arxiv.org/abs/2309.16146", "code": "https://github.com/sci-m-wang/T-COL" },
+      "pinned": true
+    },
+    {
+      "id": "mm-bigbench",
+      "title": "MM-BigBench",
+      "role": { "en": "Key Contributor", "zh": "核心参与者" },
+      "period": "",
+      "description": { "en": "A multimodal benchmark with complementary metrics for model performance, relative gains, stability, and adaptability.", "zh": "面向多模态模型的综合评测基准，覆盖最佳性能、相对增益、稳定性与适应性等指标。" },
+      "links": { "paper": "https://arxiv.org/abs/2310.09036", "code": "https://github.com/declare-lab/MM-BigBench" },
+      "pinned": false
+    },
+    {
+      "id": "pica",
+      "title": "PICA",
+      "role": { "en": "Key Contributor", "zh": "核心参与者" },
+      "period": "",
+      "description": { "en": "A multi-turn dialogue model designed to provide emotionally engaged and empathetic responses; contributed to data construction and supervised fine-tuning.", "zh": "面向情感参与与共情回应的多轮对话模型；参与数据构建与监督微调。" },
+      "links": { "paper": "", "code": "https://github.com/NEU-DataMining/PICA" },
+      "pinned": false
     }
   ],
   "awards": [
@@ -268,11 +377,118 @@
     { "en": "Peer counselor, Yunqi Peer Counseling Studio, Northeastern University", "zh": "东北大学云起工作室朋辈心理咨询师" },
     { "en": "Outstanding Ph.D. science counselor, 2024 National Youth Science Camp", "zh": "2024 全国青少年高校科学营东北大学分营优秀博士生科技辅导员" }
   ],
+  "activities": [
+    {
+      "id": "ploutos-annaagent",
+      "type": "talk",
+      "period": "2026.02",
+      "title": "AnnaAgent: Toward More Realistic Counseling Seeker Simulation",
+      "organization": "Ploutos",
+      "description": { "en": "Invited academic talk on longitudinal seeker simulation and multi-session memory.", "zh": "围绕长期来访者模拟与多会话记忆作邀请学术报告。" },
+      "url": ""
+    },
+    {
+      "id": "nice-annaagent",
+      "type": "talk",
+      "period": "2025.06",
+      "title": "AnnaAgent: Toward More Realistic Counseling Seeker Simulation",
+      "organization": "NICE Academic",
+      "description": { "en": "Invited academic talk on realistic counseling-seeker simulation.", "zh": "围绕更真实的心理咨询来访者模拟作邀请学术报告。" },
+      "url": ""
+    },
+    {
+      "id": "datawhale-ai-psychology",
+      "type": "talk",
+      "period": "2025.04",
+      "title": "AI 大模型原理、应用与 AI+心理学",
+      "organization": "Datawhale Un-AI City Tour · Shenyang",
+      "description": { "en": "Public talk introducing LLM fundamentals, applications, and AI × psychology.", "zh": "面向公众介绍大模型原理、应用以及 AI 与心理学的交叉方向。" },
+      "url": ""
+    },
+    {
+      "id": "pujiang-machine-psychology",
+      "type": "talk",
+      "period": "2024.12",
+      "title": "Machine Psychology",
+      "organization": "Pujiang AI Annual Meeting · Shanghai",
+      "description": { "en": "Academic talk on machine psychology at the Pujiang AI Annual Meeting.", "zh": "在浦江 AI 年会作机器心理学主题学术报告。" },
+      "url": ""
+    },
+    {
+      "id": "reviewer-pc",
+      "type": "academic",
+      "period": "Ongoing",
+      "title": "Reviewer & Program Committee Service",
+      "organization": "ICML · ACL-family conferences · JAIR · related venues",
+      "description": { "en": "Reviewer or program committee member for international conferences and journals in artificial intelligence and natural language processing.", "zh": "担任人工智能与自然语言处理领域国际会议、期刊审稿人或程序委员。" },
+      "url": ""
+    },
+    {
+      "id": "professional-memberships",
+      "type": "academic",
+      "period": "Ongoing",
+      "title": "Professional Memberships",
+      "organization": "APA · CIPS · CCF · CAAI",
+      "description": { "en": "Member of the American Psychological Association and major Chinese professional societies in language, computing, and artificial intelligence.", "zh": "美国心理学会、中国中文信息学会、中国计算机学会、中国人工智能学会会员。" },
+      "url": ""
+    },
+    {
+      "id": "trae-fellow",
+      "type": "academic",
+      "period": "Ongoing",
+      "title": "TRAE Fellow",
+      "organization": "TRAE",
+      "description": { "en": "Community fellow contributing to developer and AI-tooling activities.", "zh": "参与开发者与 AI 工具相关的社区活动。" },
+      "url": ""
+    },
+    {
+      "id": "internlm-instructor",
+      "type": "outreach",
+      "period": "2024.06 — 2025.08",
+      "title": "书生大模型实战营 · 讲师",
+      "organization": "InternLM Practical Camp",
+      "description": { "en": "Taught prompt engineering and SFT; organized Prompt and SFT evaluation tracks for paper classification and formula recognition.", "zh": "讲授提示工程、SFT 等课程，并组织论文分类、公式识别挑战赛的 Prompt 与 SFT 赛道评测。" },
+      "url": ""
+    },
+    {
+      "id": "peer-counselor",
+      "type": "volunteer",
+      "period": "",
+      "title": "朋辈心理咨询师",
+      "organization": "东北大学云起工作室",
+      "description": { "en": "Provided peer counseling and student mental-health support.", "zh": "参与朋辈心理咨询与学生心理支持。" },
+      "url": ""
+    },
+    {
+      "id": "science-camp-counselor",
+      "type": "volunteer",
+      "period": "2024",
+      "title": "优秀博士生科技辅导员",
+      "organization": "全国青少年高校科学营 · 东北大学分营",
+      "description": { "en": "Supported science communication and mentoring for participating secondary-school students.", "zh": "面向参营中学生开展科学传播、科研交流与成长指导。" },
+      "url": ""
+    },
+    {
+      "id": "heu-peer-mentor",
+      "type": "volunteer",
+      "period": "",
+      "title": "学业导师",
+      "organization": "哈尔滨工程大学“同舟共济 · 一帮一”项目",
+      "description": { "en": "Provided peer academic mentoring and study support.", "zh": "参与朋辈学业指导与学习帮扶。" },
+      "url": ""
+    }
+  ],
   "news": [
-    { "id": "genpt-acl-2026", "date": "2026", "kind": "Publication", "title": { "en": "GenPT accepted to ACL 2026", "zh": "GenPT 被 ACL 2026 接收" }, "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&citation_for_view=dcqk_mMAAAAJ:ZeXyd9-uunAC" },
-    { "id": "persona-cogsci-2026", "date": "2026", "kind": "Publication", "title": { "en": "Persona Steering study accepted to CogSci 2026", "zh": "Persona Steering 研究被 CogSci 2026 接收" }, "url": "https://arxiv.org/abs/2604.11048" },
-    { "id": "ccac-spotlight", "date": "2026", "kind": "Award", "title": { "en": "Received the CCAC Spotlight Poster Prize", "zh": "获第六届中国情感计算大会 Spotlight Poster Prize" }, "url": "" },
-    { "id": "trae-solo", "date": "2026", "kind": "Award", "title": { "en": "Won the Productivity Enhancement Track at TRAE SOLO Singapore", "zh": "获 TRAE SOLO Singapore Productivity Enhancement Track 第一名" }, "url": "" },
-    { "id": "annaagent-acl", "date": "2025", "kind": "Publication", "title": { "en": "AnnaAgent published at Findings of ACL 2025", "zh": "AnnaAgent 发表于 Findings of ACL 2025" }, "url": "https://arxiv.org/abs/2506.00551" }
+    { "id": "genpt-acl-2026", "date": "2026", "kind": "Publication", "displayTitle": "", "source": "", "title": { "en": "GenPT accepted to ACL 2026", "zh": "GenPT 被 ACL 2026 接收" }, "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&citation_for_view=dcqk_mMAAAAJ:ZeXyd9-uunAC" },
+    { "id": "persona-cogsci-2026", "date": "2026", "kind": "Publication", "displayTitle": "", "source": "", "title": { "en": "Persona Steering study accepted to CogSci 2026", "zh": "Persona Steering 研究被 CogSci 2026 接收" }, "url": "https://arxiv.org/abs/2604.11048" },
+    { "id": "ccac-spotlight", "date": "2026", "kind": "Award", "displayTitle": "", "source": "", "title": { "en": "Received the CCAC Spotlight Poster Prize", "zh": "获第六届中国情感计算大会 Spotlight Poster Prize" }, "url": "" },
+    { "id": "trae-solo", "date": "2026", "kind": "Award", "displayTitle": "", "source": "", "title": { "en": "Won the Productivity Enhancement Track at TRAE SOLO Singapore", "zh": "获 TRAE SOLO Singapore Productivity Enhancement Track 第一名" }, "url": "" },
+    { "id": "annaagent-acl", "date": "2025", "kind": "Publication", "displayTitle": "", "source": "", "title": { "en": "AnnaAgent published at Findings of ACL 2025", "zh": "AnnaAgent 发表于 Findings of ACL 2025" }, "url": "https://arxiv.org/abs/2506.00551" },
+    { "id": "neu-doctoral-salon-2024", "date": "2024.03.19", "kind": "Media", "displayTitle": "【博采众长·博士生学术沙龙】刘嘉桐、王明两位博士做客博士生学术沙龙", "source": "NEU博士生 · 东北大学博士生会", "title": { "en": "Doctoral Academic Salon featuring Jiatong Liu and Ming Wang", "zh": "刘嘉桐、王明两位博士做客博士生学术沙龙" }, "url": "https://mp.weixin.qq.com/s/L_F524gkqsND2SqJu4sbhA" },
+    { "id": "chuangshijie-interview", "date": "2019", "kind": "Media", "displayTitle": "第三界“创视界”创业采访栏目", "source": "材化小团", "title": { "en": "Third Chuangshijie Entrepreneurship Interview Series", "zh": "第三界“创视界”创业采访栏目" }, "url": "https://mp.weixin.qq.com/s/6NYK19ats-xnCusehNGofg" },
+    { "id": "math-salon-1145", "date": "2019", "kind": "Media", "displayTitle": "数学科学学院第1145期科创沙龙", "source": "数学团学联", "title": { "en": "School of Mathematical Sciences Innovation Salon No. 1145", "zh": "数学科学学院第1145期科创沙龙" }, "url": "https://mp.weixin.qq.com/s/sXtrn2B4hOltMY9GI0w0uA" },
+    { "id": "math-salon-1134", "date": "2019.10.29", "kind": "Media", "displayTitle": "数学科学学院第1134期科创沙龙", "source": "数学团学联", "title": { "en": "School of Mathematical Sciences Innovation Salon No. 1134", "zh": "数学科学学院第1134期科创沙龙" }, "url": "https://mp.weixin.qq.com/s/JfVhtcyr9ffJzkTmNTO4TA" },
+    { "id": "tencent-video-interview", "date": "2019.02.04", "kind": "Media", "displayTitle": "视频采访（旧主页收录）", "source": "Tencent Video", "title": { "en": "Video interview from the previous homepage archive", "zh": "旧主页收录的视频采访" }, "url": "https://v.qq.com/x/page/e0835c607hk.html" },
+    { "id": "heu-internet-plus-2018", "date": "2018.10.18", "kind": "Media", "displayTitle": "第四届中国“互联网+”大学生创新创业大赛：我校学子摘金夺银", "source": "哈尔滨工程大学启航网", "title": { "en": "Harbin Engineering University students win gold and silver at the 4th China Internet+ Competition", "zh": "第四届中国“互联网+”大学生创新创业大赛：我校学子摘金夺银" }, "url": "http://qihang.hrbeu.edu.cn/2018/1018/c958a203768/page.htm" }
   ]
 }

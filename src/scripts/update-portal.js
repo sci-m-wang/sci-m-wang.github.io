@@ -154,6 +154,43 @@ const sectionConfigs = {
       return { title: item.title || "Untitled publication", meta: `${item.venueShort || item.status || "Publication"} · ${item.year || "—"}` };
     },
   },
+  experience: {
+    label: "经历 / Experience",
+    plural: "经历",
+    document: "profile",
+    collection: "experience",
+    addLabel: "新增经历",
+    searchable: true,
+    fields: [
+      { key: "id", label: "稳定 ID", hint: "小写英文、数字与连字符", required: true },
+      {
+        key: "type",
+        label: "经历类型",
+        type: "select",
+        required: true,
+        options: [
+          ["education", "Education / 教育"],
+          ["work", "Formal work / 正式工作"],
+          ["exchange", "Exchange or internship / 交流实习"],
+        ],
+      },
+      { key: "period.en", label: "英文时间", required: true },
+      { key: "period.zh", label: "中文时间", required: true },
+      { key: "title.en", label: "英文身份 / 学位", required: true, wide: true },
+      { key: "title.zh", label: "中文身份 / 学位", required: true, wide: true },
+      { key: "organization", label: "机构正式名称", required: true, wide: true },
+      { key: "organizationZh", label: "机构中文名", required: true, wide: true },
+      { key: "description.en", label: "英文说明", type: "textarea", wide: true },
+      { key: "description.zh", label: "中文说明", type: "textarea", wide: true },
+      { key: "url", label: "机构 / 项目链接", type: "url", wide: true },
+    ],
+    create() {
+      return { id: "", type: "exchange", period: { en: "", zh: "" }, title: { en: "", zh: "" }, organization: "", organizationZh: "", description: { en: "", zh: "" }, url: "" };
+    },
+    display(item) {
+      return { title: item.title?.zh || item.title?.en || "Untitled experience", meta: `${item.organizationZh || item.organization || "Experience"} · ${item.period?.zh || item.period?.en || "—"}` };
+    },
+  },
   awards: {
     label: "奖项 / Award",
     plural: "奖项",
@@ -200,12 +237,73 @@ const sectionConfigs = {
       return { title: item.displayTitle || item.title?.zh || item.title?.en || "Untitled funding", meta: `${item.role?.zh || item.role?.en || "Funding"} · ${item.period || "—"}` };
     },
   },
+  projects: {
+    label: "项目 / Project",
+    plural: "项目",
+    document: "profile",
+    collection: "projects",
+    addLabel: "新增项目",
+    searchable: true,
+    fields: [
+      { key: "id", label: "稳定 ID", hint: "小写英文、数字与连字符", required: true },
+      { key: "title", label: "项目正式名称", hint: "保持正式名称，不随语言切换", required: true, wide: true },
+      { key: "role.en", label: "英文角色", required: true },
+      { key: "role.zh", label: "中文角色", required: true },
+      { key: "period", label: "项目时间", hint: "可留空" },
+      { key: "pinned", label: "Pin / 置顶到项目列表", type: "checkbox", wide: true },
+      { key: "description.en", label: "英文说明", type: "textarea", wide: true },
+      { key: "description.zh", label: "中文说明", type: "textarea", wide: true },
+      { key: "links.paper", label: "论文链接", type: "url", wide: true },
+      { key: "links.code", label: "项目 / 代码链接", type: "url", wide: true },
+    ],
+    create() {
+      return { id: "", title: "", role: { en: "", zh: "" }, period: "", pinned: false, description: { en: "", zh: "" }, links: { paper: "", code: "" } };
+    },
+    display(item) {
+      return { title: item.title || "Untitled project", meta: `${item.role?.zh || item.role?.en || "Project"}${item.period ? ` · ${item.period}` : ""}${item.pinned ? " · PINNED" : ""}` };
+    },
+  },
+  activities: {
+    label: "报告或服务 / Activity",
+    plural: "报告与服务",
+    document: "profile",
+    collection: "activities",
+    addLabel: "新增报告或服务",
+    searchable: true,
+    fields: [
+      { key: "id", label: "稳定 ID", hint: "小写英文、数字与连字符", required: true },
+      {
+        key: "type",
+        label: "类型",
+        type: "select",
+        required: true,
+        options: [
+          ["talk", "Talk / 讲座报告"],
+          ["academic", "Academic service / 学术服务"],
+          ["outreach", "Outreach / 公众交流"],
+          ["volunteer", "Volunteer / 志愿服务"],
+        ],
+      },
+      { key: "period", label: "时间", hint: "例如 2026.02；可留空" },
+      { key: "title", label: "正式名称", hint: "按活动正式使用的语言填写", required: true, wide: true },
+      { key: "organization", label: "主办方 / 服务机构", required: true, wide: true },
+      { key: "description.en", label: "英文说明", type: "textarea", wide: true },
+      { key: "description.zh", label: "中文说明", type: "textarea", wide: true },
+      { key: "url", label: "相关链接", type: "url", wide: true },
+    ],
+    create() {
+      return { id: "", type: "talk", period: "", title: "", organization: "", description: { en: "", zh: "" }, url: "" };
+    },
+    display(item) {
+      return { title: item.title || "Untitled activity", meta: `${item.organization || item.type || "Activity"} · ${item.period || "—"}` };
+    },
+  },
   news: {
-    label: "动态 / News",
-    plural: "动态",
+    label: "动态或报道 / News & Media",
+    plural: "动态与报道",
     document: "profile",
     collection: "news",
-    addLabel: "新增动态",
+    addLabel: "新增动态或报道",
     searchable: true,
     fields: [
       { key: "id", label: "稳定 ID", hint: "小写英文、数字与连字符", required: true },
@@ -224,12 +322,14 @@ const sectionConfigs = {
           ["Other", "Other / 其他"],
         ],
       },
+      { key: "displayTitle", label: "正式标题", hint: "媒体报道等固定标题填写在这里；普通动态可留空", wide: true },
+      { key: "source", label: "媒体 / 来源", hint: "普通动态可留空", wide: true },
       { key: "title.en", label: "英文标题", required: true, wide: true },
       { key: "title.zh", label: "中文标题", required: true, wide: true },
       { key: "url", label: "相关链接", type: "url", wide: true },
     ],
     create() {
-      return { id: "", date: String(new Date().getFullYear()), kind: "Publication", title: { en: "", zh: "" }, url: "" };
+      return { id: "", date: String(new Date().getFullYear()), kind: "Publication", displayTitle: "", source: "", title: { en: "", zh: "" }, url: "" };
     },
     display(item) {
       return { title: item.title?.zh || item.title?.en || "Untitled news", meta: `${item.kind || "News"} · ${item.date || "—"}` };
@@ -257,6 +357,12 @@ const sectionConfigs = {
       { key: "bio.zh", label: "中文简介", type: "textarea", required: true, wide: true },
       { key: "location.en", label: "英文所在地" },
       { key: "location.zh", label: "中文所在地" },
+      { key: "researchAreas.0.title.en", label: "研究方向 1 · 英文", wide: true },
+      { key: "researchAreas.0.title.zh", label: "研究方向 1 · 中文", wide: true },
+      { key: "researchAreas.1.title.en", label: "研究方向 2 · 英文", wide: true },
+      { key: "researchAreas.1.title.zh", label: "研究方向 2 · 中文", wide: true },
+      { key: "researchAreas.2.title.en", label: "研究方向 3 · 英文", wide: true },
+      { key: "researchAreas.2.title.zh", label: "研究方向 3 · 中文", wide: true },
       { key: "metrics.1.value", label: "个人项目 Stars" },
       { key: "metrics.1.note.en", label: "Stars 英文说明", wide: true },
       { key: "metrics.1.note.zh", label: "Stars 中文说明", wide: true },
@@ -294,11 +400,12 @@ const sectionConfigs = {
         required: true,
         options: [
           ["collection", "Custom collection / 自定义内容页"],
-          ["research", "Research / 研究"],
           ["publications", "Publications / 论文"],
+          ["funding", "Funding & Projects / 项目"],
           ["experience", "Experience / 经历"],
           ["awards", "Awards / 荣誉"],
-          ["news", "News / 动态"],
+          ["service", "Talks & Service / 报告与服务"],
+          ["news", "News & Media / 动态与报道"],
         ],
       },
       { key: "order", label: "导航顺序", type: "number", required: true, min: 1, max: 99 },

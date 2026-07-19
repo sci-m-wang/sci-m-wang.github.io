@@ -1,19 +1,5 @@
 [
   {
-    "id": "research",
-    "slug": "research",
-    "nav": { "en": "Research", "zh": "研究" },
-    "title": { "en": "Research", "zh": "研究方向" },
-    "intro": {
-      "en": "My work connects psychological theory with testable AI systems, with a focus on machine psychology, persona simulation, and human–AI alignment.",
-      "zh": "我的研究连接心理理论与可检验的人工智能系统，关注机器心理学、人格模拟与人机心智对齐。"
-    },
-    "template": "research",
-    "order": 1,
-    "visible": true,
-    "entries": []
-  },
-  {
     "id": "publications",
     "slug": "publications",
     "nav": { "en": "Publications", "zh": "论文" },
@@ -23,6 +9,20 @@
       "zh": "同行评议论文、预印本与工作论文。引用量每周从 Google Scholar 自动更新。"
     },
     "template": "publications",
+    "order": 1,
+    "visible": true,
+    "entries": []
+  },
+  {
+    "id": "funding",
+    "slug": "funding",
+    "nav": { "en": "Funding & Projects", "zh": "项目与经费" },
+    "title": { "en": "Funding & Projects", "zh": "科研项目" },
+    "intro": {
+      "en": "Funded research, collaborative systems, and open-source projects.",
+      "zh": "科研资助、合作研究、系统研发与开源项目。"
+    },
+    "template": "funding",
     "order": 2,
     "visible": true,
     "entries": []
@@ -31,10 +31,10 @@
     "id": "experience",
     "slug": "experience",
     "nav": { "en": "Experience", "zh": "经历" },
-    "title": { "en": "Experience", "zh": "学术经历" },
+    "title": { "en": "Experience", "zh": "个人经历" },
     "intro": {
-      "en": "Education, funded projects, affiliations, teaching, talks, and academic service.",
-      "zh": "教育背景、科研项目、机构经历、教学、报告与学术服务。"
+      "en": "Education, formal appointments, academic exchanges, and internships.",
+      "zh": "教育背景、正式工作、学术交流与实习经历。"
     },
     "template": "experience",
     "order": 3,
@@ -56,16 +56,30 @@
     "entries": []
   },
   {
+    "id": "service",
+    "slug": "service",
+    "nav": { "en": "Talks & Service", "zh": "报告与服务" },
+    "title": { "en": "Talks & Service", "zh": "报告与服务" },
+    "intro": {
+      "en": "Invited talks, academic service, professional activities, volunteering, and public engagement.",
+      "zh": "邀请报告、学术服务、专业活动、志愿服务与公众交流。"
+    },
+    "template": "service",
+    "order": 5,
+    "visible": true,
+    "entries": []
+  },
+  {
     "id": "news",
     "slug": "news",
-    "nav": { "en": "News", "zh": "动态" },
-    "title": { "en": "News", "zh": "近期动态" },
+    "nav": { "en": "News & Media", "zh": "动态与报道" },
+    "title": { "en": "News & Media", "zh": "动态与报道" },
     "intro": {
-      "en": "Selected publications, awards, talks, and research milestones.",
-      "zh": "精选论文、获奖、报告与研究节点。"
+      "en": "Research milestones, recent updates, interviews, and media coverage.",
+      "zh": "研究进展、近期动态、人物采访与媒体报道。"
     },
     "template": "news",
-    "order": 5,
+    "order": 6,
     "visible": true,
     "entries": []
   }

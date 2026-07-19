@@ -12,7 +12,7 @@ const pinnedPublications = [...publications]
   .filter((publication) => publication.pinned)
   .sort((a, b) => b.year - a.year)
   .slice(0, 3);
-const latestNews = profile.news.slice(0, 3);
+const latestNews = profile.news.filter((item) => item.kind !== "Media").slice(0, 3);
 ---
 
 <BaseLayout>
@@ -24,12 +24,22 @@ const latestNews = profile.news.slice(0, 3);
         <div class="hero__grid" aria-hidden="true"></div>
 
         <aside class="hero__aside reveal">
-          <p class="eyebrow"><LocalText en="Machine psychology · Human–AI alignment" zh="机器心理学 · 人机心智对齐" /></p>
-          <div class="hero__coordinate" aria-hidden="true">
-            <span>01°17′N</span>
-            <span>103°51′E</span>
+          <div class="hero__focus">
+            <p class="eyebrow"><LocalText en="Research focus" zh="研究方向" /></p>
+            <ol class="hero__focus-list">
+              {profile.researchAreas.map((area) => (
+                <li><span>{area.index}</span><LocalText en={area.title.en} zh={area.title.zh} /></li>
+              ))}
+            </ol>
           </div>
-          <p class="hero__location"><span class="pulse-dot" aria-hidden="true"></span><LocalText en={profile.location.en} zh={profile.location.zh} /></p>
+          <div class="hero__base">
+            <p class="eyebrow"><LocalText en="Based in" zh="所在地" /></p>
+            <div class="hero__coordinate" aria-hidden="true">
+              <span>01°17′N</span>
+              <span>103°51′E</span>
+            </div>
+            <p class="hero__location"><span class="pulse-dot" aria-hidden="true"></span><LocalText en={profile.location.en} zh={profile.location.zh} /></p>
+          </div>
         </aside>
 
         <div class="hero__main reveal">
@@ -107,8 +117,8 @@ const latestNews = profile.news.slice(0, 3);
 
         <div class="home-highlight home-highlight--news reveal">
           <header>
-            <p class="section-heading__index">Latest news</p>
-            <a href="/news/"><LocalText en="All updates" zh="全部动态" /> ↗</a>
+            <p class="section-heading__index">Latest updates</p>
+            <a href="/news/"><LocalText en="News & media" zh="动态与报道" /> ↗</a>
           </header>
           <div class="home-highlight__list">
             {latestNews.map((item) => (

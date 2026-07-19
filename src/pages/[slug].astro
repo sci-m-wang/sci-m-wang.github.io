@@ -48,8 +48,15 @@ const citationUpdatedAt = publications.map((publication) => publication.citation
 const sortedAwards = [...profile.awards].sort((a, b) => Number(b.year) - Number(a.year));
 const pinnedAwards = sortedAwards.filter((award) => award.pinned);
 const regularAwards = sortedAwards.filter((award) => !award.pinned);
-const talks = profile.engagements.filter((item) => item.type === "talk");
-const practice = profile.engagements.filter((item) => item.type !== "talk");
+const educationExperience = profile.experience.filter((item) => item.type === "education");
+const workExperience = profile.experience.filter((item) => item.type === "work");
+const exchangeExperience = profile.experience.filter((item) => item.type === "exchange");
+const sortedProjects = [...profile.projects].sort((a, b) => Number(b.pinned) - Number(a.pinned));
+const talks = profile.activities.filter((item) => item.type === "talk");
+const academicService = profile.activities.filter((item) => item.type === "academic");
+const volunteerService = profile.activities.filter((item) => ["volunteer", "outreach"].includes(item.type));
+const newsUpdates = profile.news.filter((item) => item.kind !== "Media");
+const mediaCoverage = profile.news.filter((item) => item.kind === "Media");
 const pageTitle = `${section.title.en} · Ming Wang`;
 ---
 
@@ -57,48 +64,6 @@ const pageTitle = `${section.title.en} · Ming Wang`;
   <div class="site-shell">
     <SiteNav activeSlug={section.slug} />
     <main id="main" class="subpage-shell">
-      {section.template === "research" && (
-        <div class="page-content page-content--research">
-          <section class="page-section" aria-labelledby="research-areas-title">
-            <header class="page-section__heading reveal">
-              <p class="section-heading__index">01 / Fields</p>
-              <LocalText en="Research fields" zh="研究领域" as="h2" id="research-areas-title" />
-            </header>
-            <div class="research-areas research-areas--page">
-              {profile.researchAreas.map((area) => (
-                <article class="research-area reveal">
-                  <span class="research-area__index">{area.index}</span>
-                  <LocalText en={area.title.en} zh={area.title.zh} as="h3" />
-                  <LocalText en={area.description.en} zh={area.description.zh} as="p" />
-                  <ul>{area.keywords.map((keyword) => <li>{keyword}</li>)}</ul>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section class="page-section page-section--records" aria-labelledby="projects-title">
-            <header class="page-section__heading reveal">
-              <p class="section-heading__index">02 / Selected work</p>
-              <LocalText en="Projects" zh="代表性项目" as="h2" id="projects-title" />
-            </header>
-            <div class="record-stack">
-              {profile.selectedResearch.map((work, index) => (
-                <ExpandableRecord index={index} eyebrow={work.eyebrow} title={work.title} meta={work.subtitle.en} label="project">
-                  <div class="project-detail">
-                    <LocalText en={work.subtitle.en} zh={work.subtitle.zh} as="h3" />
-                    <LocalText en={work.description.en} zh={work.description.zh} as="p" />
-                    <div class="publication-detail__links">
-                      <a href={work.url} target="_blank" rel="noreferrer">Paper ↗</a>
-                      {"code" in work && work.code && <a href={work.code} target="_blank" rel="noreferrer">Code ↗</a>}
-                    </div>
-                  </div>
-                </ExpandableRecord>
-              ))}
-            </div>
-          </section>
-        </div>
-      )}
-
       {section.template === "publications" && (
         <div class="page-content">
           <section class="page-section page-section--records" aria-labelledby="publication-list-title">
@@ -141,23 +106,10 @@ const pageTitle = `${section.title.en} · Ming Wang`;
         </div>
       )}
 
-      {section.template === "experience" && (
-        <div class="page-content page-content--experience">
-          <section class="page-section">
-            <header class="page-section__heading reveal"><p class="section-heading__index">01 / Formation</p><LocalText en="Education" zh="教育背景" as="h2" /></header>
-            <div class="timeline-list timeline-list--page">
-              {profile.education.map((item, index) => (
-                <article class="timeline-item reveal">
-                  <span class="timeline-item__number">{String(index + 1).padStart(2, "0")}</span>
-                  <p class="timeline-item__period">{item.period}</p>
-                  <div><LocalText en={item.degree.en} zh={item.degree.zh} as="h3" /><p>{item.school} / {item.schoolZh}</p><LocalText en={item.detail.en} zh={item.detail.zh} as="p" class="timeline-item__detail" /></div>
-                </article>
-              ))}
-            </div>
-          </section>
-
+      {section.template === "funding" && (
+        <div class="page-content page-content--funding">
           <section class="page-section page-section--records">
-            <header class="page-section__heading reveal"><p class="section-heading__index">02 / Support</p><LocalText en="Funding & projects" zh="科研项目与经费" as="h2" /></header>
+            <header class="page-section__heading reveal"><p class="section-heading__index">01 / Funded research</p><LocalText en="Funding" zh="科研资助" as="h2" /></header>
             <div class="record-stack">
               {profile.funding.map((item, index) => (
                 <ExpandableRecord index={index} eyebrow={`${item.role.en} · ${item.period}`} title={item.displayTitle} meta={item.funder} label="funding project">
@@ -167,23 +119,72 @@ const pageTitle = `${section.title.en} · Ming Wang`;
             </div>
           </section>
 
+          <section class="page-section page-section--records">
+            <header class="page-section__heading reveal"><p class="section-heading__index">02 / Systems & open source</p><LocalText en="Projects" zh="研究与开源项目" as="h2" /></header>
+            <div class="record-stack">
+              {sortedProjects.map((project, index) => (
+                <ExpandableRecord index={index} eyebrow={`${project.pinned ? "PINNED · " : ""}${project.role.en}${project.period ? ` · ${project.period}` : ""}`} title={project.title} meta={project.role.zh} label="project">
+                  <div class="project-detail">
+                    <LocalText en={project.role.en} zh={project.role.zh} as="h3" />
+                    <LocalText en={project.description.en} zh={project.description.zh} as="p" />
+                    <div class="publication-detail__links">
+                      {project.links.paper && <a href={project.links.paper} target="_blank" rel="noreferrer">Paper ↗</a>}
+                      {project.links.code && <a href={project.links.code} target="_blank" rel="noreferrer">Code ↗</a>}
+                    </div>
+                  </div>
+                </ExpandableRecord>
+              ))}
+            </div>
+          </section>
+        </div>
+      )}
+
+      {section.template === "experience" && (
+        <div class="page-content page-content--experience">
           <section class="page-section">
-            <header class="page-section__heading reveal"><p class="section-heading__index">03 / Community</p><LocalText en="Affiliations & exchange" zh="机构与交流" as="h2" /></header>
-            <div class="experience-board experience-board--three">
-              <div class="experience-panel reveal">
-                <h3><LocalText en="Affiliations & advisors" zh="机构与导师" /></h3>
-                {profile.affiliations.map((item) => <a href={item.url} target="_blank" rel="noreferrer"><span>{item.period}</span><strong>{item.name}</strong><LocalText en={item.role.en} zh={item.role.zh} as="p" /></a>)}
-                <div class="experience-panel__links">{profile.advisors.map((advisor) => <a href={advisor.url} target="_blank" rel="noreferrer">{advisor.name} ↗</a>)}</div>
+            <header class="page-section__heading reveal"><p class="section-heading__index">01 / Formation</p><LocalText en="Education" zh="教育背景" as="h2" /></header>
+            <div class="timeline-list timeline-list--page">
+              {educationExperience.map((item, index) => (
+                <article class="timeline-item reveal">
+                  <span class="timeline-item__number">{String(index + 1).padStart(2, "0")}</span>
+                  <LocalText en={item.period.en} zh={item.period.zh} as="p" class="timeline-item__period" />
+                  <div>
+                    <LocalText en={item.title.en} zh={item.title.zh} as="h3" />
+                    <p>{item.organization} / {item.organizationZh}</p>
+                    <LocalText en={item.description.en} zh={item.description.zh} as="p" class="timeline-item__detail" />
+                  </div>
+                  {item.url && <a class="timeline-item__link" href={item.url} target="_blank" rel="noreferrer">↗</a>}
+                </article>
+              ))}
+            </div>
+          </section>
+
+          {workExperience.length > 0 && (
+            <section class="page-section">
+              <header class="page-section__heading reveal"><p class="section-heading__index">02 / Appointments</p><LocalText en="Work" zh="正式工作" as="h2" /></header>
+              <div class="timeline-list timeline-list--page">
+                {workExperience.map((item, index) => (
+                  <article class="timeline-item reveal">
+                    <span class="timeline-item__number">{String(index + 1).padStart(2, "0")}</span>
+                    <LocalText en={item.period.en} zh={item.period.zh} as="p" class="timeline-item__period" />
+                    <div><LocalText en={item.title.en} zh={item.title.zh} as="h3" /><p>{item.organization} / {item.organizationZh}</p><LocalText en={item.description.en} zh={item.description.zh} as="p" class="timeline-item__detail" /></div>
+                  </article>
+                ))}
               </div>
-              <div class="experience-panel reveal">
-                <h3><LocalText en="Teaching & practice" zh="教学与实践" /></h3>
-                {practice.map((item) => <article><span>{item.period}</span><div><LocalText en={item.title.en} zh={item.title.zh} as="strong" /><LocalText en={item.description.en} zh={item.description.zh} as="p" /></div></article>)}
-              </div>
-              <div class="experience-panel reveal">
-                <h3><LocalText en="Talks & service" zh="报告与学术服务" /></h3>
-                {talks.map((item) => <article><span>{item.period}</span><div><LocalText en={item.title.en} zh={item.title.zh} as="strong" /><LocalText en={item.description.en} zh={item.description.zh} as="p" /></div></article>)}
-                <ul>{profile.service.map((item) => <li><LocalText en={item.en} zh={item.zh} /></li>)}</ul>
-              </div>
+            </section>
+          )}
+
+          <section class="page-section">
+            <header class="page-section__heading reveal"><p class="section-heading__index">{workExperience.length > 0 ? "03" : "02"} / Exchange</p><LocalText en="Exchange & internships" zh="交流与实习" as="h2" /></header>
+            <div class="timeline-list timeline-list--page timeline-list--exchange">
+              {exchangeExperience.map((item, index) => (
+                <article class="timeline-item reveal">
+                  <span class="timeline-item__number">{String(index + 1).padStart(2, "0")}</span>
+                  <LocalText en={item.period.en} zh={item.period.zh} as="p" class="timeline-item__period" />
+                  <div><LocalText en={item.title.en} zh={item.title.zh} as="h3" /><p>{item.organization} / {item.organizationZh}</p><LocalText en={item.description.en} zh={item.description.zh} as="p" class="timeline-item__detail" /></div>
+                  {item.url && <a class="timeline-item__link" href={item.url} target="_blank" rel="noreferrer">↗</a>}
+                </article>
+              ))}
             </div>
           </section>
         </div>
@@ -238,13 +239,63 @@ const pageTitle = `${section.title.en} · Ming Wang`;
         </div>
       )}
 
+      {section.template === "service" && (
+        <div class="page-content page-content--service">
+          <section class="page-section">
+            <header class="page-section__heading reveal"><p class="section-heading__index">01 / Speaking</p><LocalText en="Talks" zh="讲座与报告" as="h2" /></header>
+            <div class="timeline-list timeline-list--page service-talk-list">
+              {talks.map((item, index) => (
+                <article class="timeline-item reveal">
+                  <span class="timeline-item__number">{String(index + 1).padStart(2, "0")}</span>
+                  <p class="timeline-item__period">{item.period}</p>
+                  <div><h3>{item.title}</h3><p>{item.organization}</p><LocalText en={item.description.en} zh={item.description.zh} as="p" class="timeline-item__detail" /></div>
+                  {item.url && <a class="timeline-item__link" href={item.url} target="_blank" rel="noreferrer">↗</a>}
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section class="page-section">
+            <header class="page-section__heading reveal"><p class="section-heading__index">02 / Community</p><LocalText en="Service & outreach" zh="学术与志愿服务" as="h2" /></header>
+            <div class="service-grid">
+              <section class="service-panel reveal" aria-labelledby="academic-service-title">
+                <header><span>01</span><LocalText en="Academic & professional" zh="学术与专业服务" as="h3" id="academic-service-title" /></header>
+                {academicService.map((item) => (
+                  <article><p>{item.period}</p><h4>{item.title}</h4><strong>{item.organization}</strong><LocalText en={item.description.en} zh={item.description.zh} as="p" /></article>
+                ))}
+              </section>
+              <section class="service-panel service-panel--volunteer reveal" aria-labelledby="volunteer-service-title">
+                <header><span>02</span><LocalText en="Volunteer & public engagement" zh="志愿与公众交流" as="h3" id="volunteer-service-title" /></header>
+                {volunteerService.map((item) => (
+                  <article><p>{item.period || "—"}</p><h4>{item.title}</h4><strong>{item.organization}</strong><LocalText en={item.description.en} zh={item.description.zh} as="p" /></article>
+                ))}
+              </section>
+            </div>
+          </section>
+        </div>
+      )}
+
       {section.template === "news" && (
-        <div class="page-content">
+        <div class="page-content page-content--news-media">
           <section class="page-section" aria-labelledby="news-list-title">
-            <header class="page-section__heading reveal"><p class="section-heading__index">Chronology</p><LocalText en="Recent updates" zh="近期动态" as="h2" id="news-list-title" /></header>
+            <header class="page-section__heading reveal"><p class="section-heading__index">01 / Chronology</p><LocalText en="Recent updates" zh="近期动态" as="h2" id="news-list-title" /></header>
             <div class="news-list news-list--page reveal">
-              {profile.news.map((item) => (
+              {newsUpdates.map((item) => (
                 <article class="news-item"><span class="news-item__date">{item.date}</span><span class="news-item__kind">{item.kind}</span><LocalText en={item.title.en} zh={item.title.zh} as="h3" />{item.url ? <a href={item.url} target="_blank" rel="noreferrer">↗</a> : <span aria-hidden="true">•</span>}</article>
+              ))}
+            </div>
+          </section>
+
+          <section class="page-section" aria-labelledby="media-coverage-title">
+            <header class="page-section__heading reveal"><p class="section-heading__index">02 / Archive</p><LocalText en="Media coverage" zh="媒体报道" as="h2" id="media-coverage-title" /></header>
+            <div class="media-grid">
+              {mediaCoverage.map((item, index) => (
+                <a class="media-card reveal" href={item.url} target="_blank" rel="noreferrer">
+                  <div><span>{String(index + 1).padStart(2, "0")}</span><time>{item.date}</time></div>
+                  <p>{item.source}</p>
+                  <h3>{item.displayTitle}</h3>
+                  <span class="media-card__arrow" aria-hidden="true">↗</span>
+                </a>
               ))}
             </div>
           </section>

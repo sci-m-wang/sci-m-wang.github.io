@@ -20,6 +20,14 @@ on:
         description: "标题（中文）"
         required: true
         type: string
+      display_title:
+        description: "Formal media headline (optional; fixed across languages)"
+        required: false
+        type: string
+      source:
+        description: "Media outlet or source (optional)"
+        required: false
+        type: string
       url:
         description: "Related URL (optional)"
         required: false
@@ -49,6 +57,8 @@ jobs:
           KIND: ${{ inputs.kind }}
           TITLE_EN: ${{ inputs.title_en }}
           TITLE_ZH: ${{ inputs.title_zh }}
+          DISPLAY_TITLE: ${{ inputs.display_title }}
+          SOURCE: ${{ inputs.source }}
           URL: ${{ inputs.url }}
       - name: Commit and publish data change
         run: |

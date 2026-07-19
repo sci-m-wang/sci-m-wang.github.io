@@ -51,7 +51,7 @@ if (operation === "add-publication") {
     year,
     category: required("CATEGORY"),
     status: optional("STATUS") || "published",
-    selected: optional("SELECTED") === "true",
+    pinned: optional("SELECTED") === "true",
     badges: optional("BADGES")
       .split(",")
       .map((badge) => badge.trim())
@@ -97,6 +97,8 @@ if (operation === "add-publication") {
     id,
     date,
     kind: required("KIND"),
+    displayTitle: optional("DISPLAY_TITLE"),
+    source: optional("SOURCE"),
     title: { en: titleEn, zh: required("TITLE_ZH") },
     url: optional("URL"),
   });
@@ -120,7 +122,7 @@ if (operation === "add-publication") {
     publications[index] = { ...publications[index], ...patch, id };
     await writeJson(publicationsPath, publications);
   } else {
-    const allowedDatasets = new Set(["funding", "news", "awards", "metrics", "engagements"]);
+    const allowedDatasets = new Set(["experience", "funding", "projects", "news", "awards", "activities", "metrics", "engagements"]);
     if (!allowedDatasets.has(dataset)) throw new Error(`Unsupported dataset: ${dataset}`);
     const profile = await readJson(profilePath);
     const index = profile[dataset].findIndex((item) => item.id === id);
