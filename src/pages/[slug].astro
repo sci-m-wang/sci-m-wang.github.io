@@ -29,7 +29,6 @@ interface SectionRecord {
   slug: string;
   nav: { en: string; zh: string };
   title: { en: string; zh: string };
-  statement: { en: string; zh: string };
   intro: { en: string; zh: string };
   template: string;
   order: number;
@@ -57,7 +56,7 @@ const pageTitle = `${section.title.en} · Ming Wang`;
   <div class="site-shell">
     <SiteNav activeSlug={section.slug} />
     <main id="main" class="subpage-shell">
-      <SubpageHeader index={pageIndex} title={section.title} statement={section.statement} intro={section.intro} />
+      <SubpageHeader index={pageIndex} title={section.title} intro={section.intro} />
 
       {section.template === "research" && (
         <div class="page-content page-content--research">

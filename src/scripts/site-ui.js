@@ -46,3 +46,33 @@ if (reduceMotion || !("IntersectionObserver" in window)) {
   );
   reveals.forEach((element) => observer.observe(element));
 }
+
+let activePublicationTrigger = null;
+
+function closePublicationDialog(dialog) {
+  dialog.close();
+}
+
+for (const trigger of document.querySelectorAll("[data-publication-open]")) {
+  trigger.addEventListener("click", () => {
+    const dialog = document.getElementById(trigger.dataset.publicationOpen);
+    if (!(dialog instanceof HTMLDialogElement)) return;
+    activePublicationTrigger = trigger;
+    dialog.showModal();
+    document.body.classList.add("has-open-dialog");
+    dialog.querySelector("[data-publication-close]")?.focus();
+  });
+}
+
+for (const dialog of document.querySelectorAll(".publication-modal")) {
+  if (!(dialog instanceof HTMLDialogElement)) continue;
+  dialog.querySelector("[data-publication-close]")?.addEventListener("click", () => closePublicationDialog(dialog));
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) closePublicationDialog(dialog);
+  });
+  dialog.addEventListener("close", () => {
+    document.body.classList.remove("has-open-dialog");
+    activePublicationTrigger?.focus();
+    activePublicationTrigger = null;
+  });
+}

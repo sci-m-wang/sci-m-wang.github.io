@@ -9,14 +9,21 @@
     "category": "first",
     "status": "published",
     "selected": true,
-    "badges": ["First author", "Machine psychology"],
+    "badges": [
+      "First author",
+      "Machine psychology"
+    ],
     "arxivId": "",
     "links": {
       "paper": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&citation_for_view=dcqk_mMAAAAJ:ZeXyd9-uunAC",
       "pdf": "",
       "code": ""
     },
-    "citations": { "count": 0, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 0,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    }
   },
   {
     "id": "persona-steering-2026",
@@ -28,14 +35,29 @@
     "category": "cofirst",
     "status": "published",
     "selected": true,
-    "badges": ["Co-first author", "Persona steering"],
+    "badges": [
+      "Co-first author",
+      "Persona steering"
+    ],
     "arxivId": "2604.11048",
     "links": {
       "paper": "https://arxiv.org/abs/2604.11048",
       "pdf": "https://arxiv.org/pdf/2604.11048",
       "code": ""
     },
-    "citations": { "count": 0, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 0,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "Imbuing Large Language Models (LLMs) with specific personas is prevalent for tailoring interaction styles, yet the impact on underlying cognitive capabilities remains unexplored. We employ the Neuron-based Personality Trait Induction (NPTI) framework to induce Big Five personality traits in LLMs and evaluate performance across six cognitive benchmarks. Our findings reveal that persona induction produces stable, reproducible shifts in cognitive task performance beyond surface-level stylistic changes. These effects exhibit strong task dependence: certain personalities yield consistent gains on instruction-following, while others impair complex reasoning. Effect magnitude varies systematically by trait dimension, with Openness and Extraversion exerting the most robust influence. Furthermore, LLM effects show 73.68% directional consistency with human personality-cognition relationships. Capitalizing on these regularities, we propose Dynamic Persona Routing (DPR), a lightweight query-adaptive strategy that outperforms the best static persona without additional training.",
+      "zh": ""
+    },
+    "publishedAt": "2026-04-13",
+    "preprintUpdatedAt": "2026-05-12",
+    "doi": "",
+    "primaryCategory": "cs.CL"
   },
   {
     "id": "t-col-2026",
@@ -47,14 +69,29 @@
     "category": "first",
     "status": "published",
     "selected": false,
-    "badges": ["First author", "Counterfactual explanation"],
+    "badges": [
+      "First author",
+      "Counterfactual explanation"
+    ],
     "arxivId": "2309.16146",
     "links": {
       "paper": "https://arxiv.org/abs/2309.16146",
       "pdf": "https://arxiv.org/pdf/2309.16146",
       "code": "https://github.com/NEU-DataMining/T-COL"
     },
-    "citations": { "count": 2, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 2,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "To address the interpretability challenge in machine learning (ML) systems, counterfactual explanations (CEs) have emerged as a promising solution. CEs are unique as they provide workable suggestions to users, instead of explaining why a certain outcome was predicted. The application of CEs encounters two main challenges: general user preferences and variable ML systems. On one hand, user preferences for specific values can vary depending on the task and scenario. On the other hand, the ML systems for verification may change while the CEs are performed. Thus, user preferences tend to be general rather than specific, and CEs need to be adaptable to variable ML models while maintaining robustness even as these models change. Facing these challenges, we propose general user preferences based on insights from psychology and behavioral science, and add the challenge of non-static ML systems as one preference. Moreover, we introduce a novel method, Tree-based Conditions Optional Links (T-COL) for generating CEs adaptable to general user preferences. Moreover, we employ T-COL to enhance the robustness of CEs with specific conditions, making CEs robust even when the ML models are replaced. To assess subjectivity preferences, we define LLM-based autonomous agents to simulate users and align them with real users. Experiments show that T-COL outperforms all baselines in adapting to general user preferences.",
+      "zh": ""
+    },
+    "publishedAt": "2023-09-28",
+    "preprintUpdatedAt": "2026-02-02",
+    "doi": "10.1613/jair.1.18166",
+    "primaryCategory": "cs.AI"
   },
   {
     "id": "annaagent-2025",
@@ -66,14 +103,29 @@
     "category": "first",
     "status": "published",
     "selected": true,
-    "badges": ["First author", "Long-term memory"],
+    "badges": [
+      "First author",
+      "Long-term memory"
+    ],
     "arxivId": "2506.00551",
     "links": {
       "paper": "https://arxiv.org/abs/2506.00551",
       "pdf": "https://arxiv.org/pdf/2506.00551",
       "code": "https://github.com/sci-m-wang/AnnaAgent"
     },
-    "citations": { "count": 21, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 21,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "Constrained by the cost and ethical concerns of involving real seekers in AI-driven mental health, researchers develop LLM-based conversational agents (CAs) with tailored configurations, such as profiles, symptoms, and scenarios, to simulate seekers. While these efforts advance AI in mental health, achieving more realistic seeker simulation remains hindered by two key challenges: dynamic evolution and multi-session memory. Seekers' mental states often fluctuate during counseling, which typically spans multiple sessions. To address this, we propose AnnaAgent, an emotional and cognitive dynamic agent system equipped with tertiary memory. AnnaAgent incorporates an emotion modulator and a complaint elicitor trained on real counseling dialogues, enabling dynamic control of the simulator's configurations. Additionally, its tertiary memory mechanism effectively integrates short-term and long-term memory across sessions. Evaluation results, both automated and manual, demonstrate that AnnaAgent achieves more realistic seeker simulation in psychological counseling compared to existing baselines. The ethically reviewed and screened code can be found on https://github.com/sci-m-wang/AnnaAgent.",
+      "zh": ""
+    },
+    "publishedAt": "2025-05-31",
+    "preprintUpdatedAt": "2025-06-10",
+    "doi": "10.18653/v1/2025.findings-acl.1192",
+    "primaryCategory": "cs.CL"
   },
   {
     "id": "generative-link-tree-2022",
@@ -85,14 +137,21 @@
     "category": "first",
     "status": "published",
     "selected": false,
-    "badges": ["First author", "Explainable AI"],
+    "badges": [
+      "First author",
+      "Explainable AI"
+    ],
     "arxivId": "",
     "links": {
       "paper": "https://www.jsjkx.com/CN/1002-137X/home.shtml",
       "pdf": "",
       "code": ""
     },
-    "citations": { "count": 2, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 2,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    }
   },
   {
     "id": "mamba-forecasting-2025",
@@ -104,14 +163,29 @@
     "category": "coauthor",
     "status": "published",
     "selected": true,
-    "badges": ["Highly cited", "Time series"],
+    "badges": [
+      "Highly cited",
+      "Time series"
+    ],
     "arxivId": "2403.11144",
     "links": {
       "paper": "https://www.sciencedirect.com/science/article/pii/S0925231224019490",
       "pdf": "https://arxiv.org/pdf/2403.11144",
       "code": "https://github.com/wzhwzhwzh0921/S-D-Mamba"
     },
-    "citations": { "count": 447, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 447,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "In the realm of time series forecasting (TSF), it is imperative for models to adeptly discern and distill hidden patterns within historical time series data to forecast future states. Transformer-based models exhibit formidable efficacy in TSF, primarily attributed to their advantage in apprehending these patterns. However, the quadratic complexity of the Transformer leads to low computational efficiency and high costs, which somewhat hinders the deployment of the TSF model in real-world scenarios. Recently, Mamba, a selective state space model, has gained traction due to its ability to process dependencies in sequences while maintaining near-linear complexity. For TSF tasks, these characteristics enable Mamba to comprehend hidden patterns as the Transformer and reduce computational overhead compared to the Transformer. Therefore, we propose a Mamba-based model named Simple-Mamba (S-Mamba) for TSF. Specifically, we tokenize the time points of each variate autonomously via a linear layer. A bidirectional Mamba layer is utilized to extract inter-variate correlations and a Feed-Forward Network is set to learn temporal dependencies. Finally, the generation of forecast outcomes through a linear mapping layer. Experiments on thirteen public datasets prove that S-Mamba maintains low computational overhead and achieves leading performance. Furthermore, we conduct extensive experiments to explore Mamba's potential in TSF tasks. Our code is available at https://github.com/wzhwzhwzh0921/S-D-Mamba.",
+      "zh": ""
+    },
+    "publishedAt": "2024-03-17",
+    "preprintUpdatedAt": "2024-04-27",
+    "doi": "",
+    "primaryCategory": "cs.LG"
   },
   {
     "id": "mm-instructeval-2025",
@@ -123,14 +197,28 @@
     "category": "coauthor",
     "status": "published",
     "selected": true,
-    "badges": ["Multimodal evaluation"],
+    "badges": [
+      "Multimodal evaluation"
+    ],
     "arxivId": "2405.07229",
     "links": {
       "paper": "https://arxiv.org/abs/2405.07229",
       "pdf": "https://arxiv.org/pdf/2405.07229",
       "code": "https://github.com/declare-lab/MM-InstructEval"
     },
-    "citations": { "count": 64, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 64,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "The emergence of multimodal large language models (MLLMs) has triggered extensive research in model evaluation. While existing evaluation studies primarily focus on unimodal (vision-only) comprehension and reasoning capabilities, they overlook critical assessments of complex multimodal reasoning tasks that require integrated understanding of both visual and textual contexts. Such multimodal tasks present unique challenges, demanding sophisticated reasoning across multiple modalities and deep comprehension of multimodal contexts. In this paper, we present MM-InstructEval, a comprehensive evaluation framework that incorporates diverse metrics to assess model performance across various multimodal reasoning tasks with vision-text contexts. We conduct extensive zero-shot evaluations on 45 models (including 36 MLLMs) across 16 multimodal datasets, encompassing 6 distinct tasks using 10 different instructions. Our framework introduces multiple innovative metrics, including the 'Best Performance' metric to benchmark peak model capabilities, the 'Mean Relative Gain' metric to assess overall efficacy across models and instructions, the 'Stability' metric to measure robustness, and the 'Adaptability' metric to quantify the compatibility between models and instructions. Through comprehensive evaluation and analysis, we uncover several significant insights about model architectures, instruction formats, and their interactions in multimodal reasoning tasks. Our findings establish new benchmarks for assessing the reasoning capabilities of MLLMs and provide strategic guidance for future developments. To facilitate continued research and evaluation in this field, we release our framework and resources at https://github.com/declare-lab/MM-InstructEval, with an interactive leaderboard available at MM-InstructEval Leaderboard (https://declare-lab.github.io/MM-InstructEval/).",
+      "zh": ""
+    },
+    "publishedAt": "2024-05-12",
+    "preprintUpdatedAt": "2025-04-23",
+    "doi": "",
+    "primaryCategory": "cs.MM"
   },
   {
     "id": "feel-2024",
@@ -142,14 +230,29 @@
     "category": "coauthor",
     "status": "published",
     "selected": false,
-    "badges": ["Emotional support", "Evaluation"],
+    "badges": [
+      "Emotional support",
+      "Evaluation"
+    ],
     "arxivId": "2403.15699",
     "links": {
       "paper": "https://arxiv.org/abs/2403.15699",
       "pdf": "https://arxiv.org/pdf/2403.15699",
       "code": "https://github.com/Ansisy/FEEL"
     },
-    "citations": { "count": 11, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 11,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "Emotional Support Conversation (ESC) is a typical dialogue that can effectively assist the user in mitigating emotional pressures. However, owing to the inherent subjectivity involved in analyzing emotions, current non-artificial methodologies face challenges in effectively appraising the emotional support capability. These metrics exhibit a low correlation with human judgments. Concurrently, manual evaluation methods extremely will cause high costs. To solve these problems, we propose a novel model FEEL (Framework for Evaluating Emotional Support Capability with Large Lan-guage Models), employing Large Language Models (LLMs) as evaluators to assess emotional support capabilities. The model meticulously considers various evaluative aspects of ESC to apply a more comprehensive and accurate evaluation method for ESC. Additionally, it employs a probability distribution approach for a more stable result and integrates an ensemble learning strategy, leveraging multiple LLMs with assigned weights to enhance evaluation accuracy. To appraise the performance of FEEL, we conduct extensive experiments on existing ESC model dialogues. Experimental results demonstrate our model exhibits a substantial enhancement in alignment with human evaluations compared to the baselines. Our source code is available at https://github.com/Ansisy/FEEL.",
+      "zh": ""
+    },
+    "publishedAt": "2024-03-23",
+    "preprintUpdatedAt": "2024-07-21",
+    "doi": "10.1007/978-981-97-5618-6_9",
+    "primaryCategory": "cs.CL"
   },
   {
     "id": "sentiment-triplet-2024",
@@ -161,14 +264,20 @@
     "category": "coauthor",
     "status": "published",
     "selected": false,
-    "badges": ["Affective computing"],
+    "badges": [
+      "Affective computing"
+    ],
     "arxivId": "",
     "links": {
       "paper": "https://ieeexplore.ieee.org/abstract/document/10812814",
       "pdf": "",
       "code": ""
     },
-    "citations": { "count": 10, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 10,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    }
   },
   {
     "id": "empathetic-debate-2024",
@@ -180,14 +289,21 @@
     "category": "coauthor",
     "status": "published",
     "selected": false,
-    "badges": ["Empathetic response", "Multi-agent"],
+    "badges": [
+      "Empathetic response",
+      "Multi-agent"
+    ],
     "arxivId": "",
     "links": {
       "paper": "https://link.springer.com/chapter/10.1007/978-981-97-7232-2_14",
       "pdf": "",
       "code": ""
     },
-    "citations": { "count": 7, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 7,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    }
   },
   {
     "id": "self-evolving-data-engineers-2025",
@@ -199,14 +315,28 @@
     "category": "coauthor",
     "status": "published",
     "selected": false,
-    "badges": ["Self-evolving systems"],
+    "badges": [
+      "Self-evolving systems"
+    ],
     "arxivId": "2412.15151",
     "links": {
       "paper": "https://arxiv.org/abs/2412.15151",
       "pdf": "https://arxiv.org/pdf/2412.15151",
       "code": ""
     },
-    "citations": { "count": 6, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 6,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "Large Language Models (LLMs) have demonstrated remarkable capabilities on various tasks, while the further evolvement is limited to the lack of high-quality training data. In addition, traditional training approaches rely too much on expert-labeled data, setting a ceiling on the performance of LLMs. To address this issue, we propose a novel paradigm named LANCE (LANguage models as Continuous self-Evolving data engineers) that enables LLMs to train themselves by autonomously generating, cleaning, reviewing, and annotating data with preference information. Our approach demonstrates that LLMs can serve as continuous self-evolving data engineers, significantly reducing the time and cost of the post-training data construction. Through iterative fine-tuning on Qwen2 series models, we validate the effectiveness of LANCE across various tasks, showing that it can maintain high-quality data generation and continuously improve model performance. Across multiple benchmark dimensions, LANCE results in an average score enhancement of 3.64 for Qwen2-7B and 1.75 for Qwen2-7B-Instruct. This training paradigm with autonomous data construction not only reduces the reliance on human experts or external models but also ensures that the data aligns with human preferences, paving the way for the development of future superintelligent systems that can exceed human capabilities. Codes are available at: https://github.com/Control-derek/LANCE.",
+      "zh": ""
+    },
+    "publishedAt": "2024-12-19",
+    "preprintUpdatedAt": "2025-02-13",
+    "doi": "",
+    "primaryCategory": "cs.CL"
   },
   {
     "id": "langgpt-2024",
@@ -218,14 +348,29 @@
     "category": "working",
     "status": "preprint",
     "selected": true,
-    "badges": ["Prompt design", "Open source"],
+    "badges": [
+      "Prompt design",
+      "Open source"
+    ],
     "arxivId": "2402.16929",
     "links": {
       "paper": "https://arxiv.org/abs/2402.16929",
       "pdf": "https://arxiv.org/pdf/2402.16929",
       "code": "https://github.com/EmbraceAGI/LangGPT"
     },
-    "citations": { "count": 44, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 44,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "LLMs have demonstrated commendable performance across diverse domains. Nevertheless, formulating high-quality prompts to instruct LLMs proficiently poses a challenge for non-AI experts. Existing research in prompt engineering suggests somewhat scattered optimization principles and designs empirically dependent prompt optimizers. Unfortunately, these endeavors lack a structured design template, incurring high learning costs and resulting in low reusability. In addition, it is not conducive to the iterative updating of prompts. Inspired by structured reusable programming languages, we propose LangGPT, a dual-layer prompt design framework as the programming language for LLMs. LangGPT has an easy-to-learn normative structure and provides an extended structure for migration and reuse. Experiments illustrate that LangGPT significantly enhances the performance of LLMs. Moreover, the case study shows that LangGPT leads LLMs to generate higher-quality responses. Furthermore, we analyzed the ease of use and reusability of LangGPT through a user survey in our online community.",
+      "zh": ""
+    },
+    "publishedAt": "2024-02-26",
+    "preprintUpdatedAt": "2024-06-29",
+    "doi": "",
+    "primaryCategory": "cs.SE"
   },
   {
     "id": "hirag-2024",
@@ -237,14 +382,29 @@
     "category": "working",
     "status": "preprint",
     "selected": false,
-    "badges": ["Co-first author", "RAG"],
+    "badges": [
+      "Co-first author",
+      "RAG"
+    ],
     "arxivId": "2408.11875",
     "links": {
       "paper": "https://arxiv.org/abs/2408.11875",
       "pdf": "https://arxiv.org/pdf/2408.11875",
       "code": ""
     },
-    "citations": { "count": 23, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 23,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "Multi-hop Question Answering (QA) necessitates complex reasoning by integrating multiple pieces of information to resolve intricate questions. However, existing QA systems encounter challenges such as outdated information, context window length limitations, and an accuracy-quantity trade-off. To address these issues, we propose a novel framework, the Hierarchical Retrieval-Augmented Generation Model with Rethink (HiRAG), comprising Decomposer, Definer, Retriever, Filter, and Summarizer five key modules. We introduce a new hierarchical retrieval strategy that incorporates both sparse retrieval at the document level and dense retrieval at the chunk level, effectively integrating their strengths. Additionally, we propose a single-candidate retrieval method to mitigate the limitations of multi-candidate retrieval. We also construct two new corpora, Indexed Wikicorpus and Profile Wikicorpus, to address the issues of outdated and insufficient knowledge. Our experimental results on four datasets demonstrate that HiRAG outperforms state-of-the-art models across most metrics, and our Indexed Wikicorpus is effective. The code for HiRAG is available at https://github.com/2282588541a/HiRAG",
+      "zh": ""
+    },
+    "publishedAt": "2024-08-20",
+    "preprintUpdatedAt": "2024-08-20",
+    "doi": "",
+    "primaryCategory": "cs.CL"
   },
   {
     "id": "minstrel-2024",
@@ -256,14 +416,29 @@
     "category": "working",
     "status": "preprint",
     "selected": false,
-    "badges": ["Multi-agent", "Prompt generation"],
+    "badges": [
+      "Multi-agent",
+      "Prompt generation"
+    ],
     "arxivId": "2409.13449",
     "links": {
       "paper": "https://arxiv.org/abs/2409.13449",
       "pdf": "https://arxiv.org/pdf/2409.13449",
       "code": "https://github.com/sci-m-wang/Minstrel"
     },
-    "citations": { "count": 9, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 9,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "LLMs have demonstrated commendable performance across diverse domains. Nevertheless, formulating high-quality prompts to assist them in their work poses a challenge for non-AI experts. Existing research in prompt engineering suggests somewhat scattered optimization principles and designs empirically dependent prompt optimizers. Unfortunately, these endeavors lack a structural design, incurring high learning costs and it is not conducive to the iterative updating of prompts, especially for non-AI experts. Inspired by structured reusable programming languages, we propose LangGPT, a structural prompt design framework. Furthermore, we introduce Minstrel, a multi-generative agent system with reflection to automate the generation of structural prompts. Experiments and the case study illustrate that structural prompts generated by Minstrel or written manually significantly enhance the performance of LLMs. Furthermore, we analyze the ease of use of structural prompts through a user survey in our online community.",
+      "zh": ""
+    },
+    "publishedAt": "2024-09-20",
+    "preprintUpdatedAt": "2024-09-20",
+    "doi": "",
+    "primaryCategory": "cs.CL"
   },
   {
     "id": "repair-2025",
@@ -275,14 +450,28 @@
     "category": "working",
     "status": "preprint",
     "selected": false,
-    "badges": ["Model editing"],
+    "badges": [
+      "Model editing"
+    ],
     "arxivId": "2510.01879",
     "links": {
       "paper": "https://arxiv.org/abs/2510.01879",
       "pdf": "https://arxiv.org/pdf/2510.01879",
       "code": ""
     },
-    "citations": { "count": 2, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 2,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "Post-training for large language models (LLMs) is constrained by the high cost of acquiring new knowledge or correcting errors and by the unintended side effects that frequently arise from retraining. To address these issues, we introduce REPAIR (Robust Editing via Progressive Adaptive Intervention and Reintegration), a lifelong editing framework designed to support precise and low-cost model updates while preserving non-target knowledge. REPAIR mitigates the instability and conflicts of large-scale sequential edits through a closed-loop feedback mechanism coupled with dynamic memory management. Furthermore, by incorporating frequent knowledge fusion and enforcing strong locality guards, REPAIR effectively addresses the shortcomings of traditional distribution-agnostic approaches that often overlook unintended ripple effects. Our experiments demonstrate that REPAIR boosts editing accuracy by 10%-30% across multiple model families and significantly reduces knowledge forgetting. This work introduces a robust framework for developing reliable, scalable, and continually evolving LLMs.",
+      "zh": ""
+    },
+    "publishedAt": "2025-10-02",
+    "preprintUpdatedAt": "2026-02-10",
+    "doi": "",
+    "primaryCategory": "cs.CL"
   },
   {
     "id": "mental-patient-simulators-2026",
@@ -294,14 +483,29 @@
     "category": "working",
     "status": "preprint",
     "selected": false,
-    "badges": ["Mental health", "User simulation"],
+    "badges": [
+      "Mental health",
+      "User simulation"
+    ],
     "arxivId": "2603.22704",
     "links": {
       "paper": "https://arxiv.org/abs/2603.22704",
       "pdf": "https://arxiv.org/pdf/2603.22704",
       "code": ""
     },
-    "citations": { "count": 1, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 1,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "Patient simulation is essential for developing and evaluating mental health dialogue systems. As most existing approaches rely on snapshot-style prompts with limited profile information, homogeneous behaviors and incoherent disease progression in multi-turn interactions have become key chellenges. In this work, we propose DEPROFILE, a data-grounded patient simulation framework that constructs unified, multi-source patient profiles by integrating demographic attributes, standardized clinical symptoms, counseling dialogues, and longitudinal life-event histories from real-world data. We further introduce a Chain-of-Change agent to transform noisy longitudinal records into structured, temporally grounded memory representations for simulation. Experiments across multiple large language model (LLM) backbones show that with more comprehensive profile constructed by DEPROFILE, the dialogue realism, behavioral diversity, and event richness have consistently improved and exceed state-of-the-art baselines, highlighting the importance of grounding patient simulation in verifiable longitudinal evidence.",
+      "zh": ""
+    },
+    "publishedAt": "2026-03-24",
+    "preprintUpdatedAt": "2026-03-24",
+    "doi": "",
+    "primaryCategory": "cs.CL"
   },
   {
     "id": "jailbreak-probing-2026",
@@ -313,14 +517,29 @@
     "category": "working",
     "status": "preprint",
     "selected": false,
-    "badges": ["LLM safety", "Jailbreak defense"],
+    "badges": [
+      "LLM safety",
+      "Jailbreak defense"
+    ],
     "arxivId": "2601.10543",
     "links": {
       "paper": "https://arxiv.org/abs/2601.10543",
       "pdf": "https://arxiv.org/pdf/2601.10543",
       "code": ""
     },
-    "citations": { "count": 2, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 2,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "Large language models (LLMs) have achieved impressive performance across natural language tasks and are increasingly deployed in real-world applications. Despite extensive safety alignment efforts, recent studies show that such alignment is often shallow and remains vulnerable to jailbreak attacks. Existing defense mechanisms, including decoding-based constraints and post-hoc content detectors, struggle against sophisticated jailbreaks, often intervening robust detection or excessively degrading model utility. In this work, we examine the decoding process of LLMs and make a key observation: even when successfully jailbroken, models internally exhibit latent safety-related signals during generation. However, these signals are overridden by the model's drive for fluent continuation, preventing timely self-correction or refusal. Building on this observation, we propose a simple yet effective approach that explicitly surfaces and leverages these latent safety signals for early detection of unsafe content during decoding. Experiments across diverse jailbreak attacks demonstrate that our approach significantly enhances safety, while maintaining low over-refusal rates on benign inputs and preserving response quality. Our results suggest that activating intrinsic safety-awareness during decoding offers a promising and complementary direction for defending against jailbreak attacks. Code is available at: https://github.com/zyz13590/SafeProbing.",
+      "zh": ""
+    },
+    "publishedAt": "2026-01-15",
+    "preprintUpdatedAt": "2026-01-30",
+    "doi": "",
+    "primaryCategory": "cs.AI"
   },
   {
     "id": "model-merging-survey-2025",
@@ -332,14 +551,21 @@
     "category": "working",
     "status": "preprint",
     "selected": false,
-    "badges": ["Model merging", "Survey"],
+    "badges": [
+      "Model merging",
+      "Survey"
+    ],
     "arxivId": "",
     "links": {
       "paper": "https://scholar.google.com/citations?user=dcqk_mMAAAAJ",
       "pdf": "",
       "code": ""
     },
-    "citations": { "count": 0, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 0,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    }
   },
   {
     "id": "rocar-2023",
@@ -351,13 +577,27 @@
     "category": "working",
     "status": "preprint",
     "selected": false,
-    "badges": ["LLM evaluation"],
+    "badges": [
+      "LLM evaluation"
+    ],
     "arxivId": "2307.15997",
     "links": {
       "paper": "https://arxiv.org/abs/2307.15997",
       "pdf": "https://arxiv.org/pdf/2307.15997",
       "code": "https://github.com/NEU-DataMining/RoCar"
     },
-    "citations": { "count": 0, "source": "Google Scholar", "updatedAt": "2026-07-18" }
+    "citations": {
+      "count": 0,
+      "source": "Google Scholar",
+      "updatedAt": "2026-07-18"
+    },
+    "abstract": {
+      "en": "Large language models (LLMs) have received increasing attention. However, due to the complexity of its capabilities, how to rationally evaluate the capabilities of LLMs is still a task to be solved. We propose the RoCar method, which utilizes the defined basic schemas to randomly construct a task graph and generates natural language evaluation tasks based on the task graph to evaluate the reasoning and memory abilities of LLMs respectively. Due to the very large randomness of the task construction process, it is possible to ensure that none of the LLMs to be tested has directly learned the evaluation tasks, guaranteeing the fairness of the evaluation method.",
+      "zh": ""
+    },
+    "publishedAt": "2023-07-29",
+    "preprintUpdatedAt": "2024-11-11",
+    "doi": "",
+    "primaryCategory": "cs.CL"
   }
 ]

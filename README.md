@@ -77,6 +77,8 @@ Because the encrypted vault is stored in a public repository, the password shoul
 - If Google Scholar returns a CAPTCHA, rate limit, incomplete page, or too few title matches, the script stops before saving; the last verified counts remain intact.
 - Google Scholar may occasionally block requests from GitHub-hosted runners. In that case, rerun the workflow later or update counts manually.
 
+Publication abstracts and related metadata can be refreshed from arXiv with `npm run publications:metadata`. Existing manually entered abstracts are preserved, while missing abstracts, publication dates, DOI values, and primary arXiv categories are filled from the public arXiv record.
+
 ## GitHub Pages
 
 The deploy workflow builds the static Astro site and publishes `dist/` with GitHub's official Pages actions. In repository settings, set **Pages → Source** to **GitHub Actions**.

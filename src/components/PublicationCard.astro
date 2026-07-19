@@ -1,5 +1,4 @@
 ---
-import ExpandableRecord from "./ExpandableRecord.astro";
 import LocalText from "./LocalText.astro";
 
 interface Publication {
@@ -13,7 +12,12 @@ interface Publication {
   status: string;
   selected: boolean;
   badges: string[];
+  arxivId?: string;
   abstract?: string | { en?: string; zh?: string };
+  publishedAt?: string;
+  preprintUpdatedAt?: string;
+  doi?: string;
+  primaryCategory?: string;
   links: { paper: string; pdf: string; code: string };
   citations: { count: number; source: string; updatedAt: string };
 }
@@ -24,37 +28,93 @@ export interface Props {
 }
 
 const { publication: pub, index } = Astro.props as Props;
+const dialogId = `publication-${pub.id}`;
+const titleId = `${dialogId}-title`;
+const abstractId = `${dialogId}-abstract`;
 const authorParts = pub.authors.split("Ming Wang");
 const abstract = typeof pub.abstract === "string"
   ? { en: pub.abstract, zh: pub.abstract }
   : { en: pub.abstract?.en || "", zh: pub.abstract?.zh || pub.abstract?.en || "" };
+const categoryLabels: Record<string, { en: string; zh: string }> = {
+  first: { en: "First author", zh: "第一作者" },
+  cofirst: { en: "Co-first author", zh: "共同第一作者" },
+  coauthor: { en: "Co-author", zh: "共同作者" },
+  working: { en: "Working paper", zh: "工作论文" },
+};
+const statusLabels: Record<string, { en: string; zh: string }> = {
+  published: { en: "Published", zh: "已发表" },
+  accepted: { en: "Accepted", zh: "已接收" },
+  preprint: { en: "Preprint", zh: "预印本" },
+};
+const categoryLabel = categoryLabels[pub.category] || { en: pub.category, zh: pub.category };
+const statusLabel = statusLabels[pub.status] || { en: pub.status, zh: pub.status };
 ---
 
 <article class="publication-record" data-publication data-category={pub.category} data-status={pub.status}>
-  <ExpandableRecord
-    index={index}
-    title={pub.title}
-    eyebrow={`${pub.venueShort} · ${pub.year}${pub.badges[0] ? ` · ${pub.badges[0]}` : ""}`}
-    meta={pub.venue}
-    citation={pub.citations.count}
-    label="publication"
+  <button
+    class="publication-trigger"
+    type="button"
+    data-publication-open={dialogId}
+    aria-haspopup="dialog"
+    aria-controls={dialogId}
   >
-    <div class="publication-detail">
-      <div>
-        <p class="publication-detail__authors">
-          {authorParts.map((part, partIndex) => (
-            <>{part}{partIndex < authorParts.length - 1 && <strong>Ming Wang</strong>}</>
-          ))}
-        </p>
-        <p class="publication-detail__venue">{pub.venue} · {pub.year}</p>
-        {abstract.en && <LocalText en={abstract.en} zh={abstract.zh} as="p" class="publication-detail__abstract" />}
-      </div>
-      <div class="publication-detail__links">
-        {pub.links.paper && <a href={pub.links.paper} target="_blank" rel="noreferrer">Paper ↗</a>}
-        {pub.links.pdf && <a href={pub.links.pdf} target="_blank" rel="noreferrer">PDF ↓</a>}
-        {pub.links.code && <a href={pub.links.code} target="_blank" rel="noreferrer">Code ↗</a>}
-        <a href="https://scholar.google.com/citations?user=dcqk_mMAAAAJ" target="_blank" rel="noreferrer">Google Scholar ↗</a>
+    <span class="record-card__index">{String(index + 1).padStart(2, "0")}</span>
+    <span class="record-card__summary">
+      <span class="record-card__eyebrow">{pub.venueShort} · {pub.year}{pub.badges[0] ? ` · ${pub.badges[0]}` : ""}</span>
+      <strong>{pub.title}</strong>
+      <small>{pub.venue}</small>
+    </span>
+    <span class="record-card__citation"><b>{pub.citations.count}</b><small>citations</small></span>
+    <span class="publication-trigger__action"><LocalText en="Details" zh="详情" /><span aria-hidden="true">↗</span></span>
+  </button>
+
+  <dialog class="publication-modal" id={dialogId} aria-labelledby={titleId} aria-describedby={abstract.en ? abstractId : undefined}>
+    <div class="publication-modal__frame">
+      <header class="publication-modal__header">
+        <p>{String(index + 1).padStart(2, "0")} / {pub.venueShort} · {pub.year}</p>
+        <button type="button" class="publication-modal__close" data-publication-close aria-label="Close publication details / 关闭论文详情">
+          <span class="lang lang--en">Close</span><span class="lang lang--zh">关闭</span><span aria-hidden="true">×</span>
+        </button>
+      </header>
+
+      <div class="publication-modal__body">
+        <div class="publication-modal__main">
+          <div class="publication-modal__badges">
+            {pub.badges.map((badge) => <span>{badge}</span>)}
+          </div>
+          <h2 id={titleId}>{pub.title}</h2>
+          <p class="publication-modal__authors">
+            {authorParts.map((part, partIndex) => (
+              <>{part}{partIndex < authorParts.length - 1 && <strong>Ming Wang</strong>}</>
+            ))}
+          </p>
+
+          <section class="publication-modal__abstract" id={abstractId}>
+            <h3><LocalText en="Abstract" zh="摘要" /></h3>
+            {abstract.en
+              ? <LocalText en={abstract.en} zh={abstract.zh} as="p" />
+              : <LocalText en="Abstract not yet available in the archive." zh="档案中暂未收录摘要。" as="p" class="publication-modal__empty" />}
+          </section>
+        </div>
+
+        <aside class="publication-modal__aside" aria-label="Publication metadata">
+          <dl>
+            <div><dt><LocalText en="Venue" zh="发表载体" /></dt><dd>{pub.venue}</dd></div>
+            <div><dt><LocalText en="Status" zh="状态" /></dt><dd><LocalText en={statusLabel.en} zh={statusLabel.zh} /></dd></div>
+            <div><dt><LocalText en="Authorship" zh="作者角色" /></dt><dd><LocalText en={categoryLabel.en} zh={categoryLabel.zh} /></dd></div>
+            <div><dt><LocalText en="Published" zh="发表时间" /></dt><dd>{pub.publishedAt || pub.year}</dd></div>
+            <div><dt><LocalText en="Citations" zh="引用量" /></dt><dd><strong>{pub.citations.count}</strong> · {pub.citations.source}<small><LocalText en={`Updated ${pub.citations.updatedAt}`} zh={`更新于 ${pub.citations.updatedAt}`} /></small></dd></div>
+            {pub.arxivId && <div><dt>arXiv</dt><dd>{pub.arxivId}{pub.primaryCategory && <small>{pub.primaryCategory}</small>}</dd></div>}
+            {pub.doi && <div><dt>DOI</dt><dd><a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noreferrer">{pub.doi} ↗</a></dd></div>}
+          </dl>
+          <div class="publication-modal__links">
+            {pub.links.paper && <a href={pub.links.paper} target="_blank" rel="noreferrer">Paper ↗</a>}
+            {pub.links.pdf && <a href={pub.links.pdf} target="_blank" rel="noreferrer">PDF ↓</a>}
+            {pub.links.code && <a href={pub.links.code} target="_blank" rel="noreferrer">Code ↗</a>}
+            <a href="https://scholar.google.com/citations?user=dcqk_mMAAAAJ" target="_blank" rel="noreferrer">Google Scholar ↗</a>
+          </div>
+        </aside>
       </div>
     </div>
-  </ExpandableRecord>
+  </dialog>
 </article>

@@ -5,8 +5,10 @@ import profile from "../data/profile.json";
 
 <footer class="site-footer" id="contact">
   <div class="site-footer__lead">
-    <p class="eyebrow"><span class="lang lang--en">Contact</span><span class="lang lang--zh">联系</span></p>
-    <LocalText en="Research conversations are welcome." zh="欢迎交流研究想法。" as="h2" />
+    <div>
+      <p class="eyebrow"><span class="lang lang--en">Contact</span><span class="lang lang--zh">联系</span></p>
+      <LocalText en="Research conversations are welcome." zh="欢迎交流研究想法。" as="p" class="site-footer__invitation" />
+    </div>
     <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
   </div>
   <div class="site-footer__links">
