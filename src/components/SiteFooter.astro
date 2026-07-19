@@ -1,0 +1,24 @@
+---
+import LocalText from "./LocalText.astro";
+import profile from "../data/profile.json";
+---
+
+<footer class="site-footer" id="contact">
+  <div class="site-footer__lead">
+    <p class="eyebrow"><span class="lang lang--en">Contact</span><span class="lang lang--zh">联系</span></p>
+    <LocalText en="Research conversations are welcome." zh="欢迎交流研究想法。" as="h2" />
+    <a href={`mailto:${profile.email}`}>{profile.email} ↗</a>
+  </div>
+  <div class="site-footer__links">
+    <a href={profile.links.scholar} target="_blank" rel="noreferrer">Scholar ↗</a>
+    <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub ↗</a>
+    <a href={profile.links.orcid} target="_blank" rel="noreferrer">ORCID ↗</a>
+    <a href={profile.links.cv} target="_blank">CV ↓</a>
+    <a href="/update/"><span class="lang lang--en">Update information</span><span class="lang lang--zh">更新资料</span> ↗</a>
+  </div>
+  <div class="site-footer__base">
+    <p>© {new Date().getFullYear()} Ming Wang / 王明</p>
+    <p><span class="lang lang--en">Built as a living research archive.</span><span class="lang lang--zh">一份持续生长的研究档案。</span></p>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>

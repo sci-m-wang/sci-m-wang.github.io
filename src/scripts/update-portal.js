@@ -8,14 +8,15 @@ const KDF_ITERATIONS = 650000;
 const FILES = {
   publications: "src/data/publications.json",
   profile: "src/data/profile.json",
+  sections: "src/data/sections.json",
 };
 
 const today = new Date().toISOString().slice(0, 10);
 const state = {
   token: "",
   user: null,
-  documents: { publications: null, profile: null },
-  shas: { publications: "", profile: "" },
+  documents: { publications: null, profile: null, sections: null },
+  shas: { publications: "", profile: "", sections: "" },
   section: "publications",
   currentIndex: null,
   creating: false,
@@ -120,6 +121,8 @@ const sectionConfigs = {
       { key: "links.paper", label: "论文页面", type: "url", wide: true },
       { key: "links.pdf", label: "PDF 链接", type: "url", wide: true },
       { key: "links.code", label: "代码链接", type: "url", wide: true },
+      { key: "abstract.en", label: "英文摘要", type: "textarea", wide: true },
+      { key: "abstract.zh", label: "中文摘要（可选）", type: "textarea", wide: true },
       { key: "citations.count", label: "当前引用量", type: "number", min: 0 },
     ],
     create() {
@@ -136,6 +139,7 @@ const sectionConfigs = {
         badges: [],
         arxivId: "",
         links: { paper: "", pdf: "", code: "" },
+        abstract: { en: "", zh: "" },
         citations: { count: 0, source: "Google Scholar", updatedAt: today },
       };
     },
@@ -235,6 +239,114 @@ const sectionConfigs = {
     },
     display(item) {
       return { title: `${item.nameZh} / ${item.name}`, meta: item.role?.zh || item.role?.en || "Profile" };
+    },
+  },
+  pages: {
+    label: "子页面 / Page",
+    plural: "子页面",
+    document: "sections",
+    collection: null,
+    addLabel: "新增子页面",
+    searchable: true,
+    fields: [
+      { key: "id", label: "稳定 ID", hint: "小写英文、数字与连字符", required: true },
+      { key: "slug", label: "页面地址", hint: "例如 academic-exchange，将生成 /academic-exchange/", required: true },
+      { key: "nav.en", label: "导航英文名", required: true },
+      { key: "nav.zh", label: "导航中文名", required: true },
+      { key: "title.en", label: "页面英文标题", required: true },
+      { key: "title.zh", label: "页面中文标题", required: true },
+      { key: "statement.en", label: "英文短宣言", hint: "一句即可", required: true, wide: true },
+      { key: "statement.zh", label: "中文短宣言", hint: "一句即可", required: true, wide: true },
+      { key: "intro.en", label: "英文页面简介", type: "textarea", required: true, wide: true },
+      { key: "intro.zh", label: "中文页面简介", type: "textarea", required: true, wide: true },
+      {
+        key: "template",
+        label: "页面模板",
+        type: "select",
+        required: true,
+        options: [
+          ["collection", "Custom collection / 自定义内容页"],
+          ["research", "Research / 研究"],
+          ["publications", "Publications / 论文"],
+          ["experience", "Experience / 经历"],
+          ["news", "News / 动态"],
+        ],
+      },
+      { key: "order", label: "导航顺序", type: "number", required: true, min: 1, max: 99 },
+      { key: "visible", label: "在导航与主页显示", type: "checkbox", wide: true },
+    ],
+    create() {
+      return {
+        id: "",
+        slug: "",
+        nav: { en: "", zh: "" },
+        title: { en: "", zh: "" },
+        statement: { en: "", zh: "" },
+        intro: { en: "", zh: "" },
+        template: "collection",
+        order: (state.documents.sections?.length || 0) + 1,
+        visible: true,
+        entries: [],
+      };
+    },
+    display(item) {
+      return { title: item.title?.zh || item.title?.en || "Untitled page", meta: `/${item.slug || "…"}/ · ${item.template || "collection"}` };
+    },
+  },
+  pageEntries: {
+    label: "页面条目 / Page entry",
+    plural: "页面条目",
+    document: "sections",
+    collection: "__page_entries__",
+    addLabel: "新增页面条目",
+    searchable: true,
+    fields: [
+      {
+        key: "sectionId",
+        label: "所属子页面",
+        type: "select",
+        required: true,
+        options: () => state.documents.sections
+          .filter((section) => section.template === "collection")
+          .map((section) => [section.id, `${section.title?.zh || section.title?.en} · /${section.slug}/`]),
+      },
+      { key: "id", label: "稳定 ID", hint: "小写英文、数字与连字符", required: true },
+      { key: "title", label: "正式条目名称", hint: "按正式使用的语言填写，不随整页语言切换", required: true, wide: true },
+      { key: "eyebrow", label: "条目类型 / 短标签", hint: "例如 Visiting scholar" },
+      { key: "meta", label: "列表辅助信息", hint: "例如机构或 Venue", wide: true },
+      { key: "period", label: "时间", hint: "例如 2026.08 — 2026.12" },
+      { key: "venue", label: "机构 / Venue" },
+      { key: "citations", label: "引用量（可选）", type: "number", min: 0 },
+      { key: "authors", label: "作者 / 参与者", wide: true },
+      { key: "summary.en", label: "英文简述", type: "textarea", wide: true },
+      { key: "summary.zh", label: "中文简述", type: "textarea", wide: true },
+      { key: "details.en", label: "英文详细信息", type: "textarea", wide: true },
+      { key: "details.zh", label: "中文详细信息", type: "textarea", wide: true },
+      { key: "links.paper", label: "全文 / 页面链接", type: "url", wide: true },
+      { key: "links.pdf", label: "PDF 链接", type: "url", wide: true },
+      { key: "links.code", label: "代码链接", type: "url", wide: true },
+    ],
+    create() {
+      const target = state.documents.sections?.find((section) => section.template === "collection");
+      if (!target) return null;
+      return {
+        sectionId: target.id,
+        id: "",
+        title: "",
+        eyebrow: "",
+        meta: "",
+        period: "",
+        venue: "",
+        citations: 0,
+        authors: "",
+        summary: { en: "", zh: "" },
+        details: { en: "", zh: "" },
+        links: { paper: "", pdf: "", code: "" },
+      };
+    },
+    display(item) {
+      const section = state.documents.sections?.find((candidate) => candidate.id === item.sectionId);
+      return { title: item.title || "Untitled entry", meta: `${section?.title?.zh || section?.title?.en || "Page"} · ${item.period || item.eyebrow || "Entry"}` };
     },
   },
 };
@@ -463,11 +575,17 @@ async function loadDocument(documentKey) {
 }
 
 async function loadAllDocuments() {
-  const [publications, profile] = await Promise.all([loadDocument("publications"), loadDocument("profile")]);
+  const [publications, profile, sections] = await Promise.all([
+    loadDocument("publications"),
+    loadDocument("profile"),
+    loadDocument("sections"),
+  ]);
   state.documents.publications = publications.data;
   state.documents.profile = profile.data;
+  state.documents.sections = sections.data;
   state.shas.publications = publications.sha;
   state.shas.profile = profile.sha;
+  state.shas.sections = sections.sha;
 }
 
 async function saveDocument(documentKey, nextDocument, message) {
@@ -516,6 +634,11 @@ function getItems(section = state.section, documentOverride = null) {
   const config = sectionConfigs[section];
   const documentData = documentOverride ?? state.documents[config.document];
   if (config.collection === "__profile__") return [documentData];
+  if (config.collection === "__page_entries__") {
+    return documentData
+      .filter((page) => page.template === "collection")
+      .flatMap((page) => (page.entries || []).map((entry) => ({ ...entry, sectionId: page.id })));
+  }
   if (!config.collection) return documentData;
   return documentData[config.collection];
 }
@@ -545,7 +668,8 @@ function createField(field, item) {
     input.value = value ?? "";
   } else if (field.type === "select") {
     input = document.createElement("select");
-    for (const [optionValue, optionLabel] of field.options) {
+    const options = typeof field.options === "function" ? field.options() : field.options;
+    for (const [optionValue, optionLabel] of options) {
       const option = document.createElement("option");
       option.value = optionValue;
       option.textContent = optionLabel;
@@ -623,6 +747,11 @@ function createItem() {
   const config = currentConfig();
   if (!config.addLabel || !config.create) return;
   const item = config.create();
+  if (!item) {
+    showAlert("请先在“子页面 Pages”中新建一个 Custom collection 页面，再为它添加条目。", "info");
+    switchSection("pages");
+    return;
+  }
   state.currentIndex = null;
   state.creating = true;
   emptyState.hidden = true;
@@ -731,14 +860,26 @@ function validateItem(item) {
     throw new Error("稳定 ID 只能包含小写英文字母、数字和连字符。");
   }
 
-  if (state.creating && item.id) {
-    const duplicate = getItems().some((existing) => existing.id === item.id);
+  if (item.id) {
+    const duplicate = getItems().some((existing, index) => existing.id === item.id && (state.creating || index !== state.currentIndex));
     if (duplicate) throw new Error(`ID “${item.id}” 已存在，请换一个。`);
   }
 
   if (state.section === "publications" && state.creating) {
     const duplicateTitle = getItems().some((existing) => existing.title.toLowerCase() === item.title.toLowerCase());
     if (duplicateTitle) throw new Error("已存在同名论文，请直接编辑原条目。");
+  }
+
+  if (state.section === "pages") {
+    if (!/^[a-z0-9][a-z0-9-]*$/.test(item.slug)) throw new Error("页面地址只能包含小写英文字母、数字和连字符。");
+    if (["update"].includes(item.slug)) throw new Error(`页面地址 “${item.slug}” 已被系统使用。`);
+    const duplicateSlug = getItems().some((existing, index) => existing.slug === item.slug && (state.creating || index !== state.currentIndex));
+    if (duplicateSlug) throw new Error(`页面地址 “/${item.slug}/” 已存在。`);
+  }
+
+  if (state.section === "pageEntries") {
+    const target = state.documents.sections.find((section) => section.id === item.sectionId && section.template === "collection");
+    if (!target) throw new Error("请选择一个有效的自定义子页面。");
   }
 }
 
@@ -748,6 +889,23 @@ function createNextDocument(item) {
 
   if (config.collection === "__profile__") {
     nextDocument = item;
+  } else if (config.collection === "__page_entries__") {
+    const persistedItem = structuredClone(item);
+    delete persistedItem.sectionId;
+    const targetPage = nextDocument.find((page) => page.id === item.sectionId && page.template === "collection");
+    if (!targetPage) throw new Error("目标子页面不存在，请重新选择。");
+    targetPage.entries ||= [];
+    if (state.creating) {
+      targetPage.entries.unshift(persistedItem);
+    } else {
+      const previous = getItems()[state.currentIndex];
+      const previousPage = nextDocument.find((page) => page.id === previous.sectionId);
+      const previousIndex = previousPage?.entries?.findIndex((entry) => entry.id === previous.id) ?? -1;
+      if (previousIndex < 0) throw new Error("原条目已不存在，请重新载入编辑器。");
+      previousPage.entries.splice(previousIndex, 1);
+      if (previous.sectionId === item.sectionId) targetPage.entries.splice(previousIndex, 0, persistedItem);
+      else targetPage.entries.unshift(persistedItem);
+    }
   } else {
     const collection = config.collection ? nextDocument[config.collection] : nextDocument;
     if (state.creating) collection.unshift(item);
@@ -972,8 +1130,8 @@ function logout() {
   if (!confirmDiscard()) return;
   state.token = "";
   state.user = null;
-  state.documents = { publications: null, profile: null };
-  state.shas = { publications: "", profile: "" };
+  state.documents = { publications: null, profile: null, sections: null };
+  state.shas = { publications: "", profile: "", sections: "" };
   state.currentIndex = null;
   state.creating = false;
   setDirty(false);
@@ -1034,11 +1192,11 @@ async function submitContent(event) {
     void trackDeployment(commit.commitSha, commit.commitUrl);
     renderList();
     if (state.creating) {
-      const savedItems = getItems();
+      const savedIndex = getItems().findIndex((candidate) => candidate.id === item.id && (state.section !== "pageEntries" || candidate.sectionId === item.sectionId));
       state.creating = false;
-      state.currentIndex = 0;
-      openItem(0);
-      if (!savedItems.length) closeForm();
+      state.currentIndex = savedIndex;
+      if (savedIndex >= 0) openItem(savedIndex);
+      else closeForm();
     } else {
       openItem(state.currentIndex);
     }

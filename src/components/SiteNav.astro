@@ -1,0 +1,36 @@
+---
+import sections from "../data/sections.json";
+
+interface Props {
+  activeSlug?: string;
+}
+
+const { activeSlug = "" } = Astro.props;
+const visibleSections = [...sections].filter((section) => section.visible).sort((a, b) => a.order - b.order);
+---
+
+<header class="site-nav" data-site-nav>
+  <a class="site-brand" href="/" aria-label="Ming Wang, home">
+    <span class="site-brand__mark">MW</span>
+    <span class="site-brand__name">Ming Wang <span>王明</span></span>
+  </a>
+
+  <nav class="site-nav__links" aria-label="Primary navigation">
+    {visibleSections.map((section) => (
+      <a href={`/${section.slug}/`} aria-current={activeSlug === section.slug ? "page" : undefined}>
+        <span class="lang lang--en">{section.nav.en}</span><span class="lang lang--zh">{section.nav.zh}</span>
+      </a>
+    ))}
+  </nav>
+
+  <div class="site-nav__actions">
+    <button class="language-toggle" type="button" data-language-toggle aria-label="切换为中文" aria-pressed="false">
+      <span class="language-toggle__en">中</span>
+      <span class="language-toggle__zh">EN</span>
+    </button>
+    <a class="nav-update" href="/update/">
+      <span class="lang lang--en">Update</span><span class="lang lang--zh">更新资料</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</header>

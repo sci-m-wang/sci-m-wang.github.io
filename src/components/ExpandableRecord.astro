@@ -1,0 +1,31 @@
+---
+interface Props {
+  index: number;
+  title: string;
+  eyebrow?: string;
+  meta?: string;
+  citation?: number | null;
+  label?: string;
+}
+
+const { index, title, eyebrow = "", meta = "", citation = null, label = "record" } = Astro.props;
+---
+
+<details class="record-card">
+  <summary>
+    <span class="record-card__index">{String(index + 1).padStart(2, "0")}</span>
+    <span class="record-card__summary">
+      {eyebrow && <span class="record-card__eyebrow">{eyebrow}</span>}
+      <strong>{title}</strong>
+      {meta && <small>{meta}</small>}
+    </span>
+    {citation !== null && (
+      <span class="record-card__citation"><b>{citation}</b><small>citations</small></span>
+    )}
+    <span class="record-card__toggle" aria-hidden="true">＋</span>
+    <span class="sr-only"><span class="lang lang--en">Expand {label}</span><span class="lang lang--zh">展开{label}</span></span>
+  </summary>
+  <div class="record-card__details">
+    <slot />
+  </div>
+</details>

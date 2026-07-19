@@ -11,7 +11,7 @@ A from-scratch academic homepage for [sci-m-wang.github.io](https://sci-m-wang.g
 - Filterable publication archive with per-paper citation counts
 - Weekly citation refresh through GitHub Actions
 - GitHub Pages deployment workflow
-- Browser-based owner editor for publications, funding, news, and profile information
+- Browser-based owner editor for publications, funding, news, profile information, subpages, and custom page entries
 - SEO metadata, sitemap, JSON-LD person profile, and a custom Open Graph card
 
 ## Local development
@@ -35,6 +35,7 @@ The site intentionally keeps content separate from layout code:
 
 - `src/data/profile.json` — biography, metrics, research areas, education, funding, awards, talks, service, and news
 - `src/data/publications.json` — publication metadata, links, categories, and citation counts
+- `src/data/sections.json` — the subpage registry, navigation order, page introductions, templates, and custom page entries
 - `public/cv/` — downloadable CV files
 - `public/profile.jpg` — profile portrait
 
@@ -50,6 +51,10 @@ The public `/update/` route contains a direct, browser-based editor for:
 2. Adding and editing funding records
 3. Adding and editing news or media coverage
 4. Editing core profile copy and selected metrics
+5. Adding or editing subpages without changing layout code
+6. Adding expandable entries to any custom collection page
+
+New pages created with the `Custom collection` template automatically receive a route at `/<slug>/`, a homepage directory card, and a navigation item. Setting a page to hidden removes it from navigation and the homepage while keeping its URL buildable. Formal entry names are stored once and remain fixed across language modes; bilingual fields are reserved for interface copy, descriptions, and narrative details.
 
 The editor uses a small client-side encrypted vault. During one-time setup, a GitHub fine-grained personal access token restricted to this repository with only **Contents: Read and write** permission is encrypted with the chosen homepage password.
 

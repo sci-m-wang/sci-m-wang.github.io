@@ -1,0 +1,62 @@
+[
+  {
+    "id": "research",
+    "slug": "research",
+    "nav": { "en": "Research", "zh": "研究" },
+    "title": { "en": "Research", "zh": "研究方向" },
+    "statement": { "en": "Where minds become measurable.", "zh": "让心智变得可测量。" },
+    "intro": {
+      "en": "My work connects psychological theory with testable AI systems, with a focus on machine psychology, persona simulation, and human–AI alignment.",
+      "zh": "我的研究连接心理理论与可检验的人工智能系统，关注机器心理学、人格模拟与人机心智对齐。"
+    },
+    "template": "research",
+    "order": 1,
+    "visible": true,
+    "entries": []
+  },
+  {
+    "id": "publications",
+    "slug": "publications",
+    "nav": { "en": "Publications", "zh": "论文" },
+    "title": { "en": "Publications", "zh": "论文发表" },
+    "statement": { "en": "Ideas, evaluated in public.", "zh": "在公开检验中生长的想法。" },
+    "intro": {
+      "en": "Peer-reviewed papers, preprints, and working papers. Citation counts refresh weekly from Google Scholar.",
+      "zh": "同行评议论文、预印本与工作论文。引用量每周从 Google Scholar 自动更新。"
+    },
+    "template": "publications",
+    "order": 2,
+    "visible": true,
+    "entries": []
+  },
+  {
+    "id": "experience",
+    "slug": "experience",
+    "nav": { "en": "Experience", "zh": "经历" },
+    "title": { "en": "Experience", "zh": "学术经历" },
+    "statement": { "en": "Research is a collective practice.", "zh": "研究是一种集体实践。" },
+    "intro": {
+      "en": "Education, funded projects, affiliations, awards, teaching, talks, and academic service.",
+      "zh": "教育背景、科研项目、机构经历、荣誉、教学、报告与学术服务。"
+    },
+    "template": "experience",
+    "order": 3,
+    "visible": true,
+    "entries": []
+  },
+  {
+    "id": "news",
+    "slug": "news",
+    "nav": { "en": "News", "zh": "动态" },
+    "title": { "en": "News", "zh": "近期动态" },
+    "statement": { "en": "Notes from the lab.", "zh": "研究现场的新消息。" },
+    "intro": {
+      "en": "Selected publications, awards, talks, and research milestones.",
+      "zh": "精选论文、获奖、报告与研究节点。"
+    },
+    "template": "news",
+    "order": 4,
+    "visible": true,
+    "entries": []
+  }
+]

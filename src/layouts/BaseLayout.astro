@@ -50,7 +50,7 @@ const personSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f5f5f2" />
+    <meta name="theme-color" content="#f2efe8" />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {secureEditor && (
@@ -65,16 +65,17 @@ const personSchema = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content="https://sci-m-wang.github.io/og.png" />
+    <meta property="og:image" content="https://sci-m-wang.github.io/og-archive.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://sci-m-wang.github.io/og.png" />
+    <meta name="twitter:image" content="https://sci-m-wang.github.io/og-archive.png" />
     <title>{title}</title>
     {!noindex && <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>}
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <slot />
+    {!secureEditor && <script src="../scripts/site-ui.js"></script>}
   </body>
 </html>

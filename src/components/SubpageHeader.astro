@@ -1,0 +1,23 @@
+---
+import LocalText from "./LocalText.astro";
+
+interface Props {
+  index: number;
+  title: { en: string; zh: string };
+  statement: { en: string; zh: string };
+  intro: { en: string; zh: string };
+}
+
+const { index, title, statement, intro } = Astro.props;
+---
+
+<section class="page-hero" id="top">
+  <div class="page-hero__grid" aria-hidden="true"></div>
+  <p class="page-hero__index">{String(index).padStart(2, "0")} / Academic archive</p>
+  <div class="page-hero__copy reveal">
+    <LocalText en={title.en} zh={title.zh} as="h1" />
+    <LocalText en={statement.en} zh={statement.zh} as="p" class="page-hero__statement" />
+    <LocalText en={intro.en} zh={intro.zh} as="p" class="page-hero__intro" />
+  </div>
+  <div class="page-hero__orbit" aria-hidden="true"><span></span></div>
+</section>
