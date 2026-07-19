@@ -1245,6 +1245,18 @@
     background: #fff;
   }
 
+  .media-card[data-media-id="heu-internet-plus-2018"] .media-card__preview {
+    background: #071b57;
+  }
+
+  .media-card[data-media-id="heu-internet-plus-2018"] .media-card__preview img {
+    object-fit: contain;
+  }
+
+  .media-card[data-media-id="tencent-video-interview"] .media-card__preview img {
+    object-position: center 42%;
+  }
+
   .media-card__number {
     position: absolute;
     top: 0.85rem;
