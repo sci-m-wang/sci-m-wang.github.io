@@ -52,6 +52,7 @@ const educationExperience = profile.experience.filter((item) => item.type === "e
 const workExperience = profile.experience.filter((item) => item.type === "work");
 const exchangeExperience = profile.experience.filter((item) => item.type === "exchange");
 const sortedProjects = [...profile.projects].sort((a, b) => Number(b.pinned) - Number(a.pinned));
+const projectStarsUpdatedAt = profile.projects.map((project) => project.stars?.updatedAt).filter(Boolean).sort().at(-1);
 const talks = profile.activities.filter((item) => item.type === "talk");
 const academicService = profile.activities.filter((item) => item.type === "academic");
 const volunteerService = profile.activities.filter((item) => ["volunteer", "outreach"].includes(item.type));
@@ -120,10 +121,13 @@ const pageTitle = `${section.title.en} · Ming Wang`;
           </section>
 
           <section class="page-section page-section--records">
-            <header class="page-section__heading reveal"><p class="section-heading__index">02 / Systems & open source</p><LocalText en="Projects" zh="研究与开源项目" as="h2" /></header>
+            <header class="page-section__heading page-section__heading--toolbar reveal">
+              <div><p class="section-heading__index">02 / Systems & open source</p><LocalText en="Projects" zh="研究与开源项目" as="h2" /></div>
+              {projectStarsUpdatedAt && <p class="publication-source"><LocalText en={`GitHub Stars · updated ${projectStarsUpdatedAt}`} zh={`GitHub Stars · 更新于 ${projectStarsUpdatedAt}`} /></p>}
+            </header>
             <div class="record-stack">
               {sortedProjects.map((project, index) => (
-                <ExpandableRecord index={index} eyebrow={`${project.pinned ? "PINNED · " : ""}${project.role.en}${project.period ? ` · ${project.period}` : ""}`} title={project.title} meta={project.role.zh} label="project">
+                <ExpandableRecord index={index} eyebrow={`${project.pinned ? "PINNED · " : ""}${project.role.en}${project.period ? ` · ${project.period}` : ""}`} title={project.title} meta={project.role.zh} stat={project.stars?.updatedAt ? { value: project.stars.count, label: "GitHub Stars" } : null} label="project">
                   <div class="project-detail">
                     <LocalText en={project.role.en} zh={project.role.zh} as="h3" />
                     <LocalText en={project.description.en} zh={project.description.zh} as="p" />

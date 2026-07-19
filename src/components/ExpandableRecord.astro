@@ -5,10 +5,13 @@ interface Props {
   eyebrow?: string;
   meta?: string;
   citation?: number | null;
+  stat?: { value: number | string; label: string } | null;
   label?: string;
 }
 
-const { index, title, eyebrow = "", meta = "", citation = null, label = "record" } = Astro.props;
+const { index, title, eyebrow = "", meta = "", citation = null, stat = null, label = "record" } = Astro.props;
+const visibleStat = stat ?? (citation !== null ? { value: citation, label: "citations" } : null);
+const visibleStatValue = typeof visibleStat?.value === "number" ? visibleStat.value.toLocaleString("en-US") : visibleStat?.value;
 ---
 
 <details class="record-card">
@@ -19,8 +22,8 @@ const { index, title, eyebrow = "", meta = "", citation = null, label = "record"
       <strong>{title}</strong>
       {meta && <small>{meta}</small>}
     </span>
-    {citation !== null && (
-      <span class="record-card__citation"><b>{citation}</b><small>citations</small></span>
+    {visibleStat && (
+      <span class="record-card__citation"><b>{visibleStatValue}</b><small>{visibleStat.label}</small></span>
     )}
     <span class="record-card__toggle" aria-hidden="true">＋</span>
     <span class="sr-only"><span class="lang lang--en">Expand {label}</span><span class="lang lang--zh">展开{label}</span></span>

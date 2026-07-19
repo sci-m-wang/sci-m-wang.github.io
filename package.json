@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "citations:update": "node scripts/update-citations.mjs",
+    "stars:update": "node scripts/update-github-stars.mjs",
     "publications:metadata": "node scripts/update-arxiv-metadata.mjs",
     "content:update": "node scripts/content-admin.mjs"
   },

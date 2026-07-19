@@ -254,10 +254,10 @@ const sectionConfigs = {
       { key: "description.en", label: "英文说明", type: "textarea", wide: true },
       { key: "description.zh", label: "中文说明", type: "textarea", wide: true },
       { key: "links.paper", label: "论文链接", type: "url", wide: true },
-      { key: "links.code", label: "项目 / 代码链接", type: "url", wide: true },
+      { key: "links.code", label: "项目 / 代码链接", hint: "GitHub 仓库的 Star 数会每周自动刷新", type: "url", wide: true },
     ],
     create() {
-      return { id: "", title: "", role: { en: "", zh: "" }, period: "", pinned: false, description: { en: "", zh: "" }, links: { paper: "", code: "" } };
+      return { id: "", title: "", role: { en: "", zh: "" }, period: "", pinned: false, description: { en: "", zh: "" }, links: { paper: "", code: "" }, stars: { count: 0, source: "GitHub", updatedAt: "", repository: "" } };
     },
     display(item) {
       return { title: item.title || "Untitled project", meta: `${item.role?.zh || item.role?.en || "Project"}${item.period ? ` · ${item.period}` : ""}${item.pinned ? " · PINNED" : ""}` };

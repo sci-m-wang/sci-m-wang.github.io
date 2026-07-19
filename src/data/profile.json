@@ -44,14 +44,14 @@
     },
     {
       "id": "stars",
-      "value": "811",
+      "value": "770",
       "label": {
         "en": "personal-project stars",
         "zh": "个人项目 Stars"
       },
       "note": {
-        "en": "15k+ as a core contributor",
-        "zh": "核心参与项目 15k+"
+        "en": "12.6k across contributed projects · updated 2026-07-19",
+        "zh": "参与项目合计 12.6k Stars · 更新于 2026-07-19"
       }
     },
     {
@@ -435,7 +435,13 @@
         "paper": "https://arxiv.org/abs/2402.16929",
         "code": "https://github.com/langgptai/LangGPT"
       },
-      "pinned": true
+      "pinned": true,
+      "stars": {
+        "count": 12356,
+        "source": "GitHub",
+        "updatedAt": "2026-07-19",
+        "repository": "langgptai/LangGPT"
+      }
     },
     {
       "id": "minstrel",
@@ -453,7 +459,13 @@
         "paper": "https://arxiv.org/abs/2409.13449",
         "code": "https://github.com/langgptai/Minstrel"
       },
-      "pinned": true
+      "pinned": true,
+      "stars": {
+        "count": 155,
+        "source": "GitHub",
+        "updatedAt": "2026-07-19",
+        "repository": "langgptai/Minstrel"
+      }
     },
     {
       "id": "t-col",
@@ -471,7 +483,13 @@
         "paper": "https://arxiv.org/abs/2309.16146",
         "code": "https://github.com/sci-m-wang/T-COL"
       },
-      "pinned": true
+      "pinned": true,
+      "stars": {
+        "count": 2,
+        "source": "GitHub",
+        "updatedAt": "2026-07-19",
+        "repository": "sci-m-wang/T-COL"
+      }
     },
     {
       "id": "mm-bigbench",
@@ -489,7 +507,13 @@
         "paper": "https://arxiv.org/abs/2310.09036",
         "code": "https://github.com/declare-lab/MM-BigBench"
       },
-      "pinned": false
+      "pinned": false,
+      "stars": {
+        "count": 32,
+        "source": "GitHub",
+        "updatedAt": "2026-07-19",
+        "repository": "declare-lab/MM-InstructEval"
+      }
     },
     {
       "id": "pica",
@@ -507,7 +531,13 @@
         "paper": "",
         "code": "https://github.com/NEU-DataMining/PICA"
       },
-      "pinned": false
+      "pinned": false,
+      "stars": {
+        "count": 98,
+        "source": "GitHub",
+        "updatedAt": "2026-07-19",
+        "repository": "NEU-DataMining/PICA"
+      }
     }
   ],
   "awards": [

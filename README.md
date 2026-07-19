@@ -12,7 +12,7 @@ A from-scratch academic homepage for [sci-m-wang.github.io](https://sci-m-wang.g
 - Dedicated awards archive with a pinned recognition area
 - Dedicated Funding & Projects, Experience, Talks & Service, and News & Media pages
 - Compact research-focus list and current Singapore base on the homepage
-- Weekly citation refresh through GitHub Actions
+- Weekly Google Scholar citation and GitHub Stars refresh through GitHub Actions
 - GitHub Pages deployment workflow
 - Browser-based owner editor for publications, experience, funding, projects, awards, talks and service, news and media, profile information, subpages, and custom page entries
 - SEO metadata, sitemap, JSON-LD person profile, and a custom Open Graph card
@@ -84,6 +84,14 @@ Because the encrypted vault is stored in a public repository, the password shoul
 - Requests are limited to once a week, with conservative retries and a normal browser user agent.
 - If Google Scholar returns a CAPTCHA, rate limit, incomplete page, or too few title matches, the script stops before saving; the last verified counts remain intact.
 - Google Scholar may occasionally block requests from GitHub-hosted runners. In that case, rerun the workflow later or update counts manually.
+
+## GitHub Stars updates
+
+`.github/workflows/stars.yml` runs every Monday and can also be triggered manually. It uses GitHub's built-in workflow token, so no API key or repository secret is required.
+
+- The homepage metric sums Stars across public, non-fork repositories owned by `sci-m-wang`.
+- Each featured project with a GitHub code link receives its own current Star count.
+- The metric note separately sums featured contribution repositories that are not owned by `sci-m-wang`, keeping the core-contributor total current without claiming those repositories as personal projects.
 
 Publication abstracts and related metadata can be refreshed from arXiv with `npm run publications:metadata`. Existing manually entered abstracts are preserved, while missing abstracts, publication dates, DOI values, and primary arXiv categories are filled from the public arXiv record.
 
