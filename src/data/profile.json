@@ -50,8 +50,8 @@
         "zh": "个人项目 Stars"
       },
       "note": {
-        "en": "263.6k across 31 contributed repositories · updated 2026-07-19",
-        "zh": "外部贡献 31 个仓库 · 合计 263.6k Stars · 更新于 2026-07-19"
+        "en": "41.3k across 25 contributed repositories · updated 2026-07-19",
+        "zh": "外部贡献 25 个仓库 · 合计 41.3k Stars · 更新于 2026-07-19"
       }
     },
     {
@@ -437,7 +437,7 @@
       },
       "pinned": true,
       "stars": {
-        "count": 12356,
+        "count": 12357,
         "source": "GitHub",
         "updatedAt": "2026-07-19",
         "repository": "langgptai/LangGPT"
@@ -1067,7 +1067,7 @@
     }
   ],
   "githubContributions": {
-    "source": "GitHub public contribution graph",
+    "source": "GitHub public contribution graph and merged pull requests",
     "updatedAt": "2026-07-19",
     "repositories": [
       {
@@ -1076,9 +1076,11 @@
         "stars": 194819,
         "commitContributions": 0,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 0,
         "years": [
           2026
-        ]
+        ],
+        "includedInStars": false
       },
       {
         "repository": "NevaMind-AI/memU",
@@ -1086,9 +1088,11 @@
         "stars": 14045,
         "commitContributions": 0,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 0,
         "years": [
           2026
-        ]
+        ],
+        "includedInStars": false
       },
       {
         "repository": "EleutherAI/lm-evaluation-harness",
@@ -1096,19 +1100,23 @@
         "stars": 13333,
         "commitContributions": 0,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 0,
         "years": [
           2024
-        ]
+        ],
+        "includedInStars": false
       },
       {
         "repository": "langgptai/LangGPT",
         "owner": "langgptai",
-        "stars": 12356,
+        "stars": 12357,
         "commitContributions": 5,
         "pullRequestContributions": 4,
+        "mergedPullRequestContributions": 3,
         "years": [
           2024
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "dataabc/weiboSpider",
@@ -1116,9 +1124,11 @@
         "stars": 9651,
         "commitContributions": 2,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 1,
         "years": [
           2026
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "ccfddl/ccf-deadlines",
@@ -1126,10 +1136,12 @@
         "stars": 9158,
         "commitContributions": 1,
         "pullRequestContributions": 2,
+        "mergedPullRequestContributions": 1,
         "years": [
           2023,
           2024
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "apachecn/pytorch-doc-zh",
@@ -1137,9 +1149,11 @@
         "stars": 4225,
         "commitContributions": 1,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 1,
         "years": [
           2023
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "emeryberger/CSrankings",
@@ -1147,9 +1161,11 @@
         "stars": 3157,
         "commitContributions": 10,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 1,
         "years": [
           2026
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "InternLM/Tutorial",
@@ -1157,9 +1173,11 @@
         "stars": 1969,
         "commitContributions": 7,
         "pullRequestContributions": 8,
+        "mergedPullRequestContributions": 7,
         "years": [
           2024
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "wzhwzhwzh0921/S-D-Mamba",
@@ -1167,9 +1185,11 @@
         "stars": 392,
         "commitContributions": 5,
         "pullRequestContributions": 3,
+        "mergedPullRequestContributions": 3,
         "years": [
           2024
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "langgptai/Minstrel",
@@ -1177,10 +1197,12 @@
         "stars": 155,
         "commitContributions": 12,
         "pullRequestContributions": 0,
+        "mergedPullRequestContributions": 0,
         "years": [
           2024,
           2025
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "NEU-DataMining/PICA",
@@ -1188,9 +1210,11 @@
         "stars": 98,
         "commitContributions": 2,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 1,
         "years": [
           2023
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "ecnu-sea/SEA",
@@ -1198,9 +1222,11 @@
         "stars": 90,
         "commitContributions": 1,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 1,
         "years": [
           2024
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "hanxiaomax/pyh",
@@ -1208,17 +1234,21 @@
         "stars": 70,
         "commitContributions": 0,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 0,
         "years": [
           2022
-        ]
+        ],
+        "includedInStars": false
       },
       {
         "repository": "declare-lab/MM-InstructEval",
         "owner": "declare-lab",
         "commitContributions": 0,
         "pullRequestContributions": 0,
+        "mergedPullRequestContributions": 0,
         "years": [],
-        "stars": 32
+        "stars": 32,
+        "includedInStars": true
       },
       {
         "repository": "ble55ing/LSTM-Sentiment_analysis",
@@ -1226,9 +1256,11 @@
         "stars": 30,
         "commitContributions": 0,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 0,
         "years": [
           2022
-        ]
+        ],
+        "includedInStars": false
       },
       {
         "repository": "the-ccsn/china-university-thesis-index",
@@ -1236,9 +1268,11 @@
         "stars": 14,
         "commitContributions": 0,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 0,
         "years": [
           2026
-        ]
+        ],
+        "includedInStars": false
       },
       {
         "repository": "subramanya1997/Novel-T5",
@@ -1246,9 +1280,11 @@
         "stars": 4,
         "commitContributions": 10,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 1,
         "years": [
           2023
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "ETWBC/ipgw",
@@ -1256,9 +1292,11 @@
         "stars": 3,
         "commitContributions": 3,
         "pullRequestContributions": 0,
+        "mergedPullRequestContributions": 0,
         "years": [
           2021
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "kinamind/Psy-Skill-Hub",
@@ -1266,9 +1304,11 @@
         "stars": 2,
         "commitContributions": 10,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 1,
         "years": [
           2026
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "NEU-DataMining/LLM_Survey",
@@ -1276,9 +1316,11 @@
         "stars": 2,
         "commitContributions": 19,
         "pullRequestContributions": 5,
+        "mergedPullRequestContributions": 5,
         "years": [
           2023
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "NEU-DataMining/RoCar",
@@ -1286,9 +1328,11 @@
         "stars": 1,
         "commitContributions": 10,
         "pullRequestContributions": 0,
+        "mergedPullRequestContributions": 0,
         "years": [
           2023
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "ContiAI/ContiAI-Paper_template",
@@ -1296,9 +1340,11 @@
         "stars": 0,
         "commitContributions": 2,
         "pullRequestContributions": 0,
+        "mergedPullRequestContributions": 0,
         "years": [
           2025
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "kinamind/AgentBoard",
@@ -1306,9 +1352,11 @@
         "stars": 0,
         "commitContributions": 7,
         "pullRequestContributions": 0,
+        "mergedPullRequestContributions": 0,
         "years": [
           2026
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "kinamind/annapod",
@@ -1316,9 +1364,11 @@
         "stars": 0,
         "commitContributions": 5,
         "pullRequestContributions": 0,
+        "mergedPullRequestContributions": 0,
         "years": [
           2026
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "kinamind/SymPro",
@@ -1326,9 +1376,11 @@
         "stars": 0,
         "commitContributions": 2,
         "pullRequestContributions": 0,
+        "mergedPullRequestContributions": 0,
         "years": [
           2026
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "momolammm/ReNarra",
@@ -1336,9 +1388,11 @@
         "stars": 0,
         "commitContributions": 2,
         "pullRequestContributions": 0,
+        "mergedPullRequestContributions": 0,
         "years": [
           2026
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "NEU-DataMining/Clothing",
@@ -1346,9 +1400,11 @@
         "stars": 0,
         "commitContributions": 6,
         "pullRequestContributions": 0,
+        "mergedPullRequestContributions": 0,
         "years": [
           2023
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "NEU-DataMining/GLT",
@@ -1356,9 +1412,11 @@
         "stars": 0,
         "commitContributions": 2,
         "pullRequestContributions": 0,
+        "mergedPullRequestContributions": 0,
         "years": [
           2023
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "NEU-DataMining/LaTex_writting_issues",
@@ -1366,9 +1424,11 @@
         "stars": 0,
         "commitContributions": 3,
         "pullRequestContributions": 1,
+        "mergedPullRequestContributions": 1,
         "years": [
           2024
-        ]
+        ],
+        "includedInStars": true
       },
       {
         "repository": "Qiusuo-AI/qiusuo-ai.github.io",
@@ -1376,9 +1436,11 @@
         "stars": 0,
         "commitContributions": 10,
         "pullRequestContributions": 0,
+        "mergedPullRequestContributions": 0,
         "years": [
           2023
-        ]
+        ],
+        "includedInStars": true
       }
     ]
   }
