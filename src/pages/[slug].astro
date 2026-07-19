@@ -5,7 +5,6 @@ import LocalText from "../components/LocalText.astro";
 import PublicationCard from "../components/PublicationCard.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteNav from "../components/SiteNav.astro";
-import SubpageHeader from "../components/SubpageHeader.astro";
 import profile from "../data/profile.json";
 import publications from "../data/publications.json";
 import sections from "../data/sections.json";
@@ -36,14 +35,11 @@ interface SectionRecord {
   entries: PageEntry[];
 }
 
-const siteSections = sections as unknown as SectionRecord[];
-
 export function getStaticPaths() {
   return (sections as unknown as SectionRecord[]).map((section) => ({ params: { slug: section.slug }, props: { section } }));
 }
 
 const { section } = Astro.props as { section: SectionRecord };
-const pageIndex = [...siteSections].sort((a, b) => a.order - b.order).findIndex((item) => item.id === section.id) + 1;
 const sortedPublications = [...publications].sort((a, b) => b.year - a.year || Number(b.selected) - Number(a.selected));
 const citationUpdatedAt = publications.map((publication) => publication.citations.updatedAt).sort().at(-1);
 const featuredAwards = profile.awards.filter((award) => award.featured);
@@ -56,8 +52,6 @@ const pageTitle = `${section.title.en} · Ming Wang`;
   <div class="site-shell">
     <SiteNav activeSlug={section.slug} />
     <main id="main" class="subpage-shell">
-      <SubpageHeader index={pageIndex} title={section.title} intro={section.intro} />
-
       {section.template === "research" && (
         <div class="page-content page-content--research">
           <section class="page-section" aria-labelledby="research-areas-title">
