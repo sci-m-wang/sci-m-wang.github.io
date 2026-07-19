@@ -99,6 +99,7 @@ async function discoverPublicContributions(username) {
       stars: repository.stargazerCount,
       commitContributions: 0,
       pullRequestContributions: 0,
+      mergedPullRequestContributions: 0,
       years: new Set(),
     };
     existing.repository = repository.nameWithOwner;
@@ -113,6 +114,62 @@ async function discoverPublicContributions(username) {
     const year = Number(period.slice(1));
     for (const item of collection.commitContributionsByRepository) addContribution(item, "commitContributions", year);
     for (const item of collection.pullRequestContributionsByRepository) addContribution(item, "pullRequestContributions", year);
+  }
+
+  return repositories;
+}
+
+async function discoverMergedPullRequests(username) {
+  if (!token) return null;
+
+  const repositories = new Map();
+  let cursor = null;
+  for (let page = 1; page <= 10; page += 1) {
+    const query = `
+      query($query: String!, $cursor: String) {
+        search(query: $query, type: ISSUE, first: 100, after: $cursor) {
+          nodes {
+            ... on PullRequest {
+              mergedAt
+              repository { nameWithOwner stargazerCount owner { login } }
+            }
+          }
+          pageInfo { hasNextPage endCursor }
+        }
+      }
+    `;
+    const payload = await github("/graphql", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query,
+        variables: { query: `author:${username} is:pr is:merged`, cursor },
+      }),
+    });
+
+    if (payload.errors?.length) throw new Error(`GitHub GraphQL error: ${payload.errors.map((error) => error.message).join("; ")}`);
+    const search = payload.data?.search;
+    if (!search) throw new Error("GitHub merged pull-request search returned no data.");
+
+    for (const pullRequest of search.nodes) {
+      const repository = pullRequest?.repository;
+      if (!repository || repository.owner.login.toLowerCase() === username.toLowerCase()) continue;
+      const key = repository.nameWithOwner.toLowerCase();
+      const existing = repositories.get(key) ?? {
+        repository: repository.nameWithOwner,
+        owner: repository.owner.login,
+        stars: repository.stargazerCount,
+        mergedPullRequestContributions: 0,
+        years: new Set(),
+      };
+      existing.stars = repository.stargazerCount;
+      existing.mergedPullRequestContributions += 1;
+      if (pullRequest.mergedAt) existing.years.add(Number(pullRequest.mergedAt.slice(0, 4)));
+      repositories.set(key, existing);
+    }
+
+    if (!search.pageInfo.hasNextPage) break;
+    cursor = search.pageInfo.endCursor;
   }
 
   return repositories;
@@ -136,7 +193,7 @@ for (const project of profile.projects) {
 
 if (projectRepositories.size === 0) throw new Error("No GitHub project links were found in profile.json.");
 
-const [ownedRepositories, fetchedProjects, discoveredContributions] = await Promise.all([
+const [ownedRepositories, fetchedProjects, discoveredContributions, mergedPullRequests] = await Promise.all([
   listOwnedRepositories(githubUsername),
   Promise.all(
     [...projectRepositories.values()].map(async (repository) => {
@@ -145,6 +202,7 @@ const [ownedRepositories, fetchedProjects, discoveredContributions] = await Prom
     }),
   ),
   discoverPublicContributions(githubUsername),
+  discoverMergedPullRequests(githubUsername),
 ]);
 
 const projectData = new Map(fetchedProjects);
@@ -176,14 +234,33 @@ const storedContributions = new Map(
 );
 const contributedRepositories = discoveredContributions ?? storedContributions;
 
+for (const [key, pullRequestRepository] of mergedPullRequests ?? []) {
+  const existing = contributedRepositories.get(key) ?? {
+    repository: pullRequestRepository.repository,
+    owner: pullRequestRepository.owner,
+    stars: pullRequestRepository.stars,
+    commitContributions: 0,
+    pullRequestContributions: 0,
+    mergedPullRequestContributions: 0,
+    years: new Set(),
+  };
+  existing.stars = pullRequestRepository.stars;
+  existing.mergedPullRequestContributions = pullRequestRepository.mergedPullRequestContributions;
+  for (const year of pullRequestRepository.years) existing.years.add(year);
+  contributedRepositories.set(key, existing);
+}
+
+const featuredExternalRepositories = new Set();
 for (const repository of projectData.values()) {
   if (repository.owner.login.toLowerCase() === githubUsername.toLowerCase()) continue;
   const key = repository.full_name.toLowerCase();
+  featuredExternalRepositories.add(key);
   const existing = contributedRepositories.get(key) ?? {
     repository: repository.full_name,
     owner: repository.owner.login,
     commitContributions: 0,
     pullRequestContributions: 0,
+    mergedPullRequestContributions: 0,
     years: new Set(),
   };
   existing.stars = repository.stargazers_count;
@@ -191,13 +268,25 @@ for (const repository of projectData.values()) {
 }
 
 const contributionRecords = [...contributedRepositories.values()]
-  .map((repository) => ({ ...repository, years: [...repository.years].sort() }))
+  .map((repository) => {
+    const key = repository.repository.toLowerCase();
+    return {
+      ...repository,
+      mergedPullRequestContributions: repository.mergedPullRequestContributions ?? 0,
+      includedInStars:
+        (repository.commitContributions ?? 0) > 0 ||
+        (repository.mergedPullRequestContributions ?? 0) > 0 ||
+        featuredExternalRepositories.has(key),
+      years: [...repository.years].sort(),
+    };
+  })
   .sort((a, b) => b.stars - a.stars || a.repository.localeCompare(b.repository));
-const contributedStars = contributionRecords.reduce((sum, repository) => sum + repository.stars, 0);
+const countedContributionRecords = contributionRecords.filter((repository) => repository.includedInStars);
+const contributedStars = countedContributionRecords.reduce((sum, repository) => sum + repository.stars, 0);
 const contributionUpdatedAt = discoveredContributions ? today : profile.githubContributions?.updatedAt ?? today;
 
 profile.githubContributions = {
-  source: "GitHub public contribution graph",
+  source: "GitHub public contribution graph and merged pull requests",
   updatedAt: contributionUpdatedAt,
   repositories: contributionRecords,
 };
@@ -206,16 +295,16 @@ const starsMetric = profile.metrics.find((metric) => metric.id === "stars");
 if (!starsMetric) throw new Error("GitHub Stars metric is missing from profile.json.");
 
 starsMetric.value = String(personalStars);
-starsMetric.note.en = `${compactNumber(contributedStars)} across ${contributionRecords.length} contributed repositories · updated ${contributionUpdatedAt}`;
-starsMetric.note.zh = `外部贡献 ${contributionRecords.length} 个仓库 · 合计 ${compactNumber(contributedStars)} Stars · 更新于 ${contributionUpdatedAt}`;
+starsMetric.note.en = `${compactNumber(contributedStars)} across ${countedContributionRecords.length} contributed repositories · updated ${contributionUpdatedAt}`;
+starsMetric.note.zh = `外部贡献 ${countedContributionRecords.length} 个仓库 · 合计 ${compactNumber(contributedStars)} Stars · 更新于 ${contributionUpdatedAt}`;
 
 if (dryRun) {
   console.log(
-    `Dry run passed: ${personalStars} Stars across repositories owned by ${githubUsername}; ${contributedStars} Stars across ${contributionRecords.length} contributed repositories (${discoveredContributions ? "discovered from the public contribution graph" : "using the stored contribution registry"}).`,
+    `Dry run passed: ${personalStars} Stars across repositories owned by ${githubUsername}; ${contributedStars} Stars across ${countedContributionRecords.length} accepted or featured contribution repositories (${contributionRecords.length} public contribution repositories discovered).`,
   );
 } else {
   await writeFile(profilePath, `${JSON.stringify(profile, null, 2)}\n`, "utf8");
   console.log(
-    `Updated ${profile.projects.filter((project) => project.stars).length} featured project Star counts, ${personalStars} personal-project Stars, and ${contributedStars} Stars across ${contributionRecords.length} contributed repositories.`,
+    `Updated ${profile.projects.filter((project) => project.stars).length} featured project Star counts, ${personalStars} personal-project Stars, and ${contributedStars} Stars across ${countedContributionRecords.length} accepted or featured contribution repositories.`,
   );
 }
