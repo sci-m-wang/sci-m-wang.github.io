@@ -19,20 +19,40 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Check out master
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: master
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
       - name: Install dependencies
         run: npm ci
       - name: Refresh citation data
-        run: npm run citations:update
+        id: refresh
+        run: |
+          set +e
+          npm run citations:update
+          status=$?
+          set -e
+          if [ "$status" -eq 0 ]; then
+            echo "succeeded=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "succeeded=false" >> "$GITHUB_OUTPUT"
+            echo "Google Scholar refresh exited with status $status."
+          fi
+      - name: Retry scheduled refresh on a fresh runner
+        if: github.event_name == 'schedule' && steps.refresh.outputs.succeeded != 'true'
+        run: gh workflow run citations.yml --ref master
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Fail unsuccessful manual refresh
+        if: github.event_name != 'schedule' && steps.refresh.outputs.succeeded != 'true'
+        run: exit 1
       - name: Commit updated counts
         id: commit
+        if: steps.refresh.outputs.succeeded == 'true'
         run: |
           git config user.name "citation-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
