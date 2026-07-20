@@ -32,14 +32,14 @@
   "metrics": [
     {
       "id": "citations",
-      "value": "651",
+      "value": "660",
       "label": {
         "en": "Google Scholar citations",
         "zh": "Google Scholar 引用"
       },
       "note": {
-        "en": "h-index 8 · updated Jul 2026",
-        "zh": "h-index 8 · 更新于 2026.07"
+        "en": "h-index 8 · i10-index 7 · updated 2026-07-20",
+        "zh": "h-index 8 · i10-index 7 · 更新于 2026-07-20"
       }
     },
     {
