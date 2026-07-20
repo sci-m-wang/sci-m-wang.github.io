@@ -50,8 +50,8 @@
         "zh": "个人项目 Stars"
       },
       "note": {
-        "en": "41.3k across 25 contributed repositories · updated 2026-07-19",
-        "zh": "外部贡献 25 个仓库 · 合计 41.3k Stars · 更新于 2026-07-19"
+        "en": "41.3k across 25 contributed repositories · updated 2026-07-20",
+        "zh": "外部贡献 25 个仓库 · 合计 41.3k Stars · 更新于 2026-07-20"
       }
     },
     {
@@ -437,9 +437,9 @@
       },
       "pinned": true,
       "stars": {
-        "count": 12357,
+        "count": 12359,
         "source": "GitHub",
-        "updatedAt": "2026-07-19",
+        "updatedAt": "2026-07-20",
         "repository": "langgptai/LangGPT"
       }
     },
@@ -463,7 +463,7 @@
       "stars": {
         "count": 155,
         "source": "GitHub",
-        "updatedAt": "2026-07-19",
+        "updatedAt": "2026-07-20",
         "repository": "langgptai/Minstrel"
       }
     },
@@ -487,7 +487,7 @@
       "stars": {
         "count": 2,
         "source": "GitHub",
-        "updatedAt": "2026-07-19",
+        "updatedAt": "2026-07-20",
         "repository": "sci-m-wang/T-COL"
       }
     },
@@ -511,7 +511,7 @@
       "stars": {
         "count": 32,
         "source": "GitHub",
-        "updatedAt": "2026-07-19",
+        "updatedAt": "2026-07-20",
         "repository": "declare-lab/MM-InstructEval"
       }
     },
@@ -535,7 +535,7 @@
       "stars": {
         "count": 98,
         "source": "GitHub",
-        "updatedAt": "2026-07-19",
+        "updatedAt": "2026-07-20",
         "repository": "NEU-DataMining/PICA"
       }
     }
@@ -1068,12 +1068,12 @@
   ],
   "githubContributions": {
     "source": "GitHub public contribution graph and merged pull requests",
-    "updatedAt": "2026-07-19",
+    "updatedAt": "2026-07-20",
     "repositories": [
       {
         "repository": "ultraworkers/claw-code",
         "owner": "ultraworkers",
-        "stars": 194819,
+        "stars": 194832,
         "commitContributions": 0,
         "pullRequestContributions": 1,
         "mergedPullRequestContributions": 0,
@@ -1085,7 +1085,7 @@
       {
         "repository": "NevaMind-AI/memU",
         "owner": "NevaMind-AI",
-        "stars": 14045,
+        "stars": 14048,
         "commitContributions": 0,
         "pullRequestContributions": 1,
         "mergedPullRequestContributions": 0,
@@ -1097,7 +1097,7 @@
       {
         "repository": "EleutherAI/lm-evaluation-harness",
         "owner": "EleutherAI",
-        "stars": 13333,
+        "stars": 13338,
         "commitContributions": 0,
         "pullRequestContributions": 1,
         "mergedPullRequestContributions": 0,
@@ -1109,7 +1109,7 @@
       {
         "repository": "langgptai/LangGPT",
         "owner": "langgptai",
-        "stars": 12357,
+        "stars": 12359,
         "commitContributions": 5,
         "pullRequestContributions": 4,
         "mergedPullRequestContributions": 3,
@@ -1133,7 +1133,7 @@
       {
         "repository": "ccfddl/ccf-deadlines",
         "owner": "ccfddl",
-        "stars": 9158,
+        "stars": 9162,
         "commitContributions": 1,
         "pullRequestContributions": 2,
         "mergedPullRequestContributions": 1,
