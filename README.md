@@ -12,7 +12,7 @@ A from-scratch academic homepage for [sci-m-wang.github.io](https://sci-m-wang.g
 - Dedicated awards archive with a pinned recognition area
 - Dedicated Funding & Projects, Experience, Talks & Service, and News & Media pages
 - Compact research-focus list and current Singapore base on the homepage
-- Weekly Google Scholar citation and GitHub Stars refresh through GitHub Actions
+- Google Scholar citation snapshots committed by CiteBeat's optional GitHub adapter, plus weekly GitHub Stars refresh
 - GitHub Pages deployment workflow
 - Browser-based owner editor for publications, experience, funding, projects, awards, talks and service, news and media, profile information, subpages, and custom page entries
 - SEO metadata, sitemap, JSON-LD person profile, and a custom Open Graph card
@@ -37,7 +37,8 @@ npm run build
 The site intentionally keeps content separate from layout code:
 
 - `src/data/profile.json` — biography, metrics, research areas, experience, funding, projects, awards, talks, service, volunteering, news, and media coverage
-- `src/data/publications.json` — publication metadata, links, categories, and citation counts
+- `src/data/publications.json` — publication metadata, links, and categories
+- `src/data/citations.json` — the single Google Scholar snapshot written by CiteBeat
 - `src/data/sections.json` — the subpage registry, navigation order, page introductions, templates, and custom page entries
 - `public/cv/` — downloadable CV files
 - `public/profile.jpg` — profile portrait
@@ -78,12 +79,13 @@ Because the encrypted vault is stored in a public repository, the password shoul
 
 ## Citation updates
 
-`.github/workflows/citations.yml` runs every Monday and can also be triggered manually.
+The CiteBeat browser extension produces a platform-neutral `citation.snapshot/1`. For this site, CiteBeat's optional GitHub adapter writes that unchanged snapshot to `src/data/citations.json`; a commit to `main` triggers the normal Pages deployment.
 
-- The workflow reads the public Google Scholar profile directly, so no API key or repository secret is required.
-- Requests are limited to once a week, with conservative retries and a normal browser user agent.
-- If Google Scholar returns a CAPTCHA, rate limit, incomplete page, or too few title matches, the script stops before saving; the last verified counts remain intact.
-- Google Scholar may occasionally block requests from GitHub-hosted runners. In that case, rerun the workflow later or update counts manually.
+- CiteBeat fetches from the user's normal browser network rather than a hosted runner, avoiding the block that broke the scheduled workflow.
+- The snapshot contains total citations, h-index, i10-index, per-paper counts, and the observation time.
+- The site matches papers by normalized title at build time; unmatched records keep their last static fallback count.
+- `.github/workflows/citations.yml` remains manual-only as an emergency fallback.
+- See `docs/citebeat-endpoint-sync.md` for the platform-neutral protocol and `docs/citebeat-github-adapter.md` for the direct GitHub transport used by this site.
 
 ## GitHub Stars updates
 

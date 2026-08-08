@@ -1,0 +1,162 @@
+{
+  "schema": "citation.snapshot",
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-20T00:00:00.000Z",
+  "generator": {
+    "name": "CiteBeat",
+    "version": "0.3.0"
+  },
+  "source": {
+    "provider": "scholar",
+    "authorId": "dcqk_mMAAAAJ",
+    "profileUrl": "https://scholar.google.com/citations?user=dcqk_mMAAAAJ",
+    "fetchedAt": "2026-07-20T00:00:00.000Z"
+  },
+  "metrics": {
+    "citations": 660,
+    "hIndex": 8,
+    "i10Index": 7,
+    "paperCount": 19
+  },
+  "period": {
+    "mode": "manual",
+    "startedAt": null,
+    "citationDelta": null
+  },
+  "papers": [
+    {
+      "id": "genpt-2026",
+      "title": "GenPT: Beyond Self-Report for Reliable LLM Psychometrics via Generative Projective Testing",
+      "citations": 0,
+      "delta": null,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&citation_for_view=dcqk_mMAAAAJ:ZeXyd9-uunAC"
+    },
+    {
+      "id": "persona-steering-2026",
+      "title": "A Systematic Analysis of the Impact of Persona Steering on LLM Capabilities",
+      "citations": 0,
+      "delta": null,
+      "url": "https://arxiv.org/abs/2604.11048"
+    },
+    {
+      "id": "t-col-2026",
+      "title": "T-COL: Generating Counterfactual Explanations for General User Preferences on Variable Machine Learning Systems",
+      "citations": 2,
+      "delta": null,
+      "url": "https://arxiv.org/abs/2309.16146"
+    },
+    {
+      "id": "annaagent-2025",
+      "title": "AnnaAgent: Dynamic Evolution Agent System with Multi-Session Memory for Realistic Seeker Simulation",
+      "citations": 21,
+      "delta": null,
+      "url": "https://arxiv.org/abs/2506.00551"
+    },
+    {
+      "id": "generative-link-tree-2022",
+      "title": "Generative Link Tree: A Counterfactual Explanation Generation Approach with High Data Fidelity",
+      "citations": 2,
+      "delta": null,
+      "url": "https://www.jsjkx.com/CN/1002-137X/home.shtml"
+    },
+    {
+      "id": "mamba-forecasting-2025",
+      "title": "Is Mamba Effective for Time Series Forecasting?",
+      "citations": 453,
+      "delta": null,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0925231224019490"
+    },
+    {
+      "id": "mm-instructeval-2025",
+      "title": "MM-InstructEval: Zero-Shot Evaluation of (Multimodal) Large Language Models on Multimodal Reasoning Tasks",
+      "citations": 64,
+      "delta": null,
+      "url": "https://arxiv.org/abs/2405.07229"
+    },
+    {
+      "id": "feel-2024",
+      "title": "FEEL: A Framework for Evaluating Emotional Support Capability with Large Language Models",
+      "citations": 11,
+      "delta": null,
+      "url": "https://arxiv.org/abs/2403.15699"
+    },
+    {
+      "id": "sentiment-triplet-2024",
+      "title": "Sentiment Triplet Extraction with Multi-view Contrastive Learning",
+      "citations": 12,
+      "delta": null,
+      "url": "https://ieeexplore.ieee.org/abstract/document/10812814"
+    },
+    {
+      "id": "empathetic-debate-2024",
+      "title": "LLM-Based Empathetic Response Through Psychologist-Agent Debate",
+      "citations": 7,
+      "delta": null,
+      "url": "https://link.springer.com/chapter/10.1007/978-981-97-7232-2_14"
+    },
+    {
+      "id": "self-evolving-data-engineers-2025",
+      "title": "Language Models as Continuous Self-Evolving Data Engineers",
+      "citations": 6,
+      "delta": null,
+      "url": "https://arxiv.org/abs/2412.15151"
+    },
+    {
+      "id": "langgpt-2024",
+      "title": "LangGPT: Rethinking Structured Reusable Prompt Design Framework for LLMs from the Programming Language",
+      "citations": 45,
+      "delta": null,
+      "url": "https://arxiv.org/abs/2402.16929"
+    },
+    {
+      "id": "hirag-2024",
+      "title": "Hierarchical Retrieval-Augmented Generation Model with Rethink for Multi-hop Question Answering",
+      "citations": 23,
+      "delta": null,
+      "url": "https://arxiv.org/abs/2408.11875"
+    },
+    {
+      "id": "minstrel-2024",
+      "title": "Minstrel: Structural Prompt Generation with Multi-Agents Coordination for Non-AI Experts",
+      "citations": 9,
+      "delta": null,
+      "url": "https://arxiv.org/abs/2409.13449"
+    },
+    {
+      "id": "repair-2025",
+      "title": "REPAIR: Robust Editing via Progressive Adaptive Intervention and Reintegration",
+      "citations": 2,
+      "delta": null,
+      "url": "https://arxiv.org/abs/2510.01879"
+    },
+    {
+      "id": "mental-patient-simulators-2026",
+      "title": "Synthetic or Authentic? Building Mental Patient Simulators from Longitudinal Evidence",
+      "citations": 1,
+      "delta": null,
+      "url": "https://arxiv.org/abs/2603.22704"
+    },
+    {
+      "id": "jailbreak-probing-2026",
+      "title": "Defending Large Language Models Against Jailbreak Attacks via In-Decoding Safety-Awareness Probing",
+      "citations": 2,
+      "delta": null,
+      "url": "https://arxiv.org/abs/2601.10543"
+    },
+    {
+      "id": "model-merging-survey-2025",
+      "title": "Scaling Intelligence Through Model Merging: A Comprehensive Survey",
+      "citations": 0,
+      "delta": null,
+      "url": "https://scholar.google.com/citations?user=dcqk_mMAAAAJ"
+    },
+    {
+      "id": "rocar-2023",
+      "title": "RoCar: A Relationship Network-based Evaluation Method for Large Language Models",
+      "citations": 0,
+      "delta": null,
+      "url": "https://arxiv.org/abs/2307.15997"
+    }
+  ],
+  "trend": []
+}

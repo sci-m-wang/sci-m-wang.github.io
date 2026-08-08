@@ -3,8 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import LocalText from "../components/LocalText.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteNav from "../components/SiteNav.astro";
-import profile from "../data/profile.json";
-import publications from "../data/publications.json";
+import { profile, publications } from "../data/content";
 import sections from "../data/sections.json";
 
 const visibleSections = [...sections].filter((section) => section.visible).sort((a, b) => a.order - b.order);

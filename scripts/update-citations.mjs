@@ -4,9 +4,9 @@ import path from "node:path";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicationsPath = path.join(root, "src/data/publications.json");
-const profilePath = path.join(root, "src/data/profile.json");
+const citationsPath = path.join(root, "src/data/citations.json");
 const scholarAuthorId = "dcqk_mMAAAAJ";
-const today = new Date().toISOString().slice(0, 10);
+const updatedAt = new Date().toISOString();
 const dryRun = process.argv.includes("--dry-run");
 
 const scholarUrl = new URL("https://scholar.google.com/citations");
@@ -18,7 +18,6 @@ scholarUrl.searchParams.set("sortby", "pubdate");
 scholarUrl.searchParams.set("pagesize", "100");
 
 const publications = JSON.parse(await readFile(publicationsPath, "utf8"));
-const profile = JSON.parse(await readFile(profilePath, "utf8"));
 
 const sleep = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
@@ -120,46 +119,44 @@ async function fetchScholarProfile() {
   throw lastError;
 }
 
-function applyScholarData(data) {
+function buildSnapshot(data) {
   const articleByTitle = new Map(data.articles.map((article) => [normalize(article.title), article]));
-  let matched = 0;
-
-  for (const publication of publications) {
-    const article = articleByTitle.get(normalize(publication.title));
-    if (!article) continue;
-    publication.citations = {
-      count: article.citations,
-      source: "Google Scholar",
-      updatedAt: today,
-    };
-    matched += 1;
-  }
+  const matched = publications.filter((publication) => articleByTitle.has(normalize(publication.title))).length;
 
   if (matched < 10) {
     throw new Error(`Only ${matched} homepage publications matched Google Scholar; refusing to save partial data.`);
   }
 
-  const citationMetric = profile.metrics.find((metric) => metric.id === "citations");
-  if (!citationMetric) throw new Error("Citation metric is missing from profile.json.");
-
-  citationMetric.value = String(data.totalCitations);
-  citationMetric.note.en = `h-index ${data.hIndex} · i10-index ${data.i10Index} · updated ${today}`;
-  citationMetric.note.zh = `h-index ${data.hIndex} · i10-index ${data.i10Index} · 更新于 ${today}`;
-
-  return matched;
+  return {
+    snapshot: {
+      schemaVersion: 1,
+      source: "Google Scholar",
+      authorId: scholarAuthorId,
+      updatedAt,
+      totalCitations: data.totalCitations,
+      hIndex: data.hIndex,
+      i10Index: data.i10Index,
+      papers: data.articles.map((article) => ({
+        id: normalize(article.title),
+        title: article.title,
+        citations: article.citations,
+        url: `https://scholar.google.com/citations?user=${scholarAuthorId}`,
+      })),
+    },
+    matched,
+  };
 }
 
 const scholarData = await fetchScholarProfile();
-const matched = applyScholarData(scholarData);
+const { snapshot, matched } = buildSnapshot(scholarData);
 
 if (dryRun) {
   console.log(
     `Dry run passed: ${scholarData.totalCitations} total citations, h-index ${scholarData.hIndex}, ${matched}/${publications.length} homepage publications matched.`,
   );
 } else {
-  await writeFile(publicationsPath, `${JSON.stringify(publications, null, 2)}\n`, "utf8");
-  await writeFile(profilePath, `${JSON.stringify(profile, null, 2)}\n`, "utf8");
+  await writeFile(citationsPath, `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
   console.log(
-    `Updated ${matched}/${publications.length} publications directly from Google Scholar (${scholarData.totalCitations} total citations).`,
+    `Updated the citation snapshot with ${scholarData.articles.length} Scholar papers; ${matched}/${publications.length} homepage publications matched (${scholarData.totalCitations} total citations).`,
   );
 }
