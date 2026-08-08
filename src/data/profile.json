@@ -392,6 +392,21 @@
   ],
   "funding": [
     {
+      "id": "fire-case-inquery",
+      "role": {
+        "en": "Principal Investigator",
+        "zh": "项目负责人"
+      },
+      "displayTitle": "基于多智能体的火灾调查智能辅助询问系统研发",
+      "title": {
+        "en": "",
+        "zh": ""
+      },
+      "funder": "辽宁省科技计划联合计划（自然科学基金-面上项目）子课题",
+      "amount": "¥26,000",
+      "period": "2026"
+    },
+    {
       "id": "rwi-reflection",
       "role": {
         "en": "Technical Lead",
