@@ -1,162 +1,282 @@
 {
   "schema": "citation.snapshot",
   "schemaVersion": 1,
-  "generatedAt": "2026-07-20T00:00:00.000Z",
+  "generatedAt": "2026-08-08T09:19:02.664Z",
   "generator": {
     "name": "CiteBeat",
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   "source": {
     "provider": "scholar",
     "authorId": "dcqk_mMAAAAJ",
     "profileUrl": "https://scholar.google.com/citations?user=dcqk_mMAAAAJ",
-    "fetchedAt": "2026-07-20T00:00:00.000Z"
+    "fetchedAt": "2026-08-08T09:18:54.317Z"
   },
   "metrics": {
-    "citations": 660,
+    "citations": 696,
     "hIndex": 8,
     "i10Index": 7,
-    "paperCount": 19
+    "paperCount": 20
   },
   "period": {
-    "mode": "manual",
-    "startedAt": null,
-    "citationDelta": null
+    "mode": "weekly",
+    "startedAt": "2026-08-02T16:05:17.484Z",
+    "citationDelta": 6
   },
   "papers": [
     {
-      "id": "genpt-2026",
-      "title": "GenPT: Beyond Self-Report for Reliable LLM Psychometrics via Generative Projective Testing",
-      "citations": 0,
-      "delta": null,
-      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&citation_for_view=dcqk_mMAAAAJ:ZeXyd9-uunAC"
+      "id": "dcqk_mMAAAAJ:zYLM7Y9cAGgC",
+      "title": "Is mamba effective for time series forecasting?",
+      "citations": 476,
+      "delta": 5,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:zYLM7Y9cAGgC"
     },
     {
-      "id": "persona-steering-2026",
-      "title": "A Systematic Analysis of the Impact of Persona Steering on LLM Capabilities",
-      "citations": 0,
-      "delta": null,
-      "url": "https://arxiv.org/abs/2604.11048"
-    },
-    {
-      "id": "t-col-2026",
-      "title": "T-COL: Generating Counterfactual Explanations for General User Preferences on Variable Machine Learning Systems",
-      "citations": 2,
-      "delta": null,
-      "url": "https://arxiv.org/abs/2309.16146"
-    },
-    {
-      "id": "annaagent-2025",
-      "title": "AnnaAgent: Dynamic Evolution Agent System with Multi-Session Memory for Realistic Seeker Simulation",
-      "citations": 21,
-      "delta": null,
-      "url": "https://arxiv.org/abs/2506.00551"
-    },
-    {
-      "id": "generative-link-tree-2022",
-      "title": "Generative Link Tree: A Counterfactual Explanation Generation Approach with High Data Fidelity",
-      "citations": 2,
-      "delta": null,
-      "url": "https://www.jsjkx.com/CN/1002-137X/home.shtml"
-    },
-    {
-      "id": "mamba-forecasting-2025",
-      "title": "Is Mamba Effective for Time Series Forecasting?",
-      "citations": 453,
-      "delta": null,
-      "url": "https://www.sciencedirect.com/science/article/pii/S0925231224019490"
-    },
-    {
-      "id": "mm-instructeval-2025",
+      "id": "dcqk_mMAAAAJ:roLk4NBRz8UC",
       "title": "MM-InstructEval: Zero-Shot Evaluation of (Multimodal) Large Language Models on Multimodal Reasoning Tasks",
-      "citations": 64,
-      "delta": null,
-      "url": "https://arxiv.org/abs/2405.07229"
+      "citations": 66,
+      "delta": 1,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:roLk4NBRz8UC"
     },
     {
-      "id": "feel-2024",
-      "title": "FEEL: A Framework for Evaluating Emotional Support Capability with Large Language Models",
-      "citations": 11,
-      "delta": null,
-      "url": "https://arxiv.org/abs/2403.15699"
+      "id": "dcqk_mMAAAAJ:5nxA0vEk-isC",
+      "title": "LangGPT: Rethinking structured reusable prompt design framework for LLMs from the programming language",
+      "citations": 50,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:5nxA0vEk-isC"
     },
     {
-      "id": "sentiment-triplet-2024",
-      "title": "Sentiment Triplet Extraction with Multi-view Contrastive Learning",
-      "citations": 12,
-      "delta": null,
-      "url": "https://ieeexplore.ieee.org/abstract/document/10812814"
+      "id": "dcqk_mMAAAAJ:4TOpqqG69KYC",
+      "title": "Annaagent: Dynamic evolution agent system with multi-session memory for realistic seeker simulation",
+      "citations": 23,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:4TOpqqG69KYC"
     },
     {
-      "id": "empathetic-debate-2024",
-      "title": "LLM-Based Empathetic Response Through Psychologist-Agent Debate",
-      "citations": 7,
-      "delta": null,
-      "url": "https://link.springer.com/chapter/10.1007/978-981-97-7232-2_14"
-    },
-    {
-      "id": "self-evolving-data-engineers-2025",
-      "title": "Language Models as Continuous Self-Evolving Data Engineers",
-      "citations": 6,
-      "delta": null,
-      "url": "https://arxiv.org/abs/2412.15151"
-    },
-    {
-      "id": "langgpt-2024",
-      "title": "LangGPT: Rethinking Structured Reusable Prompt Design Framework for LLMs from the Programming Language",
-      "citations": 45,
-      "delta": null,
-      "url": "https://arxiv.org/abs/2402.16929"
-    },
-    {
-      "id": "hirag-2024",
+      "id": "dcqk_mMAAAAJ:YsMSGLbcyi4C",
       "title": "Hierarchical Retrieval-Augmented Generation Model with Rethink for Multi-hop Question Answering",
       "citations": 23,
-      "delta": null,
-      "url": "https://arxiv.org/abs/2408.11875"
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:YsMSGLbcyi4C"
     },
     {
-      "id": "minstrel-2024",
+      "id": "dcqk_mMAAAAJ:hqOjcs7Dif8C",
+      "title": "Sentiment triplet extraction with multi-view contrastive learning",
+      "citations": 14,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:hqOjcs7Dif8C"
+    },
+    {
+      "id": "dcqk_mMAAAAJ:Tyk-4Ss8FVUC",
+      "title": "FEEL: a framework for evaluating emotional support capability with large language models",
+      "citations": 13,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:Tyk-4Ss8FVUC"
+    },
+    {
+      "id": "dcqk_mMAAAAJ:8k81kl-MbHgC",
       "title": "Minstrel: Structural Prompt Generation with Multi-Agents Coordination for Non-AI Experts",
-      "citations": 9,
-      "delta": null,
-      "url": "https://arxiv.org/abs/2409.13449"
+      "citations": 8,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:8k81kl-MbHgC"
     },
     {
-      "id": "repair-2025",
-      "title": "REPAIR: Robust Editing via Progressive Adaptive Intervention and Reintegration",
+      "id": "dcqk_mMAAAAJ:_FxGoFyzp5QC",
+      "title": "Llm-based empathetic response through psychologist-agent debate",
+      "citations": 8,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:_FxGoFyzp5QC"
+    },
+    {
+      "id": "dcqk_mMAAAAJ:UebtZRa9Y70C",
+      "title": "Language models as continuous self-evolving data engineers",
+      "citations": 6,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:UebtZRa9Y70C"
+    },
+    {
+      "id": "dcqk_mMAAAAJ:WF5omc3nYNoC",
+      "title": "Generative Link Tree: A Counterfactual Explanation Generation Approach with High Data Fidelity",
       "citations": 2,
-      "delta": null,
-      "url": "https://arxiv.org/abs/2510.01879"
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:WF5omc3nYNoC"
     },
     {
-      "id": "mental-patient-simulators-2026",
+      "id": "dcqk_mMAAAAJ:YOwf2qJgpHMC",
+      "title": "Defending large language models against jailbreak attacks via in-decoding safety-awareness probing",
+      "citations": 2,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:YOwf2qJgpHMC"
+    },
+    {
+      "id": "dcqk_mMAAAAJ:Zph67rFs4hoC",
+      "title": "Repair: Robust editing via progressive adaptive intervention and reintegration",
+      "citations": 2,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:Zph67rFs4hoC"
+    },
+    {
+      "id": "dcqk_mMAAAAJ:_kc_bZDykSQC",
+      "title": "T-COL: generating counterfactual explanations for general user preferences on variable machine learning systems",
+      "citations": 2,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:_kc_bZDykSQC"
+    },
+    {
+      "id": "dcqk_mMAAAAJ:QIV2ME_5wuYC",
       "title": "Synthetic or Authentic? Building Mental Patient Simulators from Longitudinal Evidence",
       "citations": 1,
-      "delta": null,
-      "url": "https://arxiv.org/abs/2603.22704"
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:QIV2ME_5wuYC"
     },
     {
-      "id": "jailbreak-probing-2026",
-      "title": "Defending Large Language Models Against Jailbreak Attacks via In-Decoding Safety-Awareness Probing",
-      "citations": 2,
-      "delta": null,
-      "url": "https://arxiv.org/abs/2601.10543"
-    },
-    {
-      "id": "model-merging-survey-2025",
-      "title": "Scaling Intelligence Through Model Merging: A Comprehensive Survey",
-      "citations": 0,
-      "delta": null,
-      "url": "https://scholar.google.com/citations?user=dcqk_mMAAAAJ"
-    },
-    {
-      "id": "rocar-2023",
+      "id": "dcqk_mMAAAAJ:0EnyYjriUFMC",
       "title": "RoCar: A Relationship Network-based Evaluation Method for Large Language Models",
       "citations": 0,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:0EnyYjriUFMC"
+    },
+    {
+      "id": "dcqk_mMAAAAJ:IWHjjKOFINEC",
+      "title": "Beyond Feeling Better: Capability-Sustaining Emotional Dialogue as a Longitudinal Research Paradigm",
+      "citations": 0,
       "delta": null,
-      "url": "https://arxiv.org/abs/2307.15997"
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:IWHjjKOFINEC"
+    },
+    {
+      "id": "dcqk_mMAAAAJ:ULOm3_A8WrAC",
+      "title": "Scaling Intelligence Through Model Merging: A Comprehensive Survey",
+      "citations": 0,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:ULOm3_A8WrAC"
+    },
+    {
+      "id": "dcqk_mMAAAAJ:ZeXyd9-uunAC",
+      "title": "GenPT: Beyond Self-Report for Reliable LLM Psychometrics via Generative Projective Testing",
+      "citations": 0,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:ZeXyd9-uunAC"
+    },
+    {
+      "id": "dcqk_mMAAAAJ:dhFuZR0502QC",
+      "title": "A Systematic Analysis of the Impact of Persona Steering on LLM Capabilities",
+      "citations": 0,
+      "delta": 0,
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=dcqk_mMAAAAJ&pagesize=100&citation_for_view=dcqk_mMAAAAJ:dhFuZR0502QC"
     }
   ],
-  "trend": []
+  "trend": [
+    {
+      "at": "2026-06-13T15:59:19.652Z",
+      "citations": 602
+    },
+    {
+      "at": "2026-06-14T11:23:14.137Z",
+      "citations": 605
+    },
+    {
+      "at": "2026-06-15T15:40:25.358Z",
+      "citations": 608
+    },
+    {
+      "at": "2026-06-17T09:11:16.575Z",
+      "citations": 610
+    },
+    {
+      "at": "2026-06-19T06:17:11.307Z",
+      "citations": 614
+    },
+    {
+      "at": "2026-06-20T16:14:32.935Z",
+      "citations": 615
+    },
+    {
+      "at": "2026-06-22T07:25:44.574Z",
+      "citations": 617
+    },
+    {
+      "at": "2026-06-23T22:44:53.243Z",
+      "citations": 620
+    },
+    {
+      "at": "2026-06-29T00:32:50.970Z",
+      "citations": 628
+    },
+    {
+      "at": "2026-06-30T14:45:13.504Z",
+      "citations": 630
+    },
+    {
+      "at": "2026-07-01T22:09:40.322Z",
+      "citations": 632
+    },
+    {
+      "at": "2026-07-03T07:09:40.356Z",
+      "citations": 634
+    },
+    {
+      "at": "2026-07-04T14:09:40.259Z",
+      "citations": 636
+    },
+    {
+      "at": "2026-07-05T22:09:40.198Z",
+      "citations": 638
+    },
+    {
+      "at": "2026-07-07T16:09:40.214Z",
+      "citations": 640
+    },
+    {
+      "at": "2026-07-09T16:32:53.960Z",
+      "citations": 639
+    },
+    {
+      "at": "2026-07-10T22:39:40.595Z",
+      "citations": 640
+    },
+    {
+      "at": "2026-07-12T22:39:40.662Z",
+      "citations": 643
+    },
+    {
+      "at": "2026-07-14T06:39:40.239Z",
+      "citations": 644
+    },
+    {
+      "at": "2026-07-15T21:10:08.540Z",
+      "citations": 648
+    },
+    {
+      "at": "2026-07-17T05:50:28.290Z",
+      "citations": 651
+    },
+    {
+      "at": "2026-07-18T19:56:53.240Z",
+      "citations": 654
+    },
+    {
+      "at": "2026-07-20T03:26:46.705Z",
+      "citations": 660
+    },
+    {
+      "at": "2026-07-21T16:42:51.245Z",
+      "citations": 665
+    },
+    {
+      "at": "2026-07-25T11:42:51.173Z",
+      "citations": 668
+    },
+    {
+      "at": "2026-07-26T19:42:04.732Z",
+      "citations": 676
+    },
+    {
+      "at": "2026-08-02T11:35:18.221Z",
+      "citations": 690
+    },
+    {
+      "at": "2026-08-03T23:05:17.481Z",
+      "citations": 696
+    }
+  ]
 }
