@@ -4242,6 +4242,23 @@
     background: var(--ink);
   }
 
+  .portal-action--danger {
+    color: var(--vermillion);
+    border-color: color-mix(in srgb, var(--vermillion) 55%, transparent);
+    background: transparent;
+  }
+
+  .portal-action--danger:hover,
+  .portal-action--danger-solid {
+    color: var(--paper-light);
+    border-color: var(--vermillion);
+    background: var(--vermillion);
+  }
+
+  .portal-action--danger-solid:hover {
+    filter: brightness(0.9);
+  }
+
   .portal-action:disabled {
     cursor: progress;
     opacity: 0.52;
@@ -4580,9 +4597,21 @@
     margin-top: 1.25rem;
   }
 
+  .portal-content-form__actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
   .portal-content-form__footer p {
     color: var(--ink-soft);
     font-size: 0.68rem;
+  }
+
+  .portal-delete-dialog__warning {
+    color: var(--vermillion) !important;
+    font-weight: 700;
   }
 
   .portal-footnote {

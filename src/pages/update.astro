@@ -189,7 +189,10 @@ const tokenUrl = "https://github.com/settings/personal-access-tokens/new?name=Ac
 
             <footer class="portal-content-form__footer">
               <p id="form-feedback" aria-live="polite">检查必填项后即可发布。</p>
-              <button class="portal-action portal-action--primary" id="save-button" type="submit">检查并发布</button>
+              <div class="portal-content-form__actions">
+                <button class="portal-action portal-action--danger" id="delete-entry-button" type="button" hidden>删除条目</button>
+                <button class="portal-action portal-action--primary" id="save-button" type="submit">检查并发布</button>
+              </div>
             </footer>
           </form>
         </section>
@@ -205,6 +208,25 @@ const tokenUrl = "https://github.com/settings/personal-access-tokens/new?name=Ac
         <div class="portal-confirm-dialog__actions">
           <button class="portal-action portal-action--line" value="cancel">返回检查</button>
           <button class="portal-action portal-action--primary" value="confirm">确认保存并发布</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="portal-confirm-dialog portal-delete-dialog" id="delete-dialog" aria-labelledby="delete-dialog-title">
+      <form method="dialog">
+        <p class="section-heading__index">Delete entry / 删除条目</p>
+        <h2 id="delete-dialog-title">Delete this entry?</h2>
+        <p>确认后会立即生成一条 Git 提交并重新部署主页。需要恢复时仍可从 Git 历史找回。</p>
+        <dl>
+          <dt>待删除条目</dt>
+          <dd id="delete-dialog-name"></dd>
+          <dt>影响范围</dt>
+          <dd id="delete-dialog-impact"></dd>
+        </dl>
+        <p class="portal-delete-dialog__warning" id="delete-dialog-warning">此操作无法在当前页面撤销。</p>
+        <div class="portal-confirm-dialog__actions">
+          <button class="portal-action portal-action--line" value="cancel">保留条目</button>
+          <button class="portal-action portal-action--danger-solid" value="confirm">确认删除并发布</button>
         </div>
       </form>
     </dialog>

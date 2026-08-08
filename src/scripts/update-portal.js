@@ -58,6 +58,7 @@ const commitMessage = byId("commit-message");
 const savePath = byId("save-path");
 const formFeedback = byId("form-feedback");
 const saveButton = byId("save-button");
+const deleteEntryButton = byId("delete-entry-button");
 const cancelEditButton = byId("cancel-edit-button");
 const dirtyStatus = byId("dirty-status");
 const publishProgress = byId("publish-progress");
@@ -67,6 +68,10 @@ const publishLink = byId("publish-link");
 const saveDialog = byId("save-dialog");
 const saveDialogSummary = byId("save-dialog-summary");
 const saveDialogChanges = byId("save-dialog-changes");
+const deleteDialog = byId("delete-dialog");
+const deleteDialogName = byId("delete-dialog-name");
+const deleteDialogImpact = byId("delete-dialog-impact");
+const deleteDialogWarning = byId("delete-dialog-warning");
 const changePasswordButton = byId("change-password-button");
 const passwordDialog = byId("password-dialog");
 const passwordForm = byId("password-form");
@@ -76,6 +81,7 @@ const newPasswordConfirmInput = byId("new-password-confirm");
 const passwordFeedback = byId("password-feedback");
 const passwordSaveButton = byId("password-save-button");
 const passwordCancelButton = byId("password-cancel-button");
+const protectedPageIds = new Set(["publications", "funding", "experience", "awards", "service", "news"]);
 
 const sectionConfigs = {
   publications: {
@@ -878,6 +884,7 @@ function openItem(index) {
   savePath.textContent = `${FILES[currentConfig().document]} → ${BRANCH}`;
   formFeedback.textContent = "检查必填项后即可发布。";
   renderFields(item);
+  deleteEntryButton.hidden = !isDeletable(item);
   setDirty(false);
   renderList();
   contentForm.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -903,6 +910,7 @@ function createItem() {
   savePath.textContent = `${FILES[config.document]} → ${BRANCH}`;
   formFeedback.textContent = "新增条目会追加到当前列表，并触发主页重新部署。";
   renderFields(item);
+  deleteEntryButton.hidden = true;
   setDirty(false);
   renderList();
   contentForm.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -1054,6 +1062,67 @@ function createNextDocument(item) {
   }
 
   return nextDocument;
+}
+
+function isDeletable(item) {
+  if (!item || state.creating || state.currentIndex == null) return false;
+  if (currentConfig().collection === "__profile__") return false;
+  if (state.section === "pages" && protectedPageIds.has(item.id)) return false;
+  return true;
+}
+
+function createDocumentWithoutCurrentItem() {
+  const config = currentConfig();
+  const currentItem = getItems()[state.currentIndex];
+  if (!isDeletable(currentItem)) throw new Error("这个条目不能删除。");
+  const nextDocument = structuredClone(state.documents[config.document]);
+
+  if (config.collection === "__page_entries__") {
+    const targetPage = nextDocument.find((page) => page.id === currentItem.sectionId && page.template === "collection");
+    const targetIndex = targetPage?.entries?.findIndex((entry) => entry.id === currentItem.id) ?? -1;
+    if (targetIndex < 0) throw new Error("条目已不存在，请重新载入编辑器。");
+    targetPage.entries.splice(targetIndex, 1);
+  } else {
+    const collection = config.collection ? nextDocument[config.collection] : nextDocument;
+    const targetIndex = collection.findIndex((entry, index) => entry.id === currentItem.id || (!currentItem.id && index === state.currentIndex));
+    if (targetIndex < 0) throw new Error("条目已不存在，请重新载入编辑器。");
+    collection.splice(targetIndex, 1);
+  }
+
+  return nextDocument;
+}
+
+function deleteImpact(item) {
+  if (state.section === "pages") {
+    const entryCount = item.entries?.length || 0;
+    return entryCount
+      ? `删除整个子页面，并同时移除其中 ${entryCount} 个页面条目。`
+      : "删除这个自定义子页面；当前页面中没有附属条目。";
+  }
+  return `从“${currentConfig().plural}”中移除这一条内容。`;
+}
+
+function confirmDelete(item) {
+  const display = currentConfig().display(item);
+  deleteDialogName.textContent = display.title;
+  deleteDialogImpact.textContent = deleteImpact(item);
+  deleteDialogWarning.textContent = state.dirty
+    ? "表单中尚未保存的修改不会保留；删除的是当前线上版本。"
+    : "此操作无法在当前页面撤销。";
+  deleteDialog.returnValue = "cancel";
+  deleteDialog.showModal();
+  return new Promise((resolve) => {
+    deleteDialog.addEventListener("close", () => resolve(deleteDialog.returnValue === "confirm"), { once: true });
+  });
+}
+
+function findItemIndex(item) {
+  const items = getItems();
+  const index = items.findIndex((candidate) => (
+    candidate.id === item.id
+    && (state.section !== "pageEntries" || candidate.sectionId === item.sectionId)
+  ));
+  return index >= 0 ? index : null;
 }
 
 function formatChangeValue(value) {
@@ -1358,11 +1427,47 @@ async function submitContent(event) {
   }
 }
 
+async function deleteCurrentItem() {
+  const item = structuredClone(getItems()[state.currentIndex]);
+  if (!isDeletable(item) || !(await confirmDelete(item))) return;
+
+  const message = `content: remove ${state.section} ${item.id || "entry"}`;
+  hideAlert();
+  deleteEntryButton.disabled = true;
+  saveButton.disabled = true;
+  deleteEntryButton.textContent = "正在删除…";
+  formFeedback.textContent = "正在检查远端版本并删除条目…";
+
+  try {
+    const nextDocument = createDocumentWithoutCurrentItem();
+    const commit = await saveDocument(currentConfig().document, nextDocument, message);
+    setDirty(false);
+    closeForm(true);
+    showAlert("条目已删除。GitHub 正在重新部署主页。", "success", commit.commitUrl);
+    void trackDeployment(commit.commitSha, commit.commitUrl);
+  } catch (error) {
+    showAlert(error.message || "删除失败，请稍后重试。", "error");
+    formFeedback.textContent = "没有删除任何内容。请根据提示检查。";
+    if (error.code === "CONTENT_CONFLICT") {
+      const latestIndex = findItemIndex(item);
+      if (latestIndex == null) closeForm(true);
+      else openItem(latestIndex);
+    } else {
+      renderList();
+    }
+  } finally {
+    deleteEntryButton.disabled = false;
+    saveButton.disabled = false;
+    deleteEntryButton.textContent = "删除条目";
+  }
+}
+
 loginForm.addEventListener("submit", unlock);
 setupForm.addEventListener("submit", setupVault);
 logoutButton.addEventListener("click", logout);
 newEntryButton.addEventListener("click", createItem);
 cancelEditButton.addEventListener("click", () => closeForm());
+deleteEntryButton.addEventListener("click", deleteCurrentItem);
 contentForm.addEventListener("submit", submitContent);
 contentForm.addEventListener("input", () => setDirty(true));
 searchInput.addEventListener("input", () => {
