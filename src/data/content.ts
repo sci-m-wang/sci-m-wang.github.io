@@ -1,4 +1,4 @@
-import citationSnapshot from "../../data/citations.json";
+import citationSnapshot from "./citations.json";
 import rawProfile from "./profile.json";
 import rawPublications from "./publications.json";
 

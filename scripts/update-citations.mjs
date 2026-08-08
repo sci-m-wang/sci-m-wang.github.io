@@ -4,7 +4,7 @@ import path from "node:path";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicationsPath = path.join(root, "src/data/publications.json");
-const citationsPath = path.join(root, "data/citations.json");
+const citationsPath = path.join(root, "src/data/citations.json");
 const scholarAuthorId = "dcqk_mMAAAAJ";
 const updatedAt = new Date().toISOString();
 const dryRun = process.argv.includes("--dry-run");

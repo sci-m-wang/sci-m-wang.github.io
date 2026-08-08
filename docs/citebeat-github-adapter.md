@@ -49,7 +49,7 @@ These are installation-time values, not CiteBeat defaults:
 Owner: sci-m-wang
 Repository: sci-m-wang.github.io
 Branch: main
-Path: data/citations.json
+Path: src/data/citations.json
 Interval: 7 days
 ```
 
@@ -57,7 +57,7 @@ The fine-grained token needs access only to `sci-m-wang.github.io` with Reposito
 
 ## Homepage contract
 
-The homepage imports `data/citations.json` at build time and accepts:
+The homepage imports `src/data/citations.json` at build time and accepts:
 
 - CiteBeat's raw `citation.snapshot/1`; or
 - the older manual fallback shape emitted by `scripts/update-citations.mjs`.
