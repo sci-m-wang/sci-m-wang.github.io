@@ -4,6 +4,10 @@ const languageToggle = document.querySelector("[data-language-toggle]");
 function setLanguage(language) {
   root.dataset.language = language;
   root.lang = language === "zh" ? "zh-CN" : "en";
+  for (const link of document.querySelectorAll("[data-localized-href]")) {
+    const localizedHref = language === "zh" ? link.dataset.hrefZh : link.dataset.hrefEn;
+    if (localizedHref) link.href = localizedHref;
+  }
   if (languageToggle) {
     languageToggle.setAttribute("aria-pressed", String(language === "zh"));
     languageToggle.setAttribute("aria-label", language === "zh" ? "Switch to English" : "切换为中文");

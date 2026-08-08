@@ -15,7 +15,13 @@ import { profile } from "../data/content";
     <a href={profile.links.scholar} target="_blank" rel="noreferrer">Scholar ↗</a>
     <a href={profile.links.github} target="_blank" rel="noreferrer">GitHub ↗</a>
     <a href={profile.links.orcid} target="_blank" rel="noreferrer">ORCID ↗</a>
-    <a href={profile.links.cv} target="_blank">CV ↓</a>
+    <a
+      href={profile.links.cv.en}
+      data-localized-href
+      data-href-en={profile.links.cv.en}
+      data-href-zh={profile.links.cv.zh}
+      target="_blank"
+    >CV ↓</a>
     <a href="/update/"><span class="lang lang--en">Update information</span><span class="lang lang--zh">更新资料</span> ↗</a>
   </div>
   <div class="site-footer__base">

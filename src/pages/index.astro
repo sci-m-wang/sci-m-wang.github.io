@@ -48,7 +48,14 @@ const latestNews = profile.news.filter((item) => item.kind !== "Media").slice(0,
           <p class="hero__bio"><LocalText en={profile.bio.en} zh={profile.bio.zh} /></p>
           <div class="hero__links" aria-label="Profile links">
             <a class="button button--dark" href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
-            <a class="button button--line" href={profile.links.cv} target="_blank"><LocalText en="Curriculum Vitae ↓" zh="学术简历 ↓" /></a>
+            <a
+              class="button button--line"
+              href={profile.links.cv.en}
+              data-localized-href
+              data-href-en={profile.links.cv.en}
+              data-href-zh={profile.links.cv.zh}
+              target="_blank"
+            ><LocalText en="Curriculum Vitae ↓" zh="学术简历 ↓" /></a>
             <a class="button button--line" href={`mailto:${profile.email}`}>Email</a>
           </div>
         </div>

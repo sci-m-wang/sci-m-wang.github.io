@@ -27,7 +27,10 @@
     "scholar": "https://scholar.google.com/citations?user=dcqk_mMAAAAJ",
     "github": "https://github.com/sci-m-wang",
     "orcid": "https://orcid.org/0000-0001-8406-5677",
-    "cv": "/cv/Ming_Wang_CV_zh.pdf"
+    "cv": {
+      "en": "/cv/Ming_Wang_CV_en.pdf",
+      "zh": "/cv/Ming_Wang_CV_zh.pdf"
+    }
   },
   "metrics": [
     {
