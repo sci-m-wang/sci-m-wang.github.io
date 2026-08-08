@@ -264,11 +264,11 @@
         "zh": "2024.06--2025.08"
       },
       "title": {
-        "en": "Tutor",
-        "zh": "讲师"
+        "en": "Intern LLM Camp · Tutor",
+        "zh": "书生大模型实战营 · 讲师"
       },
-      "organization": "Shanghai AI Lab - Intern LLM Camp",
-      "organizationZh": "上海人工智能实验室 - 书生大模型实战营",
+      "organization": "Shanghai AI Lab",
+      "organizationZh": "上海人工智能实验室",
       "description": {
         "en": "Teach courses such as Prompt Engineering and SFT; organize evaluations for the paper classification and formula recognition challenge in the Prompt and SFT tracks.",
         "zh": "讲授提示工程、SFT 等课程；组织论文分类、公式识别挑战赛 Prompt 与 SFT 赛道评测。"
