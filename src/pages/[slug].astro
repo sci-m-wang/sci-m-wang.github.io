@@ -1,0 +1,371 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ExpandableRecord from "../components/ExpandableRecord.astro";
+import LocalText from "../components/LocalText.astro";
+import PublicationCard from "../components/PublicationCard.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteNav from "../components/SiteNav.astro";
+import profile from "../data/profile.json";
+import publications from "../data/publications.json";
+import sections from "../data/sections.json";
+
+interface PageEntry {
+  id: string;
+  title: string;
+  pinned?: boolean;
+  eyebrow?: string;
+  meta?: string;
+  period?: string;
+  venue?: string;
+  citations?: number;
+  authors?: string;
+  summary?: { en?: string; zh?: string };
+  details?: { en?: string; zh?: string };
+  links?: { paper?: string; pdf?: string; code?: string };
+}
+
+interface SectionRecord {
+  id: string;
+  slug: string;
+  nav: { en: string; zh: string };
+  title: { en: string; zh: string };
+  intro: { en: string; zh: string };
+  template: string;
+  order: number;
+  visible: boolean;
+  entries: PageEntry[];
+}
+
+export function getStaticPaths() {
+  return (sections as unknown as SectionRecord[]).map((section) => ({ params: { slug: section.slug }, props: { section } }));
+}
+
+const { section } = Astro.props as { section: SectionRecord };
+const byPublicationDate = (a: (typeof publications)[number], b: (typeof publications)[number]) => b.year - a.year;
+const pinnedPublications = [...publications].filter((publication) => publication.pinned).sort(byPublicationDate);
+const regularPublications = [...publications].filter((publication) => !publication.pinned).sort(byPublicationDate);
+const citationUpdatedAt = publications.map((publication) => publication.citations.updatedAt).sort().at(-1);
+const sortedAwards = [...profile.awards].sort((a, b) => Number(b.year) - Number(a.year));
+const pinnedAwards = sortedAwards.filter((award) => award.pinned);
+const regularAwards = sortedAwards.filter((award) => !award.pinned);
+const educationExperience = profile.experience.filter((item) => item.type === "education");
+const workExperience = profile.experience.filter((item) => item.type === "work");
+const exchangeExperience = profile.experience.filter((item) => item.type === "exchange");
+const sortedProjects = [...profile.projects].sort((a, b) => Number(b.pinned) - Number(a.pinned));
+const projectStarsUpdatedAt = profile.projects.map((project) => project.stars?.updatedAt).filter(Boolean).sort().at(-1);
+const talks = profile.activities.filter((item) => item.type === "talk");
+const academicService = profile.activities.filter((item) => item.type === "academic");
+const volunteerService = profile.activities.filter((item) => ["volunteer", "outreach"].includes(item.type));
+const newsUpdates = profile.news.filter((item) => item.kind !== "Media");
+const mediaCoverage = profile.news.filter((item) => item.kind === "Media");
+const pageTitle = `${section.title.en} · Ming Wang`;
+---
+
+<BaseLayout title={pageTitle} description={section.intro.en}>
+  <div class="site-shell">
+    <SiteNav activeSlug={section.slug} />
+    <main id="main" class="subpage-shell">
+      {section.template === "publications" && (
+        <div class="page-content">
+          <section class="page-section page-section--records" aria-labelledby="publication-list-title">
+            <header class="page-section__heading page-section__heading--toolbar reveal">
+              <div>
+                <p class="section-heading__index">Complete record</p>
+                <LocalText en="Research outputs" zh="研究成果" as="h2" id="publication-list-title" />
+              </div>
+              <p class="publication-source"><LocalText en={`Google Scholar citations · updated ${citationUpdatedAt}`} zh={`Google Scholar 引用量 · 更新于 ${citationUpdatedAt}`} /></p>
+            </header>
+            {pinnedPublications.length > 0 && (
+              <section class="pinned-publications reveal" data-publication-group aria-labelledby="pinned-publications-title">
+                <header class="pinned-group__heading">
+                  <div><span aria-hidden="true">⌖</span><p class="section-heading__index">Pinned / 置顶</p></div>
+                  <LocalText en="Selected work" zh="重点论文" as="h3" id="pinned-publications-title" />
+                </header>
+                <div class="record-stack">
+                  {pinnedPublications.map((publication, index) => <PublicationCard publication={publication} index={index} />)}
+                </div>
+              </section>
+            )}
+            <div class="publication-archive-heading reveal">
+              <p class="section-heading__index"><LocalText en="Complete record" zh="完整记录" /></p>
+              <strong>{publications.length}</strong>
+            </div>
+            <div class="publication-toolbar reveal" role="toolbar" aria-label="Filter publications">
+              <button class="filter-button is-active" type="button" data-publication-filter="all" aria-pressed="true"><LocalText en="All work" zh="全部" /><span>{publications.length}</span></button>
+              <button class="filter-button" type="button" data-publication-filter="author" aria-pressed="false"><LocalText en="First / co-first" zh="第一 / 共同一作" /></button>
+              <button class="filter-button" type="button" data-publication-filter="published" aria-pressed="false"><LocalText en="Published" zh="已发表" /></button>
+              <button class="filter-button" type="button" data-publication-filter="working" aria-pressed="false"><LocalText en="Working papers" zh="工作论文" /></button>
+            </div>
+            <div class="record-stack publication-list" data-publication-group aria-live="polite">
+              {regularPublications.map((publication, index) => <PublicationCard publication={publication} index={index + pinnedPublications.length} />)}
+            </div>
+            <footer class="publication-page-footer reveal">
+              <p><strong data-publication-count>{publications.length}</strong> <LocalText en="items shown" zh="条记录" /></p>
+              <a href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar ↗</a>
+            </footer>
+          </section>
+        </div>
+      )}
+
+      {section.template === "funding" && (
+        <div class="page-content page-content--funding">
+          <section class="page-section page-section--records">
+            <header class="page-section__heading reveal"><p class="section-heading__index">01 / Funded research</p><LocalText en="Funding" zh="科研资助" as="h2" /></header>
+            <div class="record-stack">
+              {profile.funding.map((item, index) => (
+                <ExpandableRecord index={index} eyebrow={`${item.role.en} · ${item.period}`} title={item.displayTitle} meta={item.funder} label="funding project">
+                  <div class="project-detail"><LocalText en={item.role.en} zh={item.role.zh} as="h3" /><p>{item.funder}</p>{item.amount && <strong>{item.amount}</strong>}<p>{item.period}</p></div>
+                </ExpandableRecord>
+              ))}
+            </div>
+          </section>
+
+          <section class="page-section page-section--records">
+            <header class="page-section__heading page-section__heading--toolbar reveal">
+              <div><p class="section-heading__index">02 / Systems & open source</p><LocalText en="Projects" zh="研究与开源项目" as="h2" /></div>
+              {projectStarsUpdatedAt && <p class="publication-source"><LocalText en={`GitHub Stars · updated ${projectStarsUpdatedAt}`} zh={`GitHub Stars · 更新于 ${projectStarsUpdatedAt}`} /></p>}
+            </header>
+            <div class="record-stack">
+              {sortedProjects.map((project, index) => (
+                <ExpandableRecord index={index} eyebrow={`${project.pinned ? "PINNED · " : ""}${project.role.en}${project.period ? ` · ${project.period}` : ""}`} title={project.title} meta={project.role.zh} stat={project.stars?.updatedAt ? { value: project.stars.count, label: "GitHub Stars" } : null} label="project">
+                  <div class="project-detail">
+                    <LocalText en={project.role.en} zh={project.role.zh} as="h3" />
+                    <LocalText en={project.description.en} zh={project.description.zh} as="p" />
+                    <div class="publication-detail__links">
+                      {project.links.paper && <a href={project.links.paper} target="_blank" rel="noreferrer">Paper ↗</a>}
+                      {project.links.code && <a href={project.links.code} target="_blank" rel="noreferrer">Code ↗</a>}
+                    </div>
+                  </div>
+                </ExpandableRecord>
+              ))}
+            </div>
+          </section>
+        </div>
+      )}
+
+      {section.template === "experience" && (
+        <div class="page-content page-content--experience">
+          <section class="page-section">
+            <header class="page-section__heading reveal"><p class="section-heading__index">01 / Formation</p><LocalText en="Education" zh="教育背景" as="h2" /></header>
+            <div class="timeline-list timeline-list--page">
+              {educationExperience.map((item, index) => (
+                <article class="timeline-item reveal">
+                  <span class="timeline-item__number">{String(index + 1).padStart(2, "0")}</span>
+                  <LocalText en={item.period.en} zh={item.period.zh} as="p" class="timeline-item__period" />
+                  <div>
+                    <LocalText en={item.title.en} zh={item.title.zh} as="h3" />
+                    <p>{item.organization} / {item.organizationZh}</p>
+                    <LocalText en={item.description.en} zh={item.description.zh} as="p" class="timeline-item__detail" />
+                  </div>
+                  {item.url && <a class="timeline-item__link" href={item.url} target="_blank" rel="noreferrer">↗</a>}
+                </article>
+              ))}
+            </div>
+          </section>
+
+          {workExperience.length > 0 && (
+            <section class="page-section">
+              <header class="page-section__heading reveal"><p class="section-heading__index">02 / Appointments</p><LocalText en="Work" zh="正式工作" as="h2" /></header>
+              <div class="timeline-list timeline-list--page">
+                {workExperience.map((item, index) => (
+                  <article class="timeline-item reveal">
+                    <span class="timeline-item__number">{String(index + 1).padStart(2, "0")}</span>
+                    <LocalText en={item.period.en} zh={item.period.zh} as="p" class="timeline-item__period" />
+                    <div><LocalText en={item.title.en} zh={item.title.zh} as="h3" /><p>{item.organization} / {item.organizationZh}</p><LocalText en={item.description.en} zh={item.description.zh} as="p" class="timeline-item__detail" /></div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <section class="page-section">
+            <header class="page-section__heading reveal"><p class="section-heading__index">{workExperience.length > 0 ? "03" : "02"} / Exchange</p><LocalText en="Exchange & internships" zh="交流与实习" as="h2" /></header>
+            <div class="timeline-list timeline-list--page timeline-list--exchange">
+              {exchangeExperience.map((item, index) => (
+                <article class="timeline-item reveal">
+                  <span class="timeline-item__number">{String(index + 1).padStart(2, "0")}</span>
+                  <LocalText en={item.period.en} zh={item.period.zh} as="p" class="timeline-item__period" />
+                  <div><LocalText en={item.title.en} zh={item.title.zh} as="h3" /><p>{item.organization} / {item.organizationZh}</p><LocalText en={item.description.en} zh={item.description.zh} as="p" class="timeline-item__detail" /></div>
+                  {item.url && <a class="timeline-item__link" href={item.url} target="_blank" rel="noreferrer">↗</a>}
+                </article>
+              ))}
+            </div>
+          </section>
+        </div>
+      )}
+
+      {section.template === "awards" && (
+        <div class="page-content page-content--awards">
+          <section class="page-section" aria-labelledby="awards-title">
+            <header class="page-section__heading reveal">
+              <p class="section-heading__index">Recognition</p>
+              <LocalText en="Awards & honours" zh="奖项与荣誉" as="h2" id="awards-title" />
+            </header>
+
+            {pinnedAwards.length > 0 && (
+              <section class="award-pins reveal" aria-labelledby="award-pins-title">
+                <header class="pinned-group__heading pinned-group__heading--awards">
+                  <div><span aria-hidden="true">⌖</span><p class="section-heading__index">Pinned / 置顶</p></div>
+                  <LocalText en="Selected recognition" zh="重点荣誉" as="h3" id="award-pins-title" />
+                </header>
+                <div class="award-pins__grid">
+                  {pinnedAwards.map((award, index) => (
+                    <article class="award-pin">
+                      <div><span>{award.year}</span><span>{String(index + 1).padStart(2, "0")}</span></div>
+                      <LocalText en={award.title.en} zh={award.title.zh} as="h3" />
+                      <p>{award.event}</p>
+                      {award.url && <a href={award.url} target="_blank" rel="noreferrer">View ↗</a>}
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {regularAwards.length > 0 && (
+              <section class="award-archive reveal" aria-labelledby="award-archive-title">
+                <header>
+                  <LocalText en="Complete record" zh="其他荣誉" as="h3" id="award-archive-title" />
+                  <span>{profile.awards.length} <LocalText en="awards" zh="项" /></span>
+                </header>
+                <div class="award-archive__list">
+                  {regularAwards.map((award, index) => (
+                    <article>
+                      <span>{String(index + pinnedAwards.length + 1).padStart(2, "0")}</span>
+                      <strong>{award.year}</strong>
+                      <div><LocalText en={award.title.en} zh={award.title.zh} as="h3" /><p>{award.event}</p></div>
+                      {award.url ? <a href={award.url} target="_blank" rel="noreferrer">↗</a> : <span aria-hidden="true">•</span>}
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )}
+          </section>
+        </div>
+      )}
+
+      {section.template === "service" && (
+        <div class="page-content page-content--service">
+          <section class="page-section">
+            <header class="page-section__heading reveal"><p class="section-heading__index">01 / Speaking</p><LocalText en="Talks" zh="讲座与报告" as="h2" /></header>
+            <div class="timeline-list timeline-list--page service-talk-list">
+              {talks.map((item, index) => (
+                <article class="timeline-item reveal">
+                  <span class="timeline-item__number">{String(index + 1).padStart(2, "0")}</span>
+                  <p class="timeline-item__period">{item.period}</p>
+                  <div><h3>{item.title}</h3><p>{item.organization}</p><LocalText en={item.description.en} zh={item.description.zh} as="p" class="timeline-item__detail" /></div>
+                  {item.url && <a class="timeline-item__link" href={item.url} target="_blank" rel="noreferrer">↗</a>}
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section class="page-section">
+            <header class="page-section__heading reveal"><p class="section-heading__index">02 / Community</p><LocalText en="Service & outreach" zh="学术与志愿服务" as="h2" /></header>
+            <div class="service-grid">
+              <section class="service-panel reveal" aria-labelledby="academic-service-title">
+                <header><span>01</span><LocalText en="Academic & professional" zh="学术与专业服务" as="h3" id="academic-service-title" /></header>
+                {academicService.map((item) => (
+                  <article><p>{item.period}</p><h4>{item.title}</h4><strong>{item.organization}</strong><LocalText en={item.description.en} zh={item.description.zh} as="p" /></article>
+                ))}
+              </section>
+              <section class="service-panel service-panel--volunteer reveal" aria-labelledby="volunteer-service-title">
+                <header><span>02</span><LocalText en="Volunteer & public engagement" zh="志愿与公众交流" as="h3" id="volunteer-service-title" /></header>
+                {volunteerService.map((item) => (
+                  <article><p>{item.period || "—"}</p><h4>{item.title}</h4><strong>{item.organization}</strong><LocalText en={item.description.en} zh={item.description.zh} as="p" /></article>
+                ))}
+              </section>
+            </div>
+          </section>
+        </div>
+      )}
+
+      {section.template === "news" && (
+        <div class="page-content page-content--news-media">
+          <section class="page-section" aria-labelledby="news-list-title">
+            <header class="page-section__heading reveal"><p class="section-heading__index">01 / Chronology</p><LocalText en="Recent updates" zh="近期动态" as="h2" id="news-list-title" /></header>
+            <div class="news-list news-list--page reveal">
+              {newsUpdates.map((item) => (
+                <article class="news-item"><span class="news-item__date">{item.date}</span><span class="news-item__kind">{item.kind}</span><LocalText en={item.title.en} zh={item.title.zh} as="h3" />{item.url ? <a href={item.url} target="_blank" rel="noreferrer">↗</a> : <span aria-hidden="true">•</span>}</article>
+              ))}
+            </div>
+          </section>
+
+          <section class="page-section" aria-labelledby="media-coverage-title">
+            <header class="page-section__heading reveal"><p class="section-heading__index">02 / Archive</p><LocalText en="Media coverage" zh="媒体报道" as="h2" id="media-coverage-title" /></header>
+            <div class="media-grid">
+              {mediaCoverage.map((item, index) => (
+                <a class="media-card reveal" data-media-id={item.id} href={item.url} target="_blank" rel="noreferrer">
+                  <figure class="media-card__preview">
+                    <img src={item.image} alt="" loading="lazy" width="1200" height="675" />
+                    <span class="media-card__number">{String(index + 1).padStart(2, "0")}</span>
+                  </figure>
+                  <div class="media-card__body">
+                    <div class="media-card__meta"><span>{item.source}</span><time>{item.date}</time></div>
+                    <h3>{item.displayTitle}</h3>
+                    <LocalText en={item.summary.en} zh={item.summary.zh} as="p" class="media-card__summary" />
+                    <span class="media-card__arrow" aria-hidden="true">↗</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        </div>
+      )}
+
+      {section.template === "collection" && (
+        <div class="page-content">
+          <section class="page-section page-section--records">
+            <header class="page-section__heading reveal"><p class="section-heading__index">Collection</p><LocalText en={section.title.en} zh={section.title.zh} as="h2" /></header>
+            <div class="record-stack">
+              {section.entries.length ? [...section.entries].sort((a, b) => Number(b.pinned) - Number(a.pinned)).map((entry, index) => (
+                <ExpandableRecord index={index} eyebrow={`${entry.pinned ? "PINNED · " : ""}${entry.eyebrow || entry.period || ""}`} title={entry.title} meta={entry.meta || entry.venue || ""} citation={entry.citations ?? null} label="entry">
+                  <div class="project-detail">
+                    {entry.authors && <p>{entry.authors}</p>}
+                    {entry.summary && <LocalText en={entry.summary.en || ""} zh={entry.summary.zh || entry.summary.en || ""} as="h3" />}
+                    {entry.details && <LocalText en={entry.details.en || ""} zh={entry.details.zh || entry.details.en || ""} as="p" />}
+                    <div class="publication-detail__links">
+                      {entry.links?.paper && <a href={entry.links.paper} target="_blank" rel="noreferrer">Paper ↗</a>}
+                      {entry.links?.pdf && <a href={entry.links.pdf} target="_blank" rel="noreferrer">PDF ↓</a>}
+                      {entry.links?.code && <a href={entry.links.code} target="_blank" rel="noreferrer">Code ↗</a>}
+                    </div>
+                  </div>
+                </ExpandableRecord>
+              )) : <p class="collection-empty"><LocalText en="This page is ready for its first entry." zh="这个页面已经准备好添加第一条内容。" /></p>}
+            </div>
+          </section>
+        </div>
+      )}
+    </main>
+    <SiteFooter />
+  </div>
+
+  {section.template === "publications" && (
+    <script>
+      const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-publication-filter]"));
+      const publicationCards = Array.from(document.querySelectorAll<HTMLElement>("[data-publication]"));
+      const publicationGroups = Array.from(document.querySelectorAll<HTMLElement>("[data-publication-group]"));
+      const publicationCount = document.querySelector<HTMLElement>("[data-publication-count]");
+      filterButtons.forEach((button) => button.addEventListener("click", () => {
+        const filter = button.dataset.publicationFilter || "all";
+        let shown = 0;
+        filterButtons.forEach((candidate) => {
+          const active = candidate === button;
+          candidate.classList.toggle("is-active", active);
+          candidate.setAttribute("aria-pressed", String(active));
+        });
+        publicationCards.forEach((card) => {
+          const visible = filter === "all"
+            || (filter === "author" && ["first", "cofirst"].includes(card.dataset.category || ""))
+            || (filter === "published" && card.dataset.status === "published")
+            || (filter === "working" && card.dataset.category === "working");
+          card.hidden = !visible;
+          if (visible) shown += 1;
+        });
+        publicationGroups.forEach((group) => {
+          group.hidden = !Array.from(group.querySelectorAll<HTMLElement>("[data-publication]")).some((card) => !card.hidden);
+        });
+        if (publicationCount) publicationCount.textContent = String(shown);
+      }));
+    </script>
+  )}
+</BaseLayout>

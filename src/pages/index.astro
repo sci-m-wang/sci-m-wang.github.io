@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LocalText from "../components/LocalText.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteNav from "../components/SiteNav.astro";
+import profile from "../data/profile.json";
+import publications from "../data/publications.json";
+import sections from "../data/sections.json";
+
+const visibleSections = [...sections].filter((section) => section.visible).sort((a, b) => a.order - b.order);
+const pinnedPublications = [...publications]
+  .filter((publication) => publication.pinned)
+  .sort((a, b) => b.year - a.year)
+  .slice(0, 3);
+const latestNews = profile.news.filter((item) => item.kind !== "Media").slice(0, 3);
+---
+
+<BaseLayout>
+  <div class="site-shell">
+    <SiteNav />
+
+    <main id="main">
+      <section class="hero hero--home" id="top" aria-labelledby="hero-title">
+        <div class="hero__grid" aria-hidden="true"></div>
+
+        <aside class="hero__aside reveal">
+          <div class="hero__focus">
+            <p class="eyebrow"><LocalText en="Research focus" zh="研究方向" /></p>
+            <ol class="hero__focus-list">
+              {profile.researchAreas.map((area) => (
+                <li><span>{area.index}</span><LocalText en={area.title.en} zh={area.title.zh} /></li>
+              ))}
+            </ol>
+          </div>
+          <div class="hero__base">
+            <p class="eyebrow"><LocalText en="Based in" zh="所在地" /></p>
+            <div class="hero__coordinate" aria-hidden="true">
+              <span>01°17′N</span>
+              <span>103°51′E</span>
+            </div>
+            <p class="hero__location"><span class="pulse-dot" aria-hidden="true"></span><LocalText en={profile.location.en} zh={profile.location.zh} /></p>
+          </div>
+        </aside>
+
+        <div class="hero__main reveal">
+          <p class="hero__role"><LocalText en={profile.role.en} zh={profile.role.zh} /></p>
+          <h1 id="hero-title">{profile.name}<span>{profile.nameZh}</span></h1>
+          <p class="hero__statement"><LocalText en={profile.headline.en} zh={profile.headline.zh} /></p>
+          <p class="hero__bio"><LocalText en={profile.bio.en} zh={profile.bio.zh} /></p>
+          <div class="hero__links" aria-label="Profile links">
+            <a class="button button--dark" href={profile.links.scholar} target="_blank" rel="noreferrer">Google Scholar</a>
+            <a class="button button--line" href={profile.links.cv} target="_blank"><LocalText en="Curriculum Vitae ↓" zh="学术简历 ↓" /></a>
+            <a class="button button--line" href={`mailto:${profile.email}`}>Email</a>
+          </div>
+        </div>
+
+        <div class="hero__portrait-wrap reveal">
+          <figure class="hero__portrait">
+            <img src="/profile.jpg" alt="Portrait of Ming Wang" width="1024" height="1024" fetchpriority="high" />
+            <figcaption><span>Singapore</span><span>2026</span></figcaption>
+          </figure>
+        </div>
+
+        <div class="hero__metrics reveal" aria-label="Academic metrics">
+          {profile.metrics.map((metric) => (
+            <div class="metric">
+              <strong>{metric.value}</strong>
+              <LocalText en={metric.label.en} zh={metric.label.zh} as="p" />
+              <LocalText en={metric.note.en} zh={metric.note.zh} as="span" class="metric__note" />
+            </div>
+          ))}
+        </div>
+        <a class="hero__scroll" href="#archive"><LocalText en="Explore the archive" zh="浏览学术档案" /><span aria-hidden="true">↓</span></a>
+      </section>
+
+      <section class="home-directory" id="archive" aria-labelledby="directory-title">
+        <header class="home-directory__heading reveal">
+          <p class="section-heading__index">Academic archive / 学术档案</p>
+          <div>
+            <LocalText en="A concise map of the work." zh="一份简明的研究地图。" as="h2" id="directory-title" />
+            <LocalText
+              en="Each section has its own page, so the homepage stays focused while the archive can keep growing."
+              zh="每个板块都有独立页面，让首页保持聚焦，也让学术档案可以持续生长。"
+              as="p"
+            />
+          </div>
+        </header>
+
+        <div class="home-directory__grid">
+          {visibleSections.map((section, index) => (
+            <a class="directory-card reveal" href={`/${section.slug}/`}>
+              <span class="directory-card__index">{String(index + 1).padStart(2, "0")}</span>
+              <LocalText en={section.title.en} zh={section.title.zh} as="h3" />
+              <LocalText en={section.intro.en} zh={section.intro.zh} as="p" />
+              <span class="directory-card__arrow" aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="home-highlights" aria-label="Selected highlights">
+        <div class="home-highlight reveal">
+          <header>
+            <p class="section-heading__index">Selected publications</p>
+            <a href="/publications/"><LocalText en="All publications" zh="全部论文" /> ↗</a>
+          </header>
+          <div class="home-highlight__list">
+            {pinnedPublications.map((publication) => (
+              <a href={`/publications/?publication=${publication.id}`}>
+                <span>{publication.venueShort} · {publication.year}</span>
+                <strong>{publication.title}</strong>
+                <small>{publication.citations.count} citations</small>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="home-highlight home-highlight--news reveal">
+          <header>
+            <p class="section-heading__index">Latest updates</p>
+            <a href="/news/"><LocalText en="News & media" zh="动态与报道" /> ↗</a>
+          </header>
+          <div class="home-highlight__list">
+            {latestNews.map((item) => (
+              <a href={item.url || "/news/"} target={item.url ? "_blank" : undefined} rel={item.url ? "noreferrer" : undefined}>
+                <span>{item.date} · {item.kind}</span>
+                <LocalText en={item.title.en} zh={item.title.zh} as="strong" />
+                <small aria-hidden="true">↗</small>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <SiteFooter />
+  </div>
+</BaseLayout>
