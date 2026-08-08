@@ -38,7 +38,7 @@ The site intentionally keeps content separate from layout code:
 
 - `src/data/profile.json` — biography, metrics, research areas, experience, funding, projects, awards, talks, service, volunteering, news, and media coverage
 - `src/data/publications.json` — publication metadata, links, and categories
-- `src/data/citations.json` — the single Google Scholar snapshot written by CiteBeat
+- `data/citations.json` — the raw Google Scholar snapshot written by CiteBeat
 - `src/data/sections.json` — the subpage registry, navigation order, page introductions, templates, and custom page entries
 - `public/cv/` — downloadable CV files
 - `public/profile.jpg` — profile portrait
@@ -79,7 +79,7 @@ Because the encrypted vault is stored in a public repository, the password shoul
 
 ## Citation updates
 
-The CiteBeat browser extension produces a platform-neutral `citation.snapshot/1`. For this site, CiteBeat's optional GitHub adapter writes that unchanged snapshot to `src/data/citations.json`; a commit to `main` triggers the normal Pages deployment.
+The CiteBeat browser extension produces a platform-neutral `citation.snapshot/1`. For this site, CiteBeat's optional GitHub adapter writes that unchanged snapshot to `data/citations.json`; a commit to `main` triggers the normal Pages deployment, which validates and maps the raw fields into the homepage.
 
 - CiteBeat fetches from the user's normal browser network rather than a hosted runner, avoiding the block that broke the scheduled workflow.
 - The snapshot contains total citations, h-index, i10-index, per-paper counts, and the observation time.
