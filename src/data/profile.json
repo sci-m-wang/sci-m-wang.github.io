@@ -374,20 +374,20 @@
       "id": "lyihub-internship",
       "type": "exchange",
       "period": {
-        "en": "Earlier experience",
-        "zh": "早期经历"
+        "en": "2024.05 -- 2024.08",
+        "zh": "2024.05 -- 2024.08"
       },
       "title": {
         "en": "Large Language Model Evaluation Intern",
         "zh": "大语言模型应用评测实习生"
       },
-      "organization": "LYiHub",
-      "organizationZh": "LYiHub",
+      "organization": "深圳市有亦科技传媒有限公司",
+      "organizationZh": "Shenzhen Youyi Technology Media Co., Ltd.",
       "description": {
         "en": "Evaluated LLM-based applications, with a focus on constructing retrieval-related evaluation tasks.",
         "zh": "参与大语言模型应用评测，主要负责构建检索相关的评测任务。"
       },
-      "url": ""
+      "url": "https://lyihub.com/"
     }
   ],
   "funding": [
