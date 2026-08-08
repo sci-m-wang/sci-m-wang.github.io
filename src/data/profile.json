@@ -420,21 +420,6 @@
       "funder": "中央公益性研究所基本科研业务费项目",
       "amount": "",
       "period": "2025"
-    },
-    {
-      "id": "digital-persona",
-      "role": {
-        "en": "Project Lead (Contracted)",
-        "zh": "项目负责人（合同制）"
-      },
-      "displayTitle": "数字角色模拟框架（多层角色扮演框架）",
-      "title": {
-        "en": "Digital Character Simulation with a Multi-layer Role-playing Framework",
-        "zh": "数字角色模拟框架（多层角色扮演框架）"
-      },
-      "funder": "深圳橙果视界科技有限公司研究项目",
-      "amount": "",
-      "period": "2025"
     }
   ],
   "projects": [
