@@ -2,8 +2,14 @@
   {
     "id": "publications",
     "slug": "publications",
-    "nav": { "en": "Publications", "zh": "论文" },
-    "title": { "en": "Publications", "zh": "论文发表" },
+    "nav": {
+      "en": "Publications",
+      "zh": "论文"
+    },
+    "title": {
+      "en": "Publications",
+      "zh": "论文发表"
+    },
     "intro": {
       "en": "Peer-reviewed papers, preprints, and working papers. Citation counts refresh weekly from Google Scholar.",
       "zh": "同行评议论文、预印本与工作论文。引用量每周从 Google Scholar 自动更新。"
@@ -16,8 +22,14 @@
   {
     "id": "funding",
     "slug": "funding",
-    "nav": { "en": "Funding & Projects", "zh": "项目与经费" },
-    "title": { "en": "Funding & Projects", "zh": "科研项目" },
+    "nav": {
+      "en": "Funding & Projects",
+      "zh": "项目与基金"
+    },
+    "title": {
+      "en": "Funding & Projects",
+      "zh": "科研项目"
+    },
     "intro": {
       "en": "Funded research, collaborative systems, and open-source projects.",
       "zh": "科研资助、合作研究、系统研发与开源项目。"
@@ -30,8 +42,14 @@
   {
     "id": "experience",
     "slug": "experience",
-    "nav": { "en": "Experience", "zh": "经历" },
-    "title": { "en": "Experience", "zh": "个人经历" },
+    "nav": {
+      "en": "Experience",
+      "zh": "经历"
+    },
+    "title": {
+      "en": "Experience",
+      "zh": "个人经历"
+    },
     "intro": {
       "en": "Education, formal appointments, academic exchanges, and internships.",
       "zh": "教育背景、正式工作、学术交流与实习经历。"
@@ -44,8 +62,14 @@
   {
     "id": "awards",
     "slug": "awards",
-    "nav": { "en": "Awards", "zh": "荣誉" },
-    "title": { "en": "Awards", "zh": "荣誉奖项" },
+    "nav": {
+      "en": "Awards",
+      "zh": "荣誉"
+    },
+    "title": {
+      "en": "Awards",
+      "zh": "荣誉奖项"
+    },
     "intro": {
       "en": "Selected research awards, competition prizes, scholarships, and academic recognition.",
       "zh": "研究奖项、竞赛获奖、奖学金与学术荣誉。"
@@ -58,8 +82,14 @@
   {
     "id": "service",
     "slug": "service",
-    "nav": { "en": "Talks & Service", "zh": "报告与服务" },
-    "title": { "en": "Talks & Service", "zh": "报告与服务" },
+    "nav": {
+      "en": "Talks & Service",
+      "zh": "报告与服务"
+    },
+    "title": {
+      "en": "Talks & Service",
+      "zh": "报告与服务"
+    },
     "intro": {
       "en": "Invited talks, academic service, professional activities, volunteering, and public engagement.",
       "zh": "邀请报告、学术服务、专业活动、志愿服务与公众交流。"
@@ -72,8 +102,14 @@
   {
     "id": "news",
     "slug": "news",
-    "nav": { "en": "News & Media", "zh": "动态与报道" },
-    "title": { "en": "News & Media", "zh": "动态与报道" },
+    "nav": {
+      "en": "News & Media",
+      "zh": "动态与报道"
+    },
+    "title": {
+      "en": "News & Media",
+      "zh": "动态与报道"
+    },
     "intro": {
       "en": "Research milestones, recent updates, interviews, and media coverage.",
       "zh": "研究进展、近期动态、人物采访与媒体报道。"
