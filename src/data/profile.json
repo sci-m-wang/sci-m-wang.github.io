@@ -395,6 +395,21 @@
   ],
   "funding": [
     {
+      "id": "psy-multimodal-clark",
+      "role": {
+        "en": "Core Participants",
+        "zh": "主要参与人"
+      },
+      "displayTitle": "基于多模态数据的大学生心理问题动态预警体系构建",
+      "title": {
+        "en": "",
+        "zh": ""
+      },
+      "funder": "辽宁省教育科学规划专项课题 - 学校体卫艺工作",
+      "amount": "",
+      "period": "2026 -- 2028"
+    },
+    {
       "id": "fire-case-inquery",
       "role": {
         "en": "Principal Investigator",
