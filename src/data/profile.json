@@ -47,14 +47,14 @@
     },
     {
       "id": "stars",
-      "value": "775",
+      "value": "782",
       "label": {
         "en": "personal-project stars",
         "zh": "个人项目 Stars"
       },
       "note": {
-        "en": "51.2k across 34 contributed repositories · updated 2026-11-09",
-        "zh": "外部贡献 34 个仓库 · 合计 51.2k Stars · 更新于 2026-11-09"
+        "en": "51.2k across 34 contributed repositories · updated 2026-11-16",
+        "zh": "外部贡献 34 个仓库 · 合计 51.2k Stars · 更新于 2026-11-16"
       }
     },
     {
@@ -474,9 +474,9 @@
       },
       "pinned": true,
       "stars": {
-        "count": 12681,
+        "count": 12701,
         "source": "GitHub",
-        "updatedAt": "2026-11-09",
+        "updatedAt": "2026-11-16",
         "repository": "langgptai/LangGPT"
       }
     },
@@ -498,9 +498,9 @@
       },
       "pinned": true,
       "stars": {
-        "count": 152,
+        "count": 151,
         "source": "GitHub",
-        "updatedAt": "2026-11-09",
+        "updatedAt": "2026-11-16",
         "repository": "langgptai/Minstrel"
       }
     },
@@ -524,7 +524,7 @@
       "stars": {
         "count": 2,
         "source": "GitHub",
-        "updatedAt": "2026-11-09",
+        "updatedAt": "2026-11-16",
         "repository": "sci-m-wang/T-COL"
       }
     },
@@ -548,7 +548,7 @@
       "stars": {
         "count": 31,
         "source": "GitHub",
-        "updatedAt": "2026-11-09",
+        "updatedAt": "2026-11-16",
         "repository": "declare-lab/MM-InstructEval"
       }
     },
@@ -572,7 +572,7 @@
       "stars": {
         "count": 98,
         "source": "GitHub",
-        "updatedAt": "2026-11-09",
+        "updatedAt": "2026-11-16",
         "repository": "NEU-DataMining/PICA"
       }
     }
@@ -1134,12 +1134,12 @@
   ],
   "githubContributions": {
     "source": "GitHub public contribution graph and merged pull requests",
-    "updatedAt": "2026-11-09",
+    "updatedAt": "2026-11-16",
     "repositories": [
       {
         "repository": "ultraworkers/claw-code",
         "owner": "ultraworkers",
-        "stars": 194926,
+        "stars": 194766,
         "commitContributions": 0,
         "pullRequestContributions": 1,
         "mergedPullRequestContributions": 0,
@@ -1151,7 +1151,7 @@
       {
         "repository": "different-ai/openwork",
         "owner": "different-ai",
-        "stars": 24459,
+        "stars": 24543,
         "commitContributions": 0,
         "pullRequestContributions": 2,
         "mergedPullRequestContributions": 0,
@@ -1163,7 +1163,7 @@
       {
         "repository": "NevaMind-AI/memU",
         "owner": "NevaMind-AI",
-        "stars": 14608,
+        "stars": 14625,
         "commitContributions": 0,
         "pullRequestContributions": 1,
         "mergedPullRequestContributions": 0,
@@ -1175,7 +1175,7 @@
       {
         "repository": "EleutherAI/lm-evaluation-harness",
         "owner": "EleutherAI",
-        "stars": 14431,
+        "stars": 14484,
         "commitContributions": 0,
         "pullRequestContributions": 1,
         "mergedPullRequestContributions": 0,
@@ -1187,7 +1187,7 @@
       {
         "repository": "langgptai/LangGPT",
         "owner": "langgptai",
-        "stars": 12681,
+        "stars": 12701,
         "commitContributions": 5,
         "pullRequestContributions": 4,
         "mergedPullRequestContributions": 3,
@@ -1199,7 +1199,7 @@
       {
         "repository": "dataabc/weiboSpider",
         "owner": "dataabc",
-        "stars": 9750,
+        "stars": 9753,
         "commitContributions": 2,
         "pullRequestContributions": 1,
         "mergedPullRequestContributions": 1,
@@ -1211,7 +1211,7 @@
       {
         "repository": "ccfddl/ccf-deadlines",
         "owner": "ccfddl",
-        "stars": 9524,
+        "stars": 9550,
         "commitContributions": 1,
         "pullRequestContributions": 2,
         "mergedPullRequestContributions": 1,
@@ -1224,7 +1224,7 @@
       {
         "repository": "open-compass/opencompass",
         "owner": "open-compass",
-        "stars": 7578,
+        "stars": 7597,
         "commitContributions": 0,
         "pullRequestContributions": 1,
         "mergedPullRequestContributions": 0,
@@ -1236,7 +1236,7 @@
       {
         "repository": "EvolvingLMMs-Lab/lmms-eval",
         "owner": "EvolvingLMMs-Lab",
-        "stars": 4490,
+        "stars": 4497,
         "commitContributions": 1,
         "pullRequestContributions": 1,
         "mergedPullRequestContributions": 1,
@@ -1248,7 +1248,7 @@
       {
         "repository": "open-compass/VLMEvalKit",
         "owner": "open-compass",
-        "stars": 4478,
+        "stars": 4493,
         "commitContributions": 1,
         "pullRequestContributions": 1,
         "mergedPullRequestContributions": 1,
@@ -1260,7 +1260,7 @@
       {
         "repository": "apachecn/pytorch-doc-zh",
         "owner": "apachecn",
-        "stars": 4223,
+        "stars": 4222,
         "commitContributions": 1,
         "pullRequestContributions": 1,
         "mergedPullRequestContributions": 1,
@@ -1272,7 +1272,7 @@
       {
         "repository": "emeryberger/CSrankings",
         "owner": "emeryberger",
-        "stars": 3226,
+        "stars": 3230,
         "commitContributions": 10,
         "pullRequestContributions": 1,
         "mergedPullRequestContributions": 1,
@@ -1284,7 +1284,7 @@
       {
         "repository": "InternLM/Tutorial",
         "owner": "InternLM",
-        "stars": 1982,
+        "stars": 1983,
         "commitContributions": 7,
         "pullRequestContributions": 8,
         "mergedPullRequestContributions": 7,
@@ -1296,7 +1296,7 @@
       {
         "repository": "wzhwzhwzh0921/S-D-Mamba",
         "owner": "wzhwzhwzh0921",
-        "stars": 401,
+        "stars": 402,
         "commitContributions": 5,
         "pullRequestContributions": 3,
         "mergedPullRequestContributions": 3,
@@ -1308,7 +1308,7 @@
       {
         "repository": "exsinger-hub/Sivia",
         "owner": "exsinger-hub",
-        "stars": 385,
+        "stars": 393,
         "commitContributions": 0,
         "pullRequestContributions": 3,
         "mergedPullRequestContributions": 0,
@@ -1320,7 +1320,7 @@
       {
         "repository": "langgptai/Minstrel",
         "owner": "langgptai",
-        "stars": 152,
+        "stars": 151,
         "commitContributions": 12,
         "pullRequestContributions": 0,
         "mergedPullRequestContributions": 0,
